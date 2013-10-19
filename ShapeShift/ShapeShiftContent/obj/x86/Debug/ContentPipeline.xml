@@ -19,6 +19,24 @@
       <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Lain.xnb</Output>
       <Time>2013-10-11T20:28:24.6900958-04:00</Time>
     </Item>
+    <Item>
+      <Source>lainobstacle.jpg</Source>
+      <Name>lainobstacle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\lainobstacle.xnb</Output>
+      <Time>2013-10-19T13:31:48.8631176-04:00</Time>
+    </Item>
+    <Item>
+      <Source>knights.png</Source>
+      <Name>knights</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\knights.xnb</Output>
+      <Time>2013-10-19T13:43:44.7760655-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

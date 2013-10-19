@@ -14,53 +14,39 @@ namespace ShapeShift
         private const int FULL = 3, MID = 2, LOW = 1, EMPTY = 0, SIZE = 60, MOVE = 5;
         private Rectangle rectangle;
         private Texture2D playerTexture;
+        private Shape playerShape;
         
         public Player(int x, int y, ContentManager content)
         {
             health = FULL;
             rectangle = new Rectangle(x, y, SIZE, SIZE);
-            playerTexture = content.Load<Texture2D>("Lain");
+            playerShape = new Square(content);
+            playerTexture = playerShape.getTexture();
         }
 
         public int getX()
-        {
-            return rectangle.X;
-        }
+        { return rectangle.X; }
 
         public int getY()
-        {
-            return rectangle.Y;
-        }
+        { return rectangle.Y; }
 
         public int getWidth()
-        {
-            return SIZE;
-        }
+        { return SIZE; }
 
         public int getHeight()
-        {
-            return SIZE;
-        }
+        { return SIZE; }
 
         public Rectangle getRect()
-        {
-            return rectangle;
-        }
+        { return rectangle; }
 
         public Texture2D getTexture()
-        {
-            return playerTexture;
-        }
+        { return playerTexture; }
 
         public void setX(int x)
-        {
-            rectangle.X = x;
-        }
+        { rectangle.X = x; }
 
         public void setY(int y)
-        {
-            rectangle.Y = y;
-        }
+        { rectangle.Y = y; }
 
         public void moveLeft()
         {
@@ -90,6 +76,22 @@ namespace ShapeShift
         }
 
         public void die()
+        {
+        }
+
+        private void changeToCircle()
+        {
+        }
+
+        private void changeToSquare()
+        {
+        }
+
+        private void changeToTriangle()
+        {
+        }
+
+        private void changeToDiamond()
         {
         }
 
