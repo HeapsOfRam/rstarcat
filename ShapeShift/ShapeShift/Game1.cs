@@ -20,7 +20,6 @@ namespace ShapeShift
         SpriteBatch spriteBatch;
 
         Player player1;
-        Texture2D playerTexture;
 
         int screenWidth, screenHeight;
         const int HUDHEIGHT = 50, ABSZERO = 0;
@@ -52,8 +51,7 @@ namespace ShapeShift
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            player1 = new Player(240, 240);
-            playerTexture = Content.Load<Texture2D>("Lain");
+            player1 = new Player(240, 240, Content);
 
             screenHeight = GraphicsDevice.Viewport.Height;
             screenWidth = GraphicsDevice.Viewport.Width;
@@ -114,7 +112,7 @@ namespace ShapeShift
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(playerTexture, player1.getRect(), Color.White);
+            spriteBatch.Draw(player1.getTexture(), player1.getRect(), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }

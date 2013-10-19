@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ShapeShift
@@ -12,11 +13,13 @@ namespace ShapeShift
         private int  health;
         private const int FULL = 3, MID = 2, LOW = 1, EMPTY = 0, SIZE = 60, MOVE = 5;
         private Rectangle rectangle;
+        private Texture2D playerTexture;
         
-        public Player(int x, int y)
+        public Player(int x, int y, ContentManager content)
         {
             health = FULL;
             rectangle = new Rectangle(x, y, SIZE, SIZE);
+            playerTexture = content.Load<Texture2D>("Lain");
         }
 
         public int getX()
@@ -42,6 +45,11 @@ namespace ShapeShift
         public Rectangle getRect()
         {
             return rectangle;
+        }
+
+        public Texture2D getTexture()
+        {
+            return playerTexture;
         }
 
         public void setX(int x)
