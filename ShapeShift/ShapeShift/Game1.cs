@@ -78,6 +78,9 @@ namespace ShapeShift
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
+            if (Keyboard.GetState().IsKeyDown(Keys.H))
+                player1.shiftShape();
+
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
                 player1.moveUp();
             if (Keyboard.GetState().IsKeyDown(Keys.Down))

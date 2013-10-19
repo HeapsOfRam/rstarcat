@@ -13,15 +13,15 @@ namespace ShapeShift
         private int  health;
         private const int FULL = 3, MID = 2, LOW = 1, EMPTY = 0, SIZE = 60, MOVE = 5;
         private Rectangle rectangle;
-        private Texture2D playerTexture;
         private Shape playerShape;
+        private ContentManager content;
         
         public Player(int x, int y, ContentManager content)
         {
+            this.content = content;
             health = FULL;
             rectangle = new Rectangle(x, y, SIZE, SIZE);
             playerShape = new Square(content);
-            playerTexture = playerShape.getTexture();
         }
 
         public int getX()
@@ -40,7 +40,7 @@ namespace ShapeShift
         { return rectangle; }
 
         public Texture2D getTexture()
-        { return playerTexture; }
+        { return playerShape.getTexture(); }
 
         public void setX(int x)
         { rectangle.X = x; }
@@ -81,18 +81,27 @@ namespace ShapeShift
 
         private void changeToCircle()
         {
+            playerShape = new Circle(content);
         }
 
         private void changeToSquare()
         {
+            playerShape = new Square(content);
         }
 
         private void changeToTriangle()
         {
+            playerShape = new Triangle(content);
         }
 
         private void changeToDiamond()
         {
+            playerShape = new Diamond(content);
+        }
+
+        public void shiftShape()
+        {
+            changeToDiamond();
         }
 
     }
