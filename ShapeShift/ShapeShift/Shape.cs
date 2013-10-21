@@ -9,7 +9,7 @@ namespace ShapeShift
 {
     class Shape
     {
-        Texture2D texture;
+        //Texture2D texture;
 
         public Shape()
         {    
@@ -17,7 +17,7 @@ namespace ShapeShift
 
         public virtual Texture2D getTexture()
         {
-            return texture;
+            return null;
         }
     }
 }

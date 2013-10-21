@@ -13,7 +13,7 @@ namespace ShapeShift
 
         public Diamond(ContentManager content)
         {
-            diamondTexture = content.Load<Texture2D>("lainobstacle");
+            diamondTexture = content.Load<Texture2D>("lainbackground");
         }
 
         public void attack()

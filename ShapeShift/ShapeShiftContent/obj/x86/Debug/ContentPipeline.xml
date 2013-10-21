@@ -37,6 +37,15 @@
       <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\knights.xnb</Output>
       <Time>2013-10-19T14:12:13.1057763-04:00</Time>
     </Item>
+    <Item>
+      <Source>lainbackground.jpg</Source>
+      <Name>lainbackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\lainbackground.xnb</Output>
+      <Time>2013-10-21T00:03:36.7672887-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

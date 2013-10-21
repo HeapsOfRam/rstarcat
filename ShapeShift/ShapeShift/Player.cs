@@ -13,15 +13,27 @@ namespace ShapeShift
         private int  health;
         private const int FULL = 3, MID = 2, LOW = 1, EMPTY = 0, SIZE = 60, MOVE = 5;
         private Rectangle rectangle;
-        private Shape playerShape;
+        private Shape playerShape, nextShape;
+        private Square pSquare;
+        private Circle pCircle;
+        private Triangle pTriangle;
+        private Diamond pDiamond;
         private ContentManager content;
+        private Random rand;
+        private int r;
         
         public Player(int x, int y, ContentManager content)
         {
             this.content = content;
+            pSquare = new Square(content);
+            pCircle = new Circle(content);
+            pTriangle = new Triangle(content);
+            pDiamond = new Diamond(content);
             health = FULL;
             rectangle = new Rectangle(x, y, SIZE, SIZE);
-            playerShape = new Square(content);
+            playerShape = pSquare;
+            rand = new Random();
+            queueOne();
         }
 
         public int getX()
@@ -47,6 +59,22 @@ namespace ShapeShift
 
         public void setY(int y)
         { rectangle.Y = y; }
+
+        private void queueOne()
+        {
+            do
+            {
+                r = rand.Next(4) + 1;
+                if (r == 1)
+                    nextShape = pCircle;
+                if (r == 2)
+                    nextShape = pSquare;
+                if (r == 3)
+                    nextShape = pDiamond;
+                if (r == 4)
+                    nextShape = pTriangle;
+            } while (nextShape == playerShape);
+        }
 
         public void moveLeft()
         {
@@ -79,29 +107,31 @@ namespace ShapeShift
         {
         }
 
-        private void changeToCircle()
+ /*       private void changeToCircle()
         {
-            playerShape = new Circle(content);
+            playerShape = pCircle;
         }
 
         private void changeToSquare()
         {
-            playerShape = new Square(content);
+            playerShape = pSquare;
         }
 
         private void changeToTriangle()
         {
-            playerShape = new Triangle(content);
+            playerShape = pTriangle;
         }
 
         private void changeToDiamond()
         {
-            playerShape = new Diamond(content);
-        }
+            playerShape = pDiamond;
+        } */
 
         public void shiftShape()
         {
-            changeToDiamond();
+            playerShape = nextShape;
+            nextShape = null;
+            queueOne();
         }
 
     }
