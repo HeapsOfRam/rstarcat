@@ -21,8 +21,10 @@ namespace ShapeShift
 
         Player player1;
 
-        int screenWidth, screenHeight;
+        int screenWidth, screenHeight, counter, maxCount = 15;
         const int HUDHEIGHT = 50, ABSZERO = 0;
+
+        float countDuration = 1f, currentTime = 0f;
 
         public Game1()
         {
@@ -78,6 +80,20 @@ namespace ShapeShift
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
+            currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (currentTime >= countDuration)
+            {
+                counter++;
+                currentTime -= countDuration;
+            }
+            if (counter >= maxCount)
+            {
+                player1.shiftShape();
+                counter = 0;
+            }
+
+            //for testing, to be removed
             if (Keyboard.GetState().IsKeyDown(Keys.H))
                 player1.shiftShape();
 
@@ -115,6 +131,7 @@ namespace ShapeShift
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            spriteBatch.Draw(player1.getNextShape().getTexture(), player1.getNextRectangle(), Color.White);
             spriteBatch.Draw(player1.getTexture(), player1.getRect(), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);

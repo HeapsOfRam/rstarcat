@@ -54,6 +54,12 @@ namespace ShapeShift
         public Texture2D getTexture()
         { return playerShape.getTexture(); }
 
+        public Shape getNextShape()
+        { return nextShape; }
+
+        public Rectangle getNextRectangle()
+        { return nextShape.getRectangle(); }
+
         public void setX(int x)
         { rectangle.X = x; }
 
