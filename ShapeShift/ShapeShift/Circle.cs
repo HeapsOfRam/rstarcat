@@ -13,7 +13,7 @@ namespace ShapeShift
 
         public Circle(ContentManager content)
         {
-            circleTexture = content.Load<Texture2D>("lainobstacle");
+            circleTexture = content.Load<Texture2D>("PlayerImage2");
         }
 
         public override Texture2D getTexture()

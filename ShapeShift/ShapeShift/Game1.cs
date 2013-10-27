@@ -19,12 +19,6 @@ namespace ShapeShift
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Player player1;
-
-        int screenWidth, screenHeight, counter, maxCount = 15;
-        const int HUDHEIGHT = 50, ABSZERO = 0;
-
-        float countDuration = 1f, currentTime = 0f;
 
         public Game1()
         {
@@ -41,6 +35,14 @@ namespace ShapeShift
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            ScreenManager.Instance.Initialize();
+
+
+            //we can access any of the public methods from the SingletonClass (ScreenManager)
+            ScreenManager.Instance.Dimensions = new Vector2(640, 480); //640 x 480 in tutorial
+            graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.Dimensions.X;
+            graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.Dimensions.Y;
+            graphics.ApplyChanges();
             base.Initialize();
         }
 
@@ -53,11 +55,8 @@ namespace ShapeShift
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            player1 = new Player(240, 240, Content);
-
-            screenHeight = GraphicsDevice.Viewport.Height;
-            screenWidth = GraphicsDevice.Viewport.Width;
             // TODO: use this.Content to load your game content here
+            ScreenManager.Instance.LoadContent(Content);
         }
 
         /// <summary>
@@ -67,6 +66,12 @@ namespace ShapeShift
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            //**we need to create seperate content managers for each screen or whaterver we load in
+            //Because we do not want to unload everything, only the stuff that we are not using****
+
+
+
+
         }
 
         /// <summary>
@@ -80,44 +85,8 @@ namespace ShapeShift
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (currentTime >= countDuration)
-            {
-                counter++;
-                currentTime -= countDuration;
-            }
-            if (counter >= maxCount)
-            {
-                player1.shiftShape();
-                counter = 0;
-            }
-
-            //for testing, to be removed
-            if (Keyboard.GetState().IsKeyDown(Keys.H))
-                player1.shiftShape();
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
-                player1.moveUp();
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                player1.moveDown();
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                player1.moveLeft();
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                player1.moveRight();
-
-            if (player1.getX() <= ABSZERO)
-                player1.setX(ABSZERO);
-            if (player1.getX() >= screenWidth - player1.getWidth())
-                player1.setX(screenWidth - player1.getWidth());
-
-            if (player1.getY() <= HUDHEIGHT)
-                player1.setY(HUDHEIGHT);
-            if (player1.getY() >= screenHeight - player1.getHeight())
-                player1.setY(screenHeight - player1.getHeight());
-
             // TODO: Add your update logic here
-
+            ScreenManager.Instance.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -127,12 +96,11 @@ namespace ShapeShift
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(player1.getNextShape().getTexture(), player1.getNextRectangle(), Color.White);
-            spriteBatch.Draw(player1.getTexture(), player1.getRect(), Color.White);
+            ScreenManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

@@ -13,7 +13,7 @@ namespace ShapeShift
 
         public Triangle(ContentManager content)
         {
-            triangleTexture = content.Load<Texture2D>("knights");
+            triangleTexture = content.Load<Texture2D>("PlayerImage3");
         }
 
         public override Texture2D getTexture()

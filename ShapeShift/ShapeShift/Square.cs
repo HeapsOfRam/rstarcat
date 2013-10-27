@@ -13,7 +13,7 @@ namespace ShapeShift
 
         public Square(ContentManager content)
         {
-            squareTexture = content.Load<Texture2D>("lain");
+            squareTexture = content.Load<Texture2D>("PlayerImage1");
         }
 
         public void attack()

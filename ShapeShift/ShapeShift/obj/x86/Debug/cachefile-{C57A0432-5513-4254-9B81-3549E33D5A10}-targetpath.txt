@@ -3,3 +3,15 @@ Content\Lain.xnb
 Content\lainobstacle.xnb
 Content\knights.xnb
 Content\lainbackground.xnb
+Content\PlayerImage1.xnb
+Content\null.xnb
+Content\fade.xnb
+Content\Splash\image1.xnb
+Content\Splash\image2.xnb
+Content\Splash\image3.xnb
+Content\TileSets\tileSet1.xnb
+Content\Font1.xnb
+Content\MenuFont.xnb
+Content\PlayerImage2.xnb
+Content\PlayerImage3.xnb
+Content\PlayerImage4.xnb
