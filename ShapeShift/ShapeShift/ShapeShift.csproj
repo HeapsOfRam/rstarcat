@@ -125,7 +125,6 @@
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1RYAN.cs" />
     <Compile Include="ScreenManager.cs" />
     <Compile Include="Shape.cs" />
     <Compile Include="SplashScreen.cs" />
