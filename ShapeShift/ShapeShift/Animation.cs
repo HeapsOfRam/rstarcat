@@ -24,6 +24,8 @@ namespace ShapeShift
         protected bool isActive;
         protected float alpha;
 
+        protected bool isEnabled;
+
         public virtual float Alpha //we will override, hence the virtual
         {
             get { return alpha; }
@@ -37,6 +39,12 @@ namespace ShapeShift
         
         }
 
+        public bool IsEnabled
+        {
+            set { isEnabled = value; }
+            get { return isEnabled; }
+
+        }
         //scale is the width/height of the screen
         public float Scale
         {
@@ -75,6 +83,7 @@ namespace ShapeShift
             axis = 0.0f;
             scale = 1.0f;
             isActive = false;
+            isEnabled = false;
             alpha = 1.0f;
 
         }

@@ -51,6 +51,7 @@ namespace ShapeShift
             contentGlobal = content;
             fileManager = new FileManager();
             moveAnimation = new SpriteSheetAnimation();
+            moveAnimation.IsActive = true;
             nextShapeAnimation = new SpriteSheetAnimation();
             Vector2 tempFrames = Vector2.Zero;
             moveSpeed = 150f; //Set the move speed
@@ -64,7 +65,7 @@ namespace ShapeShift
             pDiamond = new Diamond(content);
             health = FULL;
       //      rectangle = new Rectangle(x, y, SIZE, SIZE);
-            playerShape = pSquare;
+            playerShape = pCircle;
             rand = new Random();
             queueOne();
 
@@ -100,7 +101,8 @@ namespace ShapeShift
 
             nextShapeAnimation.LoadContent(contentGlobal, nextShape.getTexture(), "", new Vector2(0, 0));
             moveAnimation.LoadContent(content, playerShape.getTexture(), "", position);
-
+            playerShape.setPosition(position);
+           
 
         }
 
@@ -115,7 +117,7 @@ namespace ShapeShift
 
         private void queueOne()
         {
-            do
+           do
             {
                 r = rand.Next(4) + 1;
                 if (r == 1)
@@ -127,35 +129,9 @@ namespace ShapeShift
                 if (r == 4)
                     nextShape = pTriangle;
             } while (nextShape == playerShape);
+
+          
         }
-
-
-        /*
-        private void moveLeft()
-        {
-            moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 1);
-            position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-        }
-
-        private void moveRight()
-        {
-            moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 2);
-            position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-        }
-
-        private void moveUp()
-        {
-            moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 3);
-            position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-        }
-
-        private void moveDown()
-        {
-            moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 0);
-            position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-        }
-
-        */
 
         public void takeDamage()
         {
@@ -179,35 +155,42 @@ namespace ShapeShift
 
         #endregion
 
-
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
+
             //MOVEMENT
             if (input.KeyDown(Keys.Right, Keys.D)) //MOVE RIGHT
             {
-                moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 2);
+                //moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 2);
                 position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            else if (input.KeyDown(Keys.Left, Keys.A)) //MOVE LEFT
+            if (input.KeyDown(Keys.Left, Keys.A)) //MOVE LEFT
             {
-                moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 1);
+                //moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 1);
                 position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
-            else if (input.KeyDown(Keys.Down, Keys.S)) //MOVE DOWN
+            if (input.KeyDown(Keys.Down, Keys.S)) //MOVE DOWN
             {
-                moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 0);
+                //moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 0);
                 position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            else if (input.KeyDown(Keys.Up, Keys.W)) //MOVE UP
+            if (input.KeyDown(Keys.Up, Keys.W)) //MOVE UP
             {
-                moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 3);
+                //moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 3);
                 position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             else moveAnimation.IsActive = false;
             
             //Console.WriteLine("col.CollisionMap.Count: " + col.CollisionMap.Count);
-            
+
+            if (input.KeyDown(Keys.R))
+            {
+                if (playerShape == pCircle)
+                {
+                    pCircle.deployShield();
+                }
+            }
             
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
@@ -215,38 +198,61 @@ namespace ShapeShift
                 {
                     if (col.CollisionMap[i][j] == "x")
                     {
-                        //checks to see if it has collided with map elements that are loaded in
-                        if (position.X + moveAnimation.FrameWidth < j * layer.TileDimensions.X ||
-                            position.X > j * layer.TileDimensions.X + layer.TileDimensions.X ||
-                            position.Y + moveAnimation.FrameHeight < i * layer.TileDimensions.Y ||
-                            position.Y > i * layer.TileDimensions.Y + layer.TileDimensions.Y)
+                       
+                        
+
+                        //Creates a rectangle that is the current tiles postion and size
+                        Rectangle rect = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
+                       
+                        //Calls Collides method in shape class, in which each shape will check collision uniquely 
+                        if (playerShape.Collides(position, rect))
+                        {
+                            position = moveAnimation.Position;
+                        }
+
+                        /*if (position.X - playerShape.getXOffSet() + moveAnimation.FrameWidth < j * layer.TileDimensions.X ||
+                            position.X1 ` + playerShape.getXOffSet() > j * layer.TileDimensions.X + layer.TileDimensions.X ||
+                            position.Y - playerShape.getYOffSet() + moveAnimation.FrameHeight < i * layer.TileDimensions.Y ||
+                            position.Y + playerShape.getYOffSet() > i * layer.TileDimensions.Y + layer.TileDimensions.Y)
                         {
                             //no collision
                         }
                         else
                         {
                             //there is a collision
-                            position = moveAnimation.Position; //sets player position to last frame before contact (does not pass through)
+                            //sets player position to last frame before contact (does not pass through)
                         }
+                       */
                     }
-
                 }
-
             }
-
-          //  moveAnimation.LoadContent(contentGlobal, playerShape.getTexture(), "", position);   //This is in the update method, so the shape shifts when shapeshift is called
+       
             nextShapeAnimation.LoadContent(contentGlobal, nextShape.getTexture(), "", new Vector2(0,0)); //this keeps track of the next shape at the top
             moveAnimation.Position = position;
-            moveAnimation.Update(gameTime);
-           
-        
+
+            List<SpriteSheetAnimation> Animations = playerShape.getActiveTextures();
+
+            foreach (SpriteSheetAnimation animation in Animations)
+            {
+                if (animation.IsEnabled)
+                    animation.Update(gameTime);
+
+                animation.Position = position;
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            moveAnimation.Draw(spriteBatch);
+           
             nextShapeAnimation.Draw(spriteBatch);
+
+            List<SpriteSheetAnimation> enabledAnimations = playerShape.getActiveTextures();
+            foreach (SpriteSheetAnimation animation in enabledAnimations)
+            {
+                if (animation.IsEnabled)
+                    animation.Draw(spriteBatch);
+            }
         }
 
 

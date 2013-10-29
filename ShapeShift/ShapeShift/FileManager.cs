@@ -127,7 +127,7 @@ namespace ShapeShift
                                     tempContents.Add(newLine);
                                 else
                                     tempAttributes.Add(newLine);
-                                Console.WriteLine("newLine: " + newLine);
+                               // Console.WriteLine("newLine: " + newLine);
                             }
 
                         }//end foreach
