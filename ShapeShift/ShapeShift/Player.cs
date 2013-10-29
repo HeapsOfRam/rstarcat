@@ -150,6 +150,15 @@ namespace ShapeShift
             nextShape = null;
             queueOne();
             moveAnimation.LoadContent(contentGlobal, playerShape.getTexture(), "", position);   //This is in the update method, so the shape shifts when shapeshift is called
+          
+
+            //Resets the locaiton of the next shape to the upper right corner
+            List<SpriteSheetAnimation> Animations = nextShape.getActiveTextures();
+            foreach (SpriteSheetAnimation animation in Animations)
+            {
+                if (animation.IsEnabled)
+                    animation.position = new Vector2(0, 0); 
+            }
         }
 
 
@@ -205,7 +214,7 @@ namespace ShapeShift
                         Rectangle rect = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
                        
                         //Calls Collides method in shape class, in which each shape will check collision uniquely 
-                        if (playerShape.Collides(position, rect))
+                        if (playerShape.Collides(position, rect)) 
                         {
                             position = moveAnimation.Position;
                         }
@@ -239,15 +248,31 @@ namespace ShapeShift
 
                 animation.Position = position;
             }
+
+
+            Animations = nextShape.getActiveTextures();
+
+            foreach (SpriteSheetAnimation animation in Animations)
+            {
+                if (animation.IsEnabled)
+                    animation.Update(gameTime);
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
            
-            nextShapeAnimation.Draw(spriteBatch);
+            //nextShapeAnimation.Draw(spriteBatch);
 
             List<SpriteSheetAnimation> enabledAnimations = playerShape.getActiveTextures();
+            foreach (SpriteSheetAnimation animation in enabledAnimations)
+            {
+                if (animation.IsEnabled)
+                    animation.Draw(spriteBatch);
+            }
+
+            enabledAnimations = nextShape.getActiveTextures();
             foreach (SpriteSheetAnimation animation in enabledAnimations)
             {
                 if (animation.IsEnabled)

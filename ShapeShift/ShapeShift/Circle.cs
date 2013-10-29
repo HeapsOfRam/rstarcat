@@ -11,9 +11,12 @@ namespace ShapeShift
     public class Circle : Shape
     {
 
-        private const int RADIUS = 16;
+        private const int RADIUS_NO_SHIELD = 16;
+        private const int RADIUS_SHIELD = 21;
         private const int WIDTH = 32;
         private const int HEIGHT = 32;
+
+        private int radius = RADIUS_NO_SHIELD;
 
         private Texture2D idleCircleTexture;
         private Texture2D shieldDeployCircleTexture;
@@ -60,6 +63,8 @@ namespace ShapeShift
         public void deployShield()
         {
             deployAnimation.IsEnabled = true;
+
+            radius = RADIUS_SHIELD;
         }
 
         public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)
@@ -70,13 +75,13 @@ namespace ShapeShift
             if (spriteSheetAnimation == deployAnimation)
                 sheildIdleAnimation.IsEnabled = true;
             
+ 
+            
         }
 
         public override bool Collides(Vector2 vect, Rectangle rectangle)
         {
             Point circle = new Point((int)vect.X + WIDTH, (int)vect.Y + WIDTH);
-            
-            int radius = RADIUS;
 
             var rectangleCenter = new Point((rectangle.X + rectangle.Width / 2),
                                             (rectangle.Y + rectangle.Height / 2));

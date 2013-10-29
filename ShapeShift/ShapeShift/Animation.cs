@@ -19,7 +19,7 @@ namespace ShapeShift
         protected Color color;
         protected Rectangle sourceRect;
         protected float rotation, scale, axis;
-        protected Vector2 origin, position;
+        public Vector2 origin, position;
         protected ContentManager content;
         protected bool isActive;
         protected float alpha;
