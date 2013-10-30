@@ -15,7 +15,7 @@ namespace ShapeShift
         int frameCounter;
         int switchFrame;
 
-        const int SPRITE_WIDTH = 64;
+        const int SPRITE_WIDTH = 92;
 
         Vector2 frames;
         Vector2 currentFrame; 
@@ -68,7 +68,7 @@ namespace ShapeShift
 
             int numFrames = image.Width / SPRITE_WIDTH;
 
-            frames = new Vector2(numFrames,1);         //by default, we will say 3 by 4
+            frames = new Vector2(numFrames,1);        
             currentFrame = new Vector2(0, 0);
 
             sourceRect = new Rectangle((int)currentFrame.X * FrameWidth, (int)currentFrame.Y * FrameHeight, FrameWidth, FrameHeight);

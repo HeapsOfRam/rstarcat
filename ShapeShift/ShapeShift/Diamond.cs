@@ -17,8 +17,8 @@ namespace ShapeShift
         {
 
             //Distances between image boundries and actual shape
-            X_OFFSET = 17;
-            Y_OFFSET = 13;
+            X_OFFSET = 24;
+            Y_OFFSET = 20;
 
             animations = new List<SpriteSheetAnimation>();
             

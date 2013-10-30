@@ -31,6 +31,9 @@ namespace ShapeShift
         private int r;
         ContentManager contentGlobal;
         SpriteSheetAnimation nextShapeAnimation;
+
+
+        private Rectangle lastCheckedRectangle;
          
 
         public Texture2D PlayerTexture
@@ -65,7 +68,7 @@ namespace ShapeShift
             pDiamond = new Diamond(content);
             health = FULL;
       //      rectangle = new Rectangle(x, y, SIZE, SIZE);
-            playerShape = pCircle;
+            playerShape = pDiamond;
             rand = new Random();
             queueOne();
 
@@ -150,7 +153,22 @@ namespace ShapeShift
             nextShape = null;
             queueOne();
             moveAnimation.LoadContent(contentGlobal, playerShape.getTexture(), "", position);   //This is in the update method, so the shape shifts when shapeshift is called
-          
+
+            int count = 1;
+            while (playerShape.Collides(position, lastCheckedRectangle))
+            {
+                if (!(playerShape.Collides(new Vector2(position.X + count, position.Y + count), lastCheckedRectangle)))
+                    position = new Vector2(position.X + count, position.Y + count);
+                else if (!(playerShape.Collides(new Vector2(position.X - count, position.Y - count), lastCheckedRectangle)))
+                    position = new Vector2(position.X + count, position.Y + count);
+                else if (!(playerShape.Collides(new Vector2(position.X - count, position.Y + count), lastCheckedRectangle)))
+                    position = new Vector2(position.X + count, position.Y + count);
+                else if (!(playerShape.Collides(new Vector2(position.X + count, position.Y - count), lastCheckedRectangle)))
+                    position = new Vector2(position.X + count, position.Y + count);
+
+                count++;
+
+            }
 
             //Resets the locaiton of the next shape to the upper right corner
             List<SpriteSheetAnimation> Animations = nextShape.getActiveTextures();
@@ -211,10 +229,10 @@ namespace ShapeShift
                         
 
                         //Creates a rectangle that is the current tiles postion and size
-                        Rectangle rect = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
+                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
                        
                         //Calls Collides method in shape class, in which each shape will check collision uniquely 
-                        if (playerShape.Collides(position, rect)) 
+                        if (playerShape.Collides(position, lastCheckedRectangle)) 
                         {
                             position = moveAnimation.Position;
                         }

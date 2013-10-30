@@ -134,7 +134,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleIdleSpriteSheet.xnb</Output>
-      <Time>2013-10-28T10:47:34.0597492-04:00</Time>
+      <Time>2013-10-29T16:40:13.9668501-04:00</Time>
     </Item>
     <Item>
       <Source>DiamondIdleSpriteSheet.png</Source>
@@ -143,7 +143,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondIdleSpriteSheet.xnb</Output>
-      <Time>2013-10-28T11:28:46.7011762-04:00</Time>
+      <Time>2013-10-29T16:44:03.0909552-04:00</Time>
     </Item>
     <Item>
       <Source>TriangleIdleSpriteSheet.png</Source>
@@ -152,7 +152,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TriangleIdleSpriteSheet.xnb</Output>
-      <Time>2013-10-28T11:30:00.5443998-04:00</Time>
+      <Time>2013-10-29T16:46:44.0671626-04:00</Time>
     </Item>
     <Item>
       <Source>SquareIdleSpriteSheet.png</Source>
@@ -161,7 +161,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareIdleSpriteSheet.xnb</Output>
-      <Time>2013-10-28T11:29:34.5229115-04:00</Time>
+      <Time>2013-10-29T16:44:43.91129-04:00</Time>
     </Item>
     <Item>
       <Source>CircleDeployShieldAnimation.png</Source>
@@ -170,7 +170,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleDeployShieldSpriteSheet.xnb</Output>
-      <Time>2013-10-28T14:27:36.4407226-04:00</Time>
+      <Time>2013-10-29T16:40:52.7110661-04:00</Time>
     </Item>
     <Item>
       <Source>CircleShieldIdleSpriteSheet.png</Source>
@@ -179,7 +179,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleShieldIdleSpriteSheet.xnb</Output>
-      <Time>2013-10-28T12:11:23.7082596-04:00</Time>
+      <Time>2013-10-29T16:41:32.8553623-04:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet1.png</Source>
@@ -188,7 +188,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet1.xnb</Output>
-      <Time>2013-10-29T13:50:09.1586159-04:00</Time>
+      <Time>2013-10-29T16:37:01.9568677-04:00</Time>
     </Item>
     <Item>
       <Source>Font1.spritefont</Source>

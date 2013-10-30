@@ -11,10 +11,10 @@ namespace ShapeShift
     public class Circle : Shape
     {
 
-        private const int RADIUS_NO_SHIELD = 16;
-        private const int RADIUS_SHIELD = 21;
-        private const int WIDTH = 32;
-        private const int HEIGHT = 32;
+        private const int RADIUS_NO_SHIELD = 21;
+        private const int RADIUS_SHIELD = 27;
+        private const int WIDTH = 46;
+        private const int HEIGHT = 46;
 
         private int radius = RADIUS_NO_SHIELD;
 

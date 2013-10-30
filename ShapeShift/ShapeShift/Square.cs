@@ -16,8 +16,8 @@ namespace ShapeShift
 
         public Square(ContentManager content)
         {
-            X_OFFSET = 16;
-            Y_OFFSET = 16;
+            X_OFFSET = 24;
+            Y_OFFSET = 24;
             animations = new List<SpriteSheetAnimation>();
 
             squareTexture = content.Load<Texture2D>("SquareIdleSpriteSheet");

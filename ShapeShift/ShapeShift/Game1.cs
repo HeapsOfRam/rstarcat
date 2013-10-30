@@ -39,7 +39,7 @@ namespace ShapeShift
 
 
             //we can access any of the public methods from the SingletonClass (ScreenManager)
-            ScreenManager.Instance.Dimensions = new Vector2(800, 600); //640 x 480 in tutorial
+            ScreenManager.Instance.Dimensions = new Vector2(920,690); //640 x 480 in tutorial
             graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.Dimensions.X;
             graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.Dimensions.Y;
             graphics.ApplyChanges();
