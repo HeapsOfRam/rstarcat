@@ -90,3 +90,4 @@ C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\R
 C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\ShapeShift.exe
 C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\ShapeShift.pdb
+C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleFadeSpriteSheet.xnb

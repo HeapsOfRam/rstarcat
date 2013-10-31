@@ -11,20 +11,22 @@ namespace ShapeShift
     public class Circle : Shape
     {
 
-        private const int RADIUS_NO_SHIELD = 21;
-        private const int RADIUS_SHIELD = 27;
-        private const int WIDTH = 46;
-        private const int HEIGHT = 46;
+        private const int RADIUS_NO_SHIELD = 21; // gap between the image boundry and the actual shape
+        private const int RADIUS_SHIELD = 27;    // gap between the image boundry and the shield
+        private const int WIDTH = 46;            // width of the shape, not the image
+        private const int HEIGHT = 46;           // height of the shape
 
-        private int radius = RADIUS_NO_SHIELD;
+        private int radius = RADIUS_NO_SHIELD;   // holds the current radius (shield or no shield)
 
-        private Texture2D idleCircleTexture;
-        private Texture2D shieldDeployCircleTexture;
-        private Texture2D shieldIdleTexture;
+        private Texture2D idleCircleTexture;        // Texture containing the circle idle spritesheet image
+        private Texture2D shieldDeployCircleTexture;// Texture containing the deploy sheild spritesheet image
+        private Texture2D shieldIdleTexture;        // Texture containing the shield idle spritesheet image
+        private Texture2D shieldFadeTexture;        // Texture containing the shield fade spritesheet image
 
-        private SpriteSheetAnimation idleAnimation;
+        private SpriteSheetAnimation idleAnimation; 
         private SpriteSheetAnimation deployAnimation;
-        private SpriteSheetAnimation sheildIdleAnimation;
+        private SpriteSheetAnimation shieldIdleAnimation;
+        private SpriteSheetAnimation shieldFadeAnimation;
 
         public Circle(ContentManager content)
         {
@@ -35,6 +37,7 @@ namespace ShapeShift
             idleCircleTexture = content.Load<Texture2D>("CircleIdleSpriteSheet");
             shieldDeployCircleTexture = content.Load<Texture2D>("CircleDeployShieldSpriteSheet");
             shieldIdleTexture = content.Load<Texture2D>("CircleShieldIdleSpriteSheet");
+            shieldFadeTexture = content.Load<Texture2D>("CircleFadeSpriteSheet");
 
             // Create new SpriteSheetAnimation objects for each texture and add them to the animation list
             idleAnimation = new SpriteSheetAnimation(this, true);
@@ -45,13 +48,19 @@ namespace ShapeShift
             deployAnimation.LoadContent(content, shieldDeployCircleTexture, "", new Vector2(0, 0));
             deployAnimation.IsEnabled = false;
 
-            sheildIdleAnimation = new SpriteSheetAnimation(this, true);
-            sheildIdleAnimation.LoadContent(content, shieldIdleTexture, "", new Vector2(0, 0));
-            sheildIdleAnimation.IsEnabled = false;
+            shieldIdleAnimation = new SpriteSheetAnimation(this, true);
+            shieldIdleAnimation.LoadContent(content, shieldIdleTexture, "", new Vector2(0, 0));
+            shieldIdleAnimation.IsEnabled = false;
+
+            shieldFadeAnimation = new SpriteSheetAnimation(this, false);
+            shieldFadeAnimation.LoadContent(content, shieldFadeTexture, "", new Vector2(0, 0));
+            shieldFadeAnimation.IsEnabled = false;
+
 
             animations.Add(idleAnimation);
             animations.Add(deployAnimation);
-            animations.Add(sheildIdleAnimation);
+            animations.Add(shieldIdleAnimation);
+            animations.Add(shieldFadeAnimation);
         }
 
         public override Texture2D getTexture()
@@ -60,25 +69,46 @@ namespace ShapeShift
         }
 
 
+        // Deploys shield by enabling the deployAnimation
+        // When deployAnimation finishes it will disable itself (calls disableAnimation(deployAnimation) on this shape)
         public void deployShield()
         {
             deployAnimation.IsEnabled = true;
 
+            //Increase the radius to account for the shield being displayed 
             radius = RADIUS_SHIELD;
         }
 
-        public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)
+        public void removeShield()
         {
 
+            shieldIdleAnimation.IsEnabled = false;
+
+            shieldFadeAnimation.IsEnabled = true;
+
+            //Decrease the radius to account for the shield no longer being displayed
+            radius = RADIUS_NO_SHIELD;
+        
+        }
+
+
+
+        //Disables the animation, preforms a check to see if that animation was the deploy shield animation
+        // in which case the idle shield animation now needs to be enabled
+        public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)
+        {
             spriteSheetAnimation.IsEnabled = false;
 
             if (spriteSheetAnimation == deployAnimation)
-                sheildIdleAnimation.IsEnabled = true;
-            
- 
-            
+                shieldIdleAnimation.IsEnabled = true;
         }
 
+
+        // Overrides abstract collides method in shape.
+        // Takes in a rectangle corresponding to the tile we are checking a 
+        // collision with and a Vector2 that represents the center of the circle.
+        // Using the radius, this method returns true of the circle intersects 
+        // any potion of the rectangle and false if not.
         public override bool Collides(Vector2 vect, Rectangle rectangle)
         {
             Point circle = new Point((int)vect.X + WIDTH, (int)vect.Y + WIDTH);

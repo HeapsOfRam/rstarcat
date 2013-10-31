@@ -13,9 +13,9 @@ namespace ShapeShift
     {
         //Some Private Variables
         int frameCounter;
-        int switchFrame;
+        int switchFrame; //Is essentially the speed or however many frame counts we would like to wait before switching the frame.
 
-        const int SPRITE_WIDTH = 92;
+        const int SPRITE_WIDTH = 92; //With of the overall image, not just the shape (which would be half)
 
         Vector2 frames;
         Vector2 currentFrame; 
@@ -23,6 +23,9 @@ namespace ShapeShift
         private Shape shape;
         private Boolean isRepeatable = true;
 
+
+        // Shape is pass a an argument in order to disable animations that are not repeatable
+        // This kind of links the shape and its animations (animations can call methods in the shape)
         public SpriteSheetAnimation(Shape shape, Boolean isRepeatable)
         {
             this.shape = shape;
@@ -38,8 +41,6 @@ namespace ShapeShift
         {
             set { frames = value; }
         }
-
-
 
         public Vector2 CurrentFrame
         {
@@ -63,7 +64,6 @@ namespace ShapeShift
             base.LoadContent(Content, image, text, position);
             frameCounter = 0;
 
-
             switchFrame = 60;
 
             int numFrames = image.Width / SPRITE_WIDTH;
@@ -72,8 +72,6 @@ namespace ShapeShift
             currentFrame = new Vector2(0, 0);
 
             sourceRect = new Rectangle((int)currentFrame.X * FrameWidth, (int)currentFrame.Y * FrameHeight, FrameWidth, FrameHeight);
-
-
         }
 
         public override void UnloadContent()
@@ -93,10 +91,8 @@ namespace ShapeShift
 
                     if (currentFrame.X * FrameWidth >= image.Width)
                     {
-
-                        currentFrame.X = 0;
-
-                        
+                       currentFrame.X = 0;
+                       
                         // If this animation is not supposed to be repeated, disabled it by calling shape.disableAnimation
                         if (!isRepeatable)
                         {
@@ -106,13 +102,8 @@ namespace ShapeShift
                             
                     }
                 }
-            
-           
-            sourceRect = new Rectangle((int)currentFrame.X * FrameWidth, (int)currentFrame.Y * FrameHeight, FrameWidth, FrameHeight);
-
-           
+          
+            sourceRect = new Rectangle((int)currentFrame.X * FrameWidth, (int)currentFrame.Y * FrameHeight, FrameWidth, FrameHeight);          
         }
-
-
     }
 }

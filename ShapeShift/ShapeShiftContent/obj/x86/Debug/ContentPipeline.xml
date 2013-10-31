@@ -208,6 +208,15 @@
       <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\MenuFont.xnb</Output>
       <Time>2013-10-28T10:33:42.8962094-04:00</Time>
     </Item>
+    <Item>
+      <Source>CircleFadeSpriteSheet.png</Source>
+      <Name>CircleFadeSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleFadeSpriteSheet.xnb</Output>
+      <Time>2013-10-31T01:18:20.9299291-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

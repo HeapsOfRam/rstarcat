@@ -17,7 +17,7 @@ namespace ShapeShift
         public Triangle(ContentManager content)
         {
 
-            X_OFFSET = 24;
+            X_OFFSET = 24; 
             Y_OFFSET = 24;
 
             animations = new List<SpriteSheetAnimation>();
@@ -50,9 +50,6 @@ namespace ShapeShift
             {
                 return true;
             }
-
-
         }
-       
     }
 }
