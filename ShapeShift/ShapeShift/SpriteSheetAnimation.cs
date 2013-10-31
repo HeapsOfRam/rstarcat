@@ -64,7 +64,7 @@ namespace ShapeShift
             base.LoadContent(Content, image, text, position);
             frameCounter = 0;
 
-            switchFrame = 60;
+            switchFrame = 40;
 
             int numFrames = image.Width / SPRITE_WIDTH;
 

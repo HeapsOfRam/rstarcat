@@ -69,7 +69,7 @@ namespace ShapeShift
             pDiamond  = new Diamond(content);
 
             health = FULL;
-            playerShape = pDiamond;
+            playerShape = pTriangle;
 
             rand = new Random();
 

@@ -152,7 +152,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TriangleIdleSpriteSheet.xnb</Output>
-      <Time>2013-10-29T16:46:44.0671626-04:00</Time>
+      <Time>2013-10-31T13:49:03.8878694-04:00</Time>
     </Item>
     <Item>
       <Source>SquareIdleSpriteSheet.png</Source>
@@ -215,7 +215,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleFadeSpriteSheet.xnb</Output>
-      <Time>2013-10-31T01:18:20.9299291-04:00</Time>
+      <Time>2013-10-31T09:23:18.626659-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
