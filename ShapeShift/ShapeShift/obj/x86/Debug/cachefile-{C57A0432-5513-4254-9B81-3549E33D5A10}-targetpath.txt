@@ -19,6 +19,6 @@ Content\SquareIdleSpriteSheet.xnb
 Content\CircleDeployShieldSpriteSheet.xnb
 Content\CircleShieldIdleSpriteSheet.xnb
 Content\TileSets\tileSet1.xnb
+Content\CircleFadeSpriteSheet.xnb
 Content\Font1.xnb
 Content\MenuFont.xnb
-Content\CircleFadeSpriteSheet.xnb
