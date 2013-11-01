@@ -69,7 +69,7 @@ namespace ShapeShift
             pDiamond  = new Diamond(content);
 
             health = FULL;
-            playerShape = pTriangle;
+            playerShape = pCircle;
 
             rand = new Random();
 
@@ -151,8 +151,24 @@ namespace ShapeShift
             
             queueOne();
 
-            // Checks to see if the next shape is colliding with anything before switching 
-            // If it is...it incremently trys moving the shape backward until it isn't colliding
+            fixCollision(position, lastCheckedRectangle);
+            
+
+            //Resets the locaiton of the next shape to the upper right corner
+            List<SpriteSheetAnimation> Animations = nextShape.getActiveTextures();
+            foreach (SpriteSheetAnimation animation in Animations)
+            {
+                if (animation.IsEnabled)
+                    animation.position = new Vector2(0, 0); 
+            }
+        }
+
+        #endregion
+
+        // Checks to see if the next shape is colliding with anything before switching 
+        // If it is...it incremently trys moving the shape backward until it isn't colliding
+        public void fixCollision(Vector2 position, Rectangle lastCheckedRectangle)
+        {
             int count = 1;
             while (playerShape.Collides(position, lastCheckedRectangle))
             {
@@ -166,19 +182,8 @@ namespace ShapeShift
                     position = new Vector2(position.X + count, position.Y + count);
 
                 count++;
-
-            }
-
-            //Resets the locaiton of the next shape to the upper right corner
-            List<SpriteSheetAnimation> Animations = nextShape.getActiveTextures();
-            foreach (SpriteSheetAnimation animation in Animations)
-            {
-                if (animation.IsEnabled)
-                    animation.position = new Vector2(0, 0); 
             }
         }
-
-        #endregion
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
@@ -202,6 +207,8 @@ namespace ShapeShift
             {
                 if (playerShape == pCircle)
                     pCircle.deployShield();
+
+             fixCollision(position, lastCheckedRectangle);
             }
 
             if (input.KeyDown(Keys.E))
