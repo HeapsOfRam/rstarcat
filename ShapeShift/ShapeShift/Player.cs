@@ -158,7 +158,7 @@ namespace ShapeShift
                 pDiamond.clearMines();
 
 
-           // playerShape = nextShape;
+            playerShape = nextShape;
             nextShape   = null;
             
             queueOne();
