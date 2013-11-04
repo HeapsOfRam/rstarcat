@@ -27,6 +27,8 @@ namespace ShapeShift
         private SpriteSheetAnimation deployAnimation;
         private SpriteSheetAnimation shieldIdleAnimation;
         private SpriteSheetAnimation shieldFadeAnimation;
+        
+        public bool shielded;
 
         public Circle(ContentManager content)
         {
@@ -74,7 +76,7 @@ namespace ShapeShift
         public void deployShield()
         {
             deployAnimation.IsEnabled = true;
-
+            shielded = true;
             //Increase the radius to account for the shield being displayed 
             radius = RADIUS_SHIELD;
         }
@@ -88,7 +90,8 @@ namespace ShapeShift
 
             //Decrease the radius to account for the shield no longer being displayed
             radius = RADIUS_NO_SHIELD;
-        
+
+            shielded = false;
         }
 
 

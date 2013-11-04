@@ -69,7 +69,7 @@ namespace ShapeShift
             pDiamond  = new Diamond(content);
 
             health = FULL;
-            playerShape = pCircle;
+            playerShape = pSquare;
 
             rand = new Random();
 
@@ -146,12 +146,24 @@ namespace ShapeShift
 
         public void shiftShape()
         {
+
+            moveSpeed = 150f;
+            pSquare.stopDashing();
+
+            if (playerShape == pCircle && pCircle.shielded)
+                pCircle.removeShield();
+            else if (playerShape == pSquare && pSquare.dashing)
+                pSquare.stopDashing();
+
+
             playerShape = nextShape;
             nextShape   = null;
             
             queueOne();
 
             fixCollision(position, lastCheckedRectangle);
+
+            
             
 
             //Resets the locaiton of the next shape to the upper right corner
@@ -187,37 +199,62 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
+            previousPosition = position;
 
-            //MOVEMENT
-            if (input.KeyDown(Keys.Right, Keys.D)) //MOVE RIGHT
-                position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Boolean[] directions = new Boolean[4];
 
-            if (input.KeyDown(Keys.Left, Keys.A)) //MOVE LEFT
-                position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            for (int i = 0; i < 4; i++)        
+                directions[i] = false;
             
-            if (input.KeyDown(Keys.Down, Keys.S)) //MOVE DOWN
-                position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //MOVEMENT
+            if (input.KeyDown(Keys.Right, Keys.D))
+            { //MOVE RIGHT
+                position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                directions[0] = true;
+            }
 
-            if (input.KeyDown(Keys.Up, Keys.W)) //MOVE UP
+            if (input.KeyDown(Keys.Left, Keys.A))
+            { //MOVE LEFT
+                position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                directions[1] = true;
+            }
+            if (input.KeyDown(Keys.Down, Keys.S))
+            { //MOVE DOWN
+                position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                directions[2] = true;
+            }
+            if (input.KeyDown(Keys.Up, Keys.W))
+            { //MOVE UP
                 position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                directions[3] = true;
+            }
+
+            if (playerShape == pSquare)
+            {
+                pSquare.setDirectionMap(directions);
+            }
 
             
             //Used to check deploy sheild in circle
             if (input.KeyDown(Keys.R))
             {
-                if (playerShape == pCircle)
+                if (playerShape == pCircle && !pCircle.shielded)
                     pCircle.deployShield();
 
-             fixCollision(position, lastCheckedRectangle);
+                if (playerShape == pSquare)
+                    pSquare.dash(this);
+
+             
+                fixCollision(position, lastCheckedRectangle); //may or may not be working
+            
             }
 
             if (input.KeyDown(Keys.E))
             {
-                if (playerShape == pCircle)
-                    pCircle.removeShield();
-            }
-
-            
+                if (playerShape == pCircle && pCircle.shielded)
+                    pCircle.removeShield();  
+            }    
+     
 
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
@@ -237,6 +274,9 @@ namespace ShapeShift
                 }
             }
 
+
+            // moveAnimation is used to check collisions, it is not drawn and is the same for each shape 
+            // (just a rectangle corresponding to the image)
             moveAnimation.Position = position;
 
             // Update all of the enabled animations

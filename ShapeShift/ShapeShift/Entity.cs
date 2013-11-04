@@ -24,6 +24,7 @@ namespace ShapeShift
         protected List<List<string>> attributes, contents;
 
         protected Vector2 position;
+        protected Vector2 previousPosition;
 
         public virtual void LoadContent(ContentManager content, InputManager input)
         {
@@ -45,6 +46,11 @@ namespace ShapeShift
         public virtual void Draw(SpriteBatch spriteBatch)
         { 
         
+        }
+
+        public void setMoveSpeed(float moveSpeed)
+        {
+            this.moveSpeed = moveSpeed;
         }
 
     }

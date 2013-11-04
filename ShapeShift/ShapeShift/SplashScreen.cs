@@ -65,10 +65,10 @@ namespace ShapeShift
 
             for (int i = 0; i < fade.Count; i++)
             {
-                fade[i].LoadContent(content, images[i], "", new Vector2(-560, -230));
+                fade[i].LoadContent(content, images[i], "", new Vector2(0, 0));
                 //Formula: ImageWidth / 2 * scale - (imageWidth/2)
                 //Formula: ImageHeight / 2 * scale - (imageHeight/2)
-                fade[i].Scale = 0.66f;
+                fade[i].Scale = 1.0f;
                 fade[i].IsActive = true;
             }
 

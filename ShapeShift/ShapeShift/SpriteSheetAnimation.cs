@@ -74,6 +74,12 @@ namespace ShapeShift
             sourceRect = new Rectangle((int)currentFrame.X * FrameWidth, (int)currentFrame.Y * FrameHeight, FrameWidth, FrameHeight);
         }
 
+        public void switchContent (ContentManager Content, Texture2D image, string text, Vector2 position){
+            base.LoadContent(Content, image, text, position);
+
+           
+        }
+
         public override void UnloadContent()
         {
             base.UnloadContent();

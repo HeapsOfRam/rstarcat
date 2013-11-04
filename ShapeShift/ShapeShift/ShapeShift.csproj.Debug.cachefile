@@ -22,3 +22,12 @@ Content\TileSets\tileSet1.xnb
 Content\CircleFadeSpriteSheet.xnb
 Content\Font1.xnb
 Content\MenuFont.xnb
+Content\SquareDashRightSpriteSheet.xnb
+Content\SquareDashLeftSpriteSheet.xnb
+Content\SquareDashSouthEastSpriteSheet.xnb
+Content\SquareDashSouthSpriteSheet.xnb
+Content\SquareDashNorthSpriteSheet.xnb
+Content\SquareDashNorthEastSpriteSheet.xnb
+Content\SquareDashSouthWestSpriteSheet.xnb
+Content\SquareDashNorthWestSpriteSheet.xnb
+Content\SquareDashIdleSpriteSheet.xnb
