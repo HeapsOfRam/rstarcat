@@ -69,7 +69,7 @@ namespace ShapeShift
             pDiamond  = new Diamond(content);
 
             health = FULL;
-            playerShape = pSquare;
+            playerShape = pDiamond;
 
             rand = new Random();
 
@@ -154,9 +154,11 @@ namespace ShapeShift
                 pCircle.removeShield();
             else if (playerShape == pSquare && pSquare.dashing)
                 pSquare.stopDashing();
+            else if (playerShape == pDiamond)
+                pDiamond.clearMines();
 
 
-            playerShape = nextShape;
+           // playerShape = nextShape;
             nextShape   = null;
             
             queueOne();
@@ -244,6 +246,8 @@ namespace ShapeShift
                 if (playerShape == pSquare)
                     pSquare.dash(this);
 
+                if (playerShape == pDiamond && !pDiamond.mineDeployed())
+                    pDiamond.deployMine();
              
                 fixCollision(position, lastCheckedRectangle); //may or may not be working
             
@@ -252,7 +256,10 @@ namespace ShapeShift
             if (input.KeyDown(Keys.E))
             {
                 if (playerShape == pCircle && pCircle.shielded)
-                    pCircle.removeShield();  
+                    pCircle.removeShield();
+
+                if (playerShape == pDiamond)
+                    pDiamond.dropMine();
             }    
      
 
@@ -286,7 +293,8 @@ namespace ShapeShift
                 if (animation.IsEnabled)
                     animation.Update(gameTime);
 
-                animation.Position = position;
+                if (!(playerShape == pDiamond && pDiamond.mineDropped() && pDiamond.isMineAnimation(animation)))
+                    animation.Position = position;
             }
 
             // Update the next shape animation in the upper right of the screen
@@ -312,11 +320,7 @@ namespace ShapeShift
 
             // Draws each of the enabled animations for the current shape in the upper right hand corner. 
             enabledAnimations = nextShape.getActiveTextures();
-            foreach (SpriteSheetAnimation animation in enabledAnimations)
-            {
-                if (animation.IsEnabled)
-                    animation.Draw(spriteBatch);
-            }
+            enabledAnimations[0].Draw(spriteBatch);
         }
     }
 }

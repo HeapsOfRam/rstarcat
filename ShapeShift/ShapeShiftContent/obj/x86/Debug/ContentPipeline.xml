@@ -298,6 +298,24 @@
       <Output>C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashIdleSpriteSheet.xnb</Output>
       <Time>2013-11-04T11:04:57.641578-04:00</Time>
     </Item>
+    <Item>
+      <Source>DiamondMineSpriteSheet.png</Source>
+      <Name>DiamondMineSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondMineSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:43:45.2556182-04:00</Time>
+    </Item>
+    <Item>
+      <Source>DiamondMineIdleSpriteSheet.png</Source>
+      <Name>DiamondMineIdleSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondMineIdleSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:36:12.7627371-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
