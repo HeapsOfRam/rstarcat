@@ -23,6 +23,12 @@ namespace ShapeShift
         private Shape shape;
         private Boolean isRepeatable = true;
 
+        private Boolean rotate = false;
+
+        private int rotateCounter = 0;
+
+        private GraphicsDeviceManager graphics;
+
 
         // Shape is pass a an argument in order to disable animations that are not repeatable
         // This kind of links the shape and its animations (animations can call methods in the shape)
@@ -87,29 +93,65 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime)
         {
-            
-                //let's us know that we need to switch the frame
-                frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
-                if (frameCounter >= switchFrame)
-                {
-                    frameCounter = 0;
-                    currentFrame.X++;
+            //let's us know that we need to switch the frame
+            frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (frameCounter >= switchFrame)
+            {
+                frameCounter = 0;
+                currentFrame.X++;
 
-                    if (currentFrame.X * FrameWidth >= image.Width)
-                    {
-                       currentFrame.X = 0;
-                       
-                        // If this animation is not supposed to be repeated, disabled it by calling shape.disableAnimation
-                        if (!isRepeatable)
-                        {
-                            shape.disableAnimation(this);
-                            this.Update(gameTime);
-                        }
-                            
-                    }
+                if (rotate && rotateCounter < 10)
+                {
+                    origin = new Vector2(45, 54);
+                  
+                    rotation += (float)Math.PI / 4.0f;
+                    rotateCounter++;
                 }
+
+                else if (rotateCounter >= 10)
+                {
+                    rotateCounter = 0;
+                    rotate = false;
+
+                }
+
+
+                if (currentFrame.X * FrameWidth >= image.Width)
+                {
+                    currentFrame.X = 0;
+                     
+                    // If this animation is not supposed to be repeated, disabled it by calling shape.disableAnimation
+                    if (!isRepeatable)
+                    {
+                        shape.disableAnimation(this);
+                        this.Update(gameTime);
+                    }
+                            
+                }
+            }
           
             sourceRect = new Rectangle((int)currentFrame.X * FrameWidth, (int)currentFrame.Y * FrameHeight, FrameWidth, FrameHeight);          
+        }
+
+        public Color[] getCurrentImage(){
+            
+            Rectangle newBounds = new Rectangle((int)currentFrame.X * FrameWidth, (int)currentFrame.Y * FrameHeight, FrameWidth, FrameHeight);
+
+           
+
+            // Copy the data from the cropped region into a buffer, then into the new texture
+            Color[] data = new Color[newBounds.Width * newBounds.Height];
+
+            image.GetData(0, newBounds, data, 0, newBounds.Width * newBounds.Height);
+
+            return data;
+
+        }
+
+        internal void PreformRotate()
+        {
+            rotate = true;
+            
         }
     }
 }

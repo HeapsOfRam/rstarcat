@@ -69,22 +69,29 @@ namespace ShapeShift
         public virtual void LoadContent(ContentManager Content, Texture2D image, string text, Vector2 position)
         {
             content = new ContentManager(Content.ServiceProvider, "Content"); //he says if we don't need this in the future he might change it
-            this.image = image;
-            this.text = text;
+            
+            this.image    = image;
+            this.text     = text;
             this.position = position;
+
+            rotation  = 0.0f;
+            axis      = 0.0f;
+            scale     = 1.0f;
+            isActive  = false;
+            isEnabled = false;
+            alpha     = 1.0f;
+            
             if (text != String.Empty)
             {
-                font = this.content.Load<SpriteFont>("Font1");
+                font  = this.content.Load<SpriteFont>("Font1");
                 color = new Color(114,77,255);
             }
             if (image != null) //so, if you have an image (animations can be image or text animations)
                 sourceRect = new Rectangle(0,0,image.Width, image.Height);
-            rotation = 0.0f;
-            axis = 0.0f;
-            scale = 1.0f;
-            isActive = false;
-            isEnabled = false;
-            alpha = 1.0f;
+
+            origin = new Vector2(sourceRect.Width / 2, sourceRect.Height / 2);
+
+            
 
         }
 
@@ -107,10 +114,8 @@ namespace ShapeShift
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (image != null)
-            { 
-                //We want to set it on the CENTER of the image
-            origin = new Vector2(sourceRect.Width / 2,
-                sourceRect.Height / 2);
+            {
+                
             spriteBatch.Draw(image, position + origin, sourceRect, Color.White * alpha, rotation, origin, scale, SpriteEffects.None,0.0f);
             }
 

@@ -20,8 +20,6 @@ Content\CircleDeployShieldSpriteSheet.xnb
 Content\CircleShieldIdleSpriteSheet.xnb
 Content\TileSets\tileSet1.xnb
 Content\CircleFadeSpriteSheet.xnb
-Content\Font1.xnb
-Content\MenuFont.xnb
 Content\SquareDashRightSpriteSheet.xnb
 Content\SquareDashLeftSpriteSheet.xnb
 Content\SquareDashSouthEastSpriteSheet.xnb
@@ -33,3 +31,7 @@ Content\SquareDashNorthWestSpriteSheet.xnb
 Content\SquareDashIdleSpriteSheet.xnb
 Content\DiamondMineSpriteSheet.xnb
 Content\DiamondMineIdleSpriteSheet.xnb
+Content\Font1.xnb
+Content\MenuFont.xnb
+Content\TitleFont.xnb
+Content\tileSet1.xnb

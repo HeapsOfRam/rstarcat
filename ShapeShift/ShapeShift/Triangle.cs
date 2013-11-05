@@ -20,7 +20,10 @@ namespace ShapeShift
             X_OFFSET = 24; 
             Y_OFFSET = 24;
 
+
+
             animations = new List<SpriteSheetAnimation>();
+
 
             triangleTexture = content.Load<Texture2D>("TriangleIdleSpriteSheet");
 
@@ -28,12 +31,19 @@ namespace ShapeShift
             idleAnimation.LoadContent(content, triangleTexture, "", new Vector2(0, 0));
             idleAnimation.IsEnabled = true;
 
+
             animations.Add(idleAnimation);
         }
 
         public override Texture2D getTexture()
         {
             return triangleTexture;
+        }
+
+        public void PreformRotate()
+        {
+            idleAnimation.PreformRotate();
+
         }
 
         public override bool Collides(Vector2 position, Rectangle rectangle)

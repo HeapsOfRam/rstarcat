@@ -19,7 +19,7 @@ namespace ShapeShift
         {
             base.LoadContent(Content, inputManager);
             if (font == null)
-                font = this.content.Load<SpriteFont>("Font1");
+                font = this.content.Load<SpriteFont>("TitleFont");
             menu = new MenuManager();
             menu.LoadContent(content, "Title");
         }
@@ -39,6 +39,7 @@ namespace ShapeShift
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            
             menu.Draw(spriteBatch);
         }
     }

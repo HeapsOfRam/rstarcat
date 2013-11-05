@@ -86,97 +86,50 @@ namespace ShapeShift
 
 
         //Checks to see if there is a collision 
-        public override bool Collides(Vector2 position, Rectangle rectangle)
+        public override bool Collides(Vector2 position, Rectangle rectangleA)
         {
-
-            /*if (position.X - X_OFFSET + rectangle.Width * 2 < rectangle.X ||
-                position.X + X_OFFSET > rectangle.X + rectangle.Width ||
-                position.Y - Y_OFFSET + rectangle.Height * 2 < rectangle.Y ||
-                position.Y + Y_OFFSET > rectangle.Y + rectangle.Height)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-            */
-
-            double m1 = (((position.Y + 17) - (position.Y + 46)) / ((position.X + 46) - (position.X + 23)));
-            double b1 = (position.Y + 17) - (m1 * (position.X + 46));
-     
-
-          //  Console.WriteLine(m1);
-
-            int numPoints = rectangle.Width * 2 + rectangle.Height * 2;
-            Point[] rectPoints = new Point[numPoints];
-
-            for (int i = 0; i < numPoints; i++)
-            {
-
-                if (i < rectangle.Width)
-                    rectPoints[i] = new Point(rectangle.X + i, rectangle.Y);
-
-                
-                else if (i < rectangle.Width + rectangle.Height)
-                    rectPoints[i] = new Point(rectangle.X + rectangle.Width, rectangle.Y + i - rectangle.Width);
-
-                else if (i < rectangle.Width * 2 + rectangle.Height )
-                    rectPoints[i] = new Point(rectangle.X  + i - rectangle.Height - rectangle.Width, rectangle.Y + rectangle.Height);
-
-                else
-                    rectPoints[i] = new Point(rectangle.X, rectangle.Y + i - rectangle.Width*2 - rectangle.Height);
-
-            }
-            int quad;
-            foreach (Point p in rectPoints)
-            {
-
-                quad = getQuad(p, position);
-
-                switch (quad)
-                {
-                    case 0: return false;
-
-                    case 2: if (p.Y < m1 * p.X + b1)
-                                return false;
-                            return true;
-                }
-
-            }
-
-
             return false;
+            /*Color[] dataB = idleAnimation.getCurrentImage();
+
+            Rectangle rectangleB = new Rectangle((int)position.X, (int)position.Y, (int)position.X + 92, (int)position.Y + 92);
 
 
 
+            // Find the bounds of the rectangle intersection
+            int top = Math.Max(rectangleA.Top, rectangleB.Top);
+            int bottom = Math.Min(rectangleA.Bottom, rectangleB.Bottom);
+            int left = Math.Max(rectangleA.Left, rectangleB.Left);
+            int right = Math.Min(rectangleA.Right, rectangleB.Right);
 
-
-
-
-
-
-        }
-
-        private int getQuad(Point p, Vector2 position)
-        {
-            if (p.X > position.X - 46)
+            // Check every point within the intersection bounds
+            for (int y = top; y < bottom; y++)
             {
-                if (p.Y > position.Y - 46)
-                    return 4;
-                else
-                    return 1;
+                for (int x = left; x <= right; x++)
+                {
+                    if ((x - rectangleB.Left) +
+                                         (y - rectangleB.Top) * rectangleB.Width < dataB.Length)
+                    {
+                        // Get the color of both pixels at this point
+                        Color colorA = dataA[(x - rectangleA.Left) +
+                                             (y - rectangleA.Top) * rectangleA.Width];
+                        Color colorB = dataB[(x - rectangleB.Left) +
+                                             (y - rectangleB.Top) * rectangleB.Width];
+
+                        // If both pixels are not completely transparent,
+                        if (colorA.A != 0 && colorB.A != 0)
+                        {
+                            // then an intersection has been found
+                            return true;
+                        }
+                    }
+                }
             }
-            else if (p.X < position.X - 46)
-            {
-                if (p.Y < position.Y - 46)
-                    return 2;
-                else
-                    return 3;
-            }
-            else
-                return 0;
-                
+
+            // No intersection found
+            return false;*/
+
+
+
         }
 
         internal bool mineDeployed()

@@ -163,11 +163,6 @@ namespace ShapeShift
             
             queueOne();
 
-            fixCollision(position, lastCheckedRectangle);
-
-            
-            
-
             //Resets the locaiton of the next shape to the upper right corner
             List<SpriteSheetAnimation> Animations = nextShape.getActiveTextures();
             foreach (SpriteSheetAnimation animation in Animations)
@@ -181,7 +176,7 @@ namespace ShapeShift
 
         // Checks to see if the next shape is colliding with anything before switching 
         // If it is...it incremently trys moving the shape backward until it isn't colliding
-        public void fixCollision(Vector2 position, Rectangle lastCheckedRectangle)
+       /* public void fixCollision(Vector2 position, Rectangle lastCheckedRectangle)
         {
             int count = 1;
             while (playerShape.Collides(position, lastCheckedRectangle))
@@ -197,7 +192,7 @@ namespace ShapeShift
 
                 count++;
             }
-        }
+        }*/
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
@@ -246,10 +241,11 @@ namespace ShapeShift
                 if (playerShape == pSquare)
                     pSquare.dash(this);
 
+                if (playerShape == pTriangle)
+                    pTriangle.PreformRotate();
+
                 if (playerShape == pDiamond && !pDiamond.mineDeployed())
                     pDiamond.deployMine();
-             
-                fixCollision(position, lastCheckedRectangle); //may or may not be working
             
             }
 
