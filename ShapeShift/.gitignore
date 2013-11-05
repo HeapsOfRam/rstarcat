@@ -5,6 +5,9 @@
 /ShapeShift/ShapeShift/obj/x86/Debug/ShapeShift.csproj.FileListAbsolute.txt
 /ShapeShift/ShapeShift/obj/x86/Debug/ShapeShift.exe
 /ShapeShift/ShapeShift/obj/x86/Debug/ShapeShift.pdb
+/ShapeShift/ShapeShift/obj/x86/Debug/*.cache
+/ShapeShift/ShapeShift/obj/x86/Debug/*.txt
 /ShapeShift/obj/x86/Debug/*.txt
-/ShapeShiftContent/obj/x86/Debug/ContentPipeline.xml
-/ShapeShiftContent/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/ShapeShift/ShapeShiftContent/obj/x86/Debug/ContentPipeline.xml
+/ShapeShift/ShapeShiftContent/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/ShapeShift/ShapeShiftContent/obj/x86/Debug/*.cache
