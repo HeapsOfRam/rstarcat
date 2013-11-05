@@ -194,3 +194,5 @@ C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\S
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\ShapeShift.pdb
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TitleFont.xnb
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\tileSet1.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\tileSet1.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TitleFont.xnb
