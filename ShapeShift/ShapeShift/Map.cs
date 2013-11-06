@@ -33,7 +33,7 @@ namespace ShapeShift
         }
         public void Update(GameTime gameTime)
         { 
-        
+            layer.Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {

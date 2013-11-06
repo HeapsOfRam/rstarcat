@@ -20,12 +20,18 @@ namespace ShapeShift
         ContentManager content;
         FileManager fileManager;
 
-        Texture2D tileSet;
+        Texture2D[] tileSets;
         Vector2 tileDimensions;
 
         int layerNumber;
 
+        int currentTexture = 0;
+
         List<List<string>> attributes, contents;
+
+        const int NUM_TILE_FRAMES = 14;
+        int frameCounter;
+        int switchFrame; //Is essentially the speed or however many frame counts we would like to wait before switching the frame.
 
         public int LayerNumber
         {
@@ -43,6 +49,11 @@ namespace ShapeShift
 
             this.content = new ContentManager(content.ServiceProvider, "Content");
 
+            frameCounter = 0;
+            switchFrame = 240;
+
+            tileSets = new Texture2D[NUM_TILE_FRAMES];
+
             tile = new List<Vector2>();
             layer = new List<List<Vector2>>();
             tileMap = new List<List<List<Vector2>>>();
@@ -57,9 +68,11 @@ namespace ShapeShift
                 for (int j = 0; j < attributes[i].Count; j++)
                 {
                     switch (attributes[i][j])
-                    { 
+                    {
                         case "TileSet":
-                            tileSet = this.content.Load<Texture2D>("TileSets/" + contents[i][j]);
+                            for (int k = 0; k < NUM_TILE_FRAMES; k++)
+                                tileSets[k] = this.content.Load<Texture2D>("TileSets/tileSet" + (k + 1));                           
+                           
                             break;
                         case "TileDimensions":
                             string[] split = contents[i][j].Split(',');
@@ -69,11 +82,11 @@ namespace ShapeShift
                             for (int k = 0; k < contents[i].Count; k++)
                             {
                                 split = contents[i][k].Split(',');
-                                tile.Add(new Vector2(int.Parse(split[0]),int.Parse(split[1])));
+                                tile.Add(new Vector2(int.Parse(split[0]), int.Parse(split[1])));
                             }
                             if (tile.Count > 0)
                                 layer.Add(tile);
-                                tile = new List<Vector2>();
+                            tile = new List<Vector2>();
                             break;
                         case "EndLayer":
                             if (layer.Count > 0)
@@ -91,26 +104,29 @@ namespace ShapeShift
 
         public void UnloadContent()
         {
-            
+
             this.content.Unload();
             tileMap.Clear();
             layer.Clear();
             tile.Clear();
             attributes.Clear();
             fileManager = null;
-             
+
         }
+
 
 
         public void Draw(SpriteBatch spriteBatch)
         {
+
+
             for (int k = 0; k < tileMap.Count; k++) //to draw all the layers
             {
                 for (int i = 0; i < tileMap[k].Count; i++)
                 {
                     for (int j = 0; j < tileMap[k][i].Count; j++)
                     {
-                        spriteBatch.Draw(tileSet, new Vector2(j * tileDimensions.X, i * tileDimensions.Y),
+                        spriteBatch.Draw(tileSets[currentTexture], new Vector2(j * tileDimensions.X, i * tileDimensions.Y),
                             new Rectangle((int)tileMap[k][i][j].X * (int)tileDimensions.X,
                                 (int)tileMap[k][i][j].Y * (int)tileDimensions.Y,
                                 (int)tileDimensions.X, (int)tileDimensions.Y), Color.White);
@@ -119,6 +135,28 @@ namespace ShapeShift
             }
         }
 
+
+
+
+        public void Update(GameTime gameTime)
+        {
+            frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (frameCounter >= switchFrame)
+            {
+                frameCounter = 0;
+
+                   currentTexture++;
+
+                if (currentTexture > NUM_TILE_FRAMES - 1)
+                {
+                    currentTexture = 0;
+                }
+                
+
+                
+            }
+        }
 
 
     }

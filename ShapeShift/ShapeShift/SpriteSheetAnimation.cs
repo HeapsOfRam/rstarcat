@@ -100,15 +100,15 @@ namespace ShapeShift
                 frameCounter = 0;
                 currentFrame.X++;
 
-                if (rotate && rotateCounter < 10)
+                if (rotate && rotateCounter < 15)
                 {
                     origin = new Vector2(45, 54);
                   
-                    rotation += (float)Math.PI / 4.0f;
+                    rotation += (float)Math.PI / 6.0f;
                     rotateCounter++;
                 }
 
-                else if (rotateCounter >= 10)
+                else if (rotateCounter >= 15)
                 {
                     rotateCounter = 0;
                     rotate = false;
