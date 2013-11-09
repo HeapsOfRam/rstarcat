@@ -15,10 +15,12 @@ namespace ShapeShift
         int frameCounter;
         int switchFrame; //Is essentially the speed or however many frame counts we would like to wait before switching the frame.
 
-        const int SPRITE_WIDTH = 92; //With of the overall image, not just the shape (which would be half)
+        int spriteWidth = 92; //With of the overall image, not just the shape (which would be half)
 
         Vector2 frames;
-        Vector2 currentFrame; 
+        Vector2 currentFrame;
+
+        Vector2 animationCenter;
 
         private Shape shape;
         private Boolean isRepeatable = true;
@@ -29,6 +31,8 @@ namespace ShapeShift
 
         private GraphicsDeviceManager graphics;
 
+        private float rotationSpeed;
+
 
         // Shape is pass a an argument in order to disable animations that are not repeatable
         // This kind of links the shape and its animations (animations can call methods in the shape)
@@ -36,6 +40,29 @@ namespace ShapeShift
         {
             this.shape = shape;
             this.isRepeatable = isRepeatable;
+            this.animationCenter = origin;
+        }
+
+        public SpriteSheetAnimation(Shape shape)
+        {
+            this.shape = shape;
+            this.isRepeatable = false;
+            this.animationCenter = origin;
+        }
+        public SpriteSheetAnimation(Shape shape, Boolean isRepeatable, int spriteWidth)
+        {
+            this.shape = shape;
+            this.isRepeatable = isRepeatable;
+            this.spriteWidth = spriteWidth;
+            this.animationCenter = origin;
+        }
+
+        public SpriteSheetAnimation(Shape shape, Boolean isRepeatable, int spriteWidth, Vector2 center)
+        {
+            this.animationCenter = center;
+            this.shape = shape;
+            this.isRepeatable = isRepeatable;
+            this.spriteWidth = spriteWidth;
         }
 
         public SpriteSheetAnimation()
@@ -72,7 +99,7 @@ namespace ShapeShift
 
             switchFrame = 40;
 
-            int numFrames = image.Width / SPRITE_WIDTH;
+            int numFrames = image.Width / spriteWidth;
 
             frames = new Vector2(numFrames,1);        
             currentFrame = new Vector2(0, 0);
@@ -102,9 +129,10 @@ namespace ShapeShift
 
                 if (rotate && rotateCounter < 15)
                 {
-                    origin = new Vector2(45, 54);
+                    origin = animationCenter;
+
                   
-                    rotation += (float)Math.PI / 6.0f;
+                    rotation += (float)Math.PI / rotationSpeed;
                     rotateCounter++;
                 }
 
@@ -148,10 +176,10 @@ namespace ShapeShift
 
         }
 
-        internal void PreformRotate()
+        internal void PreformRotate(float rotationSpeed)
         {
             rotate = true;
-            
+            this.rotationSpeed = rotationSpeed;
         }
     }
 }

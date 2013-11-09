@@ -42,7 +42,7 @@ namespace ShapeShift
 
         public void PreformRotate()
         {
-            idleAnimation.PreformRotate();
+            idleAnimation.PreformRotate(6.0f);
 
         }
 

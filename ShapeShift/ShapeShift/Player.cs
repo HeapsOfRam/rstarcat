@@ -31,6 +31,8 @@ namespace ShapeShift
         private int r;
         ContentManager contentGlobal;
 
+        private Matrix pMatrix;
+
 
 
         private Rectangle lastCheckedRectangle;
@@ -67,9 +69,11 @@ namespace ShapeShift
             pCircle   = new Circle(content);
             pTriangle = new Triangle(content);
             pDiamond  = new Diamond(content);
+            pMatrix = new Matrix(content);
 
             health = FULL;
-            playerShape = pTriangle;
+            playerShape = pMatrix;
+            
 
             rand = new Random();
 
@@ -107,6 +111,8 @@ namespace ShapeShift
             moveAnimation.LoadContent(content, playerShape.getTexture(), "", position);
             playerShape.setPosition(position);
 
+            pMatrix.makeMatrix();
+
         }
 
         public override void UnloadContent()
@@ -130,7 +136,9 @@ namespace ShapeShift
                     nextShape = pDiamond;
                 if (r == 4)
                     nextShape = pTriangle;
-            } while (nextShape == playerShape);          
+            } while (nextShape == playerShape);        
+  
+
         }
 
         public void takeDamage()
@@ -231,6 +239,8 @@ namespace ShapeShift
                 pSquare.setDirectionMap(directions);
             }
 
+         
+
             
             //Used to check deploy sheild in circle
             if (input.KeyDown(Keys.R))
@@ -246,6 +256,9 @@ namespace ShapeShift
 
                 if (playerShape == pDiamond && !pDiamond.mineDeployed())
                     pDiamond.deployMine();
+
+                if (playerShape == pMatrix)
+                    pMatrix.PreformRotate();
             
             }
 
@@ -286,7 +299,12 @@ namespace ShapeShift
             List<SpriteSheetAnimation> Animations = playerShape.getActiveTextures();
             foreach (SpriteSheetAnimation animation in Animations)
             {
-                if (animation.IsEnabled)
+                if (playerShape == pMatrix)
+                {
+                    pMatrix.Update(gameTime);
+                    animation.Update(gameTime);
+                }
+                else if (animation.IsEnabled)
                     animation.Update(gameTime);
 
                 if (!(playerShape == pDiamond && pDiamond.mineDropped() && pDiamond.isMineAnimation(animation)))
@@ -299,6 +317,12 @@ namespace ShapeShift
             {
                 if (animation.IsEnabled)
                     animation.Update(gameTime);
+            }
+
+
+            if (playerShape == pMatrix)
+            {
+                pMatrix.makeMatrix();
             }
         }
 

@@ -296,6 +296,280 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileSets\tileSet10.png">
+      <Name>tileSet10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet11.png">
+      <Name>tileSet11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet12.png">
+      <Name>tileSet12</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet13.png">
+      <Name>tileSet13</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet14.png">
+      <Name>tileSet14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet15.png">
+      <Name>tileSet15</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet16.png">
+      <Name>tileSet16</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet17.png">
+      <Name>tileSet17</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet18.png">
+      <Name>tileSet18</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet2.png">
+      <Name>tileSet2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet3.png">
+      <Name>tileSet3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet4.png">
+      <Name>tileSet4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet5.png">
+      <Name>tileSet5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet6.png">
+      <Name>tileSet6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet7.png">
+      <Name>tileSet7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet8.png">
+      <Name>tileSet8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="TileSets\tileSet9.png">
+      <Name>tileSet9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Matrix\MatrixSpriteSheet0.png">
+      <Name>MatrixSpriteSheet0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet1.png">
+      <Name>MatrixSpriteSheet1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet10.png">
+      <Name>MatrixSpriteSheet10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet11.png">
+      <Name>MatrixSpriteSheet11</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet12.png">
+      <Name>MatrixSpriteSheet12</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet13.png">
+      <Name>MatrixSpriteSheet13</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet14.png">
+      <Name>MatrixSpriteSheet14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet15.png">
+      <Name>MatrixSpriteSheet15</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet16.png">
+      <Name>MatrixSpriteSheet16</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet17.png">
+      <Name>MatrixSpriteSheet17</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet18.png">
+      <Name>MatrixSpriteSheet18</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet19.png">
+      <Name>MatrixSpriteSheet19</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet2.png">
+      <Name>MatrixSpriteSheet2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet20.png">
+      <Name>MatrixSpriteSheet20</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet21.png">
+      <Name>MatrixSpriteSheet21</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet22.png">
+      <Name>MatrixSpriteSheet22</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet23.png">
+      <Name>MatrixSpriteSheet23</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet24.png">
+      <Name>MatrixSpriteSheet24</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet25.png">
+      <Name>MatrixSpriteSheet25</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet26.png">
+      <Name>MatrixSpriteSheet26</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet27.png">
+      <Name>MatrixSpriteSheet27</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet28.png">
+      <Name>MatrixSpriteSheet28</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet29.png">
+      <Name>MatrixSpriteSheet29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet3.png">
+      <Name>MatrixSpriteSheet3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet30.png">
+      <Name>MatrixSpriteSheet30</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet31.png">
+      <Name>MatrixSpriteSheet31</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet32.png">
+      <Name>MatrixSpriteSheet32</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet33.png">
+      <Name>MatrixSpriteSheet33</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet34.png">
+      <Name>MatrixSpriteSheet34</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet35.png">
+      <Name>MatrixSpriteSheet35</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet36.png">
+      <Name>MatrixSpriteSheet36</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet4.png">
+      <Name>MatrixSpriteSheet4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet5.png">
+      <Name>MatrixSpriteSheet5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet6.png">
+      <Name>MatrixSpriteSheet6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet7.png">
+      <Name>MatrixSpriteSheet7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet8.png">
+      <Name>MatrixSpriteSheet8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Matrix\MatrixSpriteSheet9.png">
+      <Name>MatrixSpriteSheet9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

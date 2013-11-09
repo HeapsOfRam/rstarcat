@@ -60,7 +60,7 @@ namespace ShapeShift
             if (counter >= maxCount)
             {
                // Console.WriteLine("Calling ShiftShape");
-                player.shiftShape();
+               // player.shiftShape();
                 counter = 0;
             }
 
@@ -80,7 +80,7 @@ namespace ShapeShift
             base.Draw(spriteBatch);
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
-            spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(100, 0), Color.White);
+            spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(150, 0), Color.White);
            
 
 

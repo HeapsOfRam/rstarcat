@@ -23,13 +23,14 @@ namespace ShapeShift
         Texture2D[] tileSets;
         Vector2 tileDimensions;
 
+        Boolean playback = false;
         int layerNumber;
 
         int currentTexture = 0;
 
         List<List<string>> attributes, contents;
 
-        const int NUM_TILE_FRAMES = 14;
+        const int NUM_TILE_FRAMES = 18;
         int frameCounter;
         int switchFrame; //Is essentially the speed or however many frame counts we would like to wait before switching the frame.
 
@@ -50,7 +51,7 @@ namespace ShapeShift
             this.content = new ContentManager(content.ServiceProvider, "Content");
 
             frameCounter = 0;
-            switchFrame = 240;
+            switchFrame = 50;
 
             tileSets = new Texture2D[NUM_TILE_FRAMES];
 
@@ -146,14 +147,23 @@ namespace ShapeShift
             {
                 frameCounter = 0;
 
-                   currentTexture++;
+                  
+                   if (playback)
+                       currentTexture--;
+                   else
+                       currentTexture++;
 
                 if (currentTexture > NUM_TILE_FRAMES - 1)
                 {
+                    playback = true;
+                    currentTexture--;
+                }
+
+                if (currentTexture < 0)
+                {
+                    playback = false;
                     currentTexture = 0;
                 }
-                
-
                 
             }
         }

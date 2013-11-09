@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="Matrix.cs" />
     <Compile Include="Collision.cs" />
     <Compile Include="Diamond.cs" />
     <Compile Include="Enemy.cs" />

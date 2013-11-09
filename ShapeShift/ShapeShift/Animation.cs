@@ -13,7 +13,7 @@ namespace ShapeShift
     //a base class for all animation classes
     public class Animation
     {
-        protected Texture2D image;
+    
         protected string text;
         protected SpriteFont font;
         protected Color color;
@@ -23,6 +23,8 @@ namespace ShapeShift
         protected ContentManager content;
         protected bool isActive;
         protected float alpha;
+
+        public Texture2D image;
 
         protected bool isEnabled;
 
@@ -50,6 +52,11 @@ namespace ShapeShift
         {
             set { scale = value; }
 
+        }
+
+        public void setImage(Texture2D image)
+        {
+            this.image = image;
         }
 
         public SpriteFont Font
