@@ -70,6 +70,11 @@ namespace ShapeShift
            
         }
 
+        public void setAnimationCenter (Vector2 center)
+        {
+            this.animationCenter = center;
+        }
+
         public Vector2 Frames
         {
             set { frames = value; }

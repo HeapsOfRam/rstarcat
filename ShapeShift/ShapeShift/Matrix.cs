@@ -18,13 +18,16 @@ namespace ShapeShift
         private int offset          = 26;
         private int currentTexture  = 0;
         private int frameCounter;
-        private int switchFrame; 
+        private int switchFrame;
+
+        private float rotateSpeed = 12.0f;
 
         private const int NUM_FRAMES = 20;
 
         private Boolean playback = false;
 
         private ContentManager content;
+        private Vector2 matrixCenter;
 
         public Matrix(ContentManager content)
         {
@@ -52,6 +55,8 @@ namespace ShapeShift
                     animations.Add(gridAnimations[i,j]);
                 }
             }
+
+            matrixCenter = new Vector2(matrixWidth * offset/2, matrixHeight * offset/2);
         }
 
         public void attack()
@@ -76,10 +81,27 @@ namespace ShapeShift
             {
                 for (int j = 0; j < matrixHeight; j++)
                 {
-                    gridAnimations[i, j].PreformRotate(12.0f);
+                    gridAnimations[i, j].PreformRotate(rotateSpeed);
+                    gridAnimations[i, j].setAnimationCenter (new Vector2(13f,13f));
                 }
 
             }
+
+        }
+        public void PreformRotate(int type)
+        {
+            for (int i = 0; i < matrixWidth; i++)
+            {
+                for (int j = 0; j < matrixHeight; j++)
+                {
+                    gridAnimations[i, j].PreformRotate(rotateSpeed);
+                    gridAnimations[i, j].setAnimationCenter(new Vector2( matrixCenter.X - 9.5f*i , matrixCenter.Y- 9.5f*j ));
+                }
+
+            }
+
+
+            
 
         }
 
@@ -106,7 +128,7 @@ namespace ShapeShift
                 else
                     currentTexture++;
 
-                if (currentTexture > NUM_FRAMES - 1)
+                if (currentTexture >= NUM_FRAMES)
                 {
                     playback = true;
                     currentTexture--;

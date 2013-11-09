@@ -269,6 +269,9 @@ namespace ShapeShift
 
                 if (playerShape == pDiamond)
                     pDiamond.dropMine();
+
+                if (playerShape == pMatrix)
+                    pMatrix.PreformRotate(3);
             }    
      
 
