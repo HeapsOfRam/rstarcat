@@ -86,11 +86,6 @@ Content\Matrix\MatrixSpriteSheet6.xnb
 Content\Matrix\MatrixSpriteSheet7.xnb
 Content\Matrix\MatrixSpriteSheet8.xnb
 Content\Matrix\MatrixSpriteSheet9.xnb
-Content\Font1.xnb
-Content\MenuFont.xnb
-Content\TitleFont.xnb
-Content\White Denim - D - At The Farm.xnb
-Content\White Denim - D - At The Farm.wma
 Content\TileSets\TileIndividuals\tile1.xnb
 Content\TileSets\TileIndividuals\tile2.xnb
 Content\TileSets\TileIndividuals\tile3.xnb
@@ -102,3 +97,8 @@ Content\TileSets\TileIndividuals\tile8.xnb
 Content\TileSets\TileIndividuals\tile9.xnb
 Content\DiamondShadow.xnb
 Content\TriangleShadow.xnb
+Content\Font1.xnb
+Content\MenuFont.xnb
+Content\TitleFont.xnb
+Content\White Denim - D - At The Farm.xnb
+Content\White Denim - D - At The Farm.wma
