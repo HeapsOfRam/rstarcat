@@ -166,27 +166,34 @@ namespace ShapeShift
 
             for (int i = 0; i < 4; i++)        
                 directions[i] = false;
+
+            Vector2 xPosition = position;
+            Vector2 yPosition = position; 
             
             //MOVEMENT
             if (input.KeyDown(Keys.Right, Keys.D))
             { //MOVE RIGHT
                 position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                xPosition.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 directions[0] = true;
             }
 
             if (input.KeyDown(Keys.Left, Keys.A))
             { //MOVE LEFT
                 position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                xPosition.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 directions[1] = true;
             }
             if (input.KeyDown(Keys.Down, Keys.S))
             { //MOVE DOWN
                 position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                yPosition.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 directions[2] = true;
             }
             if (input.KeyDown(Keys.Up, Keys.W))
             { //MOVE UP
                 position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                yPosition.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 directions[3] = true;
             }
 
@@ -241,13 +248,16 @@ namespace ShapeShift
                         //Creates a rectangle that is the current tiles postion and size
                         lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
                         
-                        
-
+                       
                         
                         //Calls Collides method in shape class, in which each shape will check collisions uniquely 
-                        if (playerShape.Collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        if (playerShape.Collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)) &&
+                            playerShape.Collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                             position = moveAnimation.Position;
-      
+                        else if (playerShape.Collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                            position.X = moveAnimation.Position.X;
+                        else if (playerShape.Collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                            position.Y = moveAnimation.Position.Y;
                     }
                 }
             }
