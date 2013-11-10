@@ -12,7 +12,7 @@ namespace ShapeShift
     //The basis for Players, enemies, beings, etc.
     public class Entity
     {
-        protected int health;
+        protected int health, maxHealth;
         protected SpriteSheetAnimation moveAnimation;
         protected float moveSpeed;
 
@@ -26,7 +26,7 @@ namespace ShapeShift
         protected Vector2 position;
         protected Vector2 previousPosition;
 
-        private Boolean collision = false;
+        protected Boolean collision = false;
 
         public virtual void LoadContent(ContentManager content, InputManager input)
         {
@@ -59,6 +59,12 @@ namespace ShapeShift
         {
             this.moveSpeed = moveSpeed;
         }
+
+        public int getHealth()
+        { return health; }
+
+        public int getMaxHealth()
+        { return maxHealth; }
 
         public int takeDamage(int damage)
         {

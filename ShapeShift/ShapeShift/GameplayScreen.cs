@@ -15,11 +15,13 @@ namespace ShapeShift
         Layers layer;
         Map map;
         Rectangle rectangle;
+        Rectangle[] healthRectangle;
+        Texture2D healthFillTexture, healthUnfillTexture;
 
         private SpriteFont font;
         int screenWidth, screenHeight, counter, maxCount = 10;
         int timeRemaining;
-        const int HUDHEIGHT = 50, ABSZERO = 0;
+        const int HUDHEIGHT = 50, ABSZERO = 0, HEALTHSIZEX = 25, HEALTHSIZEY = 25, HEALTHOFFSETX = 150, HEALTHOFFSETY = 60, DISPLACEHEALTH = 5;
 
         float countDuration = 1f, currentTime = 0f;
 
@@ -34,6 +36,9 @@ namespace ShapeShift
             map.LoadContent(content, "Map1");
             //layer.LoadContent(content, "Map1");
             player.LoadContent(content, input);
+            healthRectangle = new Rectangle[player.getMaxHealth()];
+            healthFillTexture = content.Load<Texture2D>("Lain");
+            healthUnfillTexture = content.Load<Texture2D>("lainbackground");
         }
 
 
@@ -65,6 +70,10 @@ namespace ShapeShift
             }
 
             timeRemaining = maxCount - counter;
+            for (int i = 0; i < player.getMaxHealth(); i++)
+            {
+                healthRectangle[i] = new Rectangle(HEALTHOFFSETX + ((HEALTHSIZEX + DISPLACEHEALTH) * i), HEALTHOFFSETY, HEALTHSIZEX, HEALTHSIZEY);
+            }
             /* This code was used to create a UI Boundary at the top of the screen
              * so that the player would not be able to move past it
             if (player1.getX() <= ABSZERO)
@@ -81,7 +90,14 @@ namespace ShapeShift
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
             spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(150, 0), Color.White);
-           
+            for (int i = 0; i < player.getHealth(); i++)
+            {
+                spriteBatch.Draw(healthFillTexture, healthRectangle[i], Color.White);
+            }
+            for (int i = player.getHealth(); i < player.getMaxHealth(); i++)
+            {
+                spriteBatch.Draw(healthUnfillTexture, healthRectangle[i], Color.White);
+            }
 
 
         }
