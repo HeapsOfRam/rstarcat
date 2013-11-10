@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace ShapeShift
 {
@@ -22,6 +23,10 @@ namespace ShapeShift
                 font = this.content.Load<SpriteFont>("TitleFont");
             menu = new MenuManager();
             menu.LoadContent(content, "Title");
+
+            Song song = Content.Load<Song>("White Denim - D - At The Farm");  // Put the name of your song in instead of "song_title"
+            MediaPlayer.Play(song);
+            MediaPlayer.Volume = .5f;
         }
 
         public override void UnloadContent()

@@ -13,16 +13,16 @@ namespace ShapeShift
         private Texture2D[] tileTextures;
         private SpriteSheetAnimation[,] gridAnimations;
 
-        private int matrixHeight    = 4;
-        private int matrixWidth     = 4;
-        private int offset          = 26;
+        private int matrixHeight    = 2;
+        private int matrixWidth     = 2;
+        private int offset          = 28;
         private int currentTexture  = 0;
         private int frameCounter;
         private int switchFrame;
 
-        private float rotateSpeed = 12.0f;
+        private float rotateSpeed = 15.0f;
 
-        private const int NUM_FRAMES = 20;
+        private const int NUM_FRAMES = 36;
 
         private Boolean playback = false;
 
@@ -49,7 +49,7 @@ namespace ShapeShift
             {
                 for (int j = 0; j < matrixHeight; j++)
                 {
-                    gridAnimations[i,j] = new SpriteSheetAnimation(this, true, 23, new Vector2(12.5f,12.5f));
+                    gridAnimations[i,j] = new SpriteSheetAnimation(this, true, 23, new Vector2(14.0f,14.0f));
                     gridAnimations[i,j].LoadContent(content, tileTextures[0], "", new Vector2(0, 0));
                     gridAnimations[i,j].IsEnabled = true;
                     animations.Add(gridAnimations[i,j]);
@@ -82,7 +82,7 @@ namespace ShapeShift
                 for (int j = 0; j < matrixHeight; j++)
                 {
                     gridAnimations[i, j].PreformRotate(rotateSpeed);
-                    gridAnimations[i, j].setAnimationCenter (new Vector2(13f,13f));
+                    gridAnimations[i, j].setAnimationCenter (new Vector2(14f,14f));
                 }
 
             }
