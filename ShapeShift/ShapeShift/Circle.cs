@@ -112,7 +112,7 @@ namespace ShapeShift
         // collision with and a Vector2 that represents the center of the circle.
         // Using the radius, this method returns true of the circle intersects 
         // any potion of the rectangle and false if not.
-        public override bool Collides(Vector2 vect, Rectangle rectangle)
+        public override bool Collides(Vector2 vect, Rectangle rectangle, Color[] Data)
         {
             Point circle = new Point((int)vect.X + WIDTH, (int)vect.Y + WIDTH);
 

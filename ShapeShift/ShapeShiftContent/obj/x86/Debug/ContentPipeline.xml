@@ -881,7 +881,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondShadow.xnb</Output>
-      <Time>2013-11-10T13:26:02.2231831-05:00</Time>
+      <Time>2013-11-10T15:50:16.3652456-05:00</Time>
     </Item>
     <Item>
       <Source>TriangleShadow.png</Source>
@@ -890,7 +890,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TriangleShadow.xnb</Output>
-      <Time>2013-11-10T14:20:00.0673772-05:00</Time>
+      <Time>2013-11-10T15:26:59.7743652-05:00</Time>
     </Item>
     <Item>
       <Source>Font1.spritefont</Source>

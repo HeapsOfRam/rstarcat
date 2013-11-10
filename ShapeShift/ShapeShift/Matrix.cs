@@ -142,7 +142,7 @@ namespace ShapeShift
             }
         }
 
-        public override bool Collides(Vector2 position, Rectangle rectangle)
+        public override bool Collides(Vector2 position, Rectangle rectangle, Color[] data)
         {
 
             if (position.X + rectangle.Width * 2 < rectangle.X ||
