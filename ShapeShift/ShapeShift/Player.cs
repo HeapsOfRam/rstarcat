@@ -239,9 +239,12 @@ namespace ShapeShift
                                 
                         //Creates a rectangle that is the current tiles postion and size
                         lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
-                       
+                        
+                        
+
+                        
                         //Calls Collides method in shape class, in which each shape will check collisions uniquely 
-                        if (playerShape.Collides(position, lastCheckedRectangle)) 
+                        if (playerShape.Collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                             position = moveAnimation.Position;
       
                     }

@@ -21,6 +21,9 @@ namespace ShapeShift
         FileManager fileManager;
 
         Texture2D[] tileSets;
+
+        Texture2D[] tileIndividuals;
+
         Vector2 tileDimensions;
 
         Boolean playback = false;
@@ -72,8 +75,10 @@ namespace ShapeShift
                     {
                         case "TileSet":
                             for (int k = 0; k < NUM_TILE_FRAMES; k++)
-                                tileSets[k] = this.content.Load<Texture2D>("TileSets/tileSet" + (k + 1));                           
-                           
+                                tileSets[k] = this.content.Load<Texture2D>("TileSets/tileSet" + (k + 1));
+
+                            
+
                             break;
                         case "TileDimensions":
                             string[] split = contents[i][j].Split(',');
@@ -101,6 +106,11 @@ namespace ShapeShift
 
             }
 
+            tileIndividuals = new Texture2D[9];
+            for (int p = 0; p < 9; p++)
+                tileIndividuals[p] = this.content.Load<Texture2D>("TileSets/TileIndividuals/tile" + (p + 1));
+
+
         }
 
         public void UnloadContent()
@@ -116,6 +126,34 @@ namespace ShapeShift
         }
 
 
+        public Color[] getColorData(int i, int j, int count)
+        {
+            Color[] data = new Color [46*46];
+
+            if (i == 0 && j == 0)
+                tileIndividuals[0].GetData(data);
+
+            else if (i == (count - 1) && j == (count - 1))
+                tileIndividuals[4].GetData(data);
+
+            else if (i == 0)
+                tileIndividuals[7].GetData(data);
+
+            else if (j == 0)
+                tileIndividuals[1].GetData(data);
+
+            else if (i == (count - 1))
+                tileIndividuals[3].GetData(data);
+
+            else if (j == (count - 1))
+                tileIndividuals[5].GetData(data);
+            
+            else
+                tileIndividuals[8].GetData(data);
+
+
+            return data;
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {

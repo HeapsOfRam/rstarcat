@@ -62,11 +62,14 @@ namespace ShapeShift
             return Y_OFFSET;
         }
 
+        public virtual bool Collides(Vector2 position, Rectangle rect, Color[] data)
+        {
+            return collision;
+        }
         public virtual bool Collides(Vector2 position, Rectangle rect)
         {
             return collision;
         }
-
 
     }
 }

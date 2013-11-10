@@ -60,7 +60,7 @@ namespace ShapeShift
             if (counter >= maxCount)
             {
                // Console.WriteLine("Calling ShiftShape");
-                player.shiftShape();
+               // player.shiftShape();
                 counter = 0;
             }
 

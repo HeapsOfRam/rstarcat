@@ -13,10 +13,12 @@ namespace ShapeShift
         private Texture2D diamondTexture;
         private Texture2D diamondDeployMineTexture;
         private Texture2D diamondMineIdleTexture;
+        private Texture2D diamondShadowTexture;
 
         private SpriteSheetAnimation idleAnimation;
         private SpriteSheetAnimation deployMineAnimation;
         private SpriteSheetAnimation diamondMineIdleAnimation;
+        private SpriteSheetAnimation diamondShadowAnimation;
 
         private Boolean dropped = false;
 
@@ -32,6 +34,7 @@ namespace ShapeShift
             diamondTexture = content.Load<Texture2D>("DiamondIdleSpriteSheet");
             diamondDeployMineTexture = content.Load<Texture2D>("DiamondMineSpriteSheet");
             diamondMineIdleTexture = content.Load<Texture2D>("DiamondMineIdleSpriteSheet");
+            diamondShadowTexture = content.Load<Texture2D>("DiamondShadow");
             
             idleAnimation = new SpriteSheetAnimation(this,true);
             idleAnimation.LoadContent(content, diamondTexture, "", new Vector2(0, 0));
@@ -45,10 +48,16 @@ namespace ShapeShift
             diamondMineIdleAnimation.LoadContent(content, diamondMineIdleTexture, "", new Vector2(0, 0));
             diamondMineIdleAnimation.IsEnabled = false;
 
+            diamondShadowAnimation = new SpriteSheetAnimation(this, true);
+            diamondShadowAnimation.LoadContent(content, diamondShadowTexture, "", new Vector2(0, 0));
+            diamondShadowAnimation.IsEnabled = false;
+
 
             animations.Add(idleAnimation);
             animations.Add(deployMineAnimation);
             animations.Add(diamondMineIdleAnimation);
+            animations.Add(diamondShadowAnimation);
+
         }
 
         public void attack()
@@ -86,15 +95,21 @@ namespace ShapeShift
 
 
         //Checks to see if there is a collision 
-        public override bool Collides(Vector2 position, Rectangle rectangleA)
+        public override bool Collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
-            return false;
-            /*Color[] dataB = idleAnimation.getCurrentImage();
+            Rectangle rectangleA = new Rectangle((int)position.X, (int)position.Y, 92, 92);
+            Color[] dataA = new Color[92 * 92];
+            diamondShadowTexture.GetData(dataA);
 
-            Rectangle rectangleB = new Rectangle((int)position.X, (int)position.Y, (int)position.X + 92, (int)position.Y + 92);
+            return (IntersectPixels(rectangleA, dataA, rectangleB,dataB));
 
 
+        }
 
+
+        static bool IntersectPixels(Rectangle rectangleA, Color[] dataA,
+                                    Rectangle rectangleB, Color[] dataB)
+        {
             // Find the bounds of the rectangle intersection
             int top = Math.Max(rectangleA.Top, rectangleB.Top);
             int bottom = Math.Min(rectangleA.Bottom, rectangleB.Bottom);
@@ -104,32 +119,25 @@ namespace ShapeShift
             // Check every point within the intersection bounds
             for (int y = top; y < bottom; y++)
             {
-                for (int x = left; x <= right; x++)
+                for (int x = left; x < right; x++)
                 {
-                    if ((x - rectangleB.Left) +
-                                         (y - rectangleB.Top) * rectangleB.Width < dataB.Length)
-                    {
-                        // Get the color of both pixels at this point
-                        Color colorA = dataA[(x - rectangleA.Left) +
-                                             (y - rectangleA.Top) * rectangleA.Width];
-                        Color colorB = dataB[(x - rectangleB.Left) +
-                                             (y - rectangleB.Top) * rectangleB.Width];
+                    // Get the color of both pixels at this point
+                    Color colorA = dataA[(x - rectangleA.Left) +
+                                         (y - rectangleA.Top) * rectangleA.Width];
+                    Color colorB = dataB[(x - rectangleB.Left) +
+                                         (y - rectangleB.Top) * rectangleB.Width];
 
-                        // If both pixels are not completely transparent,
-                        if (colorA.A != 0 && colorB.A != 0)
-                        {
-                            // then an intersection has been found
-                            return true;
-                        }
+                    // If both pixels are not completely transparent,
+                    if (colorA.A != 0 && colorB.A != 0)
+                    {
+                        // then an intersection has been found
+                        return true;
                     }
                 }
             }
 
             // No intersection found
-            return false;*/
-
-
-
+            return false;
         }
 
         internal bool mineDeployed()

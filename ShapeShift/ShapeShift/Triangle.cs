@@ -11,8 +11,10 @@ namespace ShapeShift
     class Triangle : Shape
     {
         private Texture2D triangleTexture;
+        private Texture2D triangleShadowTexture;
         
         private SpriteSheetAnimation idleAnimation;
+        private SpriteSheetAnimation triangleShadowAnimation;
 
         public Triangle(ContentManager content)
         {
@@ -27,12 +29,20 @@ namespace ShapeShift
 
             triangleTexture = content.Load<Texture2D>("TriangleIdleSpriteSheet");
 
+            triangleShadowTexture = content.Load<Texture2D>("TriangleShadow");
+
+
             idleAnimation = new SpriteSheetAnimation(this,true, 92, new Vector2 (45,54));
             idleAnimation.LoadContent(content, triangleTexture, "", new Vector2(0, 0));
             idleAnimation.IsEnabled = true;
 
+            triangleShadowAnimation = new SpriteSheetAnimation(this, true, 92, new Vector2(45, 54));
+            triangleShadowAnimation.LoadContent(content, triangleShadowTexture, "", new Vector2(0, 0));
+            triangleShadowAnimation.IsEnabled = false;
+
 
             animations.Add(idleAnimation);
+            animations.Add(triangleShadowAnimation);
         }
 
         public override Texture2D getTexture()
@@ -47,20 +57,50 @@ namespace ShapeShift
 
         }
 
-        public override bool Collides(Vector2 position, Rectangle rectangle)
+        //Checks to see if there is a collision 
+        public override bool Collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
+            Rectangle rectangleA = new Rectangle((int)position.X, (int)position.Y, 92, 92);
+            Color[] dataA = new Color[92 * 92];
+            triangleShadowTexture.GetData(dataA);
 
-            if (position.X - X_OFFSET + rectangle.Width * 2 < rectangle.X ||
-                position.X + X_OFFSET > rectangle.X + rectangle.Width ||
-                position.Y - Y_OFFSET + rectangle.Height * 2 < rectangle.Y ||
-                position.Y + Y_OFFSET > rectangle.Y + rectangle.Height)
+            return (IntersectPixels(rectangleA, dataA, rectangleB, dataB));
+
+
+        }
+
+
+        static bool IntersectPixels(Rectangle rectangleA, Color[] dataA,
+                                    Rectangle rectangleB, Color[] dataB)
+        {
+            // Find the bounds of the rectangle intersection
+            int top = Math.Max(rectangleA.Top, rectangleB.Top);
+            int bottom = Math.Min(rectangleA.Bottom, rectangleB.Bottom);
+            int left = Math.Max(rectangleA.Left, rectangleB.Left);
+            int right = Math.Min(rectangleA.Right, rectangleB.Right);
+
+            // Check every point within the intersection bounds
+            for (int y = top; y < bottom; y++)
             {
-                return false;
+                for (int x = left; x < right; x++)
+                {
+                    // Get the color of both pixels at this point
+                    Color colorA = dataA[(x - rectangleA.Left) +
+                                         (y - rectangleA.Top) * rectangleA.Width];
+                    Color colorB = dataB[(x - rectangleB.Left) +
+                                         (y - rectangleB.Top) * rectangleB.Width];
+
+                    // If both pixels are not completely transparent,
+                    if (colorA.A != 0 && colorB.A != 0)
+                    {
+                        // then an intersection has been found
+                        return true;
+                    }
+                }
             }
-            else
-            {
-                return true;
-            }
+
+            // No intersection found
+            return false;
         }
     }
 }
