@@ -14,101 +14,52 @@ namespace ShapeShift
     {
         GameTime gameTime;
 
-        
-       // private int  health;
         private const int FULL = 3, MID = 2, LOW = 1, EMPTY = 0, SIZE = 60, MOVE = 5;
        // private Rectangle rectangle;
         private Shape playerShape, nextShape;
-       // Texture2D image1, image2, image3, image4;
-        Texture2D tempImage;
-        List<Texture2D> imageList;
         private Square pSquare;
         private Circle pCircle;
         private Triangle pTriangle;
         private Diamond pDiamond;
-       // private ContentManager content;
+        
         private Random rand;
+
         private int r;
-        ContentManager contentGlobal;
 
         private Matrix pMatrix;
 
+        private Rectangle lastCheckedRectangle; //basically, it's the last tile on the map checked for collision killa bee
 
-
-        private Rectangle lastCheckedRectangle;
-         
-
-        public Texture2D PlayerTexture
-        {
-            get { return playerShape.getTexture(); }
-        }
-
-        public Vector2 Position
-        {
-            get {return position;}
-            set {position = value;}
-        }
-
+        private const int START_X = 200, START_Y = 200;
 
         public override void LoadContent(ContentManager content, InputManager input)
         {
             base.LoadContent(content, input);
+            rand = new Random();
 
             this.content  = content;
-            contentGlobal = content;
             moveSpeed     = 150f; //Set the move speed
 
-            fileManager   = new FileManager();
             moveAnimation = new SpriteSheetAnimation();
             gameTime      = new GameTime();
-            imageList     = new List<Texture2D>();
 
-            Vector2 tempFrames = Vector2.Zero;
-            
+            //declare the shapes
             pSquare   = new Square(content);
             pCircle   = new Circle(content);
             pTriangle = new Triangle(content);
             pDiamond  = new Diamond(content);
-            pMatrix = new Matrix(content);
+            pMatrix   = new Matrix(content);
 
             health = FULL;
-            playerShape = pMatrix;
-            
-
-            rand = new Random();
+            playerShape = pMatrix;            
 
             //Queue up the next shape
             queueOne();
+            position = new Vector2(START_X, START_Y);
 
-            fileManager.LoadContent("Load/Player.starcat", attributes, contents);
-            for (int i = 0; i < attributes.Count; i++)
-            {
-                for (int j = 0; j < attributes[i].Count; j++)
-                {
-                    switch (attributes[i][j])
-                    {
-                        case "Health":
-                            health = int.Parse(contents[i][j]);
-                            break;
-                        case "Frames":
-                            string[] frames = contents[i][j].Split(' ');
-                            tempFrames = new Vector2(int.Parse(frames[0]), int.Parse(frames[1]));
-                            break;
-                        case "Image":
-                            tempImage = this.content.Load<Texture2D>(contents[i][j]);
-                            imageList.Add(tempImage);
-                            //Post-integration: This is not really needed anymore, as the individual classes have textures loaded
-                            break;
-                        case "Position":
-                            frames = contents[i][j].Split(' ');
-                            position = new Vector2(int.Parse(frames[0]), int.Parse(frames[1]));
-                            break;
-
-                    }
-                }
-            }
-
-            moveAnimation.LoadContent(content, playerShape.getTexture(), "", position);
+            //each shape should have silhouette shape of its own
+            //moveAnimation.LoadContent(content, playerShape.getTexture(), "", position);
+            
             playerShape.setPosition(position);
 
             pMatrix.makeMatrix();

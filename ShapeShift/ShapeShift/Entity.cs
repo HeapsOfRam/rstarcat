@@ -26,6 +26,8 @@ namespace ShapeShift
         protected Vector2 position;
         protected Vector2 previousPosition;
 
+        private Boolean collision = false;
+
         public virtual void LoadContent(ContentManager content, InputManager input)
         {
             this.content = new ContentManager(content.ServiceProvider, "Content");
@@ -48,9 +50,26 @@ namespace ShapeShift
         
         }
 
+        public virtual Boolean collides(Color[] data2, Rectangle rectangle2)
+        {
+            return collision;
+        }
+
         public void setMoveSpeed(float moveSpeed)
         {
             this.moveSpeed = moveSpeed;
+        }
+
+        public int takeDamage(int damage)
+        {
+            health -= damage;
+            return health;
+        }
+
+        public Vector2 Position
+        {
+            get { return position; }
+            set { position = value; }
         }
 
     }
