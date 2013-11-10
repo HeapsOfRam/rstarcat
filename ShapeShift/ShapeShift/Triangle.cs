@@ -27,7 +27,7 @@ namespace ShapeShift
 
             triangleTexture = content.Load<Texture2D>("TriangleIdleSpriteSheet");
 
-            idleAnimation = new SpriteSheetAnimation(this,true);
+            idleAnimation = new SpriteSheetAnimation(this,true, 92, new Vector2 (45,54));
             idleAnimation.LoadContent(content, triangleTexture, "", new Vector2(0, 0));
             idleAnimation.IsEnabled = true;
 
@@ -43,6 +43,7 @@ namespace ShapeShift
         public void PreformRotate()
         {
             idleAnimation.PreformRotate(6.0f);
+            idleAnimation.origin = new Vector2(45, 54);
 
         }
 

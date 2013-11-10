@@ -51,7 +51,11 @@ namespace ShapeShift
             pMatrix   = new Matrix(content);
 
             health = FULL;
-            playerShape = pMatrix;            
+
+            playerShape = pTriangle;            
+
+      
+
 
             //Queue up the next shape
             queueOne();

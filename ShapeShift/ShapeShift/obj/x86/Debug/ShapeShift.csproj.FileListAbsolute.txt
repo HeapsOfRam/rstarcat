@@ -97,3 +97,9 @@ C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\Sha
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\White Denim - D - At The Farm.wma
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\ShapeShift.exe
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\ShapeShift.pdb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\ShapeShift.exe
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\ShapeShift.exe
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\ShapeShift.pdb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\ShapeShift.pdb

@@ -13,8 +13,8 @@ namespace ShapeShift
         private Texture2D[] tileTextures;
         private SpriteSheetAnimation[,] gridAnimations;
 
-        private int matrixHeight    = 2;
-        private int matrixWidth     = 2;
+        private int matrixHeight    = 4;
+        private int matrixWidth     = 4;
         private int offset          = 28;
         private int currentTexture  = 0;
         private int frameCounter;
