@@ -13,12 +13,17 @@ namespace ShapeShift
         private Texture2D[] tileTextures;
         private SpriteSheetAnimation[,] gridAnimations;
 
-        private int matrixHeight    = 4;
-        private int matrixWidth     = 4;
+        private Texture2D shadowTexture;
+        private SpriteSheetAnimation shadowAnimation;
+
+        private int matrixHeight    = 2;
+        private int matrixWidth     = 2;
         private int offset          = 28;
         private int currentTexture  = 0;
         private int frameCounter;
         private int switchFrame;
+
+        public Boolean collapse = false;
 
         private float rotateSpeed = 15.0f;
 
@@ -57,6 +62,11 @@ namespace ShapeShift
             }
 
             matrixCenter = new Vector2(matrixWidth * offset/2, matrixHeight * offset/2);
+
+
+            shadowTexture = content.Load<Texture2D>("Matrix/MatrixShadow");
+
+          
         }
 
         public void attack()
@@ -77,16 +87,19 @@ namespace ShapeShift
 
         public void PreformRotate()
         {
-            for (int i = 0; i < matrixWidth; i++)
+            if (!collapse)
             {
-                for (int j = 0; j < matrixHeight; j++)
+                for (int i = 0; i < matrixWidth; i++)
                 {
-                    gridAnimations[i, j].PreformRotate(rotateSpeed);
-                    gridAnimations[i, j].setAnimationCenter (new Vector2(14f,14f));
+                    for (int j = 0; j < matrixHeight; j++)
+                    {
+                        gridAnimations[i, j].PreformRotate(rotateSpeed);
+                        gridAnimations[i, j].setAnimationCenter (new Vector2(11.5f,11.5f));
+                    }
+
                 }
 
             }
-
         }
         public void PreformRotate(int type)
         {
@@ -100,7 +113,7 @@ namespace ShapeShift
 
             }
 
-
+            collapse = !collapse;
             
 
         }
@@ -142,17 +155,54 @@ namespace ShapeShift
             }
         }
 
-        public override bool Collides(Vector2 position, Rectangle rectangle, Color[] data)
+        //Checks to see if there is a collision 
+        public override bool Collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
 
-            if (position.X + rectangle.Width * 2 < rectangle.X ||
-                position.X > rectangle.X + rectangle.Width ||
-                position.Y + rectangle.Height * 2 < rectangle.Y ||
-                position.Y > rectangle.Y + rectangle.Height)
-                return false;
-            
+            if (!collapse)
+            {
+                Rectangle rectangleA;
+
+                Color[] dataA = new Color[28 * 28];
+                shadowTexture.GetData(dataA);
+                Boolean collision = false;
+
+                for (int i = 0; i < matrixWidth; i++)
+                {
+                    for (int j = 0; j < matrixHeight; j++)
+                    {
+                        rectangleA = new Rectangle((int)position.X + i * offset, (int)position.Y + j * offset, 28, 28);
+                        if (IntersectPixels(rectangleA, dataA, rectangleB, dataB))
+                            collision = true;
+                    }
+                }
+
+                return collision;
+            }
             else
-                return true;
+            {
+
+                Rectangle rectangleA;
+
+                Color[] dataA = new Color[28 * 28];
+                shadowTexture.GetData(dataA);
+                Boolean collision = false;
+
+                for (int i = 0; i < matrixWidth; i++)
+                {
+                    for (int j = 0; j < matrixHeight; j++)
+                    {
+                        rectangleA = new Rectangle((int)(position.X + (matrixWidth * offset) + (i*11.5)) - 23 , (int)(position.Y + (matrixHeight * offset) +  (j * 11.5)) - 23, 28, 28);
+                        if (IntersectPixels(rectangleA, dataA, rectangleB, dataB))
+                            collision = true;
+                    }
+                }
+
+                return collision;
+            }
+
+
+
         }
     }
 }

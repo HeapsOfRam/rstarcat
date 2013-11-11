@@ -58,6 +58,8 @@ namespace ShapeShift
             player.Update(gameTime, inputManager, map.collision, map.layer);
             map.Update(gameTime);
 
+            player.pSquareResetDirections();
+
             if (inputManager.KeyDown(Keys.Up, Keys.W))
                 player.moveUp(gameTime);
             if (inputManager.KeyDown(Keys.Down, Keys.S))
@@ -71,6 +73,7 @@ namespace ShapeShift
             if (inputManager.KeyDown(Keys.E))
                 player.eAction();
 
+            
             //for debug, pause
             if (inputManager.KeyPressed(Keys.P))
                 paused = !paused;

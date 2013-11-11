@@ -58,7 +58,7 @@ namespace ShapeShift
             maxHealth = FULL;
             health    = maxHealth;
 
-            playerShape = pDiamond;            
+            playerShape = pMatrix;            
 
             //Queue up the next shape
             queueOne();
@@ -287,6 +287,13 @@ namespace ShapeShift
             pMatrix.makeMatrix();
         }
 
+        public void pSquareResetDirections()
+        {
+            for (int i = 0; i < 4; i++)
+                directions[i] = false;
+        }
+
+
         private void pClearAll()
         {
             pClearCircle();
@@ -323,15 +330,12 @@ namespace ShapeShift
         private void changeToMatrix()
         {
             playerShape = pMatrix;
+          
         }
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
             previousPosition = position;
-
-            for (int i = 0; i < 4; i++)        
-                directions[i] = false;
-         
    
             //commented out; moved to GamePlayScreen; do we need?
             /*//MOVEMENT
@@ -358,10 +362,7 @@ namespace ShapeShift
                 directions[3] = true;
             }
 
-            if (playerShape == pSquare)
-            {
-                pSquare.setDirectionMap(directions);
-            }*/
+            
 
             //also in gameplayscreen            
             //Used to check deploy sheild in circle
@@ -395,8 +396,10 @@ namespace ShapeShift
                 if (playerShape == pMatrix)
                     pMatrix.PreformRotate(3);
             } */   
-     
-
+            
+            if (playerShape == pSquare)
+                pSquare.setDirectionMap(directions);
+           
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
                 for (int j = 0; j < col.CollisionMap[i].Count; j++)
