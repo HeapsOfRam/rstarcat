@@ -97,3 +97,5 @@ Content\Fonts\TitleFont.xnb
 Content\Music\White Denim - D - At The Farm.xnb
 Content\Music\White Denim - D - At The Farm.wma
 Content\Matrix\MatrixShadow.xnb
+Content\Diamond\DiamondTurretIdleSpriteSheet.xnb
+Content\Diamond\DiamondTurretSpriteSheet.xnb

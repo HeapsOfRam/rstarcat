@@ -193,7 +193,20 @@ namespace ShapeShift
             if (playerShape == pMatrix || playerShape == pTriangle)
                 pRotate();
             if (playerShape == pDiamond)
-                pdeployMine();
+            {
+                if (pDiamond.mineDeployed())
+                {
+
+                    if (!pDiamond.mineDropped())
+                    {
+                        pDiamond.dropMine();
+                    }
+                }
+                else
+                {
+                    pDiamond.deployMine();
+                }
+            }
         }
 
         public void eAction()
@@ -201,7 +214,20 @@ namespace ShapeShift
             if (playerShape == pCircle)
                 premoveShield();
             if (playerShape == pDiamond)
-                pdropMine();
+            {
+                if (pDiamond.turretDeployed())
+                {
+
+                    if (!pDiamond.turretDropped())
+                    {
+                        pDiamond.dropTurret();
+                    }
+                }
+                else
+                {
+                    pDiamond.deployTurret();
+                }
+            }
             if (playerShape == pMatrix)
                 pMRotate();
         }
@@ -240,6 +266,10 @@ namespace ShapeShift
         private void pdeployMine()
         {
             pDiamond.deployMine();
+        }
+        private void pdeployTurret()
+        {
+            pDiamond.deployTurret();
         }
 
         private void pdropMine()

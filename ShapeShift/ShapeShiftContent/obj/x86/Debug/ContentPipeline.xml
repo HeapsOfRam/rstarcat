@@ -884,6 +884,24 @@
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixShadow.xnb</Output>
       <Time>2013-11-11T16:12:28.5935283-05:00</Time>
     </Item>
+    <Item>
+      <Source>Diamond\DiamondTurretIdleSpriteSheet.png</Source>
+      <Name>Diamond\DiamondTurretIdleSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondTurretIdleSpriteSheet.xnb</Output>
+      <Time>2013-11-11T17:37:29.842303-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Diamond\DiamondTurretSpriteSheet.png</Source>
+      <Name>Diamond\DiamondTurretSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondTurretSpriteSheet.xnb</Output>
+      <Time>2013-11-11T17:36:45.8477867-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

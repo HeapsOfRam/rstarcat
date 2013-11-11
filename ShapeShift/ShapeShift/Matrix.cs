@@ -14,10 +14,9 @@ namespace ShapeShift
         private SpriteSheetAnimation[,] gridAnimations;
 
         private Texture2D shadowTexture;
-        private SpriteSheetAnimation shadowAnimation;
 
-        private int matrixHeight    = 2;
-        private int matrixWidth     = 2;
+        private int matrixHeight    = 4;
+        private int matrixWidth     = 8;
         private int offset          = 28;
         private int currentTexture  = 0;
         private int frameCounter;
@@ -192,7 +191,7 @@ namespace ShapeShift
                 {
                     for (int j = 0; j < matrixHeight; j++)
                     {
-                        rectangleA = new Rectangle((int)(position.X + (matrixWidth * offset) + (i*11.5)) - 23 , (int)(position.Y + (matrixHeight * offset) +  (j * 11.5)) - 23, 28, 28);
+                        rectangleA = new Rectangle((int)(position.X + (matrixWidth * offset) + (i*10.0)) - 23 , (int)(position.Y + (matrixHeight * offset) +  (j * 10.0)) - 23, 28, 28);
                         if (IntersectPixels(rectangleA, dataA, rectangleB, dataB))
                             collision = true;
                     }

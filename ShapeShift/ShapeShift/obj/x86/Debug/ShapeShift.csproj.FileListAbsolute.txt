@@ -311,3 +311,5 @@ C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\C
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\White Denim - D - At The Farm.xnb
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\White Denim - D - At The Farm.wma
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixShadow.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondTurretIdleSpriteSheet.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondTurretSpriteSheet.xnb
