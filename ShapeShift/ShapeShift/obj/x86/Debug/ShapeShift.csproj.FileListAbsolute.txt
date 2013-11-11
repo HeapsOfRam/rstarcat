@@ -207,3 +207,14 @@ C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\C
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile9.xnb
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondShadow.xnb
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TriangleShadow.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile1.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile2.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile3.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile4.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile5.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile6.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile7.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile8.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile9.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondShadow.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TriangleShadow.xnb

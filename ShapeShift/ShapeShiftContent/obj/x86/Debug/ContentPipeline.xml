@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1031878-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleSheet.xnb</Output>
+      <Time>2013-10-11T16:43:21.2593583-04:00</Time>
     </Item>
     <Item>
       <Source>Lain.jpg</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Lain.xnb</Output>
-      <Time>2013-11-04T16:58:22.1111883-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Lain.xnb</Output>
+      <Time>2013-10-11T20:28:24.6900958-04:00</Time>
     </Item>
     <Item>
       <Source>lainobstacle.jpg</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\lainobstacle.xnb</Output>
-      <Time>2013-11-04T16:58:22.1601911-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\lainobstacle.xnb</Output>
+      <Time>2013-10-19T14:12:13.1077764-04:00</Time>
     </Item>
     <Item>
       <Source>knights.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\knights.xnb</Output>
-      <Time>2013-11-04T16:58:22.159191-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\knights.xnb</Output>
+      <Time>2013-10-19T14:12:13.1057763-04:00</Time>
     </Item>
     <Item>
       <Source>lainbackground.jpg</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\lainbackground.xnb</Output>
-      <Time>2013-11-04T16:58:22.1601911-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\lainbackground.xnb</Output>
+      <Time>2013-10-21T00:13:22.5687946-04:00</Time>
     </Item>
     <Item>
       <Source>PlayerImage1.png</Source>
@@ -52,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\PlayerImage1.xnb</Output>
-      <Time>2013-11-04T16:58:22.1121883-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\PlayerImage1.xnb</Output>
+      <Time>2013-10-31T21:51:02.8854783-04:00</Time>
     </Item>
     <Item>
       <Source>null.png</Source>
@@ -61,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\null.xnb</Output>
-      <Time>2013-11-04T16:58:22.1611912-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\null.xnb</Output>
+      <Time>2013-10-31T21:51:02.9044794-04:00</Time>
     </Item>
     <Item>
       <Source>fade.png</Source>
@@ -70,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\fade.xnb</Output>
-      <Time>2013-11-04T16:58:22.158191-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\fade.xnb</Output>
+      <Time>2013-10-31T21:51:02.9034794-04:00</Time>
     </Item>
     <Item>
       <Source>Splash\image1.jpg</Source>
@@ -79,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Splash\image1.xnb</Output>
-      <Time>2013-11-04T16:58:22.1191887-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Splash\image1.xnb</Output>
+      <Time>2013-11-04T12:33:27.4755763-05:00</Time>
     </Item>
     <Item>
       <Source>Splash\image2.jpg</Source>
@@ -88,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Splash\image2.xnb</Output>
-      <Time>2013-11-04T16:58:22.123189-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Splash\image2.xnb</Output>
+      <Time>2013-11-04T12:33:27.4805765-05:00</Time>
     </Item>
     <Item>
       <Source>Splash\image3.jpg</Source>
@@ -97,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Splash\image3.xnb</Output>
-      <Time>2013-11-04T16:58:22.123189-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Splash\image3.xnb</Output>
+      <Time>2013-11-04T12:33:27.4835767-05:00</Time>
     </Item>
     <Item>
       <Source>PlayerImage2.png</Source>
@@ -106,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\PlayerImage2.xnb</Output>
-      <Time>2013-11-04T16:58:22.1121883-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\PlayerImage2.xnb</Output>
+      <Time>2013-10-31T21:51:02.8864784-04:00</Time>
     </Item>
     <Item>
       <Source>PlayerImage3.png</Source>
@@ -115,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\PlayerImage3.xnb</Output>
-      <Time>2013-11-04T16:58:22.1121883-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\PlayerImage3.xnb</Output>
+      <Time>2013-10-31T21:51:02.8874785-04:00</Time>
     </Item>
     <Item>
       <Source>PlayerImage4.png</Source>
@@ -124,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\PlayerImage4.xnb</Output>
-      <Time>2013-11-04T16:58:22.1131884-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\PlayerImage4.xnb</Output>
+      <Time>2013-10-31T21:51:02.8874785-04:00</Time>
     </Item>
     <Item>
       <Source>CircleIdleSpriteSheet.png</Source>
@@ -133,8 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleIdleSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1011877-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleIdleSpriteSheet.xnb</Output>
+      <Time>2013-10-31T21:51:02.8774779-04:00</Time>
     </Item>
     <Item>
       <Source>DiamondIdleSpriteSheet.png</Source>
@@ -142,8 +142,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondIdleSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.106188-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondIdleSpriteSheet.xnb</Output>
+      <Time>2013-10-31T21:51:02.8814781-04:00</Time>
     </Item>
     <Item>
       <Source>TriangleIdleSpriteSheet.png</Source>
@@ -151,8 +151,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TriangleIdleSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.158191-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TriangleIdleSpriteSheet.xnb</Output>
+      <Time>2013-10-31T21:51:02.9024793-04:00</Time>
     </Item>
     <Item>
       <Source>SquareIdleSpriteSheet.png</Source>
@@ -160,8 +160,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareIdleSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1541908-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareIdleSpriteSheet.xnb</Output>
+      <Time>2013-10-31T21:51:02.8994791-04:00</Time>
     </Item>
     <Item>
       <Source>CircleDeployShieldAnimation.png</Source>
@@ -169,8 +169,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleDeployShieldSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.088187-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleDeployShieldSpriteSheet.xnb</Output>
+      <Time>2013-10-31T21:51:02.8734777-04:00</Time>
     </Item>
     <Item>
       <Source>CircleShieldIdleSpriteSheet.png</Source>
@@ -178,8 +178,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleShieldIdleSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1031878-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleShieldIdleSpriteSheet.xnb</Output>
+      <Time>2013-10-31T21:51:02.879478-04:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet1.png</Source>
@@ -187,8 +187,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet1.xnb</Output>
-      <Time>2013-11-09T19:59:27.0258716-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet1.xnb</Output>
+      <Time>2013-11-09T20:03:20.5859905-05:00</Time>
     </Item>
     <Item>
       <Source>CircleFadeSpriteSheet.png</Source>
@@ -196,8 +196,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleFadeSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.089187-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\CircleFadeSpriteSheet.xnb</Output>
+      <Time>2013-10-31T21:51:02.8754778-04:00</Time>
     </Item>
     <Item>
       <Source>SquareDashRightSpriteSheet.png</Source>
@@ -205,8 +205,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashRightSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1421901-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashRightSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:33:27.4975775-05:00</Time>
     </Item>
     <Item>
       <Source>SquareDashLeftSpriteSheet.png</Source>
@@ -214,8 +214,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashLeftSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1391899-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashLeftSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:33:27.4875769-05:00</Time>
     </Item>
     <Item>
       <Source>SquareDashSouthEastSpriteSheet.png</Source>
@@ -223,8 +223,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashSouthEastSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1421901-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashSouthEastSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:33:27.523579-05:00</Time>
     </Item>
     <Item>
       <Source>SquareDashSouthSpriteSheet.png</Source>
@@ -232,8 +232,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashSouthSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1431901-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashSouthSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:33:27.5265792-05:00</Time>
     </Item>
     <Item>
       <Source>SquareDashNorthSpriteSheet.png</Source>
@@ -241,8 +241,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashNorthSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.14019-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashNorthSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:33:27.4925772-05:00</Time>
     </Item>
     <Item>
       <Source>SquareDashNorthEastSpriteSheet.png</Source>
@@ -250,8 +250,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashNorthEastSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.14019-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashNorthEastSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:33:27.4895771-05:00</Time>
     </Item>
     <Item>
       <Source>SquareDashSouthWestSpriteSheet.png</Source>
@@ -259,8 +259,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashSouthWestSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1521906-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashSouthWestSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:33:27.5285793-05:00</Time>
     </Item>
     <Item>
       <Source>SquareDashNorthWestSpriteSheet.png</Source>
@@ -268,8 +268,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashNorthWestSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.14119-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashNorthWestSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:33:27.4945773-05:00</Time>
     </Item>
     <Item>
       <Source>SquareDashIdleSpriteSheet.png</Source>
@@ -277,8 +277,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashIdleSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1381898-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\SquareDashIdleSpriteSheet.xnb</Output>
+      <Time>2013-11-04T12:33:27.4855768-05:00</Time>
     </Item>
     <Item>
       <Source>DiamondMineSpriteSheet.png</Source>
@@ -286,8 +286,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondMineSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1091882-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondMineSpriteSheet.xnb</Output>
+      <Time>2013-11-05T18:15:35.2542166-05:00</Time>
     </Item>
     <Item>
       <Source>DiamondMineIdleSpriteSheet.png</Source>
@@ -295,8 +295,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondMineIdleSpriteSheet.xnb</Output>
-      <Time>2013-11-04T16:58:22.1071881-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondMineIdleSpriteSheet.xnb</Output>
+      <Time>2013-11-05T18:15:35.2532166-05:00</Time>
     </Item>
     <Item>
       <Source>tileSet1.png</Source>
@@ -304,8 +304,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\tileSet1.xnb</Output>
-      <Time>2013-11-04T23:33:31.8874967-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\tileSet1.xnb</Output>
+      <Time>2013-11-05T18:15:35.2632171-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet10.png</Source>
@@ -313,8 +313,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet10.xnb</Output>
-      <Time>2013-11-09T19:59:27.0268717-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet10.xnb</Output>
+      <Time>2013-11-09T20:03:20.5869905-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet11.png</Source>
@@ -322,8 +322,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet11.xnb</Output>
-      <Time>2013-11-09T19:59:27.0278717-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet11.xnb</Output>
+      <Time>2013-11-09T20:03:20.5879906-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet12.png</Source>
@@ -331,8 +331,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet12.xnb</Output>
-      <Time>2013-11-09T19:59:27.0278717-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet12.xnb</Output>
+      <Time>2013-11-09T20:03:20.5889906-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet13.png</Source>
@@ -340,8 +340,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet13.xnb</Output>
-      <Time>2013-11-09T19:59:27.0298718-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet13.xnb</Output>
+      <Time>2013-11-09T20:03:20.5899907-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet14.png</Source>
@@ -349,8 +349,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet14.xnb</Output>
-      <Time>2013-11-09T19:59:27.0308719-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet14.xnb</Output>
+      <Time>2013-11-09T20:03:20.5909907-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet15.png</Source>
@@ -358,8 +358,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet15.xnb</Output>
-      <Time>2013-11-09T19:59:27.0318719-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet15.xnb</Output>
+      <Time>2013-11-09T20:03:20.5919908-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet16.png</Source>
@@ -367,8 +367,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet16.xnb</Output>
-      <Time>2013-11-09T19:59:27.032872-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet16.xnb</Output>
+      <Time>2013-11-09T20:03:20.5929909-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet17.png</Source>
@@ -376,8 +376,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet17.xnb</Output>
-      <Time>2013-11-09T19:59:27.0338721-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet17.xnb</Output>
+      <Time>2013-11-09T20:03:20.5939909-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet18.png</Source>
@@ -385,8 +385,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet18.xnb</Output>
-      <Time>2013-11-09T19:59:27.0348721-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet18.xnb</Output>
+      <Time>2013-11-09T20:03:20.594991-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet2.png</Source>
@@ -394,8 +394,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet2.xnb</Output>
-      <Time>2013-11-09T19:59:27.0358722-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet2.xnb</Output>
+      <Time>2013-11-09T20:03:20.595991-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet3.png</Source>
@@ -403,8 +403,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet3.xnb</Output>
-      <Time>2013-11-09T19:59:27.0368722-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet3.xnb</Output>
+      <Time>2013-11-09T20:03:20.5969911-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet4.png</Source>
@@ -412,8 +412,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet4.xnb</Output>
-      <Time>2013-11-09T19:59:27.0378723-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet4.xnb</Output>
+      <Time>2013-11-09T20:03:20.5979911-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet5.png</Source>
@@ -421,8 +421,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet5.xnb</Output>
-      <Time>2013-11-09T19:59:27.0388723-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet5.xnb</Output>
+      <Time>2013-11-09T20:03:20.5989912-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet6.png</Source>
@@ -430,8 +430,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet6.xnb</Output>
-      <Time>2013-11-09T19:59:27.0398724-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet6.xnb</Output>
+      <Time>2013-11-09T20:03:20.5999913-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet7.png</Source>
@@ -439,8 +439,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet7.xnb</Output>
-      <Time>2013-11-09T19:59:27.0398724-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet7.xnb</Output>
+      <Time>2013-11-09T20:03:20.6009913-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet8.png</Source>
@@ -448,8 +448,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet8.xnb</Output>
-      <Time>2013-11-09T19:59:27.0408725-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet8.xnb</Output>
+      <Time>2013-11-09T20:03:20.6019914-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\tileSet9.png</Source>
@@ -457,8 +457,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet9.xnb</Output>
-      <Time>2013-11-09T19:59:27.0418725-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\tileSet9.xnb</Output>
+      <Time>2013-11-09T20:03:20.6029914-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet0.png</Source>
@@ -466,8 +466,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet0.xnb</Output>
-      <Time>2013-11-09T19:59:26.9898695-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet0.xnb</Output>
+      <Time>2013-11-09T20:03:20.5539886-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet1.png</Source>
@@ -475,8 +475,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet1.xnb</Output>
-      <Time>2013-11-09T19:59:26.9898695-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet1.xnb</Output>
+      <Time>2013-11-09T20:03:20.5539886-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet10.png</Source>
@@ -484,8 +484,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet10.xnb</Output>
-      <Time>2013-11-09T19:59:26.9908696-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet10.xnb</Output>
+      <Time>2013-11-09T20:03:20.5549887-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet11.png</Source>
@@ -493,8 +493,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet11.xnb</Output>
-      <Time>2013-11-09T19:59:26.9918696-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet11.xnb</Output>
+      <Time>2013-11-09T20:03:20.5559887-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet12.png</Source>
@@ -502,8 +502,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet12.xnb</Output>
-      <Time>2013-11-09T19:59:26.9928697-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet12.xnb</Output>
+      <Time>2013-11-09T20:03:20.5569888-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet13.png</Source>
@@ -511,8 +511,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet13.xnb</Output>
-      <Time>2013-11-09T19:59:26.9938698-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet13.xnb</Output>
+      <Time>2013-11-09T20:03:20.5569888-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet14.png</Source>
@@ -520,8 +520,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet14.xnb</Output>
-      <Time>2013-11-09T19:59:26.9948698-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet14.xnb</Output>
+      <Time>2013-11-09T20:03:20.5579889-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet15.png</Source>
@@ -529,8 +529,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet15.xnb</Output>
-      <Time>2013-11-09T19:59:26.9948698-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet15.xnb</Output>
+      <Time>2013-11-09T20:03:20.5579889-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet16.png</Source>
@@ -538,8 +538,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet16.xnb</Output>
-      <Time>2013-11-09T19:59:26.9958699-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet16.xnb</Output>
+      <Time>2013-11-09T20:03:20.5589889-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet17.png</Source>
@@ -547,8 +547,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet17.xnb</Output>
-      <Time>2013-11-09T19:59:26.9968699-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet17.xnb</Output>
+      <Time>2013-11-09T20:03:20.5589889-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet18.png</Source>
@@ -556,8 +556,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet18.xnb</Output>
-      <Time>2013-11-09T19:59:26.9968699-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet18.xnb</Output>
+      <Time>2013-11-09T20:03:20.559989-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet19.png</Source>
@@ -565,8 +565,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet19.xnb</Output>
-      <Time>2013-11-09T19:59:26.99787-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet19.xnb</Output>
+      <Time>2013-11-09T20:03:20.559989-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet2.png</Source>
@@ -574,8 +574,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet2.xnb</Output>
-      <Time>2013-11-09T19:59:26.9988701-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet2.xnb</Output>
+      <Time>2013-11-09T20:03:20.560989-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet20.png</Source>
@@ -583,8 +583,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet20.xnb</Output>
-      <Time>2013-11-09T19:59:26.9988701-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet20.xnb</Output>
+      <Time>2013-11-09T20:03:20.5619891-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet21.png</Source>
@@ -592,8 +592,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet21.xnb</Output>
-      <Time>2013-11-09T19:59:26.9998701-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet21.xnb</Output>
+      <Time>2013-11-09T20:03:20.5619891-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet22.png</Source>
@@ -601,8 +601,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet22.xnb</Output>
-      <Time>2013-11-09T19:59:27.0008702-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet22.xnb</Output>
+      <Time>2013-11-09T20:03:20.5629891-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet23.png</Source>
@@ -610,8 +610,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet23.xnb</Output>
-      <Time>2013-11-09T19:59:27.0018702-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet23.xnb</Output>
+      <Time>2013-11-09T20:03:20.5639892-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet24.png</Source>
@@ -619,8 +619,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet24.xnb</Output>
-      <Time>2013-11-09T19:59:27.0018702-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet24.xnb</Output>
+      <Time>2013-11-09T20:03:20.5639892-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet25.png</Source>
@@ -628,8 +628,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet25.xnb</Output>
-      <Time>2013-11-09T19:59:27.0028703-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet25.xnb</Output>
+      <Time>2013-11-09T20:03:20.5649893-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet26.png</Source>
@@ -637,8 +637,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet26.xnb</Output>
-      <Time>2013-11-09T19:59:27.0038703-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet26.xnb</Output>
+      <Time>2013-11-09T20:03:20.5659893-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet27.png</Source>
@@ -646,8 +646,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet27.xnb</Output>
-      <Time>2013-11-09T19:59:27.0038703-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet27.xnb</Output>
+      <Time>2013-11-09T20:03:20.5659893-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet28.png</Source>
@@ -655,8 +655,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet28.xnb</Output>
-      <Time>2013-11-09T19:59:27.0048704-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet28.xnb</Output>
+      <Time>2013-11-09T20:03:20.5669894-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet29.png</Source>
@@ -664,8 +664,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet29.xnb</Output>
-      <Time>2013-11-09T19:59:27.0058705-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet29.xnb</Output>
+      <Time>2013-11-09T20:03:20.5669894-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet3.png</Source>
@@ -673,8 +673,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet3.xnb</Output>
-      <Time>2013-11-09T19:59:27.0068705-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet3.xnb</Output>
+      <Time>2013-11-09T20:03:20.5679894-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet30.png</Source>
@@ -682,8 +682,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet30.xnb</Output>
-      <Time>2013-11-09T19:59:27.0078706-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet30.xnb</Output>
+      <Time>2013-11-09T20:03:20.5689895-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet31.png</Source>
@@ -691,8 +691,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet31.xnb</Output>
-      <Time>2013-11-09T19:59:27.0088706-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet31.xnb</Output>
+      <Time>2013-11-09T20:03:20.5689895-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet32.png</Source>
@@ -700,8 +700,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet32.xnb</Output>
-      <Time>2013-11-09T19:59:27.0098707-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet32.xnb</Output>
+      <Time>2013-11-09T20:03:20.5699895-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet33.png</Source>
@@ -709,8 +709,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet33.xnb</Output>
-      <Time>2013-11-09T19:59:27.0108707-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet33.xnb</Output>
+      <Time>2013-11-09T20:03:20.5699895-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet34.png</Source>
@@ -718,8 +718,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet34.xnb</Output>
-      <Time>2013-11-09T19:59:27.0118708-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet34.xnb</Output>
+      <Time>2013-11-09T20:03:20.5709896-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet35.png</Source>
@@ -727,8 +727,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet35.xnb</Output>
-      <Time>2013-11-09T19:59:27.0118708-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet35.xnb</Output>
+      <Time>2013-11-09T20:03:20.5719897-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet36.png</Source>
@@ -736,8 +736,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet36.xnb</Output>
-      <Time>2013-11-09T19:59:27.0128709-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet36.xnb</Output>
+      <Time>2013-11-09T20:03:20.5719897-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet4.png</Source>
@@ -745,8 +745,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet4.xnb</Output>
-      <Time>2013-11-09T19:59:27.0138709-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet4.xnb</Output>
+      <Time>2013-11-09T20:03:20.5729897-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet5.png</Source>
@@ -754,8 +754,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet5.xnb</Output>
-      <Time>2013-11-09T19:59:27.014871-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet5.xnb</Output>
+      <Time>2013-11-09T20:03:20.5729897-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet6.png</Source>
@@ -763,8 +763,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet6.xnb</Output>
-      <Time>2013-11-09T19:59:27.015871-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet6.xnb</Output>
+      <Time>2013-11-09T20:03:20.5749898-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet7.png</Source>
@@ -772,8 +772,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet7.xnb</Output>
-      <Time>2013-11-09T19:59:27.0178711-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet7.xnb</Output>
+      <Time>2013-11-09T20:03:20.5769899-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet8.png</Source>
@@ -781,8 +781,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet8.xnb</Output>
-      <Time>2013-11-09T19:59:27.0188712-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet8.xnb</Output>
+      <Time>2013-11-09T20:03:20.5769899-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixSpriteSheet9.png</Source>
@@ -790,8 +790,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet9.xnb</Output>
-      <Time>2013-11-09T19:59:27.0188712-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Matrix\MatrixSpriteSheet9.xnb</Output>
+      <Time>2013-11-09T20:03:20.57799-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\TileIndividuals\tile1.png</Source>
@@ -799,8 +799,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile1.xnb</Output>
-      <Time>2013-11-10T13:40:02.7802602-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile1.xnb</Output>
+      <Time>2013-11-10T15:39:37.8069019-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\TileIndividuals\tile2.png</Source>
@@ -808,8 +808,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile2.xnb</Output>
-      <Time>2013-11-10T13:41:09.8370957-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile2.xnb</Output>
+      <Time>2013-11-10T15:39:37.807902-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\TileIndividuals\tile3.png</Source>
@@ -817,8 +817,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile3.xnb</Output>
-      <Time>2013-11-10T13:41:31.627342-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile3.xnb</Output>
+      <Time>2013-11-10T15:39:37.808902-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\TileIndividuals\tile4.png</Source>
@@ -826,8 +826,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile4.xnb</Output>
-      <Time>2013-11-10T13:41:50.1614021-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile4.xnb</Output>
+      <Time>2013-11-10T15:39:37.808902-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\TileIndividuals\tile5.png</Source>
@@ -835,8 +835,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile5.xnb</Output>
-      <Time>2013-11-10T13:42:05.9113029-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile5.xnb</Output>
+      <Time>2013-11-10T15:39:37.8099021-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\TileIndividuals\tile6.png</Source>
@@ -844,8 +844,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile6.xnb</Output>
-      <Time>2013-11-10T13:42:27.766553-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile6.xnb</Output>
+      <Time>2013-11-10T15:39:37.8119022-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\TileIndividuals\tile7.png</Source>
@@ -853,8 +853,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile7.xnb</Output>
-      <Time>2013-11-10T13:42:56.7322097-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile7.xnb</Output>
+      <Time>2013-11-10T15:39:37.8129023-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\TileIndividuals\tile8.png</Source>
@@ -862,8 +862,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile8.xnb</Output>
-      <Time>2013-11-10T13:43:26.3659047-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile8.xnb</Output>
+      <Time>2013-11-10T15:39:37.8129023-05:00</Time>
     </Item>
     <Item>
       <Source>TileSets\TileIndividuals\tile9.png</Source>
@@ -871,8 +871,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile9.xnb</Output>
-      <Time>2013-11-10T13:43:49.1842098-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile9.xnb</Output>
+      <Time>2013-11-10T15:39:37.8139023-05:00</Time>
     </Item>
     <Item>
       <Source>DiamondShadow.png</Source>
@@ -880,8 +880,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondShadow.xnb</Output>
-      <Time>2013-11-10T15:50:16.3652456-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\DiamondShadow.xnb</Output>
+      <Time>2013-11-10T20:02:07.5412626-05:00</Time>
     </Item>
     <Item>
       <Source>TriangleShadow.png</Source>
@@ -889,8 +889,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TriangleShadow.xnb</Output>
-      <Time>2013-11-10T15:26:59.7743652-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TriangleShadow.xnb</Output>
+      <Time>2013-11-10T20:02:07.5432627-05:00</Time>
     </Item>
     <Item>
       <Source>Font1.spritefont</Source>
@@ -898,8 +898,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Font1.xnb</Output>
-      <Time>2013-11-09T19:59:26.9878694-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Font1.xnb</Output>
+      <Time>2013-11-09T20:03:20.5529886-05:00</Time>
     </Item>
     <Item>
       <Source>MenuFont.spritefont</Source>
@@ -907,8 +907,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\MenuFont.xnb</Output>
-      <Time>2013-11-09T19:59:27.0208713-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\MenuFont.xnb</Output>
+      <Time>2013-11-09T20:03:20.5789901-05:00</Time>
     </Item>
     <Item>
       <Source>TitleFont.spritefont</Source>
@@ -916,8 +916,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\TitleFont.xnb</Output>
-      <Time>2013-11-09T19:59:27.0428726-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TitleFont.xnb</Output>
+      <Time>2013-11-09T20:03:20.6039915-05:00</Time>
     </Item>
     <Item>
       <Source>White Denim - D - At The Farm.mp3</Source>
@@ -925,9 +925,9 @@
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\White Denim - D - At The Farm.xnb</Output>
-      <Extra>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\White Denim - D - At The Farm.wma</Extra>
-      <Time>2013-11-09T19:59:27.0868751-05:00</Time>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\White Denim - D - At The Farm.xnb</Output>
+      <Extra>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\White Denim - D - At The Farm.wma</Extra>
+      <Time>2013-11-09T20:03:20.6449938-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -935,10 +935,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShiftContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShiftContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShiftContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShiftContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -967,7 +967,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2013-09-14T17:30:44.9063219-04:00</Value>
+        <Value>2013-09-14T00:22:10.7738527-04:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

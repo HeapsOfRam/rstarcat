@@ -50,12 +50,10 @@ namespace ShapeShift
             pDiamond  = new Diamond(content);
             pMatrix   = new Matrix(content);
 
-            health = FULL;
+            maxHealth = FULL;
+            health = maxHealth;
 
             playerShape = pDiamond;            
-
-      
-
 
             //Queue up the next shape
             queueOne();
