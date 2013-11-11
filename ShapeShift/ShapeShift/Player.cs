@@ -24,6 +24,9 @@ namespace ShapeShift
         
         private Random rand;
 
+        private Boolean[] directions = new Boolean[4];
+
+
         private int r;
 
         private Matrix pMatrix;
@@ -155,19 +158,107 @@ namespace ShapeShift
             }
         }*/
 
+        public void moveRight(GameTime gameTime)
+        {
+            position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            directions[0] = true;
+        }
+
+        public void moveLeft(GameTime gameTime)
+        {
+            position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            directions[1] = true;
+        }
+
+        public void moveDown(GameTime gameTime)
+        {
+            position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            directions[2] = true;
+        }
+
+        public void moveUp(GameTime gameTime)
+        {
+            position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            directions[3] = true;
+        }
+
+        public void rAction()
+        {
+            if (playerShape == pCircle)
+                pdeployShield();
+            if (playerShape == pSquare)
+                pDash();
+            if (playerShape == pMatrix || playerShape == pTriangle)
+                pRotate();
+            if (playerShape == pDiamond)
+                pdeployMine();
+        }
+
+        public void eAction()
+        {
+            if (playerShape == pCircle)
+                premoveShield();
+            if (playerShape == pDiamond)
+                pdropMine();
+            if (playerShape == pMatrix)
+                pMRotate();
+        }
+
+
+        private void pdeployShield()
+        {
+            if(!pCircle.shielded)
+                pCircle.deployShield();
+        }
+
+        private void premoveShield()
+        {
+            if(pCircle.shielded)
+                pCircle.removeShield();
+        }
+
+        private void pDash()
+        {
+            pSquare.dash(this);
+        }
+
+        private void pRotate()
+        {
+            if(playerShape == pTriangle)
+                pTriangle.PreformRotate();
+            if(playerShape == pMatrix)
+                pMatrix.PreformRotate();
+        }
+
+        private void pMRotate()
+        {
+            pMatrix.PreformRotate(3);
+        }
+
+        private void pdeployMine()
+        {
+            pDiamond.deployMine();
+        }
+
+        private void pdropMine()
+        {
+            pDiamond.dropMine();
+        }
+
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
             previousPosition = position;
 
-            Boolean[] directions = new Boolean[4];
-
             for (int i = 0; i < 4; i++)        
                 directions[i] = false;
-            
-            //MOVEMENT
+         
+   
+            //commented out; moved to GamePlayScreen; do we need?
+            /*//MOVEMENT
             if (input.KeyDown(Keys.Right, Keys.D))
             { //MOVE RIGHT
-                position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                moveRight();
+                //position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 directions[0] = true;
             }
 
@@ -190,13 +281,11 @@ namespace ShapeShift
             if (playerShape == pSquare)
             {
                 pSquare.setDirectionMap(directions);
-            }
+            }*/
 
-         
-
-            
+            //also in gameplayscreen            
             //Used to check deploy sheild in circle
-            if (input.KeyDown(Keys.R))
+            /*if (input.KeyDown(Keys.R))
             {
                 if (playerShape == pCircle && !pCircle.shielded)
                     pCircle.deployShield();
@@ -225,7 +314,7 @@ namespace ShapeShift
 
                 if (playerShape == pMatrix)
                     pMatrix.PreformRotate(3);
-            }    
+            } */   
      
 
             for (int i = 0; i < col.CollisionMap.Count; i++)

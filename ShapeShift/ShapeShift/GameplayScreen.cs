@@ -6,6 +6,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
 
 namespace ShapeShift
 {
@@ -54,6 +56,20 @@ namespace ShapeShift
             inputManager.Update();
             player.Update(gameTime, inputManager, map.collision, map.layer);
             map.Update(gameTime);
+
+            if (inputManager.KeyDown(Keys.Up, Keys.W))
+                player.moveUp(gameTime);
+            if (inputManager.KeyDown(Keys.Down, Keys.S))
+                player.moveDown(gameTime);
+            if (inputManager.KeyDown(Keys.Left, Keys.A))
+                player.moveLeft(gameTime);
+            if (inputManager.KeyDown(Keys.Right, Keys.D))
+                player.moveRight(gameTime);
+            if (inputManager.KeyDown(Keys.R))
+                player.rAction();
+            if (inputManager.KeyDown(Keys.E))
+                player.eAction();
+
 
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 

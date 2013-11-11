@@ -72,11 +72,23 @@ namespace ShapeShift
             return health;
         }
 
+        /*public void setPositionY(float y)
+        { position.Y = y; }
+
+        public void setPositionX(float x)
+        { position.X = x; }
+
+        public float getPositionY()
+        { return position.Y; }
+
+        public float getPositionX()
+        { return position.X; }
+
         public Vector2 Position
         {
             get { return position; }
             set { position = value; }
-        }
+        }*/
 
     }
 }
