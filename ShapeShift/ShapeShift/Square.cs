@@ -45,16 +45,16 @@ namespace ShapeShift
             animations = new List<SpriteSheetAnimation>();
             dashAnimations = new List<SpriteSheetAnimation>();
 
-            squareTexture = content.Load<Texture2D>("SquareIdleSpriteSheet");
-            dashIdleTexture = content.Load<Texture2D>("SquareDashIdleSpriteSheet");
-            dashEastTexture = content.Load<Texture2D>("SquareDashRightSpriteSheet");
-            dashWestTexture = content.Load<Texture2D>("SquareDashLeftSpriteSheet");
-            dashSouthEastTexture = content.Load<Texture2D>("SquareDashSouthEastSpriteSheet");
-            dashSouthTexture = content.Load<Texture2D>("SquareDashSouthSpriteSheet");
-            dashNorthTexture = content.Load<Texture2D>("SquareDashNorthSpriteSheet");
-            dashNorthWestTexture = content.Load<Texture2D>("SquareDashNorthWestSpriteSheet");
-            dashNorthEastTexture = content.Load<Texture2D>("SquareDashNorthEastSpriteSheet");
-            dashSouthWestTexture = content.Load<Texture2D>("SquareDashSouthWestSpriteSheet");
+            squareTexture = content.Load<Texture2D>("Square/SquareIdleSpriteSheet");
+            dashIdleTexture = content.Load<Texture2D>("Square/SquareDashIdleSpriteSheet");
+            dashEastTexture = content.Load<Texture2D>("Square/SquareDashRightSpriteSheet");
+            dashWestTexture = content.Load<Texture2D>("Square/SquareDashLeftSpriteSheet");
+            dashSouthEastTexture = content.Load<Texture2D>("Square/SquareDashSouthEastSpriteSheet");
+            dashSouthTexture = content.Load<Texture2D>("Square/SquareDashSouthSpriteSheet");
+            dashNorthTexture = content.Load<Texture2D>("Square/SquareDashNorthSpriteSheet");
+            dashNorthWestTexture = content.Load<Texture2D>("Square/SquareDashNorthWestSpriteSheet");
+            dashNorthEastTexture = content.Load<Texture2D>("Square/SquareDashNorthEastSpriteSheet");
+            dashSouthWestTexture = content.Load<Texture2D>("Square/SquareDashSouthWestSpriteSheet");
 
             idleAnimation = new SpriteSheetAnimation(this,true);
             idleAnimation.LoadContent(content, squareTexture, "", new Vector2(0, 0));

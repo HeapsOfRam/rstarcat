@@ -31,10 +31,10 @@ namespace ShapeShift
 
             animations = new List<SpriteSheetAnimation>();
             
-            diamondTexture = content.Load<Texture2D>("DiamondIdleSpriteSheet");
-            diamondDeployMineTexture = content.Load<Texture2D>("DiamondMineSpriteSheet");
-            diamondMineIdleTexture = content.Load<Texture2D>("DiamondMineIdleSpriteSheet");
-            diamondShadowTexture = content.Load<Texture2D>("DiamondShadow");
+            diamondTexture = content.Load<Texture2D>("Diamond/DiamondIdleSpriteSheet");
+            diamondDeployMineTexture = content.Load<Texture2D>("Diamond/DiamondMineSpriteSheet");
+            diamondMineIdleTexture = content.Load<Texture2D>("Diamond/DiamondMineIdleSpriteSheet");
+            diamondShadowTexture = content.Load<Texture2D>("Diamond/DiamondShadow");
             
             idleAnimation = new SpriteSheetAnimation(this,true);
             idleAnimation.LoadContent(content, diamondTexture, "", new Vector2(0, 0));

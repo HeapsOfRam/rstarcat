@@ -90,7 +90,7 @@ namespace ShapeShift
             
             if (text != String.Empty)
             {
-                font  = this.content.Load<SpriteFont>("Font1");
+                font  = this.content.Load<SpriteFont>("Fonts/Font1");
                 color = new Color(114,77,255);
             }
             if (image != null) //so, if you have an image (animations can be image or text animations)

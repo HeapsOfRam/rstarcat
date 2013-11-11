@@ -32,7 +32,7 @@ namespace ShapeShift
         {
             base.LoadContent(Content, inputManager);
             if (font == null)
-                font = this.content.Load<SpriteFont>("Font1");
+                font = this.content.Load<SpriteFont>("Fonts/Font1");
             //unloads the content when we dont need it. loads content when we do
 
             fileManager = new FileManager();

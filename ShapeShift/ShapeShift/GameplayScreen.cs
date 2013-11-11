@@ -32,7 +32,7 @@ namespace ShapeShift
             layer = new Layers();
             map = new Map();
             rectangle = new Rectangle();
-            font = this.content.Load<SpriteFont>("Font1");
+            font = this.content.Load<SpriteFont>("Fonts/Font1");
             map.LoadContent(content, "Map1");
             //layer.LoadContent(content, "Map1");
             player.LoadContent(content, input);

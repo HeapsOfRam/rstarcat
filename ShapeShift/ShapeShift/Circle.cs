@@ -36,10 +36,10 @@ namespace ShapeShift
             animations = new List<SpriteSheetAnimation>();
 
             //Load in the specific spritesheets used for animating the Circle
-            idleCircleTexture = content.Load<Texture2D>("CircleIdleSpriteSheet");
-            shieldDeployCircleTexture = content.Load<Texture2D>("CircleDeployShieldSpriteSheet");
-            shieldIdleTexture = content.Load<Texture2D>("CircleShieldIdleSpriteSheet");
-            shieldFadeTexture = content.Load<Texture2D>("CircleFadeSpriteSheet");
+            idleCircleTexture = content.Load<Texture2D>("Circle/CircleIdleSpriteSheet");
+            shieldDeployCircleTexture = content.Load<Texture2D>("Circle/CircleDeployShieldSpriteSheet");
+            shieldIdleTexture = content.Load<Texture2D>("Circle/CircleShieldIdleSpriteSheet");
+            shieldFadeTexture = content.Load<Texture2D>("Circle/CircleFadeSpriteSheet");
 
             // Create new SpriteSheetAnimation objects for each texture and add them to the animation list
             idleAnimation = new SpriteSheetAnimation(this, true);

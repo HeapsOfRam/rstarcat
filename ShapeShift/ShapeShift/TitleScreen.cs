@@ -20,11 +20,11 @@ namespace ShapeShift
         {
             base.LoadContent(Content, inputManager);
             if (font == null)
-                font = this.content.Load<SpriteFont>("TitleFont");
+                font = this.content.Load<SpriteFont>("Fonts/TitleFont");
             menu = new MenuManager();
             menu.LoadContent(content, "Title");
 
-            Song song = Content.Load<Song>("White Denim - D - At The Farm");  // Put the name of your song in instead of "song_title"
+            Song song = Content.Load<Song>("Music/White Denim - D - At The Farm");  // Put the name of your song in instead of "song_title"
             //MediaPlayer.Play(song);
             MediaPlayer.Volume = .5f;
         }

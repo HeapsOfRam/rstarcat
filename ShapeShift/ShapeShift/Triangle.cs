@@ -27,9 +27,9 @@ namespace ShapeShift
             animations = new List<SpriteSheetAnimation>();
 
 
-            triangleTexture = content.Load<Texture2D>("TriangleIdleSpriteSheet");
+            triangleTexture = content.Load<Texture2D>("Triangle/TriangleIdleSpriteSheet");
 
-            triangleShadowTexture = content.Load<Texture2D>("TriangleShadow");
+            triangleShadowTexture = content.Load<Texture2D>("Triangle/TriangleShadow");
 
 
             idleAnimation = new SpriteSheetAnimation(this,true, 92, new Vector2 (45,54));

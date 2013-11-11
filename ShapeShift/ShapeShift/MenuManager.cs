@@ -164,7 +164,7 @@ namespace ShapeShift
                     switch (attributes[i][j])
                     {
                         case "Font":
-                            font = this.content.Load<SpriteFont>(contents[i][j]);
+                            font = this.content.Load<SpriteFont>("Fonts/" + contents[i][j]);
                             break;
                         case "Item":
                             menuItems.Add(contents[i][j]);

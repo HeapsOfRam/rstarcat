@@ -42,7 +42,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CircleSheet.png">
+    <Compile Include="Circle\CircleSheet.png">
       <Name>CircleSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -56,22 +56,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="knights.png">
-      <Name>knights</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="lainbackground.jpg">
       <Name>lainbackground</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="PlayerImage1.png">
-      <Name>PlayerImage1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -91,14 +77,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Font1.spritefont">
+    <Compile Include="Fonts\Font1.spritefont">
       <Name>Font1</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuFont.spritefont">
+    <Compile Include="Fonts\MenuFont.spritefont">
       <Name>MenuFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
@@ -122,63 +108,42 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlayerImage2.png">
-      <Name>PlayerImage2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="PlayerImage3.png">
-      <Name>PlayerImage3</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="PlayerImage4.png">
-      <Name>PlayerImage4</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="CircleIdleSpriteSheet.png">
+    <Compile Include="Circle\CircleIdleSpriteSheet.png">
       <Name>CircleIdleSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiamondIdleSpriteSheet.png">
+    <Compile Include="Diamond\DiamondIdleSpriteSheet.png">
       <Name>DiamondIdleSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TriangleIdleSpriteSheet.png">
+    <Compile Include="Triangle\TriangleIdleSpriteSheet.png">
       <Name>TriangleIdleSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SquareIdleSpriteSheet.png">
+    <Compile Include="Square\SquareIdleSpriteSheet.png">
       <Name>SquareIdleSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CircleDeployShieldAnimation.png">
+    <Compile Include="Circle\CircleDeployShieldAnimation.png">
       <Name>CircleDeployShieldSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CircleShieldIdleSpriteSheet.png">
+    <Compile Include="Circle\CircleShieldIdleSpriteSheet.png">
       <Name>CircleShieldIdleSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -192,101 +157,94 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CircleFadeSpriteSheet.png">
+    <Compile Include="Circle\CircleFadeSpriteSheet.png">
       <Name>CircleFadeSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SquareDashRightSpriteSheet.png">
+    <Compile Include="Square\SquareDashRightSpriteSheet.png">
       <Name>SquareDashRightSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SquareDashLeftSpriteSheet.png">
+    <Compile Include="Square\SquareDashLeftSpriteSheet.png">
       <Name>SquareDashLeftSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SquareDashSouthEastSpriteSheet.png">
+    <Compile Include="Square\SquareDashSouthEastSpriteSheet.png">
       <Name>SquareDashSouthEastSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SquareDashSouthSpriteSheet.png">
+    <Compile Include="Square\SquareDashSouthSpriteSheet.png">
       <Name>SquareDashSouthSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SquareDashNorthSpriteSheet.png">
+    <Compile Include="Square\SquareDashNorthSpriteSheet.png">
       <Name>SquareDashNorthSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SquareDashNorthEastSpriteSheet.png">
+    <Compile Include="Square\SquareDashNorthEastSpriteSheet.png">
       <Name>SquareDashNorthEastSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SquareDashSouthWestSpriteSheet.png">
+    <Compile Include="Square\SquareDashSouthWestSpriteSheet.png">
       <Name>SquareDashSouthWestSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SquareDashNorthWestSpriteSheet.png">
+    <Compile Include="Square\SquareDashNorthWestSpriteSheet.png">
       <Name>SquareDashNorthWestSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SquareDashIdleSpriteSheet.png">
+    <Compile Include="Square\SquareDashIdleSpriteSheet.png">
       <Name>SquareDashIdleSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiamondMineSpriteSheet.png">
+    <Compile Include="Diamond\DiamondMineSpriteSheet.png">
       <Name>DiamondMineSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiamondMineIdleSpriteSheet.png">
+    <Compile Include="Diamond\DiamondMineIdleSpriteSheet.png">
       <Name>DiamondMineIdleSpriteSheet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TitleFont.spritefont">
+    <Compile Include="Fonts\TitleFont.spritefont">
       <Name>TitleFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="tileSet1.png">
-      <Name>tileSet1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -564,7 +522,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="White Denim - D - At The Farm.mp3">
+    <Compile Include="Music\White Denim - D - At The Farm.mp3">
       <Name>White Denim - D - At The Farm</Name>
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
@@ -618,14 +576,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiamondShadow.png">
+    <Compile Include="Diamond\DiamondShadow.png">
       <Name>DiamondShadow</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TriangleShadow.png">
+    <Compile Include="Triangle\TriangleShadow.png">
       <Name>TriangleShadow</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
@@ -638,6 +596,7 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
