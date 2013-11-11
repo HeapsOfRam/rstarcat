@@ -19,6 +19,7 @@ namespace ShapeShift
         Rectangle rectangle;
         Rectangle[] healthRectangle;
         Texture2D healthFillTexture, healthUnfillTexture;
+        Boolean paused = false;
 
         private SpriteFont font;
         int screenWidth, screenHeight, counter, maxCount = 10;
@@ -70,8 +71,30 @@ namespace ShapeShift
             if (inputManager.KeyDown(Keys.E))
                 player.eAction();
 
+            //for debug, pause
+            if (inputManager.KeyPressed(Keys.P))
+                paused = !paused;
+            if (!paused)
+                currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (paused){
+                int n = 0;
+                if (inputManager.KeyPressed(Keys.D1))
+                    n = 1;
+                if (inputManager.KeyPressed(Keys.D2))
+                    n = 2;
+                if (inputManager.KeyPressed(Keys.D3))
+                    n = 3;
+                if (inputManager.KeyPressed(Keys.D4))
+                    n = 4;
+                if (inputManager.KeyPressed(Keys.D5))
+                    n = 5;
+
+                if(n > 0)
+                    player.manualChange(n);
+                n = 0;
+            }
+
 
             if (currentTime >= countDuration)
             {

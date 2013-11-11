@@ -21,6 +21,7 @@ namespace ShapeShift
         private Circle pCircle;
         private Triangle pTriangle;
         private Diamond pDiamond;
+        private ContentManager content;
         
         private Random rand;
 
@@ -37,6 +38,7 @@ namespace ShapeShift
 
         public override void LoadContent(ContentManager content, InputManager input)
         {
+            this.content = content;
             base.LoadContent(content, input);
             rand = new Random();
 
@@ -243,6 +245,84 @@ namespace ShapeShift
         private void pdropMine()
         {
             pDiamond.dropMine();
+        }
+
+        public void manualChange(int n)
+        {
+            pClearAll();
+            if (n == 1)
+                changeToCircle();
+            if (n == 2)
+                changeToSquare();
+            if (n == 3)
+                changeToTriangle();
+            if (n == 4)
+                changeToDiamond();
+            if (n == 5)
+                changeToMatrix();
+        }
+
+        private void pClearCircle()
+        {
+            pCircle = new Circle(content);
+        }
+
+        private void pClearDiamond()
+        {
+            pDiamond = new Diamond(content);
+        }
+
+        private void pClearSquare()
+        {
+            pSquare = new Square(content);
+        }
+
+        private void pClearTriangle()
+        {
+            pTriangle = new Triangle(content);
+        }
+
+        private void pClearMatrix()
+        {
+            pMatrix.makeMatrix();
+        }
+
+        private void pClearAll()
+        {
+            pClearCircle();
+            pClearDiamond();
+            pClearMatrix();
+            pClearSquare();
+            pClearTriangle();
+        }
+
+        private void changeToCircle()
+        {
+
+            premoveShield();
+            playerShape = pCircle;
+        }
+
+        private void changeToSquare()
+        {
+            pSquare.stopDashing();
+            playerShape = pSquare;
+        }
+
+        private void changeToDiamond()
+        {
+            pDiamond.clearMines();
+            playerShape = pDiamond;
+        }
+
+        private void changeToTriangle()
+        {
+            playerShape = pTriangle;
+        }
+
+        private void changeToMatrix()
+        {
+            playerShape = pMatrix;
         }
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
