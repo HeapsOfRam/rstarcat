@@ -90,16 +90,18 @@ namespace ShapeShift
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
             spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(150, 0), Color.White);
-            for (int i = 0; i < player.getHealth(); i++)
+            for (int i = 0; i < player.getMaxHealth(); i++)
             {
-                spriteBatch.Draw(healthFillTexture, healthRectangle[i], Color.White);
+                fillHealth(i, spriteBatch);
             }
-            for (int i = player.getHealth(); i < player.getMaxHealth(); i++)
-            {
-                spriteBatch.Draw(healthUnfillTexture, healthRectangle[i], Color.White);
-            }
+        }
 
-
+        public void fillHealth(int step, SpriteBatch spriteBatch)
+        {
+            if (step > player.getHealth() - 1)
+                spriteBatch.Draw(healthUnfillTexture, healthRectangle[step], Color.White);
+            else
+                spriteBatch.Draw(healthFillTexture, healthRectangle[step], Color.White);
         }
     }
 }
