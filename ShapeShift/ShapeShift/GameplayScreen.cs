@@ -89,7 +89,7 @@ namespace ShapeShift
             base.Draw(spriteBatch);
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
-            spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(150, 0), Color.White);
+            spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(175, 5), Color.White);
             for (int i = 0; i < player.getMaxHealth(); i++)
             {
                 fillHealth(i, spriteBatch);

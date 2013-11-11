@@ -1,5 +1,4 @@
 Content\CircleSheet.xnb
-Content\Lain.xnb
 Content\lainobstacle.xnb
 Content\knights.xnb
 Content\lainbackground.xnb
@@ -102,3 +101,4 @@ Content\MenuFont.xnb
 Content\TitleFont.xnb
 Content\White Denim - D - At The Farm.xnb
 Content\White Denim - D - At The Farm.wma
+Content\Lain.xnb

@@ -49,13 +49,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lain.jpg">
-      <Name>Lain</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="lainobstacle.jpg">
       <Name>lainobstacle</Name>
       <Importer>TextureImporter</Importer>
@@ -634,6 +627,13 @@
   <ItemGroup>
     <Compile Include="TriangleShadow.png">
       <Name>TriangleShadow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Lain.png">
+      <Name>Lain</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
