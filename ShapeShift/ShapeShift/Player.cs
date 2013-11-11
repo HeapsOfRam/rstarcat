@@ -51,7 +51,7 @@ namespace ShapeShift
             pMatrix   = new Matrix(content);
 
             maxHealth = FULL;
-            health    = maxHealth - 2;
+            health    = maxHealth;
 
             playerShape = pDiamond;            
 
