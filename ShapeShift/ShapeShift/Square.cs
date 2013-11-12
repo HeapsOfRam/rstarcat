@@ -20,6 +20,7 @@ namespace ShapeShift
         private Texture2D dashSouthWestTexture;
         private Texture2D dashNorthEastTexture;
         private Texture2D dashNorthWestTexture;
+        private Texture2D squareHitTexture;
         
         private SpriteSheetAnimation idleAnimation;
         private SpriteSheetAnimation dashIdleAnimation;
@@ -31,6 +32,7 @@ namespace ShapeShift
         private SpriteSheetAnimation dashSouthWestAnimation;
         private SpriteSheetAnimation dashNorthEastAnimation;
         private SpriteSheetAnimation dashNorthWestAnimation;
+        private SpriteSheetAnimation squareHitAnimation;
 
         private const float DASH_DISTANCE = 30;
 
@@ -55,6 +57,7 @@ namespace ShapeShift
             dashNorthWestTexture = content.Load<Texture2D>("Square/SquareDashNorthWestSpriteSheet");
             dashNorthEastTexture = content.Load<Texture2D>("Square/SquareDashNorthEastSpriteSheet");
             dashSouthWestTexture = content.Load<Texture2D>("Square/SquareDashSouthWestSpriteSheet");
+            squareHitTexture = content.Load<Texture2D>("Square/SquareHitSpriteSheet");
 
             idleAnimation = new SpriteSheetAnimation(this,true);
             idleAnimation.LoadContent(content, squareTexture, "", new Vector2(0, 0));
@@ -97,6 +100,10 @@ namespace ShapeShift
             dashNorthWestAnimation.LoadContent(content, dashNorthWestTexture, "", new Vector2(0, 0));
             dashNorthWestAnimation.IsEnabled = false;
 
+            squareHitAnimation = new SpriteSheetAnimation(this, false);
+            squareHitAnimation.LoadContent(content, squareHitTexture, "", new Vector2(0, 0));
+            squareHitAnimation.IsEnabled = false;
+
             animations.Add(idleAnimation);
             animations.Add(dashIdleAnimation);
             animations.Add(dashEastAnimation);
@@ -107,6 +114,7 @@ namespace ShapeShift
             animations.Add(dashSouthWestAnimation);
             animations.Add(dashNorthEastAnimation);
             animations.Add(dashNorthWestAnimation);
+            animations.Add(squareHitAnimation);
 
             dashAnimations.Add(dashEastAnimation);
             dashAnimations.Add(dashWestAnimation);      
@@ -121,6 +129,10 @@ namespace ShapeShift
 
         public void attack()
         {
+        }
+
+        public override void hit (){
+            squareHitAnimation.IsEnabled = true; 
         }
 
         public override Texture2D getTexture()
@@ -164,6 +176,14 @@ namespace ShapeShift
 
             resetDashAnimations();
         }
+
+        public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)
+        {
+            spriteSheetAnimation.IsEnabled = false;
+
+
+        }
+
 
         internal void setDirectionMap(Boolean[] directions)
         {
@@ -216,6 +236,7 @@ namespace ShapeShift
                 currentDashAnimation.CurrentFrame = dashIdleAnimation.CurrentFrame;
 
             }
+
         }
 
         public void resetDashAnimations()
@@ -223,6 +244,8 @@ namespace ShapeShift
             foreach (SpriteSheetAnimation s in dashAnimations)
                 s.IsEnabled = false;
         }
+
+   
 
     }
 }

@@ -22,11 +22,13 @@ namespace ShapeShift
         private Texture2D shieldDeployCircleTexture;// Texture containing the deploy sheild spritesheet image
         private Texture2D shieldIdleTexture;        // Texture containing the shield idle spritesheet image
         private Texture2D shieldFadeTexture;        // Texture containing the shield fade spritesheet image
+        private Texture2D circleHitTexture;
 
         private SpriteSheetAnimation idleAnimation; 
         private SpriteSheetAnimation deployAnimation;
         private SpriteSheetAnimation shieldIdleAnimation;
         private SpriteSheetAnimation shieldFadeAnimation;
+        private SpriteSheetAnimation circleHitAnimation;
         
         public bool shielded;
 
@@ -40,6 +42,7 @@ namespace ShapeShift
             shieldDeployCircleTexture = content.Load<Texture2D>("Circle/CircleDeployShieldSpriteSheet");
             shieldIdleTexture = content.Load<Texture2D>("Circle/CircleShieldIdleSpriteSheet");
             shieldFadeTexture = content.Load<Texture2D>("Circle/CircleFadeSpriteSheet");
+            circleHitTexture = content.Load<Texture2D>("Circle/CircleHitSpriteSheet");
 
             // Create new SpriteSheetAnimation objects for each texture and add them to the animation list
             idleAnimation = new SpriteSheetAnimation(this, true);
@@ -58,11 +61,16 @@ namespace ShapeShift
             shieldFadeAnimation.LoadContent(content, shieldFadeTexture, "", new Vector2(0, 0));
             shieldFadeAnimation.IsEnabled = false;
 
+            circleHitAnimation = new SpriteSheetAnimation(this, false);
+            circleHitAnimation.LoadContent(content, circleHitTexture, "", new Vector2(0, 0));
+            circleHitAnimation.IsEnabled = false;
+
 
             animations.Add(idleAnimation);
             animations.Add(deployAnimation);
             animations.Add(shieldIdleAnimation);
             animations.Add(shieldFadeAnimation);
+            animations.Add(circleHitAnimation);
         }
 
         public override Texture2D getTexture()
@@ -145,6 +153,11 @@ namespace ShapeShift
 
             return (cornerDistanceSq <= (Math.Pow(radius, 2)));
 
+        }
+
+        public override void hit()
+        {
+            circleHitAnimation.IsEnabled = true;
         }
     }
 }

@@ -12,9 +12,11 @@ namespace ShapeShift
     {
         private Texture2D triangleTexture;
         private Texture2D triangleShadowTexture;
+        private Texture2D triangleHitTexture;
         
         private SpriteSheetAnimation idleAnimation;
         private SpriteSheetAnimation triangleShadowAnimation;
+        private SpriteSheetAnimation triangleHitAnimation;
 
         public Triangle(ContentManager content)
         {
@@ -28,8 +30,8 @@ namespace ShapeShift
 
 
             triangleTexture = content.Load<Texture2D>("Triangle/TriangleIdleSpriteSheet");
-
             triangleShadowTexture = content.Load<Texture2D>("Triangle/TriangleShadow");
+            triangleHitTexture = content.Load<Texture2D>("Triangle/TrianglehitSpriteSheet");
 
 
             idleAnimation = new SpriteSheetAnimation(this,true, 92, new Vector2 (45,54));
@@ -40,9 +42,14 @@ namespace ShapeShift
             triangleShadowAnimation.LoadContent(content, triangleShadowTexture, "", new Vector2(0, 0));
             triangleShadowAnimation.IsEnabled = false;
 
+            triangleHitAnimation = new SpriteSheetAnimation(this, false, 92, new Vector2(45, 54));
+            triangleHitAnimation.LoadContent(content, triangleHitTexture, "", new Vector2(0, 0));
+            triangleHitAnimation.IsEnabled = false;
+
 
             animations.Add(idleAnimation);
             animations.Add(triangleShadowAnimation);
+            animations.Add(triangleHitAnimation);
         }
 
         public override Texture2D getTexture()
@@ -53,6 +60,8 @@ namespace ShapeShift
         public void PreformRotate()
         {
             idleAnimation.PreformRotate(6.0f);
+            triangleHitAnimation.PreformRotate(6.0f);
+            triangleShadowAnimation.PreformRotate(6.0f);
             idleAnimation.origin = new Vector2(45, 54);
 
         }
@@ -69,38 +78,17 @@ namespace ShapeShift
 
         }
 
-
-        static bool IntersectPixels(Rectangle rectangleA, Color[] dataA,
-                                    Rectangle rectangleB, Color[] dataB)
+        public override void hit()
         {
-            // Find the bounds of the rectangle intersection
-            int top = Math.Max(rectangleA.Top, rectangleB.Top);
-            int bottom = Math.Min(rectangleA.Bottom, rectangleB.Bottom);
-            int left = Math.Max(rectangleA.Left, rectangleB.Left);
-            int right = Math.Min(rectangleA.Right, rectangleB.Right);
-
-            // Check every point within the intersection bounds
-            for (int y = top; y < bottom; y++)
-            {
-                for (int x = left; x < right; x++)
-                {
-                    // Get the color of both pixels at this point
-                    Color colorA = dataA[(x - rectangleA.Left) +
-                                         (y - rectangleA.Top) * rectangleA.Width];
-                    Color colorB = dataB[(x - rectangleB.Left) +
-                                         (y - rectangleB.Top) * rectangleB.Width];
-
-                    // If both pixels are not completely transparent,
-                    if (colorA.A != 0 && colorB.A != 0)
-                    {
-                        // then an intersection has been found
-                        return true;
-                    }
-                }
-            }
-
-            // No intersection found
-            return false;
+            triangleHitAnimation.IsEnabled = true;
         }
+
+        public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)
+        {
+            spriteSheetAnimation.IsEnabled = false;
+
+          
+        }
+
     }
 }

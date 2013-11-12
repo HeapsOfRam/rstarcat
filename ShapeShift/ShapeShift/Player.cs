@@ -193,43 +193,25 @@ namespace ShapeShift
             if (playerShape == pMatrix || playerShape == pTriangle)
                 pRotate();
             if (playerShape == pDiamond)
-            {
-                if (pDiamond.mineDeployed())
-                {
-
-                    if (!pDiamond.mineDropped())
-                    {
-                        pDiamond.dropMine();
-                    }
-                }
-                else
-                {
-                    pDiamond.deployMine();
-                }
-            }
+                pDiamond.deployMine();
         }
 
         public void eAction()
         {
             if (playerShape == pCircle)
+            {
                 premoveShield();
+                pCircle.hit();
+            }
             if (playerShape == pDiamond)
             {
-                if (pDiamond.turretDeployed())
-                {
-
-                    if (!pDiamond.turretDropped())
-                    {
-                        pDiamond.dropTurret();
-                    }
-                }
-                else
-                {
-                    pDiamond.deployTurret();
-                }
+                //pDiamond.deployTurret();
+                //pDiamond.hit();
             }
             if (playerShape == pMatrix)
                 pMRotate();
+            if (playerShape == pTriangle)
+                pTriangle.hit();
         }
 
 
@@ -445,7 +427,10 @@ namespace ShapeShift
                         
                         //Calls Collides method in shape class, in which each shape will check collisions uniquely 
                         if (playerShape.Collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        {
                             position = moveAnimation.Position;
+                            playerShape.hit();
+                        }
       
                     }
                 }

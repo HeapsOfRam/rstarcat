@@ -16,13 +16,15 @@ namespace ShapeShift
         private Texture2D diamondShadowTexture;
         private Texture2D diamondDeployTurretTexture;
         private Texture2D diamondTurretIdleTexture;
+        private Texture2D diamondHitTexture;
 
         private SpriteSheetAnimation idleAnimation;
         private SpriteSheetAnimation deployMineAnimation;
         private SpriteSheetAnimation diamondMineIdleAnimation;
         private SpriteSheetAnimation diamondShadowAnimation;
         private SpriteSheetAnimation diamondTurretAnimation;
-        private SpriteSheetAnimation diamondTurretIdleAnimation; 
+        private SpriteSheetAnimation diamondTurretIdleAnimation;
+        private SpriteSheetAnimation diamondHitAnimation;
 
         private Boolean droppedMine   = false;
         private Boolean droppedTurret = false;
@@ -42,6 +44,7 @@ namespace ShapeShift
             diamondShadowTexture = content.Load<Texture2D>("Diamond/DiamondShadow");
             diamondTurretIdleTexture = content.Load<Texture2D>("Diamond/DiamondTurretIdleSpriteSheet");
             diamondDeployTurretTexture = content.Load<Texture2D>("Diamond/DiamondTurretSpriteSheet");
+            diamondHitTexture = content.Load<Texture2D>("Diamond/DiamondHitSpriteSheet");
             
             idleAnimation = new SpriteSheetAnimation(this,true);
             idleAnimation.LoadContent(content, diamondTexture, "", new Vector2(0, 0));
@@ -67,6 +70,10 @@ namespace ShapeShift
             diamondTurretIdleAnimation.LoadContent(content, diamondTurretIdleTexture, "", new Vector2(0, 0));
             diamondTurretIdleAnimation.IsEnabled = false;
 
+            diamondHitAnimation = new SpriteSheetAnimation(this, false);
+            diamondHitAnimation.LoadContent(content, diamondHitTexture, "", new Vector2(0, 0));
+            diamondHitAnimation.IsEnabled = false;
+
 
             animations.Add(idleAnimation);
             animations.Add(deployMineAnimation);
@@ -74,6 +81,7 @@ namespace ShapeShift
             animations.Add(diamondShadowAnimation);
             animations.Add(diamondTurretIdleAnimation);
             animations.Add(diamondTurretAnimation);
+            animations.Add(diamondHitAnimation);
            
 
         }
@@ -81,6 +89,12 @@ namespace ShapeShift
         public void attack()
         {
         }
+
+        public override void hit()
+        {
+            diamondHitAnimation.IsEnabled = true;
+        }
+
 
         public void deployMine()
         {

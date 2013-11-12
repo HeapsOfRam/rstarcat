@@ -902,6 +902,42 @@
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondTurretSpriteSheet.xnb</Output>
       <Time>2013-11-11T17:36:45.8477867-05:00</Time>
     </Item>
+    <Item>
+      <Source>Triangle\TriangleHitSpriteSheet.png</Source>
+      <Name>Triangle\TriangleHitSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleHitSpriteSheet.xnb</Output>
+      <Time>2013-11-11T18:46:24.8068095-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Circle\CircleHitSpriteSheet.png</Source>
+      <Name>Circle\CircleHitSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleHitSpriteSheet.xnb</Output>
+      <Time>2013-11-11T19:02:45.5919072-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Diamond\DiamondHitSpriteSheet.png</Source>
+      <Name>Diamond\DiamondHitSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondHitSpriteSheet.xnb</Output>
+      <Time>2013-11-11T19:11:05.7945171-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Square\SquareHitSpriteSheet.png</Source>
+      <Name>Square\SquareHitSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareHitSpriteSheet.xnb</Output>
+      <Time>2013-11-12T13:08:23.8692392-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

@@ -66,6 +66,10 @@ namespace ShapeShift
         {
             return collision;
         }
+
+        public virtual void hit()
+        {
+        }
         
 
         public static bool IntersectPixels(Rectangle rectangleA, Color[] dataA, Rectangle rectangleB, Color[] dataB)

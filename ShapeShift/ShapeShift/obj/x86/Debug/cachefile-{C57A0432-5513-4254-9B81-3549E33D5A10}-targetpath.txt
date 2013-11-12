@@ -99,3 +99,7 @@ Content\Music\White Denim - D - At The Farm.wma
 Content\Matrix\MatrixShadow.xnb
 Content\Diamond\DiamondTurretIdleSpriteSheet.xnb
 Content\Diamond\DiamondTurretSpriteSheet.xnb
+Content\Triangle\TriangleHitSpriteSheet.xnb
+Content\Circle\CircleHitSpriteSheet.xnb
+Content\Diamond\DiamondHitSpriteSheet.xnb
+Content\Square\SquareHitSpriteSheet.xnb
