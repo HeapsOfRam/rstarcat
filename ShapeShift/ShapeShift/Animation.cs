@@ -18,7 +18,7 @@ namespace ShapeShift
         protected SpriteFont font;
         protected Color color;
         protected Rectangle sourceRect;
-        protected float rotation, scale, axis;
+        public float rotation, scale, axis;
         public Vector2 origin, position;
         protected ContentManager content;
         protected bool isActive;

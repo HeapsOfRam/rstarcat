@@ -237,12 +237,12 @@ namespace ShapeShift
             if(playerShape == pTriangle)
                 pTriangle.PreformRotate();
             if(playerShape == pMatrix)
-                pMatrix.PreformRotate();
+                pMatrix.PreformRotate(false);
         }
 
         private void pMRotate()
         {
-            pMatrix.PreformRotate(3);
+            pMatrix.PreformRotate(true);
         }
 
         private void pdeployMine()

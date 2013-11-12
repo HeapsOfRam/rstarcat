@@ -59,9 +59,9 @@ namespace ShapeShift
 
         public void PreformRotate()
         {
-            idleAnimation.PreformRotate(6.0f);
-            triangleHitAnimation.PreformRotate(6.0f);
-            triangleShadowAnimation.PreformRotate(6.0f);
+            idleAnimation.PreformRotate(6.0f, false);
+            triangleHitAnimation.PreformRotate(6.0f, false);
+            triangleShadowAnimation.PreformRotate(6.0f, false);
             idleAnimation.origin = new Vector2(45, 54);
 
         }

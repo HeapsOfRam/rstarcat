@@ -25,7 +25,8 @@ namespace ShapeShift
         private Shape shape;
         private Boolean isRepeatable = true;
 
-        private Boolean rotate = false;
+        public Boolean rotate = false;
+        public Boolean resetAfterRotate = false;
 
         private int rotateCounter = 0;
 
@@ -145,7 +146,8 @@ namespace ShapeShift
                 {
                     rotateCounter = 0;
                     rotate = false;
-
+                    if (resetAfterRotate)
+                        rotation = 0.0f;
                 }
 
 
@@ -181,10 +183,12 @@ namespace ShapeShift
 
         }
 
-        internal void PreformRotate(float rotationSpeed)
+        internal void PreformRotate(float rotationSpeed, Boolean resetAfterRotate)
         {
             rotate = true;
             this.rotationSpeed = rotationSpeed;
+
+            this.resetAfterRotate = resetAfterRotate;
         }
     }
 }
