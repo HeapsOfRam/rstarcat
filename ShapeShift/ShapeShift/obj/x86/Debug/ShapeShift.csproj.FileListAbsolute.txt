@@ -331,3 +331,4 @@ C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowLeft.xnb
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowRight.xnb
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotSpriteSheet.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotHitSpriteSheet.xnb

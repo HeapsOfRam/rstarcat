@@ -899,7 +899,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareHitSpriteSheet.xnb</Output>
-      <Time>2013-11-13T12:33:28.8125477-05:00</Time>
+      <Time>2013-11-13T13:58:56.1818164-05:00</Time>
     </Item>
     <Item>
       <Source>Triangle\TriangleShadowDown.png</Source>
@@ -917,7 +917,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowLeft.xnb</Output>
-      <Time>2013-11-13T12:26:54.040968-05:00</Time>
+      <Time>2013-11-13T13:58:56.1948171-05:00</Time>
     </Item>
     <Item>
       <Source>Triangle\TriangleShadowRight.png</Source>
@@ -926,7 +926,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowRight.xnb</Output>
-      <Time>2013-11-13T12:28:09.6732939-05:00</Time>
+      <Time>2013-11-13T13:58:56.1958172-05:00</Time>
     </Item>
     <Item>
       <Source>Fonts\Font1.spritefont</Source>
@@ -972,7 +972,16 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotSpriteSheet.xnb</Output>
-      <Time>2013-11-13T11:35:10.6664651-05:00</Time>
+      <Time>2013-11-13T15:39:02.0159408-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Square\SquareShotHitSpriteSheet.png</Source>
+      <Name>Square\SquareShotHitSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotHitSpriteSheet.xnb</Output>
+      <Time>2013-11-13T16:46:10.1986565-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

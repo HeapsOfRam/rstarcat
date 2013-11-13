@@ -249,7 +249,7 @@ namespace ShapeShift
 
         private void pMRotate()
         {
-            pMatrix.PreformRotate(true);
+                pMatrix.PreformRotate(true);
         }
 
         private void pdeployMine()

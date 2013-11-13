@@ -10,6 +10,7 @@ namespace ShapeShift
 {
     class Square : Shape
     {
+        #region Textures
         protected Texture2D squareTexture;
         protected Texture2D dashIdleTexture;
         protected Texture2D dashEastTexture;
@@ -22,7 +23,10 @@ namespace ShapeShift
         protected Texture2D dashNorthWestTexture;
         protected Texture2D squareHitTexture;
         protected Texture2D squareShotTexture;
+        protected Texture2D squareShotHitTexture;
+        #endregion
 
+        #region Animations
         protected SpriteSheetAnimation idleAnimation;
         protected SpriteSheetAnimation dashIdleAnimation;
         protected SpriteSheetAnimation dashEastAnimation;
@@ -35,6 +39,9 @@ namespace ShapeShift
         protected SpriteSheetAnimation dashNorthWestAnimation;
         protected SpriteSheetAnimation squareHitAnimation;
         protected SpriteSheetAnimation squareShotAnimation;
+        protected SpriteSheetAnimation squareShotHitAnimation;
+        #endregion
+
 
         public Boolean dashing = false;
         public Boolean firing = false;
@@ -46,8 +53,9 @@ namespace ShapeShift
         protected int X_OFFSET;
         protected int Y_OFFSET;
         
-        protected const int PROJECTILE_SPEED = 200;
+        protected const int PROJECTILE_SPEED = 10;
         protected const float DASH_DISTANCE = 30;
+        protected const int SWITCH_FRAME = 10;
 
         public Square(ContentManager content)
         {
@@ -71,6 +79,7 @@ namespace ShapeShift
             dashSouthWestTexture = content.Load<Texture2D>("Square/SquareDashSouthWestSpriteSheet");
             squareHitTexture = content.Load<Texture2D>("Square/SquareHitSpriteSheet");
             squareShotTexture = content.Load<Texture2D>("Square/SquareShotSpriteSheet");
+            squareShotHitTexture = content.Load<Texture2D>("Square/SquareShotHitSpriteSheet");
             #endregion
 
             #region Create Animations
@@ -122,6 +131,10 @@ namespace ShapeShift
             squareHitAnimation = new SpriteSheetAnimation(this, false);
             squareHitAnimation.LoadContent(content, squareHitTexture, "", new Vector2(0, 0));
             squareHitAnimation.IsEnabled = false;
+
+            squareShotHitAnimation = new SpriteSheetAnimation(this, false);
+            squareShotHitAnimation.LoadContent(content, squareShotHitTexture, "", new Vector2(0, 0));
+            squareShotHitAnimation.IsEnabled = false;
             #endregion
 
             animations.Add(idleAnimation);
@@ -161,12 +174,39 @@ namespace ShapeShift
 
         public void shoot()
         {
-            squareShotAnimation.IsEnabled = true;
-            firing = true;
+            if (!squareShotAnimation.IsEnabled)
+            {
+                squareShotAnimation.IsEnabled = true;
+                squareShotAnimation.position = idleAnimation.position;
+                firing = true;
+            }
         }
 
         public override bool Collides(Vector2 position, Rectangle rectangle, Color[] Data)
         {
+
+            if (firing)
+            {
+                if (!(squareShotAnimation.position.X - 40 + rectangle.Width * 2 < rectangle.X ||
+                   squareShotAnimation.position.X + 40 > rectangle.X + rectangle.Width ||
+                   squareShotAnimation.position.Y - Y_OFFSET +10 + rectangle.Height * 2 < rectangle.Y ||
+                   squareShotAnimation.position.Y + Y_OFFSET  +10> rectangle.Y + rectangle.Height))
+                {
+                    squareShotAnimation.IsEnabled = false;
+                    squareShotHitAnimation.position.X = squareShotAnimation.position.X;
+                    squareShotHitAnimation.position.Y = squareShotAnimation.position.Y;
+                    squareShotHitAnimation.IsEnabled = true;
+                    firing = false;
+
+                }
+            }
+               
+            
+            
+            
+            
+            
+            
             if (position.X - X_OFFSET + rectangle.Width * 2 < rectangle.X  ||
                 position.X + X_OFFSET > rectangle.X + rectangle.Width      ||
                 position.Y - Y_OFFSET + rectangle.Height * 2 < rectangle.Y ||
@@ -174,6 +214,8 @@ namespace ShapeShift
                 return false;  
             else
                 return true;
+
+           
         }
 
         public void dash(Player player)
@@ -202,14 +244,17 @@ namespace ShapeShift
         public void Update(GameTime gameTime)
         {
             squareShotAnimation.Update(gameTime);
+            squareShotHitAnimation.Update(gameTime);
             if (firing)
             {
                 frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-                if (frameCounter >= PROJECTILE_SPEED)
+                if (frameCounter >= SWITCH_FRAME)
                 {
                     frameCounter = 0;
-                    squareShotAnimation.position.X++;
+
+                    if (!squareShotHitAnimation.IsEnabled)
+                        squareShotAnimation.position.Y -= PROJECTILE_SPEED;
                 }
             }
         }
@@ -282,6 +327,9 @@ namespace ShapeShift
 
             if (squareShotAnimation.IsEnabled)
                 squareShotAnimation.Draw(spriteBatch);
+
+            if (squareShotHitAnimation.IsEnabled)
+                squareShotHitAnimation.Draw(spriteBatch);
         }
 
         public override void DrawOnlyIdle(SpriteBatch spriteBatch)
