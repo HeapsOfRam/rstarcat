@@ -917,7 +917,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowLeft.xnb</Output>
-      <Time>2013-11-13T09:53:37.5849608-05:00</Time>
+      <Time>2013-11-13T12:26:54.040968-05:00</Time>
     </Item>
     <Item>
       <Source>Triangle\TriangleShadowRight.png</Source>
@@ -926,7 +926,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowRight.xnb</Output>
-      <Time>2013-11-13T09:53:37.5979616-05:00</Time>
+      <Time>2013-11-13T12:28:09.6732939-05:00</Time>
     </Item>
     <Item>
       <Source>Fonts\Font1.spritefont</Source>

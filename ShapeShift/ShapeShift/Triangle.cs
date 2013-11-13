@@ -18,21 +18,27 @@ namespace ShapeShift
         private Texture2D triangleHitTexture;
         private Texture2D triangleShadowCurrentTexture;
         
-        private SpriteSheetAnimation idleAnimation;
+        private const int HEIGHT = 92;
+        private const int WIDTH = 92;
+        private const float ROTATION_SPEED = 6.0f;
 
+        private int shadowCount = 0;
+
+        private Vector2 rotatationCenter = new Vector2(45.6667f, 53.6667f);
+
+        private SpriteSheetAnimation triangleIdleAnimation;
         private SpriteSheetAnimation triangleShadowUpAnimation;
         private SpriteSheetAnimation triangleShadowDownAnimation;
         private SpriteSheetAnimation triangleShadowLeftAnimation;
         private SpriteSheetAnimation triangleShadowRightAnimation;
-
         private SpriteSheetAnimation triangleHitAnimation;
 
-        private int shadowCount = 0;
         public Triangle(ContentManager content)
         {
-
+            // Create list that will hold animations
             animations = new List<SpriteSheetAnimation>();
 
+            #region Loading Textures
 
             triangleTexture = content.Load<Texture2D>("Triangle/TriangleIdleSpriteSheet");
             triangleShadowUpTexture = content.Load<Texture2D>("Triangle/TriangleShadowUp");
@@ -41,31 +47,40 @@ namespace ShapeShift
             triangleShadowRightTexture = content.Load<Texture2D>("Triangle/TriangleShadowRight");
             triangleHitTexture = content.Load<Texture2D>("Triangle/TrianglehitSpriteSheet");
 
+            #endregion 
+
+            // Triangle starts facing up 
             triangleShadowCurrentTexture = triangleShadowUpTexture;
 
-            idleAnimation = new SpriteSheetAnimation(this,true, 92, new Vector2 (45.6667f,53.6667f));
-            idleAnimation.LoadContent(content, triangleTexture, "", new Vector2(0, 0));
-            idleAnimation.IsEnabled = true;
+            #region Create Animations
 
-            triangleShadowUpAnimation = new SpriteSheetAnimation(this, true, 92, new Vector2(45.6667f, 53.6667f));
+            triangleIdleAnimation = new SpriteSheetAnimation(this, true, WIDTH, rotatationCenter);
+            triangleIdleAnimation.LoadContent(content, triangleTexture, "", new Vector2(0, 0));
+            triangleIdleAnimation.IsEnabled = true;
+
+            triangleShadowUpAnimation = new SpriteSheetAnimation(this, true, WIDTH, rotatationCenter);
             triangleShadowUpAnimation.LoadContent(content, triangleShadowUpTexture, "", new Vector2(0, 0));
             triangleShadowUpAnimation.IsEnabled = false;
-            triangleShadowDownAnimation = new SpriteSheetAnimation(this, true, 92, new Vector2(45.6667f, 53.6667f));
+
+            triangleShadowDownAnimation = new SpriteSheetAnimation(this, true, WIDTH, rotatationCenter);
             triangleShadowDownAnimation.LoadContent(content, triangleShadowDownTexture, "", new Vector2(0, 0));
             triangleShadowDownAnimation.IsEnabled = false;
-            triangleShadowLeftAnimation = new SpriteSheetAnimation(this, true, 92, new Vector2(45.6667f, 53.6667f));
+
+            triangleShadowLeftAnimation = new SpriteSheetAnimation(this, true, WIDTH, rotatationCenter);
             triangleShadowLeftAnimation.LoadContent(content, triangleShadowLeftTexture, "", new Vector2(0, 0));
             triangleShadowLeftAnimation.IsEnabled = false;
-            triangleShadowRightAnimation = new SpriteSheetAnimation(this, true, 92, new Vector2(45.6667f, 53.6667f));
+
+            triangleShadowRightAnimation = new SpriteSheetAnimation(this, true, WIDTH, rotatationCenter);
             triangleShadowRightAnimation.LoadContent(content, triangleShadowRightTexture, "", new Vector2(0, 0));
             triangleShadowRightAnimation.IsEnabled = false;
 
-            triangleHitAnimation = new SpriteSheetAnimation(this, false, 92, new Vector2(45.6667f, 53.6667f));
+            triangleHitAnimation = new SpriteSheetAnimation(this, false, WIDTH, rotatationCenter);
             triangleHitAnimation.LoadContent(content, triangleHitTexture, "", new Vector2(0, 0));
             triangleHitAnimation.IsEnabled = false;
 
+            #endregion
 
-            animations.Add(idleAnimation);
+            animations.Add(triangleIdleAnimation);
             animations.Add(triangleShadowUpAnimation);
             animations.Add(triangleShadowDownAnimation);
             animations.Add(triangleShadowLeftAnimation);
@@ -80,19 +95,24 @@ namespace ShapeShift
 
         public void PreformRotate()
         {
-            if (!idleAnimation.rotate)
+            // If there isn't a rotation already taking place:
+            if (!triangleIdleAnimation.rotate)
             {
+                // If you are transitioning back to the first shadow (up):
                 if (shadowCount == 4)
                 {
-                    idleAnimation.rotation = (0.0f);
+                    // Reset the rotation variable in the animation (prevents accumulated error in collision mapping)
+                    triangleIdleAnimation.rotation = (0.0f);
                     triangleHitAnimation.rotation = (0.0f);
                 }
-      
-                idleAnimation.PreformRotate(6.0f, false);
-                triangleHitAnimation.preformRotateNoAnimation(6.0f);
-                
-                idleAnimation.origin = new Vector2(45.6667f, 53.6667f);
-                triangleHitAnimation.origin = new Vector2(45.6667f, 53.6667f);
+
+
+                triangleIdleAnimation.PreformRotate(ROTATION_SPEED, false);
+                triangleHitAnimation.preformRotateNoAnimation(ROTATION_SPEED);
+
+                triangleIdleAnimation.origin = rotatationCenter;
+                triangleHitAnimation.origin = rotatationCenter;
+               
                 shadowCount++;
 
                 switch (shadowCount)
@@ -108,20 +128,19 @@ namespace ShapeShift
                             break;
                     
                 }
-
             }
         }
 
-        //Checks to see if there is a collision 
+
         public override bool Collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
-            Rectangle rectangleA = new Rectangle((int)position.X, (int)position.Y, 92, 92);
-            Color[] dataA = new Color[92 * 92];
+            Rectangle rectangleA = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
+            
+            //gets the color data for the current shadow texture
+            Color[] dataA = new Color[WIDTH * HEIGHT];
             triangleShadowCurrentTexture.GetData(dataA);
 
             return (IntersectPixels(rectangleA, dataA, rectangleB, dataB));
-
-
         }
 
         public override void hit()
@@ -132,8 +151,6 @@ namespace ShapeShift
         public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)
         {
             spriteSheetAnimation.IsEnabled = false;
-
-          
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -152,8 +169,7 @@ namespace ShapeShift
         public override void DrawOnlyIdle(SpriteBatch spriteBatch)
         {
             base.DrawOnlyIdle(spriteBatch);
-
-            idleAnimation.Draw(spriteBatch);
+            triangleIdleAnimation.Draw(spriteBatch);
         }
     }
 }
