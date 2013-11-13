@@ -583,8 +583,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Triangle\TriangleShadow.png">
-      <Name>TriangleShadow</Name>
+    <Compile Include="Triangle\TriangleShadowUp.png">
+      <Name>TriangleShadowUp</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -639,6 +639,23 @@
   <ItemGroup>
     <Compile Include="Square\SquareHitSpriteSheet.png">
       <Name>SquareHitSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Triangle\TriangleShadowDown.png">
+      <Name>TriangleShadowDown</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Triangle\TriangleShadowLeft.png">
+      <Name>TriangleShadowLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Triangle\TriangleShadowRight.png">
+      <Name>TriangleShadowRight</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

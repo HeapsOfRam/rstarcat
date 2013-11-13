@@ -821,15 +821,6 @@
       <Time>2013-11-11T14:23:41.1279548-05:00</Time>
     </Item>
     <Item>
-      <Source>Triangle\TriangleShadow.png</Source>
-      <Name>Triangle\TriangleShadow</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadow.xnb</Output>
-      <Time>2013-11-11T14:23:41.7709916-05:00</Time>
-    </Item>
-    <Item>
       <Source>Lain.png</Source>
       <Name>Lain</Name>
       <Importer>TextureImporter</Importer>
@@ -937,6 +928,42 @@
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareHitSpriteSheet.xnb</Output>
       <Time>2013-11-12T13:08:23.8692392-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Triangle\TriangleShadowUp.png</Source>
+      <Name>Triangle\TriangleShadowUp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowUp.xnb</Output>
+      <Time>2013-11-11T14:23:41.7709916-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Triangle\TriangleShadowDown.png</Source>
+      <Name>Triangle\TriangleShadowDown</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowDown.xnb</Output>
+      <Time>2013-11-12T22:56:22.4265571-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Triangle\TriangleShadowLeft.png</Source>
+      <Name>Triangle\TriangleShadowLeft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowLeft.xnb</Output>
+      <Time>2013-11-12T22:53:13.4187464-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Triangle\TriangleShadowRight.png</Source>
+      <Name>Triangle\TriangleShadowRight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowRight.xnb</Output>
+      <Time>2013-11-12T22:52:28.7121894-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

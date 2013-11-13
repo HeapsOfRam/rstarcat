@@ -190,5 +190,17 @@ namespace ShapeShift
 
             this.resetAfterRotate = resetAfterRotate;
         }
+
+        public void preformRotateNoAnimation(float rotationSpeed)
+        {
+            int count = 0;
+
+            while (count < 15)
+            {
+                rotation += (float)Math.PI / rotationSpeed;
+                count++;
+            }
+        }
+
     }
 }

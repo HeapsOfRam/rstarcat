@@ -89,7 +89,6 @@ Content\TileSets\TileIndividuals\tile7.xnb
 Content\TileSets\TileIndividuals\tile8.xnb
 Content\TileSets\TileIndividuals\tile9.xnb
 Content\Diamond\DiamondShadow.xnb
-Content\Triangle\TriangleShadow.xnb
 Content\Lain.xnb
 Content\Fonts\Font1.xnb
 Content\Fonts\MenuFont.xnb
@@ -103,3 +102,7 @@ Content\Triangle\TriangleHitSpriteSheet.xnb
 Content\Circle\CircleHitSpriteSheet.xnb
 Content\Diamond\DiamondHitSpriteSheet.xnb
 Content\Square\SquareHitSpriteSheet.xnb
+Content\Triangle\TriangleShadowUp.xnb
+Content\Triangle\TriangleShadowDown.xnb
+Content\Triangle\TriangleShadowLeft.xnb
+Content\Triangle\TriangleShadowRight.xnb
