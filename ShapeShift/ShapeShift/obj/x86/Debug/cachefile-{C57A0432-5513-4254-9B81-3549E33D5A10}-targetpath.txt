@@ -89,12 +89,8 @@ Content\TileSets\TileIndividuals\tile7.xnb
 Content\TileSets\TileIndividuals\tile8.xnb
 Content\TileSets\TileIndividuals\tile9.xnb
 Content\Diamond\DiamondShadow.xnb
+Content\Triangle\TriangleShadowUp.xnb
 Content\Lain.xnb
-Content\Fonts\Font1.xnb
-Content\Fonts\MenuFont.xnb
-Content\Fonts\TitleFont.xnb
-Content\Music\White Denim - D - At The Farm.xnb
-Content\Music\White Denim - D - At The Farm.wma
 Content\Matrix\MatrixShadow.xnb
 Content\Diamond\DiamondTurretIdleSpriteSheet.xnb
 Content\Diamond\DiamondTurretSpriteSheet.xnb
@@ -102,7 +98,11 @@ Content\Triangle\TriangleHitSpriteSheet.xnb
 Content\Circle\CircleHitSpriteSheet.xnb
 Content\Diamond\DiamondHitSpriteSheet.xnb
 Content\Square\SquareHitSpriteSheet.xnb
-Content\Triangle\TriangleShadowUp.xnb
 Content\Triangle\TriangleShadowDown.xnb
 Content\Triangle\TriangleShadowLeft.xnb
 Content\Triangle\TriangleShadowRight.xnb
+Content\Fonts\Font1.xnb
+Content\Fonts\MenuFont.xnb
+Content\Fonts\TitleFont.xnb
+Content\Music\White Denim - D - At The Farm.xnb
+Content\Music\White Denim - D - At The Farm.wma
