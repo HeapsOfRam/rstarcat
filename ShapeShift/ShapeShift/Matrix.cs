@@ -10,37 +10,36 @@ namespace ShapeShift
 {
     class Matrix : Shape
     {
-        private Texture2D[] tileTextures;
-        private SpriteSheetAnimation[,] gridAnimations;
+        protected Texture2D[] tileTextures;
+        protected SpriteSheetAnimation[,] gridAnimations;
 
-        private Texture2D shadowTexture;
+        protected Texture2D shadowTexture;
 
-        private int matrixHeight    = 2;
-        private int matrixWidth     = 2;
-        private int offset          = 28;
-        private int currentTexture  = 0;
-        private int frameCounter;
-        private int switchFrame;
+        protected int matrixHeight    = 2;
+        protected int matrixWidth = 2;
+        protected int offset = 28;
+        protected int currentTexture = 0;
+        protected int frameCounter;
+        
 
-        public Boolean collapse = false;
+        protected Boolean collapse = false;
+        protected Boolean playback = false;
 
-        private float rotateSpeed = 15.0f;
+        protected float rotateSpeed = 15.0f;
 
-        private const int NUM_FRAMES = 36;
+        protected const int NUM_FRAMES = 36;
+        protected const int SWITCH_FRAME = 2000;
 
-        private Vector2 TILE_ROTATE_CENTER = new Vector2(11.5f, 11.5f);
+        protected Vector2 TILE_ROTATE_CENTER = new Vector2(11.5f, 11.5f);
+        protected Vector2 matrixCenter;
 
-        private Boolean playback = false;
-
-        private ContentManager content;
-        private Vector2 matrixCenter;
-
+        protected ContentManager content;
+        
         public Matrix(ContentManager content)
         {
             this.content = content;
 
             frameCounter = 0;
-            switchFrame = 2000;
 
             animations = new List<SpriteSheetAnimation>();
 
@@ -64,10 +63,7 @@ namespace ShapeShift
 
             matrixCenter = new Vector2(matrixWidth * offset/2, matrixHeight * offset/2);
 
-
-            shadowTexture = content.Load<Texture2D>("Matrix/MatrixShadow");
-
-          
+            shadowTexture = content.Load<Texture2D>("Matrix/MatrixShadow");        
         }
 
         public void attack()
@@ -91,8 +87,6 @@ namespace ShapeShift
         // 2. (true) rotate in or out of a collapsed state
         public void PreformRotate(Boolean transformRotate)
         {
-            
-
             if (!gridAnimations[0, 0].rotate)
             {
                 if (transformRotate)
@@ -139,7 +133,7 @@ namespace ShapeShift
 
             frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            if (frameCounter >= switchFrame)
+            if (frameCounter >= SWITCH_FRAME)
             {
                 frameCounter = 0;
 
@@ -207,12 +201,8 @@ namespace ShapeShift
                             collision = true;
                     }
                 }
-
                 return collision;
             }
-
-
-
         }
     }
 }

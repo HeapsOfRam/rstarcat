@@ -308,6 +308,7 @@ namespace ShapeShift
 
         private void pClearAll()
         {
+            moveSpeed = 150f;
             pClearCircle();
             pClearDiamond();
             pClearMatrix();
@@ -317,7 +318,6 @@ namespace ShapeShift
 
         private void changeToCircle()
         {
-
             premoveShield();
             playerShape = pCircle;
         }
@@ -342,13 +342,11 @@ namespace ShapeShift
         private void changeToMatrix()
         {
             playerShape = pMatrix;
-          
         }
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
             previousPosition = position;
-   
             //commented out; moved to GamePlayScreen; do we need?
             /*//MOVEMENT
             if (input.KeyDown(Keys.Right, Keys.D))
@@ -431,11 +429,9 @@ namespace ShapeShift
                             position = moveAnimation.Position;
                             playerShape.hit();
                         }
-      
                     }
                 }
             }
-
 
             // moveAnimation is used to check collisions, it is not drawn and is the same for each shape 
             // (just a rectangle corresponding to the image)
@@ -465,11 +461,10 @@ namespace ShapeShift
                     animation.Update(gameTime);
             }
 
-
+//
             if (playerShape == pMatrix)
-            {
                 pMatrix.makeMatrix();
-            }
+            
         }
 
         public override void Draw(SpriteBatch spriteBatch)
