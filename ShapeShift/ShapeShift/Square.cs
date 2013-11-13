@@ -10,50 +10,55 @@ namespace ShapeShift
 {
     class Square : Shape
     {
-        private Texture2D squareTexture;
-        private Texture2D dashIdleTexture;
-        private Texture2D dashEastTexture;
-        private Texture2D dashWestTexture;
-        private Texture2D dashSouthTexture;
-        private Texture2D dashSouthEastTexture;
-        private Texture2D dashNorthTexture;
-        private Texture2D dashSouthWestTexture;
-        private Texture2D dashNorthEastTexture;
-        private Texture2D dashNorthWestTexture;
-        private Texture2D squareHitTexture;
-        private Texture2D squareShotTexture;
-        
-        private SpriteSheetAnimation idleAnimation;
-        private SpriteSheetAnimation dashIdleAnimation;
-        private SpriteSheetAnimation dashEastAnimation;
-        private SpriteSheetAnimation dashWestAnimation;
-        private SpriteSheetAnimation dashNorthAnimation;
-        private SpriteSheetAnimation dashSouthAnimation;
-        private SpriteSheetAnimation dashSouthEastAnimation;
-        private SpriteSheetAnimation dashSouthWestAnimation;
-        private SpriteSheetAnimation dashNorthEastAnimation;
-        private SpriteSheetAnimation dashNorthWestAnimation;
-        private SpriteSheetAnimation squareHitAnimation;
-        private SpriteSheetAnimation squareShotAnimation;
+        protected Texture2D squareTexture;
+        protected Texture2D dashIdleTexture;
+        protected Texture2D dashEastTexture;
+        protected Texture2D dashWestTexture;
+        protected Texture2D dashSouthTexture;
+        protected Texture2D dashSouthEastTexture;
+        protected Texture2D dashNorthTexture;
+        protected Texture2D dashSouthWestTexture;
+        protected Texture2D dashNorthEastTexture;
+        protected Texture2D dashNorthWestTexture;
+        protected Texture2D squareHitTexture;
+        protected Texture2D squareShotTexture;
 
-        private const float DASH_DISTANCE = 30;
+        protected SpriteSheetAnimation idleAnimation;
+        protected SpriteSheetAnimation dashIdleAnimation;
+        protected SpriteSheetAnimation dashEastAnimation;
+        protected SpriteSheetAnimation dashWestAnimation;
+        protected SpriteSheetAnimation dashNorthAnimation;
+        protected SpriteSheetAnimation dashSouthAnimation;
+        protected SpriteSheetAnimation dashSouthEastAnimation;
+        protected SpriteSheetAnimation dashSouthWestAnimation;
+        protected SpriteSheetAnimation dashNorthEastAnimation;
+        protected SpriteSheetAnimation dashNorthWestAnimation;
+        protected SpriteSheetAnimation squareHitAnimation;
+        protected SpriteSheetAnimation squareShotAnimation;
 
         public Boolean dashing = false;
         public Boolean firing = false;
 
-        private List<SpriteSheetAnimation> dashAnimations;
+        protected List<SpriteSheetAnimation> dashAnimations;
 
         protected int frameCounter;
+
+        protected int X_OFFSET;
+        protected int Y_OFFSET;
         
-        private const int PROJECTILE_SPEED = 200;
+        protected const int PROJECTILE_SPEED = 200;
+        protected const float DASH_DISTANCE = 30;
 
         public Square(ContentManager content)
         {
+
             X_OFFSET = 24;
             Y_OFFSET = 24;
+
             animations = new List<SpriteSheetAnimation>();
             dashAnimations = new List<SpriteSheetAnimation>();
 
+            #region Load Textures
             squareTexture = content.Load<Texture2D>("Square/SquareIdleSpriteSheet");
             dashIdleTexture = content.Load<Texture2D>("Square/SquareDashIdleSpriteSheet");
             dashEastTexture = content.Load<Texture2D>("Square/SquareDashRightSpriteSheet");
@@ -66,7 +71,9 @@ namespace ShapeShift
             dashSouthWestTexture = content.Load<Texture2D>("Square/SquareDashSouthWestSpriteSheet");
             squareHitTexture = content.Load<Texture2D>("Square/SquareHitSpriteSheet");
             squareShotTexture = content.Load<Texture2D>("Square/SquareShotSpriteSheet");
+            #endregion
 
+            #region Create Animations
             idleAnimation = new SpriteSheetAnimation(this,true);
             idleAnimation.LoadContent(content, squareTexture, "", new Vector2(0, 0));
             idleAnimation.IsEnabled = true;
@@ -115,6 +122,7 @@ namespace ShapeShift
             squareHitAnimation = new SpriteSheetAnimation(this, false);
             squareHitAnimation.LoadContent(content, squareHitTexture, "", new Vector2(0, 0));
             squareHitAnimation.IsEnabled = false;
+            #endregion
 
             animations.Add(idleAnimation);
             animations.Add(dashIdleAnimation);
@@ -127,7 +135,6 @@ namespace ShapeShift
             animations.Add(dashNorthEastAnimation);
             animations.Add(dashNorthWestAnimation);
             animations.Add(squareHitAnimation);
-            //animations.Add(squareShotAnimation);
 
             dashAnimations.Add(dashEastAnimation);
             dashAnimations.Add(dashWestAnimation);      
@@ -137,7 +144,6 @@ namespace ShapeShift
             dashAnimations.Add(dashSouthWestAnimation);
             dashAnimations.Add(dashNorthEastAnimation);
             dashAnimations.Add(dashNorthWestAnimation);
-
         }
 
         public void attack()
@@ -161,20 +167,13 @@ namespace ShapeShift
 
         public override bool Collides(Vector2 position, Rectangle rectangle, Color[] Data)
         {
-
-            if (position.X - X_OFFSET + rectangle.Width * 2 < rectangle.X ||
-                position.X + X_OFFSET > rectangle.X + rectangle.Width ||
+            if (position.X - X_OFFSET + rectangle.Width * 2 < rectangle.X  ||
+                position.X + X_OFFSET > rectangle.X + rectangle.Width      ||
                 position.Y - Y_OFFSET + rectangle.Height * 2 < rectangle.Y ||
                 position.Y + Y_OFFSET > rectangle.Y + rectangle.Height)
-            {
-                return false;
-            }
+                return false;  
             else
-            {
                 return true;
-            }
-
-
         }
 
         public void dash(Player player)
@@ -198,8 +197,6 @@ namespace ShapeShift
         public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)
         {
             spriteSheetAnimation.IsEnabled = false;
-
-
         }
 
         public void Update(GameTime gameTime)
@@ -212,22 +209,16 @@ namespace ShapeShift
                 if (frameCounter >= PROJECTILE_SPEED)
                 {
                     frameCounter = 0;
-
                     squareShotAnimation.position.X++;
-
-
                 }
             }
         }
 
-
-        internal void setDirectionMap(Boolean[] directions)
+        public void setDirectionMap(Boolean[] directions)
         {
-
             if (dashing)
             {
                 SpriteSheetAnimation currentDashAnimation = dashIdleAnimation;
-
                 resetDashAnimations();
 
                 if (directions[0])
@@ -248,7 +239,6 @@ namespace ShapeShift
                     else
                         currentDashAnimation = dashWestAnimation;
                 }
-
                 if (directions[2])
                 {
                     if (directions[1])
@@ -267,12 +257,9 @@ namespace ShapeShift
                     else
                         currentDashAnimation = dashNorthAnimation;
                 }
-
                 currentDashAnimation.IsEnabled = true;
                 currentDashAnimation.CurrentFrame = dashIdleAnimation.CurrentFrame;
-
             }
-
         }
 
         public void resetDashAnimations()
@@ -280,7 +267,6 @@ namespace ShapeShift
             foreach (SpriteSheetAnimation s in dashAnimations)
                 s.IsEnabled = false;
         }
-
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -301,9 +287,7 @@ namespace ShapeShift
         public override void DrawOnlyIdle(SpriteBatch spriteBatch)
         {
             base.DrawOnlyIdle(spriteBatch);
-
             idleAnimation.Draw(spriteBatch);
         }
-
     }
 }

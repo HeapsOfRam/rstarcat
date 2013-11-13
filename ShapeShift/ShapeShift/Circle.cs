@@ -16,27 +16,33 @@ namespace ShapeShift
         private const int WIDTH = 46;            // width of the shape, not the image
         private const int HEIGHT = 46;           // height of the shape
 
-        private int radius = RADIUS_NO_SHIELD;   // holds the current radius (shield or no shield)
+        private int radius;  // holds the current radius (shield or no shield)
 
+        #region Textures
         private Texture2D idleCircleTexture;        // Texture containing the circle idle spritesheet image
         private Texture2D shieldDeployCircleTexture;// Texture containing the deploy sheild spritesheet image
         private Texture2D shieldIdleTexture;        // Texture containing the shield idle spritesheet image
         private Texture2D shieldFadeTexture;        // Texture containing the shield fade spritesheet image
         private Texture2D circleHitTexture;
+        #endregion
 
+        #region Animations
         private SpriteSheetAnimation idleAnimation; 
         private SpriteSheetAnimation deployAnimation;
         private SpriteSheetAnimation shieldIdleAnimation;
         private SpriteSheetAnimation shieldFadeAnimation;
         private SpriteSheetAnimation circleHitAnimation;
-        
+        #endregion
+
         public bool shielded;
 
         public Circle(ContentManager content)
         {
 
             animations = new List<SpriteSheetAnimation>();
+            radius = RADIUS_NO_SHIELD;
 
+            #region Load Textures & Create Animations
             //Load in the specific spritesheets used for animating the Circle
             idleCircleTexture = content.Load<Texture2D>("Circle/CircleIdleSpriteSheet");
             shieldDeployCircleTexture = content.Load<Texture2D>("Circle/CircleDeployShieldSpriteSheet");
@@ -64,7 +70,7 @@ namespace ShapeShift
             circleHitAnimation = new SpriteSheetAnimation(this, false);
             circleHitAnimation.LoadContent(content, circleHitTexture, "", new Vector2(0, 0));
             circleHitAnimation.IsEnabled = false;
-
+            #endregion
 
             animations.Add(idleAnimation);
             animations.Add(deployAnimation);
@@ -101,8 +107,6 @@ namespace ShapeShift
 
             shielded = false;
         }
-
-
 
         //Disables the animation, preforms a check to see if that animation was the deploy shield animation
         // in which case the idle shield animation now needs to be enabled

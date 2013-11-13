@@ -10,28 +10,28 @@ namespace ShapeShift
 {
     class Triangle : Shape
     {
-        private Texture2D triangleTexture;
-        private Texture2D triangleShadowUpTexture;
-        private Texture2D triangleShadowDownTexture;
-        private Texture2D triangleShadowLeftTexture;
-        private Texture2D triangleShadowRightTexture;
-        private Texture2D triangleHitTexture;
-        private Texture2D triangleShadowCurrentTexture;
-        
-        private const int HEIGHT = 92;
-        private const int WIDTH = 92;
-        private const float ROTATION_SPEED = 6.0f;
+        protected Texture2D triangleTexture;
+        protected Texture2D triangleShadowUpTexture;
+        protected Texture2D triangleShadowDownTexture;
+        protected Texture2D triangleShadowLeftTexture;
+        protected Texture2D triangleShadowRightTexture;
+        protected Texture2D triangleHitTexture;
+        protected Texture2D triangleShadowCurrentTexture;
+        protected SpriteSheetAnimation triangleIdleAnimation;
+        protected SpriteSheetAnimation triangleShadowUpAnimation;
+        protected SpriteSheetAnimation triangleShadowDownAnimation;
+        protected SpriteSheetAnimation triangleShadowLeftAnimation;
+        protected SpriteSheetAnimation triangleShadowRightAnimation;
+        protected SpriteSheetAnimation triangleHitAnimation;
 
-        private int shadowCount = 0;
+        protected const int HEIGHT = 92;
+        protected const int WIDTH = 92;
+        protected const float ROTATION_SPEED = 6.0f;
 
-        private Vector2 rotatationCenter = new Vector2(45.6667f, 53.6667f);
+        protected int shadowCount = 0;
 
-        private SpriteSheetAnimation triangleIdleAnimation;
-        private SpriteSheetAnimation triangleShadowUpAnimation;
-        private SpriteSheetAnimation triangleShadowDownAnimation;
-        private SpriteSheetAnimation triangleShadowLeftAnimation;
-        private SpriteSheetAnimation triangleShadowRightAnimation;
-        private SpriteSheetAnimation triangleHitAnimation;
+        protected Vector2 rotatationCenter = new Vector2(45.6667f, 53.6667f);
+
 
         public Triangle(ContentManager content)
         {
@@ -126,11 +126,9 @@ namespace ShapeShift
                     case 4: triangleShadowCurrentTexture = triangleShadowUpTexture;
                             shadowCount = 0;
                             break;
-                    
                 }
             }
         }
-
 
         public override bool Collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {

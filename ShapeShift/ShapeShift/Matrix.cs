@@ -15,20 +15,19 @@ namespace ShapeShift
 
         protected Texture2D shadowTexture;
 
-        protected int matrixHeight    = 2;
-        protected int matrixWidth = 2;
-        protected int offset = 28;
-        protected int currentTexture = 0;
-        protected int frameCounter;
-        
+        protected const int MATRIX_HEIGHT     = 2;
+        protected const int MATRIX_WIDTH      = 2;
+        protected const int POSITION_OFFSET   = 28;
+        protected const int NUM_FRAMES        = 36;
+        protected const int SWITCH_FRAME      = 2000;
 
+        protected int currentTexture = 0;
+        protected int frameCounter = 0;
+        
         protected Boolean collapse = false;
         protected Boolean playback = false;
 
         protected float rotateSpeed = 15.0f;
-
-        protected const int NUM_FRAMES = 36;
-        protected const int SWITCH_FRAME = 2000;
 
         protected Vector2 TILE_ROTATE_CENTER = new Vector2(11.5f, 11.5f);
         protected Vector2 matrixCenter;
@@ -39,20 +38,22 @@ namespace ShapeShift
         {
             this.content = content;
 
-            frameCounter = 0;
+            matrixCenter = new Vector2(MATRIX_WIDTH * POSITION_OFFSET / 2, MATRIX_HEIGHT * POSITION_OFFSET / 2);
+
+            #region Load Textures & Create Animations
 
             animations = new List<SpriteSheetAnimation>();
 
             tileTextures = new Texture2D[NUM_FRAMES];
-
-            gridAnimations = new SpriteSheetAnimation[matrixWidth, matrixHeight];
+            gridAnimations = new SpriteSheetAnimation[MATRIX_WIDTH, MATRIX_HEIGHT];
 
             for (int i = 0; i < NUM_FRAMES; i++)
                 tileTextures[i] = content.Load<Texture2D>("Matrix/MatrixSpriteSheet" + i); 
 
-            for (int i = 0; i < matrixWidth; i++)
+
+            for (int i = 0; i < MATRIX_WIDTH; i++)
             {
-                for (int j = 0; j < matrixHeight; j++)
+                for (int j = 0; j < MATRIX_HEIGHT; j++)
                 {
                     gridAnimations[i, j] = new SpriteSheetAnimation(this, true, 23, TILE_ROTATE_CENTER);
                     gridAnimations[i,j].LoadContent(content, tileTextures[0], "", new Vector2(0, 0));
@@ -60,10 +61,9 @@ namespace ShapeShift
                     animations.Add(gridAnimations[i,j]);
                 }
             }
+            shadowTexture = content.Load<Texture2D>("Matrix/MatrixShadow");
 
-            matrixCenter = new Vector2(matrixWidth * offset/2, matrixHeight * offset/2);
-
-            shadowTexture = content.Load<Texture2D>("Matrix/MatrixShadow");        
+            #endregion               
         }
 
         public void attack()
@@ -72,12 +72,12 @@ namespace ShapeShift
 
         public void makeMatrix()
         {
-            for (int i = 0; i < matrixWidth; i++)
+            for (int i = 0; i < MATRIX_WIDTH; i++)
             {
-                for (int j = 0; j < matrixHeight; j++)
+                for (int j = 0; j < MATRIX_HEIGHT; j++)
                 {
-                    gridAnimations[i, j].position.Y += j * offset;
-                    gridAnimations[i, j].position.X += i * offset;
+                    gridAnimations[i, j].position.Y += j * POSITION_OFFSET;
+                    gridAnimations[i, j].position.X += i * POSITION_OFFSET;
                 }
             }
         }
@@ -92,9 +92,9 @@ namespace ShapeShift
                 if (transformRotate)
                     collapse = !collapse;
                 
-                for (int i = 0; i < matrixWidth; i++)
+                for (int i = 0; i < MATRIX_WIDTH; i++)
                 {
-                    for (int j = 0; j < matrixHeight; j++)
+                    for (int j = 0; j < MATRIX_HEIGHT; j++)
                     {
 
                         // If the rotate requested was a transform (collapse or uncollapse):
@@ -137,8 +137,8 @@ namespace ShapeShift
             {
                 frameCounter = 0;
 
-                for (int i = 0; i < matrixWidth; i++)
-                    for (int j = 0; j < matrixHeight; j++)
+                for (int i = 0; i < MATRIX_WIDTH; i++)
+                    for (int j = 0; j < MATRIX_HEIGHT; j++)
                         gridAnimations[i, j].image = tileTextures[currentTexture];
 
                 if (playback)
@@ -163,6 +163,7 @@ namespace ShapeShift
         //Checks to see if there is a collision 
         public override bool Collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
+            #region Messy shit
             if (!collapse)
             {
                 Rectangle rectangleA;
@@ -171,11 +172,11 @@ namespace ShapeShift
                 shadowTexture.GetData(dataA);
                 Boolean collision = false;
 
-                for (int i = 0; i < matrixWidth; i++)
+                for (int i = 0; i < MATRIX_WIDTH; i++)
                 {
-                    for (int j = 0; j < matrixHeight; j++)
+                    for (int j = 0; j < MATRIX_HEIGHT; j++)
                     {
-                        rectangleA = new Rectangle((int)position.X + i * offset, (int)position.Y + j * offset, 28, 28);
+                        rectangleA = new Rectangle((int)position.X + i * POSITION_OFFSET, (int)position.Y + j * POSITION_OFFSET, 28, 28);
                         if (IntersectPixels(rectangleA, dataA, rectangleB, dataB))
                             collision = true;
                     }
@@ -192,17 +193,18 @@ namespace ShapeShift
                 shadowTexture.GetData(dataA);
                 Boolean collision = false;
 
-                for (int i = 0; i < matrixWidth; i++)
+                for (int i = 0; i < MATRIX_WIDTH; i++)
                 {
-                    for (int j = 0; j < matrixHeight; j++)
+                    for (int j = 0; j < MATRIX_HEIGHT; j++)
                     {
-                        rectangleA = new Rectangle((int)(position.X + (matrixWidth * offset) + (i*10.0)) - 23 , (int)(position.Y + (matrixHeight * offset) +  (j * 10.0)) - 23, 28, 28);
+                        rectangleA = new Rectangle((int)(position.X + (MATRIX_WIDTH * POSITION_OFFSET) + (i*10.0)) - 23 , (int)(position.Y + (MATRIX_HEIGHT * POSITION_OFFSET) +  (j * 10.0)) - 23, 28, 28);
                         if (IntersectPixels(rectangleA, dataA, rectangleB, dataB))
                             collision = true;
                     }
                 }
                 return collision;
             }
+#endregion
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -217,7 +219,5 @@ namespace ShapeShift
                     s.Draw(spriteBatch);
             }
         }
-
-       
     }
 }
