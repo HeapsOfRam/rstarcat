@@ -965,6 +965,15 @@
       <Extra>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\White Denim - D - At The Farm.wma</Extra>
       <Time>2013-11-11T14:23:41.6509847-05:00</Time>
     </Item>
+    <Item>
+      <Source>Square\SquareShotSpriteSheet.png</Source>
+      <Name>Square\SquareShotSpriteSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotSpriteSheet.xnb</Output>
+      <Time>2013-11-13T11:35:10.6664651-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

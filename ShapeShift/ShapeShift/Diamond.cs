@@ -90,6 +90,7 @@ namespace ShapeShift
         {
         }
 
+
         public override void hit()
         {
             diamondHitAnimation.IsEnabled = true;
@@ -201,6 +202,26 @@ namespace ShapeShift
         {
             diamondTurretIdleAnimation.IsEnabled = false;
             droppedTurret = false;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            List<SpriteSheetAnimation> animations = getActiveTextures();
+
+            foreach (SpriteSheetAnimation s in animations)
+            {
+                if (s.IsEnabled)
+                    s.Draw(spriteBatch);
+            }
+        }
+
+        public override void DrawOnlyIdle(SpriteBatch spriteBatch)
+        {
+            base.DrawOnlyIdle(spriteBatch);
+
+            idleAnimation.Draw(spriteBatch);
         }
     }
 }

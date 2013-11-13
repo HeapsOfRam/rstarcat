@@ -82,7 +82,11 @@ namespace ShapeShift
         {
             if (!idleAnimation.rotate)
             {
-               
+                if (shadowCount == 4)
+                {
+                    idleAnimation.rotation = (0.0f);
+                    triangleHitAnimation.rotation = (0.0f);
+                }
       
                 idleAnimation.PreformRotate(6.0f, false);
                 triangleHitAnimation.preformRotateNoAnimation(6.0f);
@@ -100,9 +104,9 @@ namespace ShapeShift
                     case 3: triangleShadowCurrentTexture = triangleShadowLeftTexture;
                             break;
                     case 4: triangleShadowCurrentTexture = triangleShadowUpTexture;
+                            shadowCount = 0;
                             break;
-                    case 5: shadowCount = 0;
-                            break;
+                    
                 }
 
             }
@@ -132,5 +136,24 @@ namespace ShapeShift
           
         }
 
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            List<SpriteSheetAnimation> animations = getActiveTextures();
+
+            foreach (SpriteSheetAnimation s in animations)
+            {
+                if (s.IsEnabled)
+                    s.Draw(spriteBatch);
+            }
+        }
+
+        public override void DrawOnlyIdle(SpriteBatch spriteBatch)
+        {
+            base.DrawOnlyIdle(spriteBatch);
+
+            idleAnimation.Draw(spriteBatch);
+        }
     }
 }

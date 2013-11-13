@@ -21,6 +21,7 @@ namespace ShapeShift
         private Texture2D dashNorthEastTexture;
         private Texture2D dashNorthWestTexture;
         private Texture2D squareHitTexture;
+        private Texture2D squareShotTexture;
         
         private SpriteSheetAnimation idleAnimation;
         private SpriteSheetAnimation dashIdleAnimation;
@@ -33,12 +34,18 @@ namespace ShapeShift
         private SpriteSheetAnimation dashNorthEastAnimation;
         private SpriteSheetAnimation dashNorthWestAnimation;
         private SpriteSheetAnimation squareHitAnimation;
+        private SpriteSheetAnimation squareShotAnimation;
 
         private const float DASH_DISTANCE = 30;
 
         public Boolean dashing = false;
+        public Boolean firing = false;
 
         private List<SpriteSheetAnimation> dashAnimations;
+
+        protected int frameCounter;
+        
+        private const int PROJECTILE_SPEED = 200;
 
         public Square(ContentManager content)
         {
@@ -58,10 +65,15 @@ namespace ShapeShift
             dashNorthEastTexture = content.Load<Texture2D>("Square/SquareDashNorthEastSpriteSheet");
             dashSouthWestTexture = content.Load<Texture2D>("Square/SquareDashSouthWestSpriteSheet");
             squareHitTexture = content.Load<Texture2D>("Square/SquareHitSpriteSheet");
+            squareShotTexture = content.Load<Texture2D>("Square/SquareShotSpriteSheet");
 
             idleAnimation = new SpriteSheetAnimation(this,true);
             idleAnimation.LoadContent(content, squareTexture, "", new Vector2(0, 0));
             idleAnimation.IsEnabled = true;
+
+            squareShotAnimation = new SpriteSheetAnimation(this, true);
+            squareShotAnimation.LoadContent(content, squareShotTexture, "", new Vector2(0, 0));
+            squareShotAnimation.IsEnabled = false;
 
             dashIdleAnimation = new SpriteSheetAnimation(this, true);
             dashIdleAnimation.LoadContent(content, dashIdleTexture, "", new Vector2(0, 0));
@@ -115,6 +127,7 @@ namespace ShapeShift
             animations.Add(dashNorthEastAnimation);
             animations.Add(dashNorthWestAnimation);
             animations.Add(squareHitAnimation);
+            //animations.Add(squareShotAnimation);
 
             dashAnimations.Add(dashEastAnimation);
             dashAnimations.Add(dashWestAnimation);      
@@ -140,6 +153,11 @@ namespace ShapeShift
             return squareTexture;
         }
 
+        public void shoot()
+        {
+            squareShotAnimation.IsEnabled = true;
+            firing = true;
+        }
 
         public override bool Collides(Vector2 position, Rectangle rectangle, Color[] Data)
         {
@@ -182,6 +200,24 @@ namespace ShapeShift
             spriteSheetAnimation.IsEnabled = false;
 
 
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            squareShotAnimation.Update(gameTime);
+            if (firing)
+            {
+                frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+                if (frameCounter >= PROJECTILE_SPEED)
+                {
+                    frameCounter = 0;
+
+                    squareShotAnimation.position.X++;
+
+
+                }
+            }
         }
 
 
@@ -245,7 +281,29 @@ namespace ShapeShift
                 s.IsEnabled = false;
         }
 
-   
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            List<SpriteSheetAnimation> animations = getActiveTextures();
+
+            foreach (SpriteSheetAnimation s in animations)
+            {
+                if (s.IsEnabled)
+                    s.Draw(spriteBatch);
+            }
+
+            if (squareShotAnimation.IsEnabled)
+                squareShotAnimation.Draw(spriteBatch);
+        }
+
+        public override void DrawOnlyIdle(SpriteBatch spriteBatch)
+        {
+            base.DrawOnlyIdle(spriteBatch);
+
+            idleAnimation.Draw(spriteBatch);
+        }
 
     }
 }

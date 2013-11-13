@@ -204,5 +204,20 @@ namespace ShapeShift
                 return collision;
             }
         }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            List<SpriteSheetAnimation> animations = getActiveTextures();
+
+            foreach (SpriteSheetAnimation s in animations)
+            {
+                if (s.IsEnabled)
+                    s.Draw(spriteBatch);
+            }
+        }
+
+       
     }
 }

@@ -212,6 +212,8 @@ namespace ShapeShift
                 pMRotate();
             if (playerShape == pTriangle)
                 pTriangle.hit();
+            if (playerShape == pSquare)
+                pSquare.shoot();
         }
 
 
@@ -230,6 +232,11 @@ namespace ShapeShift
         private void pDash()
         {
             pSquare.dash(this);
+        }
+
+        private void pSquareShoot()
+        {
+            pSquare.shoot();
         }
 
         private void pRotate()
@@ -405,10 +412,9 @@ namespace ShapeShift
 
                 if (playerShape == pMatrix)
                     pMatrix.PreformRotate(3);
-            } */   
+            } */
+
             
-            if (playerShape == pSquare)
-                pSquare.setDirectionMap(directions);
            
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
@@ -461,10 +467,14 @@ namespace ShapeShift
                     animation.Update(gameTime);
             }
 
-//
             if (playerShape == pMatrix)
                 pMatrix.makeMatrix();
-            
+
+            if (playerShape == pSquare)
+            {
+                pSquare.setDirectionMap(directions);
+                pSquare.Update(gameTime);
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -472,16 +482,10 @@ namespace ShapeShift
             base.Draw(spriteBatch);
            
             // Draws each of the enabled animations for the current shape
-            List<SpriteSheetAnimation> enabledAnimations = playerShape.getActiveTextures();
-            foreach (SpriteSheetAnimation animation in enabledAnimations)
-            {
-                if (animation.IsEnabled)
-                    animation.Draw(spriteBatch);
-            }
+            playerShape.Draw(spriteBatch);
 
             // Draws each of the enabled animations for the current shape in the upper right hand corner. 
-            enabledAnimations = nextShape.getActiveTextures();
-            enabledAnimations[0].Draw(spriteBatch);
+            nextShape.DrawOnlyIdle(spriteBatch);
         }
     }
 }

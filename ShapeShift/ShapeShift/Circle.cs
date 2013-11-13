@@ -159,5 +159,25 @@ namespace ShapeShift
         {
             circleHitAnimation.IsEnabled = true;
         }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+
+            List<SpriteSheetAnimation> animations = getActiveTextures();
+
+            foreach (SpriteSheetAnimation s in animations)
+            {
+                if (s.IsEnabled)
+                    s.Draw(spriteBatch);
+            }
+        }
+
+        public override void DrawOnlyIdle(SpriteBatch spriteBatch)
+        {
+            base.DrawOnlyIdle(spriteBatch);
+
+            idleAnimation.Draw(spriteBatch);
+        }
     }
 }
