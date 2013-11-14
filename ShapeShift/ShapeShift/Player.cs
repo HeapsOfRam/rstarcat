@@ -32,8 +32,6 @@ namespace ShapeShift
 
         private Matrix pMatrix;
 
-        private Rectangle lastCheckedRectangle; //basically, it's the last tile on the map checked for collision killa bee
-
         private const int START_X = 200, START_Y = 200;
 
         public override void LoadContent(ContentManager content, InputManager input)
@@ -53,7 +51,7 @@ namespace ShapeShift
             pCircle   = new Circle(content);
             pTriangle = new Triangle(content);
             pDiamond  = new Diamond(content);
-            pMatrix   = new Matrix(content);
+            pMatrix   = new Matrix(content, 2, 2);
 
             maxHealth = FULL;
             health    = maxHealth;
@@ -449,7 +447,6 @@ namespace ShapeShift
             {
                 if (playerShape == pMatrix)
                 {
-                    pMatrix.Update(gameTime);
                     animation.Update(gameTime);
                 }
                 else if (animation.IsEnabled)
@@ -458,6 +455,9 @@ namespace ShapeShift
                 if (!(playerShape == pDiamond && pDiamond.mineDropped() && pDiamond.isMineAnimation(animation)))
                     animation.Position = position;
             }
+
+            if(playerShape == pMatrix)
+                pMatrix.Update(gameTime);
 
             // Update the next shape animation in the upper right of the screen
             Animations = nextShape.getActiveTextures();

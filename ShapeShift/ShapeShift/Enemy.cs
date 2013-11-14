@@ -11,9 +11,9 @@ namespace ShapeShift
 {
     class Enemy : Entity
     {
-        public override void LoadContent(ContentManager content, InputManager input)
+        public virtual void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
         {
-            base.LoadContent(content, input);
+            base.LoadContent(content, matrixWidth, matrixHeight);
         }
 
 
@@ -22,9 +22,9 @@ namespace ShapeShift
             base.UnloadContent();
         }
 
-        public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
+        public override void Update(GameTime gameTime, Collision col, Layers layer)
         {
-            base.Update(gameTime, input, col, layer);
+            base.Update(gameTime, col, layer);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

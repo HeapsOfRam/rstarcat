@@ -122,6 +122,7 @@
     <Compile Include="InputManager.cs" />
     <Compile Include="Layers.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="MatrixEnemy.cs" />
     <Compile Include="MenuManager.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

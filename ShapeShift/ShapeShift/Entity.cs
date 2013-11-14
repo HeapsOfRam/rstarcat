@@ -26,9 +26,18 @@ namespace ShapeShift
         protected Vector2 position;
         protected Vector2 previousPosition;
 
+        protected Rectangle lastCheckedRectangle;
+
         protected Boolean collision = false;
 
         public virtual void LoadContent(ContentManager content, InputManager input)
+        {
+            this.content = new ContentManager(content.ServiceProvider, "Content");
+            attributes = new List<List<string>>();
+            contents = new List<List<string>>();
+        }
+
+        public virtual void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
         {
             this.content = new ContentManager(content.ServiceProvider, "Content");
             attributes = new List<List<string>>();
@@ -43,6 +52,11 @@ namespace ShapeShift
         public virtual void Update(GameTime gameTime, InputManager input, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
         { 
         
+        }
+
+        public virtual void Update(GameTime gameTime, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
+        {
+
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

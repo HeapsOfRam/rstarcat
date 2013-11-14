@@ -15,12 +15,12 @@ namespace ShapeShift
 
         protected Texture2D shadowTexture;
 
-        protected const int MATRIX_HEIGHT     = 2;
-        protected const int MATRIX_WIDTH      = 2;
         protected const int POSITION_OFFSET   = 28;
         protected const int NUM_FRAMES        = 36;
-        protected const int SWITCH_FRAME      = 2000;
+        protected const int SWITCH_FRAME      = 150;
 
+        protected int matrixHeight = 1;
+        protected int matrixWidth = 1;
         protected int currentTexture = 0;
         protected int frameCounter = 0;
         
@@ -32,38 +32,40 @@ namespace ShapeShift
         protected Vector2 TILE_ROTATE_CENTER = new Vector2(11.5f, 11.5f);
         protected Vector2 matrixCenter;
 
-        protected ContentManager content;
-        
-        public Matrix(ContentManager content)
+        protected ContentManager content;     
+
+        public Matrix(ContentManager content, int matrixWidth, int matrixHeight)
         {
             this.content = content;
-
-            matrixCenter = new Vector2(MATRIX_WIDTH * POSITION_OFFSET / 2, MATRIX_HEIGHT * POSITION_OFFSET / 2);
+            this.matrixWidth = matrixWidth;
+            this.matrixHeight = matrixHeight;
+            
+            matrixCenter = new Vector2(matrixWidth * POSITION_OFFSET / 2, matrixHeight * POSITION_OFFSET / 2);
 
             #region Load Textures & Create Animations
 
             animations = new List<SpriteSheetAnimation>();
 
             tileTextures = new Texture2D[NUM_FRAMES];
-            gridAnimations = new SpriteSheetAnimation[MATRIX_WIDTH, MATRIX_HEIGHT];
+            gridAnimations = new SpriteSheetAnimation[matrixWidth, matrixHeight];
 
             for (int i = 0; i < NUM_FRAMES; i++)
-                tileTextures[i] = content.Load<Texture2D>("Matrix/MatrixSpriteSheet" + i); 
+                tileTextures[i] = content.Load<Texture2D>("Matrix/MatrixSpriteSheet" + i);
 
 
-            for (int i = 0; i < MATRIX_WIDTH; i++)
+            for (int i = 0; i < matrixWidth; i++)
             {
-                for (int j = 0; j < MATRIX_HEIGHT; j++)
+                for (int j = 0; j < matrixHeight; j++)
                 {
                     gridAnimations[i, j] = new SpriteSheetAnimation(this, true, 23, TILE_ROTATE_CENTER);
-                    gridAnimations[i,j].LoadContent(content, tileTextures[0], "", new Vector2(0, 0));
-                    gridAnimations[i,j].IsEnabled = true;
-                    animations.Add(gridAnimations[i,j]);
+                    gridAnimations[i, j].LoadContent(content, tileTextures[0], "", new Vector2(0, 0));
+                    gridAnimations[i, j].IsEnabled = true;
+                    animations.Add(gridAnimations[i, j]);
                 }
             }
             shadowTexture = content.Load<Texture2D>("Matrix/MatrixShadow");
 
-            #endregion               
+            #endregion
         }
 
         public void attack()
@@ -72,9 +74,9 @@ namespace ShapeShift
 
         public void makeMatrix()
         {
-            for (int i = 0; i < MATRIX_WIDTH; i++)
+            for (int i = 0; i < matrixWidth; i++)
             {
-                for (int j = 0; j < MATRIX_HEIGHT; j++)
+                for (int j = 0; j < matrixHeight; j++)
                 {
                     gridAnimations[i, j].position.Y += j * POSITION_OFFSET;
                     gridAnimations[i, j].position.X += i * POSITION_OFFSET;
@@ -92,9 +94,9 @@ namespace ShapeShift
                 if (transformRotate)
                     collapse = !collapse;
                 
-                for (int i = 0; i < MATRIX_WIDTH; i++)
+                for (int i = 0; i < matrixWidth; i++)
                 {
-                    for (int j = 0; j < MATRIX_HEIGHT; j++)
+                    for (int j = 0; j < matrixHeight; j++)
                     {
 
                         // If the rotate requested was a transform (collapse or uncollapse):
@@ -137,8 +139,8 @@ namespace ShapeShift
             {
                 frameCounter = 0;
 
-                for (int i = 0; i < MATRIX_WIDTH; i++)
-                    for (int j = 0; j < MATRIX_HEIGHT; j++)
+                for (int i = 0; i < matrixWidth; i++)
+                    for (int j = 0; j < matrixHeight; j++)
                         gridAnimations[i, j].image = tileTextures[currentTexture];
 
                 if (playback)
@@ -172,9 +174,9 @@ namespace ShapeShift
                 shadowTexture.GetData(dataA);
                 Boolean collision = false;
 
-                for (int i = 0; i < MATRIX_WIDTH; i++)
+                for (int i = 0; i < matrixWidth; i++)
                 {
-                    for (int j = 0; j < MATRIX_HEIGHT; j++)
+                    for (int j = 0; j < matrixHeight; j++)
                     {
                         rectangleA = new Rectangle((int)position.X + i * POSITION_OFFSET, (int)position.Y + j * POSITION_OFFSET, 28, 28);
                         if (IntersectPixels(rectangleA, dataA, rectangleB, dataB))
@@ -193,11 +195,11 @@ namespace ShapeShift
                 shadowTexture.GetData(dataA);
                 Boolean collision = false;
 
-                for (int i = 0; i < MATRIX_WIDTH; i++)
+                for (int i = 0; i < matrixWidth; i++)
                 {
-                    for (int j = 0; j < MATRIX_HEIGHT; j++)
+                    for (int j = 0; j < matrixHeight; j++)
                     {
-                        rectangleA = new Rectangle((int)(position.X + (MATRIX_WIDTH * POSITION_OFFSET) + (i*10.0)) - 23 , (int)(position.Y + (MATRIX_HEIGHT * POSITION_OFFSET) +  (j * 10.0)) - 23, 28, 28);
+                        rectangleA = new Rectangle((int)(position.X + (matrixWidth * POSITION_OFFSET) + (i*10.0)) - 23 , (int)(position.Y + (matrixHeight * POSITION_OFFSET) +  (j * 10.0)) - 23, 28, 28);
                         if (IntersectPixels(rectangleA, dataA, rectangleB, dataB))
                             collision = true;
                     }

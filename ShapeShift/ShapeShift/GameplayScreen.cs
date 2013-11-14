@@ -14,6 +14,7 @@ namespace ShapeShift
     public class GameplayScreen : GameScreen
     {
         Player player;
+        Enemy dummyEnemy;
         Layers layer;
         Map map;
         Rectangle rectangle;
@@ -32,6 +33,7 @@ namespace ShapeShift
         {
             base.LoadContent(content, input);
             player = new Player();
+            dummyEnemy = new MatrixEnemy();
             layer = new Layers();
             map = new Map();
             rectangle = new Rectangle();
@@ -39,6 +41,7 @@ namespace ShapeShift
             map.LoadContent(content, "Map1");
             //layer.LoadContent(content, "Map1");
             player.LoadContent(content, input);
+            dummyEnemy.LoadContent(content, 2, 2);
             healthRectangle = new Rectangle[player.getMaxHealth()];
             healthFillTexture = content.Load<Texture2D>("Lain");
             healthUnfillTexture = content.Load<Texture2D>("lainbackground");
@@ -56,6 +59,7 @@ namespace ShapeShift
         {
             inputManager.Update();
             player.Update(gameTime, inputManager, map.collision, map.layer);
+            dummyEnemy.Update(gameTime, map.collision, map.layer);
             map.Update(gameTime);
 
             player.pSquareResetDirections();
@@ -131,6 +135,7 @@ namespace ShapeShift
             base.Draw(spriteBatch);
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
+            dummyEnemy.Draw(spriteBatch);
             spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(175, 5), Color.White);
             for (int i = 0; i < player.getMaxHealth(); i++)
             {

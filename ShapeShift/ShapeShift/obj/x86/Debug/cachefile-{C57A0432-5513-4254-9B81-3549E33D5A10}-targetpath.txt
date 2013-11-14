@@ -101,10 +101,10 @@ Content\Square\SquareHitSpriteSheet.xnb
 Content\Triangle\TriangleShadowDown.xnb
 Content\Triangle\TriangleShadowLeft.xnb
 Content\Triangle\TriangleShadowRight.xnb
+Content\Square\SquareShotSpriteSheet.xnb
+Content\Square\SquareShotHitSpriteSheet.xnb
 Content\Fonts\Font1.xnb
 Content\Fonts\MenuFont.xnb
 Content\Fonts\TitleFont.xnb
 Content\Music\White Denim - D - At The Farm.xnb
 Content\Music\White Denim - D - At The Farm.wma
-Content\Square\SquareShotSpriteSheet.xnb
-Content\Square\SquareShotHitSpriteSheet.xnb
