@@ -54,7 +54,8 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, Collision col, Layers layer)
         {
-            previousPosition = position;
+            base.Update(gameTime, col, layer);
+            colliding = false;
 
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
@@ -70,6 +71,7 @@ namespace ShapeShift
                         if (eMatrix.Collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
                             position = moveAnimation.Position;
+                            colliding = true;
                             //eMatrix.hit();
                         }
                     }

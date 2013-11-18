@@ -158,7 +158,7 @@ namespace ShapeShift
             }
         }*/
 
-        public void moveRight(GameTime gameTime)
+        /*public void moveRight(GameTime gameTime)
         {
             position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             directions[0] = true;
@@ -180,7 +180,7 @@ namespace ShapeShift
         {
             position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             directions[3] = true;
-        }
+        }*/
 
         public void rAction()
         {

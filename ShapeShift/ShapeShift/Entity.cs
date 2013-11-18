@@ -15,6 +15,7 @@ namespace ShapeShift
         protected int health, maxHealth;
         protected SpriteSheetAnimation moveAnimation;
         protected float moveSpeed;
+        protected Boolean colliding = false;
 
         protected ContentManager content;
         protected FileManager fileManager;
@@ -49,14 +50,39 @@ namespace ShapeShift
             content.Unload();
         }
 
+
+        public void moveRight(GameTime gameTime)
+        {
+            position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //directions[0] = true;
+        }
+
+        public void moveLeft(GameTime gameTime)
+        {
+            position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //directions[1] = true;
+        }
+
+        public void moveDown(GameTime gameTime)
+        {
+            position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //directions[2] = true;
+        }
+
+        public void moveUp(GameTime gameTime)
+        {
+            position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //directions[3] = true;
+        }
+
         public virtual void Update(GameTime gameTime, InputManager input, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
         { 
         
         }
 
-        public virtual void Update(GameTime gameTime, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
+        public virtual void Update(GameTime gameTime, Collision col, Layers layer)
         {
-
+            previousPosition = position;
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
