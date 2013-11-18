@@ -15,6 +15,7 @@ namespace ShapeShift
         private float currentTime = 0, countDuration = 1f;
         private Random rand;
         private int direction = 1;
+        private const int WANDERSWITCH = 5, UP = 1, RIGHTUP = 2, RIGHT = 3, RIGHTDOWN = 4, DOWN = 5, LEFTDOWN = 6, LEFT = 7, LEFTUP = 8;
 
         public virtual void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
         {
@@ -31,60 +32,33 @@ namespace ShapeShift
         public void wander(GameTime gameTime)
         {
             if (colliding)
-                direction = rand.Next(1, 8);
-            if (currentTime > 5)
+                direction = rand.Next(UP, LEFTUP);
+            if (currentTime > WANDERSWITCH)
             {
                 currentTime = 0;
-                direction = rand.Next(1, 8);
+                direction = rand.Next(UP, LEFTUP);
             }
-            if (direction == 1)
-            {
+            if (direction == UP)
                 moveUp(gameTime);
-            }
-            if (direction == 2)
-            {
-                moveUp(gameTime);
+            if (direction == RIGHTUP)
+                moveRightUp(gameTime);
+            if (direction == RIGHT)
                 moveRight(gameTime);
-            }
-            if (direction == 3)
-            {
-                moveRight(gameTime);
-            }
-            if (direction == 4)
-            {
-                moveRight(gameTime);
+            if (direction == RIGHTDOWN)
+                moveRightDown(gameTime);;
+            if (direction == DOWN)
                 moveDown(gameTime);
-            }
-            if (direction == 5)
-            {
-                moveDown(gameTime);
-            }
-            if (direction == 6)
-            {
-                moveDown(gameTime);
+            if (direction == LEFTDOWN)
+                moveLeftDown(gameTime);
+            if (direction == LEFT)
                 moveLeft(gameTime);
-            }
-            if (direction == 7)
-            {
-                moveLeft(gameTime);
-            }
-            if (direction == 8)
-            {
-                moveUp(gameTime);
-                moveLeft(gameTime);
-            }
-            /*if(currentTime < 5)
-                moveRight(gameTime);
-            if (currentTime > 5)
-                moveUp(gameTime);
-            if (currentTime > 6)
-                moveLeft(gameTime);*/
+            if (direction == LEFTUP)
+                moveLeftUp(gameTime);
         }
 
         public override void Update(GameTime gameTime, Collision col, Layers layer)
         {
             base.Update(gameTime, col, layer);
-            //previousPosition = position;
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             wander(gameTime);
         }

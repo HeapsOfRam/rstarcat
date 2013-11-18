@@ -75,6 +75,30 @@ namespace ShapeShift
             //directions[3] = true;
         }
 
+        public void moveLeftUp(GameTime gameTime)
+        {
+            moveLeft(gameTime);
+            moveUp(gameTime);
+        }
+
+        public void moveRightUp(GameTime gameTime)
+        {
+            moveRight(gameTime);
+            moveUp(gameTime);
+        }
+
+        public void moveLeftDown(GameTime gameTime)
+        {
+            moveLeft(gameTime);
+            moveDown(gameTime);
+        }
+
+        public void moveRightDown(GameTime gameTime)
+        {
+            moveRight(gameTime);
+            moveDown(gameTime);
+        }
+
         public virtual void Update(GameTime gameTime, InputManager input, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
         { 
         
