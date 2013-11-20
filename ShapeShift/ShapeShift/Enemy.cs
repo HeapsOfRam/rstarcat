@@ -59,6 +59,14 @@ namespace ShapeShift
 
         public void chase(GameTime gameTime, Entity player)
         {
+            if (player.getPositionX() < position.X)
+                moveLeft(gameTime);
+            if (player.getPositionX() > position.X)
+                moveRight(gameTime);
+            if (player.getPositionY() < position.Y)
+                moveUp(gameTime);
+            if (player.getPositionY() > position.Y)
+                moveDown(gameTime);
         }
 
         public Boolean spot(Entity e)
