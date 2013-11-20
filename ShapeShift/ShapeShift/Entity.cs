@@ -99,12 +99,21 @@ namespace ShapeShift
             moveDown(gameTime);
         }
 
+        public float getPositionX()
+        { return position.X; }
+
+        public float getPositionY()
+        { return position.Y; }
+
+        public Vector2 getPosition()
+        { return position; }
+
         public virtual void Update(GameTime gameTime, InputManager input, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
         { 
         
         }
 
-        public virtual void Update(GameTime gameTime, Collision col, Layers layer)
+        public virtual void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
         {
             previousPosition = position;
         }

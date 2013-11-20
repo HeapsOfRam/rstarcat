@@ -52,9 +52,9 @@ namespace ShapeShift
             moveAnimation.UnloadContent();
         }
 
-        public override void Update(GameTime gameTime, Collision col, Layers layer)
+        public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
         {
-            base.Update(gameTime, col, layer);
+            base.Update(gameTime, col, layer, player);
             colliding = false;
 
             for (int i = 0; i < col.CollisionMap.Count; i++)

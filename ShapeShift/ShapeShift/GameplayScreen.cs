@@ -59,7 +59,7 @@ namespace ShapeShift
         {
             inputManager.Update();
             player.Update(gameTime, inputManager, map.collision, map.layer);
-            dummyEnemy.Update(gameTime, map.collision, map.layer);
+            dummyEnemy.Update(gameTime, map.collision, map.layer, player);
             map.Update(gameTime);
 
             player.pSquareResetDirections();

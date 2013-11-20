@@ -16,6 +16,7 @@ namespace ShapeShift
         private Random rand;
         private int direction = 1;
         private const int WANDERSWITCH = 5, UP = 1, RIGHTUP = 2, RIGHT = 3, RIGHTDOWN = 4, DOWN = 5, LEFTDOWN = 6, LEFT = 7, LEFTUP = 8;
+        protected int spotRadius = 5, spotDist = 300;
 
         public virtual void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
         {
@@ -56,11 +57,24 @@ namespace ShapeShift
                 moveLeftUp(gameTime);
         }
 
-        public override void Update(GameTime gameTime, Collision col, Layers layer)
+        public void chase(GameTime gameTime, Entity player)
         {
-            base.Update(gameTime, col, layer);
+        }
+
+        public Boolean spot(Entity e)
+        {
+            float distanceFromEntity = Vector2.Distance(e.getPosition(), position);
+            return distanceFromEntity < spotDist;
+        }
+
+        public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
+        {
+            base.Update(gameTime, col, layer, player);
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            wander(gameTime);
+            if (spot(player))
+                chase(gameTime, player);
+            else
+                wander(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
