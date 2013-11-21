@@ -57,6 +57,7 @@ namespace ShapeShift
 
             // TODO: use this.Content to load your game content here
             ScreenManager.Instance.LoadContent(Content);
+
         }
 
         /// <summary>

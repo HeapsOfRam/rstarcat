@@ -21,6 +21,14 @@ namespace ShapeShift
         Rectangle[] healthRectangle;
         Texture2D healthFillTexture, healthUnfillTexture;
         Boolean paused = false;
+        String Level = "";
+        String Level1 = "Map1";
+        String Level2 = "Map2";
+        FileManager fileManager;
+        List<Texture2D> images;
+
+        int imageNumber;
+
 
         private SpriteFont font;
         int screenWidth, screenHeight, counter, maxCount = 10;
@@ -38,13 +46,15 @@ namespace ShapeShift
             map = new Map();
             rectangle = new Rectangle();
             font = this.content.Load<SpriteFont>("Fonts/Font1");
-            map.LoadContent(content, "Map1");
+            Level = Level2;
+            map.LoadContent(content, "Map2");
             //layer.LoadContent(content, "Map1");
             player.LoadContent(content, input);
             dummyEnemy.LoadContent(content, 2, 2);
             healthRectangle = new Rectangle[player.getMaxHealth()];
             healthFillTexture = content.Load<Texture2D>("Lain");
             healthUnfillTexture = content.Load<Texture2D>("lainbackground");
+
         }
 
 
@@ -53,6 +63,8 @@ namespace ShapeShift
             base.UnloadContent();
             player.UnloadContent();
             map.UnloadContent();
+            fileManager = null;
+        
         }
 
         public override void Update(GameTime gameTime)
@@ -77,8 +89,6 @@ namespace ShapeShift
             if (inputManager.KeyDown(Keys.E))
                 player.eAction();
 
-
-
             if (inputManager.KeyDown(Keys.Up))
                 player.shoot(gameTime,1);
             if (inputManager.KeyDown(Keys.Down))
@@ -88,14 +98,14 @@ namespace ShapeShift
             if (inputManager.KeyDown(Keys.Right))
                 player.shoot(gameTime,4);
 
-
             //for debug, pause
             if (inputManager.KeyPressed(Keys.P))
                 paused = !paused;
             if (!paused)
                 currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (paused){
+            if (paused)
+            {
                 int n = 0;
                 if (inputManager.KeyPressed(Keys.D1))
                     n = 1;
@@ -108,7 +118,7 @@ namespace ShapeShift
                 if (inputManager.KeyPressed(Keys.D5))
                     n = 5;
 
-                if(n > 0)
+                if (n > 0)
                     player.manualChange(n);
                 n = 0;
             }
@@ -121,7 +131,7 @@ namespace ShapeShift
             }
             if (counter >= maxCount)
             {
-               // Console.WriteLine("Calling ShiftShape");
+                // Console.WriteLine("Calling ShiftShape");
                 player.shiftShape();
                 counter = 0;
             }
@@ -139,6 +149,20 @@ namespace ShapeShift
                 player1.setX(screenWidth - player1.getWidth());
             */
 
+            //LOADING IN THE NEXT LEVEL
+
+            if (Level.Equals(Level1) && player.LoadNextLevel)
+            {
+                    map.LoadContent(content, "Map2");
+                    Level = Level2;
+            }
+            else if (Level.Equals(Level2) && player.LoadNextLevel)
+            {
+                    map.LoadContent(content, "Map1");
+                    Level = Level1;
+
+            }
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -152,6 +176,7 @@ namespace ShapeShift
             {
                 fillHealth(i, spriteBatch);
             }
+
         }
 
         public void fillHealth(int step, SpriteBatch spriteBatch)

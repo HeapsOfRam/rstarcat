@@ -34,6 +34,16 @@ namespace ShapeShift
 
         private const int START_X = 200, START_Y = 200;
 
+        private bool loadNextLevel = false;
+
+        private Vector2 spawnPosition;
+
+        public bool LoadNextLevel
+        {
+            get { return loadNextLevel; }
+        }
+
+
         public override void LoadContent(ContentManager content, InputManager input)
         {
             this.content = content;
@@ -56,7 +66,7 @@ namespace ShapeShift
             maxHealth = FULL;
             health    = maxHealth;
 
-            playerShape = pMatrix;            
+            playerShape = pSquare;   //********STARTING SHAPE*******         
 
             //Queue up the next shape
             queueOne();
@@ -68,6 +78,7 @@ namespace ShapeShift
             playerShape.setPosition(position);
 
             pMatrix.makeMatrix();
+            spawnPosition = new Vector2(120, 200); //The location where the player spawns
 
         }
 
@@ -437,13 +448,14 @@ namespace ShapeShift
                     pMatrix.PreformRotate(3);
             } */
 
-            
-           
+
+            loadNextLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
                 for (int j = 0; j < col.CollisionMap[i].Count; j++)
-                {
-                    if (col.CollisionMap[i][j] == "x")
+                {                   
+
+                    if (col.CollisionMap[i][j] == "x") //Collision against solid objects (ex: Tiles)
                     {
                                 
                         //Creates a rectangle that is the current tiles postion and size
@@ -459,6 +471,24 @@ namespace ShapeShift
                             playerShape.hit();
                         }
                     }
+
+                    if (col.CollisionMap[i][j] == "*") //Marks a level transition (ex: Tiles)
+                    {
+
+                        //Creates a rectangle that is the current tiles postion and size
+                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
+
+
+
+
+                        //Calls Collides method in shape class, in which each shape will check collisions uniquely 
+                        if (playerShape.Collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        {
+                            loadNextLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
+                            position = spawnPosition;
+                        }
+                    }
+
                 }
             }
 
@@ -500,6 +530,8 @@ namespace ShapeShift
                 pSquare.setDirectionMap(directions);
                 pSquare.Update(gameTime);
             }
+
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
