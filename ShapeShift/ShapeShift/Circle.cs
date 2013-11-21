@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace ShapeShift
 {
-    public class Circle : Shape
+    class Circle : Shape
     {
 
         private const int RADIUS_NO_SHIELD = 21; // gap between the image boundry and the actual shape
@@ -33,14 +33,23 @@ namespace ShapeShift
         private SpriteSheetAnimation shieldFadeAnimation;
         private SpriteSheetAnimation circleHitAnimation;
         #endregion
+        public List<Bullet> activeBullets;
 
         public bool shielded;
 
+
+        public Boolean firing = false;
+      
+        public int frameCounter;
+        public ContentManager content;
+        protected const int SWITCH_FRAME = 200;
         public Circle(ContentManager content)
         {
-
+            this.content = content;
             animations = new List<SpriteSheetAnimation>();
             radius = RADIUS_NO_SHIELD;
+
+            activeBullets = new List<Bullet>();
 
             #region Load Textures & Create Animations
             //Load in the specific spritesheets used for animating the Circle
@@ -84,6 +93,22 @@ namespace ShapeShift
             return idleCircleTexture;
         }
 
+        public void shoot(int direction)
+        {
+
+            if (frameCounter >= SWITCH_FRAME)
+            {
+                frameCounter = 0;
+                Bullet b = new Bullet(content, direction, "circle");
+
+                b.setPosition(idleAnimation.Position);
+                activeBullets.Add(b);
+
+
+            }
+
+
+        }
 
         // Deploys shield by enabling the deployAnimation
         // When deployAnimation finishes it will disable itself (calls disableAnimation(deployAnimation) on this shape)
@@ -118,6 +143,15 @@ namespace ShapeShift
                 shieldIdleAnimation.IsEnabled = true;
         }
 
+        public void Update(GameTime gameTime)
+        {
+            frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+
+            foreach (Bullet b in activeBullets)
+                b.Update(gameTime);
+        }
+
 
         // Overrides abstract collides method in shape.
         // Takes in a rectangle corresponding to the tile we are checking a 
@@ -126,6 +160,13 @@ namespace ShapeShift
         // any potion of the rectangle and false if not.
         public override bool collides(Vector2 vect, Rectangle rectangle, Color[] Data)
         {
+
+            foreach (Bullet b in activeBullets)
+            {
+                if (b.collides(vect, rectangle, Data))
+                    b.hit();
+            }
+
             Point circle = new Point((int)vect.X + WIDTH, (int)vect.Y + WIDTH);
 
             var rectangleCenter = new Point((rectangle.X + rectangle.Width / 2),
@@ -175,6 +216,9 @@ namespace ShapeShift
                 if (s.IsEnabled)
                     s.Draw(spriteBatch);
             }
+
+             foreach (Bullet b in activeBullets)
+                b.Draw(spriteBatch);
         }
 
         public override void DrawOnlyIdle(SpriteBatch spriteBatch)

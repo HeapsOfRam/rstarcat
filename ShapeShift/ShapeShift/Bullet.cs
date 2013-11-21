@@ -29,7 +29,7 @@ namespace ShapeShift
         protected const int WIDTH = 92;
         protected const int HEIGHT = 92;
 
-        protected const int PROJECTILE_SPEED = 1;
+        protected const int PROJECTILE_SPEED = 10;
         protected const int SWITCH_FRAME = 10;
 
         public Bullet(ContentManager content, float fireAngle, String shape)
@@ -47,6 +47,17 @@ namespace ShapeShift
             {
                 shotTexture = content.Load<Texture2D>("Square/SquareShotSpriteSheet");
                 shotHitTexture = content.Load<Texture2D>("Square/SquareShotHitSpriteSheet");
+            }
+            else if (shape.Equals("triangle"))
+            {
+                shotTexture = content.Load<Texture2D>("Triangle/TriangleShotSpriteSheet");
+                shotHitTexture = content.Load<Texture2D>("Triangle/TriangleShotHitSpriteSheet");
+            }
+
+            else if (shape.Equals("circle"))
+            {
+                shotTexture = content.Load<Texture2D>("Circle/CircleShotSpriteSheet");
+                shotHitTexture = content.Load<Texture2D>("Circle/CircleShotHitSpriteSheet");
             }
 
             else

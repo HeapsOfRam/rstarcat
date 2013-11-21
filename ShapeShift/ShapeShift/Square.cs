@@ -57,8 +57,7 @@ namespace ShapeShift
 
         protected const int WIDTH = 92;
         protected const int HEIGHT = 92;
-        
-        protected const int PROJECTILE_SPEED = 60;
+       
         protected const float DASH_DISTANCE = 30;
         protected const int SWITCH_FRAME = 200;
 
@@ -169,6 +168,7 @@ namespace ShapeShift
             dashAnimations.Add(dashNorthWestAnimation);
 
             colorData = new Color[WIDTH * HEIGHT];
+
             
         }
 

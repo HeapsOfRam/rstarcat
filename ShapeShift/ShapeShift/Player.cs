@@ -275,6 +275,72 @@ namespace ShapeShift
                         break;
                 }
             }
+
+            if (playerShape == pTriangle)
+            {
+                switch (direction)
+                {
+                    case 1:
+                        pTriangle.shoot(0);
+                        break;
+                    case 4:
+                        pTriangle.shoot(90);
+                        break;
+                    case 2:
+                        pTriangle.shoot(180);
+                        break;
+                    case 3:
+                        pTriangle.shoot(270);
+                        break;
+                    default:
+                        pTriangle.shoot(0);
+                        break;
+                }
+            }
+
+            if (playerShape == pTriangle)
+            {
+                switch (direction)
+                {
+                    case 1:
+                        pTriangle.shoot(0);
+                        break;
+                    case 4:
+                        pTriangle.shoot(90);
+                        break;
+                    case 2:
+                        pTriangle.shoot(180);
+                        break;
+                    case 3:
+                        pTriangle.shoot(270);
+                        break;
+                    default:
+                        pTriangle.shoot(0);
+                        break;
+                }
+            }
+
+            if (playerShape == pCircle)
+            {
+                switch (direction)
+                {
+                    case 1:
+                        pCircle.shoot(0);
+                        break;
+                    case 4:
+                        pCircle.shoot(90);
+                        break;
+                    case 2:
+                        pCircle.shoot(180);
+                        break;
+                    case 3:
+                        pCircle.shoot(270);
+                        break;
+                    default:
+                        pCircle.shoot(0);
+                        break;
+                }
+            }
         }
 
 
@@ -303,6 +369,11 @@ namespace ShapeShift
         private void pDiamondShoot(int angle)
         {
             pDiamond.shoot(angle);
+        }
+
+        private void pTriangleShoot(int angle)
+        {
+            pTriangle.shoot(angle);
         }
 
         private void pRotate()
@@ -565,6 +636,12 @@ namespace ShapeShift
 
             if (playerShape == pDiamond)
                 pDiamond.Update(gameTime);
+
+            if (playerShape == pTriangle)
+                pTriangle.Update(gameTime);
+
+            if (playerShape == pCircle)
+                pCircle.Update(gameTime);
 
         }
 

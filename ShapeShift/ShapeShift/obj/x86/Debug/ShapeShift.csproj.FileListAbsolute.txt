@@ -152,11 +152,9 @@ C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\Sha
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile7.xnb
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile8.xnb
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\TileSets\TileIndividuals\tile9.xnb
-C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\ShapeShift.csprojResolveAssemblyReference.cache
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\ShapeShift.exe
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\obj\x86\Debug\ShapeShift.pdb
-C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Lain.xnb
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\lainobstacle.xnb
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\lainbackground.xnb
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\null.xnb
@@ -592,3 +590,16 @@ C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\Sha
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondShotSpriteSheet.xnb
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\heart.xnb
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\heart.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\heart.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotSpriteSheet.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotHitSpriteSheet.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotShadowDown.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotShadowLeft.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotShadowRight.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotShadowUp.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondShotHitSpriteSheet.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondShotSpriteSheet.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShotHitSpriteSheet.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShotSpriteSheet.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleShotHitSpriteSheet.xnb
+C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleShotSpriteSheet.xnb

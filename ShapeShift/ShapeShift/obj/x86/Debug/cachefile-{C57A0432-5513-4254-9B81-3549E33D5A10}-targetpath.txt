@@ -109,8 +109,12 @@ Content\Square\SquareShotShadowRight.xnb
 Content\Square\SquareShotShadowUp.xnb
 Content\Diamond\DiamondShotHitSpriteSheet.xnb
 Content\Diamond\DiamondShotSpriteSheet.xnb
+Content\Triangle\TriangleShotHitSpriteSheet.xnb
+Content\Triangle\TriangleShotSpriteSheet.xnb
 Content\Fonts\Font1.xnb
 Content\Fonts\MenuFont.xnb
 Content\Fonts\TitleFont.xnb
 Content\Music\White Denim - D - At The Farm.xnb
 Content\Music\White Denim - D - At The Farm.wma
+Content\Circle\CircleShotHitSpriteSheet.xnb
+Content\Circle\CircleShotSpriteSheet.xnb

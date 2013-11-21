@@ -35,7 +35,6 @@ namespace ShapeShift
 
         protected int frameCounter;
 
-        protected const int PROJECTILE_SPEED = 60;
         protected const int SWITCH_FRAME = 200;
 
         public Boolean firing = false;

@@ -32,11 +32,18 @@ namespace ShapeShift
 
         protected Vector2 rotatationCenter = new Vector2(45.6667f, 53.6667f);
 
+        public Boolean firing = false;
+        protected int frameCounter;
+        public List<Bullet> activeBullets;
+        protected const int SWITCH_FRAME = 200;
+        private ContentManager content;
 
         public Triangle(ContentManager content)
         {
+            this.content = content;
             // Create list that will hold animations
             animations = new List<SpriteSheetAnimation>();
+            activeBullets = new List<Bullet>();
 
             #region Loading Textures
 
@@ -94,7 +101,22 @@ namespace ShapeShift
         public override Texture2D getTexture()
         { return triangleTexture; }
 
+        public void shoot(int direction)
+        {
 
+            if (frameCounter >= SWITCH_FRAME)
+            {
+                frameCounter = 0;
+                Bullet b = new Bullet(content, direction, "triangle");
+
+                b.setPosition(triangleIdleAnimation.Position);
+                activeBullets.Add(b);
+
+
+            }
+
+
+        }
         public override int getHeight() { return HEIGHT; }
 
         public override int getWidth() { return WIDTH; }
@@ -140,8 +162,23 @@ namespace ShapeShift
             }
         }
 
+        public void Update(GameTime gameTime)
+        {
+            frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+
+            foreach (Bullet b in activeBullets)
+                b.Update(gameTime);
+        }
+
         public override bool collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
+            foreach (Bullet b in activeBullets)
+            {
+                if (b.collides(position, rectangleB, dataB))
+                    b.hit();
+            }
+
             Rectangle rectangleA = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
             
             //gets the color data for the current shadow texture
@@ -172,6 +209,10 @@ namespace ShapeShift
                 if (s.IsEnabled)
                     s.Draw(spriteBatch);
             }
+
+
+            foreach (Bullet b in activeBullets)
+                b.Draw(spriteBatch);
         }
 
         public override void DrawOnlyIdle(SpriteBatch spriteBatch)
