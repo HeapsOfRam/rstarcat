@@ -46,25 +46,35 @@ namespace ShapeShift
         public Boolean dashing = false;
         public Boolean firing = false;
 
+        public List<Bullet> activeBullets;
+
         protected List<SpriteSheetAnimation> dashAnimations;
 
         protected int frameCounter;
 
         protected int X_OFFSET;
         protected int Y_OFFSET;
+
+        protected const int WIDTH = 92;
+        protected const int HEIGHT = 92;
         
-        protected const int PROJECTILE_SPEED = 10;
+        protected const int PROJECTILE_SPEED = 60;
         protected const float DASH_DISTANCE = 30;
-        protected const int SWITCH_FRAME = 10;
+        protected const int SWITCH_FRAME = 200;
+
+        protected ContentManager content; 
 
         public Square(ContentManager content)
         {
+            this.content = content;
 
             X_OFFSET = 24;
             Y_OFFSET = 24;
 
             animations = new List<SpriteSheetAnimation>();
             dashAnimations = new List<SpriteSheetAnimation>();
+
+            activeBullets = new List<Bullet>();
 
             #region Load Textures
             squareTexture = content.Load<Texture2D>("Square/SquareIdleSpriteSheet");
@@ -172,39 +182,30 @@ namespace ShapeShift
             return squareTexture;
         }
 
-        public void shoot()
+        public void shoot(int direction)
         {
-            if (!squareShotAnimation.IsEnabled)
-            {
-                squareShotAnimation.IsEnabled = true;
-                squareShotAnimation.position = idleAnimation.position;
-                firing = true;
-            }
+         
+                if (frameCounter >= SWITCH_FRAME)
+                {
+                    frameCounter = 0;
+                    Bullet b = new Bullet(content,direction);
+
+                    b.setPosition(idleAnimation.Position);
+                    activeBullets.Add(b);
+                   
+                
+                 }
+             
+      
         }
 
         public override bool Collides(Vector2 position, Rectangle rectangle, Color[] Data)
         {
-
-            if (firing)
+            foreach (Bullet b in activeBullets)
             {
-                if (!(squareShotAnimation.position.X - 40 + rectangle.Width * 2 < rectangle.X ||
-                   squareShotAnimation.position.X + 40 > rectangle.X + rectangle.Width ||
-                   squareShotAnimation.position.Y - Y_OFFSET +10 + rectangle.Height * 2 < rectangle.Y ||
-                   squareShotAnimation.position.Y + Y_OFFSET  +10> rectangle.Y + rectangle.Height))
-                {
-                    squareShotAnimation.IsEnabled = false;
-                    squareShotHitAnimation.position.X = squareShotAnimation.position.X;
-                    squareShotHitAnimation.position.Y = squareShotAnimation.position.Y;
-                    squareShotHitAnimation.IsEnabled = true;
-                    firing = false;
-
-                }
+                if (b.Collides(position, rectangle, Data))
+                    b.hit();
             }
-               
-            
-            
-            
-            
             
             
             if (position.X - X_OFFSET + rectangle.Width * 2 < rectangle.X  ||
@@ -243,20 +244,11 @@ namespace ShapeShift
 
         public void Update(GameTime gameTime)
         {
-            squareShotAnimation.Update(gameTime);
-            squareShotHitAnimation.Update(gameTime);
-            if (firing)
-            {
-                frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-                if (frameCounter >= SWITCH_FRAME)
-                {
-                    frameCounter = 0;
-
-                    if (!squareShotHitAnimation.IsEnabled)
-                        squareShotAnimation.position.Y -= PROJECTILE_SPEED;
-                }
-            }
+                
+            foreach (Bullet b in activeBullets)
+                b.Update(gameTime);
         }
 
         public void setDirectionMap(Boolean[] directions)
@@ -325,11 +317,9 @@ namespace ShapeShift
                     s.Draw(spriteBatch);
             }
 
-            if (squareShotAnimation.IsEnabled)
-                squareShotAnimation.Draw(spriteBatch);
 
-            if (squareShotHitAnimation.IsEnabled)
-                squareShotHitAnimation.Draw(spriteBatch);
+            foreach (Bullet b in activeBullets)
+                b.Draw(spriteBatch);
         }
 
         public override void DrawOnlyIdle(SpriteBatch spriteBatch)

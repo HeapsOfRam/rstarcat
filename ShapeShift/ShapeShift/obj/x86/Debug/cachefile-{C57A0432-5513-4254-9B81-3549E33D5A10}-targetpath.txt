@@ -103,6 +103,10 @@ Content\Triangle\TriangleShadowLeft.xnb
 Content\Triangle\TriangleShadowRight.xnb
 Content\Square\SquareShotSpriteSheet.xnb
 Content\Square\SquareShotHitSpriteSheet.xnb
+Content\Square\SquareShotShadowDown.xnb
+Content\Square\SquareShotShadowLeft.xnb
+Content\Square\SquareShotShadowRight.xnb
+Content\Square\SquareShotShadowUp.xnb
 Content\Fonts\Font1.xnb
 Content\Fonts\MenuFont.xnb
 Content\Fonts\TitleFont.xnb

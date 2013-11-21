@@ -64,20 +64,31 @@ namespace ShapeShift
 
             player.pSquareResetDirections();
 
-            if (inputManager.KeyDown(Keys.Up, Keys.W))
+            if (inputManager.KeyDown(Keys.W))
                 player.moveUp(gameTime);
-            if (inputManager.KeyDown(Keys.Down, Keys.S))
+            if (inputManager.KeyDown(Keys.S))
                 player.moveDown(gameTime);
-            if (inputManager.KeyDown(Keys.Left, Keys.A))
+            if (inputManager.KeyDown( Keys.A))
                 player.moveLeft(gameTime);
-            if (inputManager.KeyDown(Keys.Right, Keys.D))
+            if (inputManager.KeyDown( Keys.D))
                 player.moveRight(gameTime);
             if (inputManager.KeyDown(Keys.R))
                 player.rAction();
             if (inputManager.KeyDown(Keys.E))
                 player.eAction();
 
-            
+
+
+            if (inputManager.KeyDown(Keys.Up))
+                player.shoot(gameTime,1);
+            if (inputManager.KeyDown(Keys.Down))
+                player.shoot(gameTime,2);
+            if (inputManager.KeyDown(Keys.Left))
+                player.shoot(gameTime,3);
+            if (inputManager.KeyDown(Keys.Right))
+                player.shoot(gameTime,4);
+
+
             //for debug, pause
             if (inputManager.KeyPressed(Keys.P))
                 paused = !paused;
