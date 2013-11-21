@@ -33,13 +33,24 @@ namespace ShapeShift
         private Boolean droppedMine   = false;
         private Boolean droppedTurret = false;
 
+        protected int frameCounter;
+
+        protected const int PROJECTILE_SPEED = 60;
+        protected const int SWITCH_FRAME = 200;
+
+        public Boolean firing = false;
+
+        public List<Bullet> activeBullets;
+
         private const int WIDTH  = 92;
         private const int HEIGHT = 92;
+        private ContentManager content;
 
         public Diamond(ContentManager content)
         {
-
+            this.content = content; 
             animations = new List<SpriteSheetAnimation>();
+            activeBullets = new List<Bullet>();
 
             #region Load Textures
             diamondTexture = content.Load<Texture2D>("Diamond/DiamondIdleSpriteSheet");
@@ -93,6 +104,22 @@ namespace ShapeShift
 
         public void attack()
         {
+        }
+        public void shoot(int direction)
+        {
+
+            if (frameCounter >= SWITCH_FRAME)
+            {
+                frameCounter = 0;
+                Bullet b = new Bullet(content, direction, "diamond");
+
+                b.setPosition(idleAnimation.Position);
+                activeBullets.Add(b);
+
+
+            }
+
+
         }
 
         public override void hit()
@@ -167,6 +194,14 @@ namespace ShapeShift
         //Checks to see if there is a collision 
         public override bool Collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
+
+            foreach (Bullet b in activeBullets)
+            {
+                if (b.Collides(position, rectangleB, dataB))
+                    b.hit();
+            }
+
+
             Rectangle rectangleA = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
             Color[] dataA = new Color[WIDTH * HEIGHT];
             diamondShadowTexture.GetData(dataA);
@@ -179,6 +214,14 @@ namespace ShapeShift
             if (animation == diamondMineIdleAnimation || animation == diamondTurretIdleAnimation)
                 return true;
             return false;
+        }
+        public void Update(GameTime gameTime)
+        {
+            frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+
+            foreach (Bullet b in activeBullets)
+                b.Update(gameTime);
         }
 
         public void clearMines()
@@ -204,6 +247,9 @@ namespace ShapeShift
                 if (s.IsEnabled)
                     s.Draw(spriteBatch);
             }
+
+            foreach (Bullet b in activeBullets)
+                b.Draw(spriteBatch);
         }
 
         public override void DrawOnlyIdle(SpriteBatch spriteBatch)

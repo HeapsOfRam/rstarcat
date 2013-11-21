@@ -188,7 +188,7 @@ namespace ShapeShift
                 if (frameCounter >= SWITCH_FRAME)
                 {
                     frameCounter = 0;
-                    Bullet b = new Bullet(content,direction);
+                    Bullet b = new Bullet(content,direction, "square");
 
                     b.setPosition(idleAnimation.Position);
                     activeBullets.Add(b);

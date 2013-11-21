@@ -32,7 +32,7 @@ namespace ShapeShift
         protected const int PROJECTILE_SPEED = 10;
         protected const int SWITCH_FRAME = 10;
 
-        public Bullet(ContentManager content, float fireAngle)
+        public Bullet(ContentManager content, float fireAngle, String shape)
         {
 
             X_OFFSET = 24;
@@ -42,8 +42,18 @@ namespace ShapeShift
             this.fireAngle = fireAngle; 
 
             #region Load Textures
-            shotTexture = content.Load<Texture2D>("Square/SquareShotSpriteSheet");
-            shotHitTexture = content.Load<Texture2D>("Square/SquareShotHitSpriteSheet");
+
+            if (shape.Equals("square"))
+            {
+                shotTexture = content.Load<Texture2D>("Square/SquareShotSpriteSheet");
+                shotHitTexture = content.Load<Texture2D>("Square/SquareShotHitSpriteSheet");
+            }
+
+            else
+            {
+                shotTexture = content.Load<Texture2D>("Diamond/DiamondShotSpriteSheet");
+                shotHitTexture = content.Load<Texture2D>("Diamond/DiamondShotHitSpriteSheet");
+            }
             #endregion
 
             #region Create Animations

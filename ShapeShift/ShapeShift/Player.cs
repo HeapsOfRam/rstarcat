@@ -248,6 +248,29 @@ namespace ShapeShift
                         break;
                 }
             }
+
+
+            if (playerShape == pDiamond)
+            {
+                switch (direction)
+                {
+                    case 1:
+                        pDiamond.shoot(45);
+                        break;
+                    case 4:
+                        pDiamond.shoot(135);
+                        break;
+                    case 2:
+                        pDiamond.shoot(225);
+                        break;
+                    case 3:
+                        pDiamond.shoot(315);
+                        break;
+                    default:
+                        pDiamond.shoot(45);
+                        break;
+                }
+            }
         }
 
 
@@ -271,6 +294,11 @@ namespace ShapeShift
         private void pSquareShoot(int angle)
         {
             pSquare.shoot(angle);
+        }
+
+        private void pDiamondShoot(int angle)
+        {
+            pDiamond.shoot(angle);
         }
 
         private void pRotate()
@@ -531,6 +559,8 @@ namespace ShapeShift
                 pSquare.Update(gameTime);
             }
 
+            if (playerShape == pDiamond)
+                pDiamond.Update(gameTime);
 
         }
 
