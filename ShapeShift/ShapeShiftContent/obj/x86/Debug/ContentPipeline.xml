@@ -818,7 +818,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondShadow.xnb</Output>
-      <Time>2013-11-21T00:21:00.596018-05:00</Time>
+      <Time>2013-11-21T01:02:15.8635952-05:00</Time>
     </Item>
     <Item>
       <Source>Triangle\TriangleShadowUp.png</Source>
@@ -828,15 +828,6 @@
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShadowUp.xnb</Output>
       <Time>2013-11-11T14:23:41.7709916-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Lain.png</Source>
-      <Name>Lain</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Lain.xnb</Output>
-      <Time>2013-11-11T14:23:41.1609567-05:00</Time>
     </Item>
     <Item>
       <Source>Matrix\MatrixShadow.png</Source>
@@ -1036,6 +1027,15 @@
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Diamond\DiamondShotSpriteSheet.xnb</Output>
       <Time>2013-11-20T22:26:58.3076615-05:00</Time>
+    </Item>
+    <Item>
+      <Source>heart.png</Source>
+      <Name>heart</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\heart.xnb</Output>
+      <Time>2013-11-21T01:02:02.8538511-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
