@@ -60,7 +60,7 @@ namespace ShapeShift
         
         protected const int PROJECTILE_SPEED = 60;
         protected const float DASH_DISTANCE = 30;
-        protected const int SWITCH_FRAME = 10;
+        protected const int SWITCH_FRAME = 200;
 
         protected ContentManager content; 
 

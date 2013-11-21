@@ -29,7 +29,7 @@ namespace ShapeShift
         protected const int WIDTH = 92;
         protected const int HEIGHT = 92;
 
-        protected const int PROJECTILE_SPEED = 50;
+        protected const int PROJECTILE_SPEED = 10;
         protected const int SWITCH_FRAME = 10;
 
         public Bullet(ContentManager content, float fireAngle)
