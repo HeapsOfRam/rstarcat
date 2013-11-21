@@ -15,6 +15,8 @@ namespace ShapeShift
         protected List<SpriteSheetAnimation> animations;
         protected bool collision = false;
 
+        protected Color[] colorData;
+
         // Constructor 
         public Shape(){}
 
@@ -64,9 +66,15 @@ namespace ShapeShift
 
         public virtual void hit() { }
 
-        public virtual bool Collides(Vector2 position, Rectangle rect, Color[] data){return collision;}
+        public virtual bool collides(Vector2 position, Rectangle rect, Color[] data){return collision;}
 
         public virtual Texture2D getTexture(){return null;}
+
+        public Color[] getColorData(){return colorData;}
+
+        public virtual int getHeight() { return 0; }
+
+        public virtual int getWidth() { return 0; }
 
         
     }

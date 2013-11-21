@@ -163,7 +163,7 @@ namespace ShapeShift
         }
 
         //Checks to see if there is a collision 
-        public override bool Collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
+        public override bool collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
             #region Messy shit
             if (!collapse)

@@ -17,6 +17,7 @@ namespace ShapeShift
         private int direction = 1;
         private const int WANDERSWITCH = 5, UP = 1, RIGHTUP = 2, RIGHT = 3, RIGHTDOWN = 4, DOWN = 5, LEFTDOWN = 6, LEFT = 7, LEFTUP = 8;
         protected int spotRadius = 5, spotDist = 300;
+        protected Shape enemyShape;
 
         public virtual void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
         {
@@ -29,6 +30,8 @@ namespace ShapeShift
         {
             base.UnloadContent();
         }
+
+        public Shape getEnemyShape() { return enemyShape; }
 
         public void wander(GameTime gameTime)
         {

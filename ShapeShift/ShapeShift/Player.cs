@@ -193,6 +193,10 @@ namespace ShapeShift
             directions[3] = true;
         }*/
 
+        public Shape getShape() { return playerShape; }
+
+        public Rectangle getRectangle() { return new Rectangle((int) position.X, (int) position.Y, playerShape.getWidth(), playerShape.getHeight()); }
+
         public void rAction()
         {
             if (playerShape == pCircle)
@@ -493,7 +497,7 @@ namespace ShapeShift
 
                         
                         //Calls Collides method in shape class, in which each shape will check collisions uniquely 
-                        if (playerShape.Collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        if (playerShape.collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
                             position = moveAnimation.Position;
                             playerShape.hit();
@@ -510,7 +514,7 @@ namespace ShapeShift
 
 
                         //Calls Collides method in shape class, in which each shape will check collisions uniquely 
-                        if (playerShape.Collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        if (playerShape.collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
                             loadNextLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
                             position = spawnPosition;

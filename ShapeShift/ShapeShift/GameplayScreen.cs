@@ -52,7 +52,7 @@ namespace ShapeShift
             player.LoadContent(content, input);
             dummyEnemy.LoadContent(content, 2, 2);
             healthRectangle = new Rectangle[player.getMaxHealth()];
-            healthFillTexture = content.Load<Texture2D>("Lain");
+            healthFillTexture = content.Load<Texture2D>("heart");
             healthUnfillTexture = content.Load<Texture2D>("lainbackground");
 
         }
@@ -75,6 +75,9 @@ namespace ShapeShift
             map.Update(gameTime);
 
             player.pSquareResetDirections();
+
+            if (dummyEnemy.getEnemyShape().collides(dummyEnemy.getPosition(), player.getRectangle(), player.getShape().getColorData()))
+                player.takeDamage();
 
             if (inputManager.KeyDown(Keys.W))
                 player.moveUp(gameTime);

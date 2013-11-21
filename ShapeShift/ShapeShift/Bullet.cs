@@ -107,7 +107,7 @@ namespace ShapeShift
         }
 
         
-        public override bool Collides(Vector2 position, Rectangle rectangle, Color[] Data)
+        public override bool collides(Vector2 position, Rectangle rectangle, Color[] Data)
         {
             if (!collision)
             {

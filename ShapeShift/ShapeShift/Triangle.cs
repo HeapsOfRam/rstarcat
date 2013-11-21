@@ -86,12 +86,18 @@ namespace ShapeShift
             animations.Add(triangleShadowLeftAnimation);
             animations.Add(triangleShadowRightAnimation);
             animations.Add(triangleHitAnimation);
+
+            colorData = new Color[WIDTH * HEIGHT];
+            triangleShadowCurrentTexture.GetData(colorData);
         }
 
         public override Texture2D getTexture()
-        {
-            return triangleTexture;
-        }
+        { return triangleTexture; }
+
+
+        public override int getHeight() { return HEIGHT; }
+
+        public override int getWidth() { return WIDTH; }
 
         public void PreformRotate()
         {
@@ -127,10 +133,14 @@ namespace ShapeShift
                             shadowCount = 0;
                             break;
                 }
+
+
+                colorData = new Color[WIDTH * HEIGHT];
+                triangleShadowCurrentTexture.GetData(colorData);
             }
         }
 
-        public override bool Collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
+        public override bool collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
             Rectangle rectangleA = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
             

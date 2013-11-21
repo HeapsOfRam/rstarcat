@@ -590,8 +590,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lain.png">
-      <Name>Lain</Name>
+    <Compile Include="heart.png">
+      <Name>heart</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

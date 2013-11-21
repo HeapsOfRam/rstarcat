@@ -44,6 +44,8 @@ namespace ShapeShift
 
             eMatrix.makeMatrix();
 
+            enemyShape = eMatrix;
+
         }
 
         public override void UnloadContent()
@@ -68,7 +70,7 @@ namespace ShapeShift
                         lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
                         
                         //Calls Collides method in shape class, in which each shape will check collisions uniquely 
-                        if (eMatrix.Collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        if (eMatrix.collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
                             position = moveAnimation.Position;
                             colliding = true;

@@ -167,6 +167,9 @@ namespace ShapeShift
             dashAnimations.Add(dashSouthWestAnimation);
             dashAnimations.Add(dashNorthEastAnimation);
             dashAnimations.Add(dashNorthWestAnimation);
+
+            colorData = new Color[WIDTH * HEIGHT];
+            
         }
 
         public void attack()
@@ -199,11 +202,11 @@ namespace ShapeShift
       
         }
 
-        public override bool Collides(Vector2 position, Rectangle rectangle, Color[] Data)
+        public override bool collides(Vector2 position, Rectangle rectangle, Color[] Data)
         {
             foreach (Bullet b in activeBullets)
             {
-                if (b.Collides(position, rectangle, Data))
+                if (b.collides(position, rectangle, Data))
                     b.hit();
             }
             
