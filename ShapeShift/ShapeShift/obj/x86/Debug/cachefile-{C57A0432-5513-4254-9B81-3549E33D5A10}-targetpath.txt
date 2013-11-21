@@ -108,3 +108,7 @@ Content\Fonts\MenuFont.xnb
 Content\Fonts\TitleFont.xnb
 Content\Music\White Denim - D - At The Farm.xnb
 Content\Music\White Denim - D - At The Farm.wma
+Content\Square\SquareShotShadowDown.xnb
+Content\Square\SquareShotShadowLeft.xnb
+Content\Square\SquareShotShadowRight.xnb
+Content\Square\SquareShotShadowUp.xnb

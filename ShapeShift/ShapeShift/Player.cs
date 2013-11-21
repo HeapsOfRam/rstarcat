@@ -210,8 +210,33 @@ namespace ShapeShift
                 pMRotate();
             if (playerShape == pTriangle)
                 pTriangle.hit();
+
+        }
+
+        public void shoot(GameTime gametime, int direction)
+        {
+
             if (playerShape == pSquare)
-                pSquare.shoot();
+            {
+                switch (direction)
+                {
+                    case 1: 
+                        pSquare.shoot(0);
+                        break;
+                    case 4: 
+                        pSquare.shoot(90);
+                        break;
+                    case 2: 
+                        pSquare.shoot(180);
+                        break;
+                    case 3: 
+                        pSquare.shoot(270);
+                        break;
+                    default:
+                        pSquare.shoot(0);
+                        break;
+                }
+            }
         }
 
 
@@ -232,9 +257,9 @@ namespace ShapeShift
             pSquare.dash(this);
         }
 
-        private void pSquareShoot()
+        private void pSquareShoot(int angle)
         {
-            pSquare.shoot();
+            pSquare.shoot(angle);
         }
 
         private void pRotate()
