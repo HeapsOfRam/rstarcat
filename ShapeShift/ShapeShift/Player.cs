@@ -61,7 +61,7 @@ namespace ShapeShift
             pCircle   = new Circle(content);
             pTriangle = new Triangle(content);
             pDiamond  = new Diamond(content);
-            pMatrix   = new Matrix(content, 2, 2);
+            pMatrix   = new Matrix(content, 6, 6);
 
             maxHealth = FULL;
             health    = maxHealth;
@@ -259,19 +259,19 @@ namespace ShapeShift
                 switch (direction)
                 {
                     case 1:
-                        pDiamond.shoot(45);
+                        pDiamond.shoot(39);
                         break;
                     case 4:
-                        pDiamond.shoot(135);
+                        pDiamond.shoot(141);
                         break;
                     case 2:
-                        pDiamond.shoot(225);
+                        pDiamond.shoot(219);
                         break;
                     case 3:
-                        pDiamond.shoot(315);
+                        pDiamond.shoot(321);
                         break;
                     default:
-                        pDiamond.shoot(45);
+                        pDiamond.shoot(39);
                         break;
                 }
             }

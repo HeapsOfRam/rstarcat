@@ -50,7 +50,7 @@ namespace ShapeShift
             map.LoadContent(content, "Map2");
             //layer.LoadContent(content, "Map1");
             player.LoadContent(content, input);
-            dummyEnemy.LoadContent(content, 2, 2);
+            dummyEnemy.LoadContent(content, 6, 6);
             healthRectangle = new Rectangle[player.getMaxHealth()];
             healthFillTexture = content.Load<Texture2D>("heart");
             healthUnfillTexture = content.Load<Texture2D>("lainbackground");
