@@ -30,6 +30,7 @@ namespace ShapeShift
         protected Rectangle lastCheckedRectangle;
 
         protected Boolean collision = false;
+        protected Boolean[] directions = new Boolean[4];
 
         public virtual void LoadContent(ContentManager content, InputManager input)
         {
@@ -54,25 +55,25 @@ namespace ShapeShift
         public void moveRight(GameTime gameTime)
         {
             position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //directions[0] = true;
+            directions[0] = true;
         }
 
         public void moveLeft(GameTime gameTime)
         {
             position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //directions[1] = true;
+            directions[1] = true;
         }
 
         public void moveDown(GameTime gameTime)
         {
             position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //directions[2] = true;
+            directions[2] = true;
         }
 
         public void moveUp(GameTime gameTime)
         {
             position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //directions[3] = true;
+            directions[3] = true;
         }
 
         public void moveLeftUp(GameTime gameTime)

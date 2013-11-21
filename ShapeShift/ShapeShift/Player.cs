@@ -25,7 +25,7 @@ namespace ShapeShift
         
         private Random rand;
 
-        private Boolean[] directions = new Boolean[4];
+       
 
 
         private int r;
