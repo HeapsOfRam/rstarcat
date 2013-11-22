@@ -13,8 +13,8 @@ namespace ShapeShift
 
         private const int RADIUS_NO_SHIELD = 21; // gap between the image boundry and the actual shape
         private const int RADIUS_SHIELD = 27;    // gap between the image boundry and the shield
-        private const int WIDTH = 46;            // width of the shape, not the image
-        private const int HEIGHT = 46;           // height of the shape
+        private const int WIDTH = 92;            // width of the shape, not the image
+        private const int HEIGHT = 92;           // height of the shape
 
         private int radius;  // holds the current radius (shield or no shield)
 
@@ -24,6 +24,9 @@ namespace ShapeShift
         private Texture2D shieldIdleTexture;        // Texture containing the shield idle spritesheet image
         private Texture2D shieldFadeTexture;        // Texture containing the shield fade spritesheet image
         private Texture2D circleHitTexture;
+        private Texture2D circleShadowTexture;
+        private Texture2D circleShieldedShadowTexture;
+
         #endregion
 
         #region Animations
@@ -58,6 +61,8 @@ namespace ShapeShift
             shieldIdleTexture = content.Load<Texture2D>("Circle/CircleShieldIdleSpriteSheet");
             shieldFadeTexture = content.Load<Texture2D>("Circle/CircleFadeSpriteSheet");
             circleHitTexture = content.Load<Texture2D>("Circle/CircleHitSpriteSheet");
+            circleShadowTexture = content.Load<Texture2D>("Circle/CircleShadow");
+            circleShieldedShadowTexture = content.Load<Texture2D>("Circle/CircleShieldShadow");
 
             // Create new SpriteSheetAnimation objects for each texture and add them to the animation list
             idleAnimation = new SpriteSheetAnimation(this, true);
@@ -167,36 +172,15 @@ namespace ShapeShift
                     b.hit();
             }
 
-            Point circle = new Point((int)vect.X + WIDTH, (int)vect.Y + WIDTH);
+            Rectangle rectangleA = new Rectangle((int)vect.X, (int)vect.Y, WIDTH, HEIGHT);
+            Color[] dataA = new Color[WIDTH * HEIGHT];
 
-            var rectangleCenter = new Point((rectangle.X + rectangle.Width / 2),
-                                            (rectangle.Y + rectangle.Height / 2));
+            if (!shielded)
+                circleShadowTexture.GetData(dataA);
+            else
+                circleShieldedShadowTexture.GetData(dataA);
 
-            var w = rectangle.Width / 2;
-            var h = rectangle.Height / 2;
-
-            var dx = Math.Abs(circle.X - rectangleCenter.X);
-            var dy = Math.Abs(circle.Y - rectangleCenter.Y);
-
-            if ((dx > radius + w) || (dy > radius + h))
-                return false;
-
-            var circleDistance = new Point
-            {
-                X = Math.Abs(circle.X - rectangle.X - w),
-                Y = Math.Abs(circle.Y - rectangle.Y - h)
-            };
-
-            if (circleDistance.X <= w)
-                return true;
-
-            if (circleDistance.Y <= h)
-                return true;
-
-            var cornerDistanceSq = Math.Pow(circleDistance.X - w, 2) +
-                                   Math.Pow(circleDistance.Y - h, 2);
-
-            return (cornerDistanceSq <= (Math.Pow(radius, 2)));
+            return (IntersectPixels(rectangleA, dataA, rectangle, Data));
 
         }
 

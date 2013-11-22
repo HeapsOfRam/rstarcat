@@ -118,3 +118,6 @@ Content\Fonts\MenuFont.xnb
 Content\Fonts\TitleFont.xnb
 Content\Music\White Denim - D - At The Farm.xnb
 Content\Music\White Denim - D - At The Farm.wma
+Content\Square\SquareShadow.xnb
+Content\Circle\CircleShadow.xnb
+Content\Circle\CircleShieldShadow.xnb

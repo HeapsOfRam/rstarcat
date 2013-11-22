@@ -24,6 +24,7 @@ namespace ShapeShift
         protected Texture2D squareHitTexture;
         protected Texture2D squareShotTexture;
         protected Texture2D squareShotHitTexture;
+        protected Texture2D squareShadowTexture;
         #endregion
 
         #region Animations
@@ -89,6 +90,7 @@ namespace ShapeShift
             squareHitTexture = content.Load<Texture2D>("Square/SquareHitSpriteSheet");
             squareShotTexture = content.Load<Texture2D>("Square/SquareShotSpriteSheet");
             squareShotHitTexture = content.Load<Texture2D>("Square/SquareShotHitSpriteSheet");
+            squareShadowTexture = content.Load<Texture2D>("Square/SquareShadow");
             #endregion
 
             #region Create Animations
@@ -209,15 +211,13 @@ namespace ShapeShift
                 if (b.collides(position, rectangle, Data))
                     b.hit();
             }
-            
-            
-            if (position.X - X_OFFSET + rectangle.Width * 2 < rectangle.X  ||
-                position.X + X_OFFSET > rectangle.X + rectangle.Width      ||
-                position.Y - Y_OFFSET + rectangle.Height * 2 < rectangle.Y ||
-                position.Y + Y_OFFSET > rectangle.Y + rectangle.Height)
-                return false;  
-            else
-                return true;
+
+
+            Rectangle rectangleA = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
+            Color[] dataA = new Color[WIDTH * HEIGHT];
+            squareShadowTexture.GetData(dataA);
+
+            return (IntersectPixels(rectangleA, dataA, rectangle, Data));
 
            
         }
