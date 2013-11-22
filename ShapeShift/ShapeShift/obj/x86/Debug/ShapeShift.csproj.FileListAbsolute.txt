@@ -603,3 +603,7 @@ C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShotSpriteSheet.xnb
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleShotHitSpriteSheet.xnb
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleShotSpriteSheet.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShotHitSpriteSheet.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Triangle\TriangleShotSpriteSheet.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleShotHitSpriteSheet.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleShotSpriteSheet.xnb

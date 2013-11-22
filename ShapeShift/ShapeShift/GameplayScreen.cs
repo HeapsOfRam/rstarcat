@@ -77,7 +77,14 @@ namespace ShapeShift
             player.pSquareResetDirections();
 
             if (dummyEnemy.getEnemyShape().collides(dummyEnemy.getPosition(), player.getRectangle(), player.getShape().getColorData()))
-                player.takeDamage();
+            {
+                if (player.rotating())
+                {
+                    dummyEnemy.makeReel();
+                }
+                else
+                    player.takeDamage();
+            }
 
             if (inputManager.KeyDown(Keys.W))
                 player.moveUp(gameTime);

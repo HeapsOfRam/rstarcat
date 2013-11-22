@@ -121,6 +121,11 @@ namespace ShapeShift
 
         public override int getWidth() { return WIDTH; }
 
+        public Boolean rotating()
+        {
+            return triangleIdleAnimation.rotate;
+        }
+
         public void PreformRotate()
         {
             // If there isn't a rotation already taking place:

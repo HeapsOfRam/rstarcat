@@ -108,6 +108,11 @@ namespace ShapeShift
 
         }
 
+        public Boolean rotating()
+        {
+            return playerShape == pTriangle && pTriangle.rotating();
+        }
+
         public void takeDamage()
         {
             health--;
