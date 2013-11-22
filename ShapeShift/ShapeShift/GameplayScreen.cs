@@ -113,6 +113,8 @@ namespace ShapeShift
                 paused = !paused;
             if (!paused)
                 currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (inputManager.KeyPressed(Keys.L))
+                player.restoreHealth();
 
             if (paused)
             {

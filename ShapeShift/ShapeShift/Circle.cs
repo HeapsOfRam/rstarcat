@@ -46,6 +46,7 @@ namespace ShapeShift
         public int frameCounter;
         public ContentManager content;
         protected const int SWITCH_FRAME = 200;
+
         public Circle(ContentManager content)
         {
             this.content = content;
@@ -91,6 +92,9 @@ namespace ShapeShift
             animations.Add(shieldIdleAnimation);
             animations.Add(shieldFadeAnimation);
             animations.Add(circleHitAnimation);
+
+            colorData = new Color[WIDTH * HEIGHT];
+            circleShadowTexture.GetData(colorData);
         }
 
         public override Texture2D getTexture()

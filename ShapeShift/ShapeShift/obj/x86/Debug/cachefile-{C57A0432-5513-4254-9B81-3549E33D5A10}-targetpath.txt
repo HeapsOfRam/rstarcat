@@ -113,11 +113,11 @@ Content\Triangle\TriangleShotHitSpriteSheet.xnb
 Content\Triangle\TriangleShotSpriteSheet.xnb
 Content\Circle\CircleShotHitSpriteSheet.xnb
 Content\Circle\CircleShotSpriteSheet.xnb
+Content\Square\SquareShadow.xnb
+Content\Circle\CircleShadow.xnb
+Content\Circle\CircleShieldShadow.xnb
 Content\Fonts\Font1.xnb
 Content\Fonts\MenuFont.xnb
 Content\Fonts\TitleFont.xnb
 Content\Music\White Denim - D - At The Farm.xnb
 Content\Music\White Denim - D - At The Farm.wma
-Content\Square\SquareShadow.xnb
-Content\Circle\CircleShadow.xnb
-Content\Circle\CircleShieldShadow.xnb

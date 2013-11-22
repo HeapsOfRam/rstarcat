@@ -120,6 +120,11 @@ namespace ShapeShift
                 die();
         }
 
+        public void restoreHealth()
+        {
+            health = maxHealth;
+        }
+
         public void die()
         {
         }

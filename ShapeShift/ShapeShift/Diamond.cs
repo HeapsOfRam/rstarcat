@@ -99,6 +99,8 @@ namespace ShapeShift
             animations.Add(diamondTurretAnimation);
             animations.Add(diamondHitAnimation);
 
+            colorData = new Color[WIDTH * HEIGHT];
+            diamondShadowTexture.GetData(colorData);
         }
 
         public void attack()

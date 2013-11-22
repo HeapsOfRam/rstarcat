@@ -170,6 +170,7 @@ namespace ShapeShift
             dashAnimations.Add(dashNorthWestAnimation);
 
             colorData = new Color[WIDTH * HEIGHT];
+            squareShadowTexture.GetData(colorData);
 
             
         }
