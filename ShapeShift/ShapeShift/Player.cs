@@ -115,6 +115,7 @@ namespace ShapeShift
 
         public void takeDamage()
         {
+            playerShape.hit();
             health--;
             if (health == EMPTY)
                 die();
