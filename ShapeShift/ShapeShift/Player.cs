@@ -308,28 +308,6 @@ namespace ShapeShift
                 }
             }
 
-            if (playerShape == pTriangle)
-            {
-                switch (direction)
-                {
-                    case 1:
-                        pTriangle.shoot(0);
-                        break;
-                    case 4:
-                        pTriangle.shoot(90);
-                        break;
-                    case 2:
-                        pTriangle.shoot(180);
-                        break;
-                    case 3:
-                        pTriangle.shoot(270);
-                        break;
-                    default:
-                        pTriangle.shoot(0);
-                        break;
-                }
-            }
-
             if (playerShape == pCircle)
             {
                 switch (direction)

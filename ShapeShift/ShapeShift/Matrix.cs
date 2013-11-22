@@ -18,6 +18,7 @@ namespace ShapeShift
         protected const int POSITION_OFFSET   = 28;
         protected const int NUM_FRAMES        = 36;
         protected const int SWITCH_FRAME      = 150;
+        protected const int TILE_WIDTH        = 23; //width of each square component of the matrix; dog
 
         protected int matrixHeight = 1;
         protected int matrixWidth = 1;
@@ -160,6 +161,16 @@ namespace ShapeShift
                     currentTexture = 0;
                 }
             }
+        }
+
+        public override int getWidth()
+        {
+            return matrixWidth * TILE_WIDTH;
+        }
+
+        public override int getHeight()
+        {
+            return matrixHeight * TILE_WIDTH;
         }
 
         //Checks to see if there is a collision 

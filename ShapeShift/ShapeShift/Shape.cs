@@ -10,6 +10,7 @@ namespace ShapeShift
 {
     public class Shape
     {
+        private const int DEFAULT_WIDTH = 92, DEFAULT_HEIGHT = 92;
 
         // List of textures/spritesheet images used to animate the shape
         protected List<SpriteSheetAnimation> animations;
@@ -72,9 +73,9 @@ namespace ShapeShift
 
         public Color[] getColorData(){return colorData;}
 
-        public virtual int getHeight() { return 0; }
+        public virtual int getHeight() { return DEFAULT_HEIGHT; }
 
-        public virtual int getWidth() { return 0; }
+        public virtual int getWidth() { return DEFAULT_WIDTH; }
 
         
     }
