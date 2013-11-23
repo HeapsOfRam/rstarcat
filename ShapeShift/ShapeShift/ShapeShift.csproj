@@ -111,6 +111,10 @@
     <Compile Include="Animation.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="OptionsManager.cs" />
+    <Compile Include="OptionsScreen.cs" />
+    <Compile Include="ScoreScreen.cs" />
+    <Compile Include="HighScores.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="Collision.cs" />
     <Compile Include="Diamond.cs" />
