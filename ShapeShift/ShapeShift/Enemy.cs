@@ -45,22 +45,38 @@ namespace ShapeShift
                 currentTime = 0;
                 direction = rand.Next(UP, LEFTUP);
             }
-            if (direction == UP)
-                moveUp(gameTime);
-            if (direction == RIGHTUP)
-                moveRightUp(gameTime);
-            if (direction == RIGHT)
-                moveRight(gameTime);
-            if (direction == RIGHTDOWN)
-                moveRightDown(gameTime);;
-            if (direction == DOWN)
-                moveDown(gameTime);
-            if (direction == LEFTDOWN)
-                moveLeftDown(gameTime);
-            if (direction == LEFT)
-                moveLeft(gameTime);
-            if (direction == LEFTUP)
-                moveLeftUp(gameTime);
+
+            switch (direction)
+            {
+                case UP:
+                    moveUp(gameTime);
+                    break;
+                case RIGHTUP:
+                    moveRightUp(gameTime);
+                    break;
+                case RIGHT:
+                    moveRight(gameTime);
+                    break;
+                case RIGHTDOWN:
+                    moveRightDown(gameTime);
+                    break;
+                case DOWN:
+                    moveDown(gameTime);
+                    break;
+                case LEFTDOWN:
+                    moveLeftDown(gameTime);
+                    break;
+                case LEFT:
+                    moveLeft(gameTime);
+                    break;
+                case LEFTUP:
+                    moveLeftUp(gameTime);
+                    break;
+                default:
+                    moveUp(gameTime);
+                    break;
+
+            }
         }
 
         public Boolean isReeling()
@@ -127,7 +143,7 @@ namespace ShapeShift
                         state = ATTACK;
                     break;
                 case ATTACK:
-                    standStill();
+                    //standStill();
                     if(!enemyShape.collides(position, player.getRectangle(), player.getShape().getColorData()))
                         state = CHASE;                    
                     break;
