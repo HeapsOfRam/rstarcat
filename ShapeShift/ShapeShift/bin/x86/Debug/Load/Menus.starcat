@@ -5,8 +5,8 @@ Load=[Axis][Align][Font][Animation]
 
 Load=[Item][LinkType][LinkID]
 [New Game][Screen][GameplayScreen]
-[High Scores][Screen][SplashScreen]
-[Options][Screen][SplashScreen]
-[Credits][Screen][SplashScreen]
+[High Scores][Screen][ScoreScreen]
+[Options][Screen][OptionsScreen]
+
 
 EndLoad=[Title]

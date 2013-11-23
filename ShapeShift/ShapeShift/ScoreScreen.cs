@@ -11,20 +11,21 @@ using Microsoft.Xna.Framework.Media;
 
 namespace ShapeShift
 {
-    public class TitleScreen : GameScreen
+    public class ScoreScreen : GameScreen
     {
         SpriteFont font;
-        MenuManager menu;
-        //HighScores scoreScreen;
+        //MenuManager menu;
+        HighScores scoreScreen;
 
         public override void LoadContent(ContentManager Content, InputManager inputManager)
         {
             base.LoadContent(Content, inputManager);
             if (font == null)
                 font = this.content.Load<SpriteFont>("Fonts/TitleFont");
-            menu = new MenuManager();
-            menu.LoadContent(content, "Title");
-           
+            //menu = new MenuManager();
+            //menu.LoadContent(content, "Title");
+            scoreScreen = new HighScores();
+            scoreScreen.LoadContent(content, "Scores");
 
             Song song = Content.Load<Song>("Music/White Denim - D - At The Farm");  // Put the name of your song in instead of "song_title"
             //MediaPlayer.Play(song);
@@ -34,22 +35,23 @@ namespace ShapeShift
         public override void UnloadContent()
         {
             base.UnloadContent();
-            menu.UnloadContent();
-
+            //menu.UnloadContent();
+            scoreScreen.UnloadContent();
         }
 
         public override void Update(GameTime gameTime)
         {
             inputManager.Update();
-            menu.Update(gameTime, inputManager);
+            //menu.Update(gameTime, inputManager);
+            scoreScreen.Update(gameTime, inputManager);
 
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            
-            menu.Draw(spriteBatch);
 
+            //menu.Draw(spriteBatch);
+            scoreScreen.Draw(spriteBatch);
         }
     }
 }

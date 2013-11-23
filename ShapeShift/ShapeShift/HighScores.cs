@@ -11,17 +11,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ShapeShift
 {
-    public class MenuManager
+    public class HighScores
     {
         List<string> menuItems;
         List<string> animationTypes, linkType, linkID;
         List<Texture2D> menuImages;
         List<List<Animation>> animation;
-        
 
         ContentManager content;
         FileManager fileManager;
-        
+
         Vector2 position;
         int axis;
         string align;
@@ -37,8 +36,8 @@ namespace ShapeShift
         int itemNumber;
 
         private void SetMenuItems()
-        { 
-        //make all the menu items to be equal
+        {
+            //make all the menu items to be equal
             for (int i = 0; i < menuItems.Count; i++)
             {
                 if (menuImages.Count == i)
@@ -64,7 +63,7 @@ namespace ShapeShift
             if (align.Contains("Center"))
             {
 
-            //if the line is set to center
+                //if the line is set to center
                 //calculates total height and total width
                 //subtract dimensions from the actual total screen width etc.
                 for (int i = 0; i < menuItems.Count; i++)
@@ -72,7 +71,7 @@ namespace ShapeShift
                     dimensions.X += font.MeasureString(menuItems[i]).X + menuImages[i].Width;
                     dimensions.Y += font.MeasureString(menuItems[i]).Y + menuImages[i].Height;
                     //This should give us: the total height or the total width of the images we're loading in
-                    
+
                     if (axis == 1)
                     {
                         pos.X = (ScreenManager.Instance.Dimensions.X - dimensions.X) / 2;
@@ -81,7 +80,7 @@ namespace ShapeShift
                     if (axis == 2)
                     {
                         pos.Y = (ScreenManager.Instance.Dimensions.Y - dimensions.Y) / 2;//starting position
-                    
+
                     }
                 }
 
@@ -104,36 +103,36 @@ namespace ShapeShift
                 for (int j = 0; j < animationTypes.Count; j++)
                 {
                     switch (animationTypes[j])
-                    { 
+                    {
                         case "Fade":
                             tempAnimation.Add(new FadeAnimation());
-                            tempAnimation[tempAnimation.Count - 1].LoadContent(content, menuImages[i], menuItems[i], pos);    
-                        //what we are gonna do position-wise. Position based on actual axis
+                            tempAnimation[tempAnimation.Count - 1].LoadContent(content, menuImages[i], menuItems[i], pos);
+                            //what we are gonna do position-wise. Position based on actual axis
                             tempAnimation[tempAnimation.Count - 1].Font = font;
                             break;
-                    
+
                     }
-                
+
                 }
-               
-                if (tempAnimation.Count > 0)   
+
+                if (tempAnimation.Count > 0)
                     animation.Add(tempAnimation);
 
                 tempAnimation = new List<Animation>();
 
-               
+
                 //AXIS
-               // (1) axis means horizontal - add the axis based off the width of the other one
-               // (2) axis means vertical -- based off the height of the previous one
-                    //We will need to find out which is larger
+                // (1) axis means horizontal - add the axis based off the width of the other one
+                // (2) axis means vertical -- based off the height of the previous one
+                //We will need to find out which is larger
                 if (axis == 1)
                 {
-                //add horizontally
+                    //add horizontally
                     pos.X += dimensions.X;
                 }
                 else
                 {
-                pos.Y += dimensions.Y;
+                    pos.Y += dimensions.Y;
                 }
 
             }
@@ -155,7 +154,7 @@ namespace ShapeShift
 
             position = Vector2.Zero;
             fileManager = new FileManager();
-            fileManager.LoadContent("Load/Menus.starcat", attributes, contents, "Title");
+            fileManager.LoadContent("Load/Scores.starcat", attributes, contents, "Scores");
 
             for (int i = 0; i < attributes.Count; i++)
             {
@@ -198,7 +197,7 @@ namespace ShapeShift
                             break;
 
                     }
-                
+
                 }
             }
 
@@ -215,7 +214,7 @@ namespace ShapeShift
             menuItems.Clear();
             menuImages.Clear();
             animationTypes.Clear();
-        
+
         }
 
         public void Update(GameTime gameTime, InputManager inputManager)
