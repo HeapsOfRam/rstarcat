@@ -54,6 +54,8 @@ namespace ShapeShift
             moveSpeed     = 150f; //Set the move speed
 
             moveAnimation = new SpriteSheetAnimation();
+            moveAnimation.position = new Vector2(START_X, START_Y);
+
             gameTime      = new GameTime();
 
             //declare the shapes
@@ -76,7 +78,7 @@ namespace ShapeShift
             //moveAnimation.LoadContent(content, playerShape.getTexture(), "", position);
             
             playerShape.setPosition(position);
-
+            
             pMatrix.makeMatrix();
             spawnPosition = new Vector2(120, 200); //The location where the player spawns
 
@@ -552,16 +554,24 @@ namespace ShapeShift
                                 
                         //Creates a rectangle that is the current tiles postion and size
                         lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
-                        
-                        
 
-                        
-                        //Calls Collides method in shape class, in which each shape will check collisions uniquely 
-                        if (playerShape.collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+
+                        Vector2 xPosition = new Vector2(position.X, moveAnimation.Position.Y);
+                        Vector2 yPosition = new Vector2(moveAnimation.Position.X, position.Y);
+
+                        if (playerShape.collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
-                            position = moveAnimation.Position;
-                            playerShape.hit();
+                            if (!playerShape.collides(moveAnimation.Position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                                position.Y = moveAnimation.Position.Y;
                         }
+
+                        if (playerShape.collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        {
+                            if (!playerShape.collides(moveAnimation.Position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                                position.X = moveAnimation.Position.X;
+                        }
+                        
+                       
                     }
 
                     if (col.CollisionMap[i][j] == "*") //Marks a level transition (ex: Tiles)

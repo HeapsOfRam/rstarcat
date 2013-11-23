@@ -129,27 +129,7 @@ namespace ShapeShift
         public Color[] getColorData(int i, int j, int count)
         {
             Color[] data = new Color [46*46];
-
-            if (i == 0 && j == 0)
-                tileIndividuals[0].GetData(data);
-
-            else if (i == (count - 1) && j == (count - 1))
-                tileIndividuals[4].GetData(data);
-
-            else if (i == 0)
-                tileIndividuals[7].GetData(data);
-
-            else if (j == 0)
-                tileIndividuals[1].GetData(data);
-
-            else if (i == (count - 1))
-                tileIndividuals[3].GetData(data);
-
-            else if (j == (count - 1))
-                tileIndividuals[5].GetData(data);
-            
-            else
-                tileIndividuals[8].GetData(data);
+            tileIndividuals[8].GetData(data);
 
 
             return data;
