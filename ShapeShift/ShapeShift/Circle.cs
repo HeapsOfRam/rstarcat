@@ -10,9 +10,6 @@ namespace ShapeShift
 {
     class Circle : Shape
     {
-
-        private const int RADIUS_NO_SHIELD = 21; // gap between the image boundry and the actual shape
-        private const int RADIUS_SHIELD = 27;    // gap between the image boundry and the shield
         private const int WIDTH = 92;            // width of the shape, not the image
         private const int HEIGHT = 92;           // height of the shape
 
@@ -51,7 +48,6 @@ namespace ShapeShift
         {
             this.content = content;
             animations = new List<SpriteSheetAnimation>();
-            radius = RADIUS_NO_SHIELD;
 
             activeBullets = new List<Bullet>();
 
@@ -125,8 +121,6 @@ namespace ShapeShift
         {
             deployAnimation.IsEnabled = true;
             shielded = true;
-            //Increase the radius to account for the shield being displayed 
-            radius = RADIUS_SHIELD;
         }
 
         public void removeShield()
@@ -135,9 +129,6 @@ namespace ShapeShift
             shieldIdleAnimation.IsEnabled = false;
 
             shieldFadeAnimation.IsEnabled = true;
-
-            //Decrease the radius to account for the shield no longer being displayed
-            radius = RADIUS_NO_SHIELD;
 
             shielded = false;
         }

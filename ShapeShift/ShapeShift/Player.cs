@@ -37,6 +37,9 @@ namespace ShapeShift
         private bool loadNextLevel = false;
 
         private Vector2 spawnPosition;
+        private  Collision col;
+        private  Layers layer;
+        private InputManager input;
 
         public bool LoadNextLevel
         {
@@ -81,6 +84,8 @@ namespace ShapeShift
             
             pMatrix.makeMatrix();
             spawnPosition = new Vector2(120, 200); //The location where the player spawns
+
+
 
         }
 
@@ -139,14 +144,30 @@ namespace ShapeShift
             pSquare.stopDashing();
 
             if (playerShape == pCircle && pCircle.shielded)
-                pCircle.removeShield();
+                pCircle.removeShield();     
             else if (playerShape == pSquare && pSquare.dashing)
                 pSquare.stopDashing();
             else if (playerShape == pDiamond)
                 pDiamond.clearMines();
 
 
+            
+
+
             playerShape = nextShape;
+
+            if (playerShape == pTriangle)
+            {
+                playerShape.setOrigin(new Vector2(45.6667f, 53.6667f));
+            }
+            else
+                playerShape.setOrigin(new Vector2(46, 46));
+
+
+
+            pushOut (playerShape);
+            
+
             nextShape   = null;
             
             queueOne();
@@ -158,6 +179,77 @@ namespace ShapeShift
                 if (animation.IsEnabled)
                     animation.position = new Vector2(0, 0); 
             }
+
+            Update(gameTime,input,col,layer);
+        }
+
+        private void pushOut(Shape playerShape)
+        {
+
+             for (int i = 0; i < col.CollisionMap.Count; i++)
+            {
+                for (int j = 0; j < col.CollisionMap[i].Count; j++)
+                {                   
+
+                    if (col.CollisionMap[i][j] == "x") //Collision against solid objects (ex: Tiles)
+                    {
+                                
+                        //Creates a rectangle that is the current tiles postion and size
+                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
+
+
+                        Vector2 xPosition = new Vector2(position.X, position.Y);
+                        Vector2 yPosition = new Vector2(position.X, position.Y);      
+
+                        int count = 0;
+
+                        while (playerShape.collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        {
+
+                            xPosition.X += count;
+
+                            if (!playerShape.collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                                break;
+
+                            xPosition.X -= count*2;
+
+                            if (!playerShape.collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                                break;
+
+                            xPosition.X += count;
+
+                            count ++;
+
+                        }
+                        count = 0;
+
+                        while (playerShape.collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        {
+
+                            yPosition.Y += count;
+
+                            if (!playerShape.collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                                break;
+
+                            yPosition.Y -= count*2;
+
+                            if (!playerShape.collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                                break;
+
+                            yPosition.Y += count;
+
+                            count ++;
+
+                        }
+
+                        position = new Vector2(xPosition.X, yPosition.Y);
+                        playerShape.setPosition( new Vector2 (xPosition.X,yPosition.Y));
+
+
+                    }
+                }
+             }
+
         }
 
         #endregion
@@ -240,6 +332,9 @@ namespace ShapeShift
                 pTriangle.hit();
 
         }
+
+
+     
 
         public void shoot(GameTime gametime, int direction)
         {
@@ -481,6 +576,10 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
+            this.col = col;
+            this.layer = layer;
+            this.input = input;
+
             previousPosition = position;
             //commented out; moved to GamePlayScreen; do we need?
             /*//MOVEMENT
@@ -559,15 +658,15 @@ namespace ShapeShift
                         Vector2 xPosition = new Vector2(position.X, moveAnimation.Position.Y);
                         Vector2 yPosition = new Vector2(moveAnimation.Position.X, position.Y);
 
+
+
                         if (playerShape.collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
-                            if (!playerShape.collides(moveAnimation.Position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                                 position.Y = moveAnimation.Position.Y;
                         }
 
                         if (playerShape.collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
-                            if (!playerShape.collides(moveAnimation.Position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                                 position.X = moveAnimation.Position.X;
                         }
                         
