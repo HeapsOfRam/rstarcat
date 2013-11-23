@@ -35,6 +35,13 @@ namespace ShapeShift
         private  Layers layer;
         private InputManager input;
 
+        /* Player Spawns are currently handled in entity
+        private Vector2 leftSpawnPosition;
+        private Vector2 rightSpawnPosition;
+        private Vector2 topSpawnPosition;
+        private Vector2 bottomSpawnPosition;
+        */
+
         public override void LoadContent(ContentManager content, InputManager input)
         {
             this.content = content;
@@ -71,7 +78,9 @@ namespace ShapeShift
             playerShape.setPosition(position);
             
             pMatrix.makeMatrix();
-            spawnPosition = new Vector2(120, 200); //The location where the player spawns
+           // spawnPosition = new Vector2(55, 320); //player spawns handled in entity
+           // leftSpawnPosition = new Vector2(55, 320);
+           // rightSpawnPosition = new Vector2(680, 320);
 
 
 
@@ -632,7 +641,7 @@ namespace ShapeShift
             } */
 
 
-            /*loadNextLevel = false;   //resets the signal to switch levels to false
+            /*exitsLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
                 for (int j = 0; j < col.CollisionMap[i].Count; j++)
@@ -675,7 +684,7 @@ namespace ShapeShift
                         //Calls Collides method in shape class, in which each shape will check collisions uniquely 
                         if (playerShape.collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
-                            loadNextLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
+                            exitsLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
                             position = spawnPosition;
                         }
                     }

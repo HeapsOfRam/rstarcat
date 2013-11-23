@@ -26,19 +26,29 @@ namespace ShapeShift
 
         protected Vector2 position;
         protected Vector2 previousPosition;
-        protected Vector2 spawnPosition;
+        protected Vector2 spawnPosition = new Vector2(55, 320);
+        protected Vector2 leftSpawnPosition = new Vector2(50, 320);
+        protected Vector2 rightSpawnPosition = new Vector2(750, 320);
+        protected Vector2 topSpawnPosition;
+        protected Vector2 bottomSpawnPosition;
+
+        // spawnPosition = new Vector2(55, 320); //player spawns handled in entity
+        // leftSpawnPosition = new Vector2(55, 320);
+        // rightSpawnPosition = new Vector2(680, 320);
+
 
         protected Rectangle lastCheckedRectangle;
 
         protected Boolean collision = false;
         protected Boolean[] directions = new Boolean[4];
-        protected bool loadNextLevel = false;        
+        protected bool exitsLevel = false;        
 
         public virtual void LoadContent(ContentManager content, InputManager input)
         {
             this.content = new ContentManager(content.ServiceProvider, "Content");
             attributes = new List<List<string>>();
             contents = new List<List<string>>();
+
         }
 
         public virtual void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
@@ -103,9 +113,9 @@ namespace ShapeShift
         }
 
 
-        public bool LoadNextLevel
+        public bool ExitsLevel
         {
-            get { return loadNextLevel; }
+            get { return exitsLevel; }
         }
 
 
@@ -120,7 +130,7 @@ namespace ShapeShift
 
         public virtual void Update(GameTime gameTime, InputManager input, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
         {
-            loadNextLevel = false;   //resets the signal to switch levels to false
+            exitsLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
                 for (int j = 0; j < col.CollisionMap[i].Count; j++)
@@ -163,8 +173,15 @@ namespace ShapeShift
                         //Calls Collides method in shape class, in which each shape will check collisions uniquely 
                         if (getShape().collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
-                            loadNextLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
-                            position = spawnPosition;
+                            exitsLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
+
+                            //Going through Right Door
+                            if (position.X > 500)
+                                position = leftSpawnPosition;
+                            //Going through Left door
+                            else if (position.X < 500)
+                                position = rightSpawnPosition;
+
                         }
                     }
 

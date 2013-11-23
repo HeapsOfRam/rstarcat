@@ -22,11 +22,16 @@ namespace ShapeShift
         Texture2D healthFillTexture, healthUnfillTexture;
         Boolean paused = false;
         String Level = "";
-        String Level1 = "Map1";
-        String Level2 = "Map2";
+        String Level1 = "1";
+        String Level2 = "2";
+        String Level3 = "3";
+        String previousLevel = "";
+        Random randomLevelGenerator;
+        int levelNumber;
         FileManager fileManager;
         List<Texture2D> images;
 
+        bool LevelCompleted;
         int imageNumber;
 
 
@@ -46,14 +51,18 @@ namespace ShapeShift
             map = new Map();
             rectangle = new Rectangle();
             font = this.content.Load<SpriteFont>("Fonts/Font1");
-            Level = Level2;
-            map.LoadContent(content, "Map2");
-            //layer.LoadContent(content, "Map1");
+            Level = Level1; //FIRST LEVEL
+            map.LoadContent(content, "InProgressMap1");
             player.LoadContent(content, input);
             dummyEnemy.LoadContent(content, 2, 2);
             healthRectangle = new Rectangle[player.getMaxHealth()];
             healthFillTexture = content.Load<Texture2D>("heart");
             healthUnfillTexture = content.Load<Texture2D>("lainbackground");
+            levelNumber = 1;
+            Level = "1";
+            previousLevel = Level;
+            randomLevelGenerator = new Random();
+            LevelCompleted = false;
 
         }
 
@@ -73,6 +82,7 @@ namespace ShapeShift
             player.Update(gameTime, inputManager, map.collision, map.layer);
             dummyEnemy.Update(gameTime, map.collision, map.layer, player);
             map.Update(gameTime);
+            LevelCompleted = false;
 
             player.pSquareResetDirections();
 
@@ -162,18 +172,34 @@ namespace ShapeShift
             */
 
             //LOADING IN THE NEXT LEVEL
-
-            if (Level.Equals(Level1) && player.LoadNextLevel)
+           
+            if(inputManager.KeyPressed(Keys.Space))
             {
-                    map.LoadContent(content, "Map2");
-                    Level = Level2;
+                LevelCompleted = true;
             }
-            else if (Level.Equals(Level2) && player.LoadNextLevel)
-            {
-                    map.LoadContent(content, "Map1");
-                    Level = Level1;
 
+            if (LevelCompleted)
+            {
+                map.LoadContent(content, "CompletedMap" + previousLevel);
             }
+               
+            
+            if(Level.Equals(previousLevel)) //IF you are already on the next randomly generated level, load again
+                {
+                   // previousLevel = Level;                          //Assign the current level to 'previous level'
+                    levelNumber = randomLevelGenerator.Next(4) + 1; //randomly generate the next level number
+                    Level = levelNumber.ToString();                 //Assign the new level number to 'level'
+
+                }
+                else if (player.ExitsLevel)
+                {
+                        map.LoadContent(content, "InProgressMap" + Level);
+                        previousLevel = Level;
+
+                }
+         
+            
+            
 
         }
 

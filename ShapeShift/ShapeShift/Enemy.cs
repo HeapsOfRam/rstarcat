@@ -21,8 +21,9 @@ namespace ShapeShift
         protected int spotRadius = 5, spotDist = 300;
         protected Shape enemyShape;
         protected Boolean reeling;
+        
 
-        public virtual void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
+        public override void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
         {
             base.LoadContent(content, matrixWidth, matrixHeight);
             rand = new Random();
