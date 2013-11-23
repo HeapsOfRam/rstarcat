@@ -204,9 +204,9 @@ namespace ShapeShift
             directions[3] = true;
         }*/
 
-        public Shape getShape() { return playerShape; }
+        public override Shape getShape() { return playerShape; }
 
-        public Rectangle getRectangle() { return new Rectangle((int) position.X, (int) position.Y, playerShape.getWidth(), playerShape.getHeight()); }
+        public override Rectangle getRectangle() { return new Rectangle((int) position.X, (int) position.Y, playerShape.getWidth(), playerShape.getHeight()); }
 
         public void rAction()
         {

@@ -11,7 +11,8 @@ namespace ShapeShift
 {
     class Enemy : Entity
     {
-        private const String WANDER = "Wander";
+        private const int WANDER = 1, CHASE = 2, ATTACK = 3, REELING = 4;
+        private int state = WANDER;
         private float currentTime = 0, countDuration = 10f, knockCurr = 0;
         private const float KNOCKDURATION = .5f;
         private Random rand;
@@ -99,11 +100,52 @@ namespace ShapeShift
             return distanceFromEntity < spotDist;
         }
 
+        public void standStill()
+        { }
+
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
         {
             base.Update(gameTime, col, layer, player);
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (!reeling)
+            
+            if (reeling)
+                state = REELING;
+
+            switch (state)
+            {
+                case WANDER:
+                    wander(gameTime);
+                    if (spot(player))
+                        state = CHASE;
+                    break;
+                case CHASE:
+                    chase(gameTime, player);
+                    if (!spot(player))
+                        state = WANDER;
+                    if(enemyShape.collides(position, player.getRectangle(), player.getShape().getColorData()))
+                        state = ATTACK;
+                    break;
+                case ATTACK:
+                    standStill();
+                    if(!enemyShape.collides(position, player.getRectangle(), player.getShape().getColorData()))
+                        state = CHASE;                    
+                    break;
+                case REELING:
+                    knockCurr += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    knockedAway(gameTime, player);
+                    if (knockCurr > KNOCKDURATION)
+                    {
+                        state = CHASE;
+                        reeling = false;
+                        knockCurr = 0;
+                    }
+                    break;
+                default:
+                    wander(gameTime);
+                    break;
+            }
+
+            /*if (!reeling)
             {
                 if (spot(player))
                     chase(gameTime, player);
@@ -120,7 +162,7 @@ namespace ShapeShift
                     reeling = false;
                     knockCurr = 0;
                 }
-            }
+            }*/
         }
 
         public override void Draw(SpriteBatch spriteBatch)

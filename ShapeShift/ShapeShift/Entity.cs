@@ -129,6 +129,10 @@ namespace ShapeShift
             return collision;
         }
 
+        public virtual Rectangle getRectangle() { return new Rectangle(); }
+
+        public virtual Shape getShape() { return new Shape(); }
+
         public void setMoveSpeed(float moveSpeed)
         {
             this.moveSpeed = moveSpeed;
