@@ -26,7 +26,7 @@ namespace ShapeShift
             return animations;
         }
       
-        public void setPosition(Vector2 position)
+        public virtual void setPosition(Vector2 position)
         {
             foreach (SpriteSheetAnimation animation in animations)
                 animation.Position = position;

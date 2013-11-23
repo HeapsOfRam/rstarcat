@@ -30,19 +30,14 @@ namespace ShapeShift
             eMatrix = new Matrix(content, matrixWidth, matrixHeight);
 
             this.content = content;
-            moveSpeed = 150f; //Set the move speed
+            moveSpeed = 150f; 
 
             moveAnimation = new SpriteSheetAnimation();
             gameTime = new GameTime();
 
             position = new Vector2(START_X, START_Y);
 
-            //each shape should have silhouette shape of its own
-            //moveAnimation.LoadContent(content, playerShape.getTexture(), "", position);
-
             eMatrix.setPosition(position);
-
-            eMatrix.makeMatrix();
 
             enemyShape = eMatrix;
 
@@ -62,52 +57,15 @@ namespace ShapeShift
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
         {
             base.Update(gameTime, col, layer, player);
-
-            /*for (int i = 0; i < col.CollisionMap.Count; i++)
-            {
-                for (int j = 0; j < col.CollisionMap[i].Count; j++)
-                {
-                    if (col.CollisionMap[i][j] == "x")
-                    {
-
-                        //Creates a rectangle that is the current tiles postion and size
-                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
-                        
-                        //Calls Collides method in shape class, in which each shape will check collisions uniquely 
-                        if (eMatrix.collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                        {
-                            position = moveAnimation.Position;
-                            colliding = true;
-                            //eMatrix.hit();
-                        }
-                    }
-                }
-            }*/
-
-            // moveAnimation is used to check collisions, it is not drawn and is the same for each shape 
-            // (just a rectangle corresponding to the image)
-
-            // Update all of the enabled animations
-            List<SpriteSheetAnimation> Animations = eMatrix.getActiveTextures();
-
-            //eMatrix.Update(gameTime);
-            foreach (SpriteSheetAnimation animation in Animations)
-            {
-                if (animation.IsEnabled)
-                {
-                    animation.Update(gameTime);
-                    animation.position = position;
-                }
-            }
-            
-            eMatrix.makeMatrix();
+            eMatrix.setPosition(position);
+            eMatrix.Update(gameTime);
+    
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
 
-            // Draws each of the enabled animations for the current shape
             eMatrix.Draw(spriteBatch);
         }
     }
