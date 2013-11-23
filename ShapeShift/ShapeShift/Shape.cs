@@ -77,6 +77,19 @@ namespace ShapeShift
 
         public virtual int getWidth() { return DEFAULT_WIDTH; }
 
+
+        public void setOrigin(Vector2 origin)
+        {
+            List <SpriteSheetAnimation> animations = getActiveTextures();
+
+            foreach (SpriteSheetAnimation animation in animations){
+
+                animation.origin = origin;
+
+            }
+        }
+
+       
         
     }
 }
