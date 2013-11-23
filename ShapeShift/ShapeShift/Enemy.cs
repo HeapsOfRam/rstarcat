@@ -106,6 +106,7 @@ namespace ShapeShift
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
         {
             base.Update(gameTime, col, layer, player);
+
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             
             if (reeling)

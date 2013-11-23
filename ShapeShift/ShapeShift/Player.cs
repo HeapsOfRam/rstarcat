@@ -25,27 +25,15 @@ namespace ShapeShift
         
         private Random rand;
 
-       
-
-
         private int r;
 
         private Matrix pMatrix;
 
         private const int START_X = 200, START_Y = 200;
 
-        private bool loadNextLevel = false;
-
-        private Vector2 spawnPosition;
         private  Collision col;
         private  Layers layer;
         private InputManager input;
-
-        public bool LoadNextLevel
-        {
-            get { return loadNextLevel; }
-        }
-
 
         public override void LoadContent(ContentManager content, InputManager input)
         {
@@ -576,6 +564,8 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
+            base.Update(gameTime, input, col, layer);
+
             this.col = col;
             this.layer = layer;
             this.input = input;
@@ -642,15 +632,15 @@ namespace ShapeShift
             } */
 
 
-            loadNextLevel = false;   //resets the signal to switch levels to false
+            /*loadNextLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
                 for (int j = 0; j < col.CollisionMap[i].Count; j++)
-                {                   
+                {
 
                     if (col.CollisionMap[i][j] == "x") //Collision against solid objects (ex: Tiles)
                     {
-                                
+
                         //Creates a rectangle that is the current tiles postion and size
                         lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
 
@@ -662,15 +652,15 @@ namespace ShapeShift
 
                         if (playerShape.collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
-                                position.Y = moveAnimation.Position.Y;
+                            position.Y = moveAnimation.Position.Y;
                         }
 
                         if (playerShape.collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
-                                position.X = moveAnimation.Position.X;
+                            position.X = moveAnimation.Position.X;
                         }
-                        
-                       
+
+
                     }
 
                     if (col.CollisionMap[i][j] == "*") //Marks a level transition (ex: Tiles)
@@ -691,7 +681,7 @@ namespace ShapeShift
                     }
 
                 }
-            }
+            }*/
 
             // moveAnimation is used to check collisions, it is not drawn and is the same for each shape 
             // (just a rectangle corresponding to the image)

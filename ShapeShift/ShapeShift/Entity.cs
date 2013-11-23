@@ -26,11 +26,13 @@ namespace ShapeShift
 
         protected Vector2 position;
         protected Vector2 previousPosition;
+        protected Vector2 spawnPosition;
 
         protected Rectangle lastCheckedRectangle;
 
         protected Boolean collision = false;
         protected Boolean[] directions = new Boolean[4];
+        protected bool loadNextLevel = false;        
 
         public virtual void LoadContent(ContentManager content, InputManager input)
         {
@@ -100,6 +102,13 @@ namespace ShapeShift
             moveDown(gameTime);
         }
 
+
+        public bool LoadNextLevel
+        {
+            get { return loadNextLevel; }
+        }
+
+
         public float getPositionX()
         { return position.X; }
 
@@ -110,13 +119,86 @@ namespace ShapeShift
         { return position; }
 
         public virtual void Update(GameTime gameTime, InputManager input, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
-        { 
-        
+        {
+            loadNextLevel = false;   //resets the signal to switch levels to false
+            for (int i = 0; i < col.CollisionMap.Count; i++)
+            {
+                for (int j = 0; j < col.CollisionMap[i].Count; j++)
+                {
+
+                    if (col.CollisionMap[i][j] == "x") //Collision against solid objects (ex: Tiles)
+                    {
+
+                        //Creates a rectangle that is the current tiles postion and size
+                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
+
+
+                        Vector2 xPosition = new Vector2(position.X, moveAnimation.Position.Y);
+                        Vector2 yPosition = new Vector2(moveAnimation.Position.X, position.Y);
+
+
+
+                        if (getShape().collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        {
+                            position.Y = moveAnimation.Position.Y;
+                        }
+
+                        if (getShape().collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        {
+                            position.X = moveAnimation.Position.X;
+                        }
+
+
+                    }
+
+                    if (col.CollisionMap[i][j] == "*") //Marks a level transition (ex: Tiles)
+                    {
+
+                        //Creates a rectangle that is the current tiles postion and size
+                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
+
+
+
+
+                        //Calls Collides method in shape class, in which each shape will check collisions uniquely 
+                        if (getShape().collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        {
+                            loadNextLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
+                            position = spawnPosition;
+                        }
+                    }
+
+                }
+            }
         }
 
         public virtual void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
         {
             previousPosition = position;
+            colliding = false;
+
+            for (int i = 0; i < col.CollisionMap.Count; i++)
+            {
+                for (int j = 0; j < col.CollisionMap[i].Count; j++)
+                {
+                    if (col.CollisionMap[i][j] == "x" || col.CollisionMap[i][j] == "*")
+                    {
+
+                        //Creates a rectangle that is the current tiles postion and size
+                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
+
+                        //Calls Collides method in shape class, in which each shape will check collisions uniquely 
+                        if (getShape().collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        {
+                            position = moveAnimation.Position;
+                            colliding = true;
+                        }
+                    }
+                }
+            }
+
+            moveAnimation.Position = position;
+
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

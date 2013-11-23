@@ -54,12 +54,16 @@ namespace ShapeShift
             moveAnimation.UnloadContent();
         }
 
+        public override Shape getShape()
+        {
+            return enemyShape;
+        }
+
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
         {
             base.Update(gameTime, col, layer, player);
-            colliding = false;
 
-            for (int i = 0; i < col.CollisionMap.Count; i++)
+            /*for (int i = 0; i < col.CollisionMap.Count; i++)
             {
                 for (int j = 0; j < col.CollisionMap[i].Count; j++)
                 {
@@ -78,16 +82,15 @@ namespace ShapeShift
                         }
                     }
                 }
-            }
+            }*/
 
             // moveAnimation is used to check collisions, it is not drawn and is the same for each shape 
             // (just a rectangle corresponding to the image)
-            moveAnimation.Position = position;
 
             // Update all of the enabled animations
             List<SpriteSheetAnimation> Animations = eMatrix.getActiveTextures();
 
-            eMatrix.Update(gameTime);
+            //eMatrix.Update(gameTime);
             foreach (SpriteSheetAnimation animation in Animations)
             {
                 if (animation.IsEnabled)
