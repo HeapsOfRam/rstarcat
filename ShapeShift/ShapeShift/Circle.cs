@@ -133,6 +133,11 @@ namespace ShapeShift
             shielded = false;
         }
 
+        public Boolean isShielded()
+        {
+            return shielded;
+        }
+
         //Disables the animation, preforms a check to see if that animation was the deploy shield animation
         // in which case the idle shield animation now needs to be enabled
         public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)

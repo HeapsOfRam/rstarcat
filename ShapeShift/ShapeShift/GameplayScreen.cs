@@ -88,12 +88,8 @@ namespace ShapeShift
 
             if (dummyEnemy.getEnemyShape().collides(dummyEnemy.getPosition(), player.getRectangle(), player.getShape().getColorData()))
             {
-                if (player.rotating())
-                {
+                if (!player.takeDamage())
                     dummyEnemy.makeReel();
-                }
-                else
-                    player.takeDamage();
             }
 
             if (inputManager.KeyDown(Keys.W))

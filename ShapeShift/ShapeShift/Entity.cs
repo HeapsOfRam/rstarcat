@@ -41,7 +41,9 @@ namespace ShapeShift
 
         protected Boolean collision = false;
         protected Boolean[] directions = new Boolean[4];
-        protected bool exitsLevel = false;        
+        protected bool exitsLevel = false;
+
+        private const int EMPTY = 0;
 
         public virtual void LoadContent(ContentManager content, InputManager input)
         {
@@ -110,6 +112,20 @@ namespace ShapeShift
         {
             moveRight(gameTime);
             moveDown(gameTime);
+        }
+
+        public virtual Boolean takeDamage()
+        {
+            getShape().hit();
+            health--;
+            if (health == EMPTY)
+                die();
+
+            return true;
+        }
+
+        public virtual void die()
+        {
         }
 
 

@@ -117,12 +117,16 @@ namespace ShapeShift
             return playerShape == pTriangle && pTriangle.rotating();
         }
 
-        public void takeDamage()
+        public Boolean shielded()
         {
-            playerShape.hit();
-            health--;
-            if (health == EMPTY)
-                die();
+            return playerShape == pCircle && pCircle.isShielded();
+        }
+
+        public override Boolean takeDamage()
+        {
+            if(!(rotating() || shielded()))
+                base.takeDamage();
+            return false;
         }
 
         public void restoreHealth()
@@ -130,7 +134,7 @@ namespace ShapeShift
             health = maxHealth;
         }
 
-        public void die()
+        public override void die()
         {
         }
 
