@@ -15,6 +15,8 @@ namespace ShapeShift
         GameTime gameTime;
 
         private const int FULL = 3, MID = 2, LOW = 1, EMPTY = 0, SIZE = 60, MOVE = 5;
+        private const float SHIELD_TIME = 5f;
+        private float shieldDuration = 0;
        // private Rectangle rectangle;
         private Shape playerShape, nextShape;
         private Square pSquare;
@@ -152,20 +154,12 @@ namespace ShapeShift
             else if (playerShape == pDiamond)
                 pDiamond.clearMines();
 
-
-            
-
-
             playerShape = nextShape;
 
             if (playerShape == pTriangle)
-            {
                 playerShape.setOrigin(new Vector2(45.6667f, 53.6667f));
-            }
             else
                 playerShape.setOrigin(new Vector2(46, 46));
-
-
 
             pushOut (playerShape);
             
@@ -442,6 +436,7 @@ namespace ShapeShift
         {
             if(pCircle.shielded)
                 pCircle.removeShield();
+            shieldDuration = 0;
         }
 
         private void pDash()
@@ -576,6 +571,13 @@ namespace ShapeShift
             playerShape = pMatrix;
         }
 
+        private void updateShield(GameTime gameTime)
+        {
+            shieldDuration += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (shieldDuration > SHIELD_TIME && shielded())
+                premoveShield();
+        }
+
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
             base.Update(gameTime, input, col, layer);
@@ -585,117 +587,8 @@ namespace ShapeShift
             this.input = input;
 
             previousPosition = position;
-            //commented out; moved to GamePlayScreen; do we need?
-            /*//MOVEMENT
-            if (input.KeyDown(Keys.Right, Keys.D))
-            { //MOVE RIGHT
-                moveRight();
-                //position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                directions[0] = true;
-            }
 
-            if (input.KeyDown(Keys.Left, Keys.A))
-            { //MOVE LEFT
-                position.X -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                directions[1] = true;
-            }
-            if (input.KeyDown(Keys.Down, Keys.S))
-            { //MOVE DOWN
-                position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                directions[2] = true;
-            }
-            if (input.KeyDown(Keys.Up, Keys.W))
-            { //MOVE UP
-                position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                directions[3] = true;
-            }
-
-            
-
-            //also in gameplayscreen            
-            //Used to check deploy sheild in circle
-            /*if (input.KeyDown(Keys.R))
-            {
-                if (playerShape == pCircle && !pCircle.shielded)
-                    pCircle.deployShield();
-
-                if (playerShape == pSquare)
-                    pSquare.dash(this);
-
-                if (playerShape == pTriangle)
-                    pTriangle.PreformRotate();
-
-                if (playerShape == pDiamond && !pDiamond.mineDeployed())
-                    pDiamond.deployMine();
-
-                if (playerShape == pMatrix)
-                    pMatrix.PreformRotate();
-            
-            }
-
-            if (input.KeyDown(Keys.E))
-            {
-                if (playerShape == pCircle && pCircle.shielded)
-                    pCircle.removeShield();
-
-                if (playerShape == pDiamond)
-                    pDiamond.dropMine();
-
-                if (playerShape == pMatrix)
-                    pMatrix.PreformRotate(3);
-            } */
-
-
-            /*exitsLevel = false;   //resets the signal to switch levels to false
-            for (int i = 0; i < col.CollisionMap.Count; i++)
-            {
-                for (int j = 0; j < col.CollisionMap[i].Count; j++)
-                {
-
-                    if (col.CollisionMap[i][j] == "x") //Collision against solid objects (ex: Tiles)
-                    {
-
-                        //Creates a rectangle that is the current tiles postion and size
-                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
-
-
-                        Vector2 xPosition = new Vector2(position.X, moveAnimation.Position.Y);
-                        Vector2 yPosition = new Vector2(moveAnimation.Position.X, position.Y);
-
-
-
-                        if (playerShape.collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                        {
-                            position.Y = moveAnimation.Position.Y;
-                        }
-
-                        if (playerShape.collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                        {
-                            position.X = moveAnimation.Position.X;
-                        }
-
-
-                    }
-
-                    if (col.CollisionMap[i][j] == "*") //Marks a level transition (ex: Tiles)
-                    {
-
-                        //Creates a rectangle that is the current tiles postion and size
-                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
-
-
-
-
-                        //Calls Collides method in shape class, in which each shape will check collisions uniquely 
-                        if (playerShape.collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                        {
-                            exitsLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
-                            position = spawnPosition;
-                        }
-                    }
-
-                }
-            }*/
+            updateShield(gameTime);
 
             // moveAnimation is used to check collisions, it is not drawn and is the same for each shape 
             // (just a rectangle corresponding to the image)
