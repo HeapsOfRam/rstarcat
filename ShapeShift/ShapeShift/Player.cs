@@ -124,9 +124,10 @@ namespace ShapeShift
 
         public override Boolean takeDamage()
         {
-            if(!(rotating() || shielded()))
-                base.takeDamage();
-            return false;
+            if (!(rotating() || shielded()))
+                return base.takeDamage();
+            else
+                return false;
         }
 
         public void restoreHealth()
