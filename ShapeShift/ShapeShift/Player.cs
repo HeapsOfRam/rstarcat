@@ -573,9 +573,12 @@ namespace ShapeShift
 
         private void updateShield(GameTime gameTime)
         {
-            shieldDuration += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (shieldDuration > SHIELD_TIME && shielded())
-                premoveShield();
+            if (shielded())
+            {
+                shieldDuration += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (shieldDuration > SHIELD_TIME)
+                    premoveShield();
+            }
         }
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
