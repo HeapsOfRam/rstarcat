@@ -18,7 +18,6 @@ namespace ShapeShift
         private Random rand;
         private int direction = 1;
         private const int WANDERSWITCH = 5, UP = 1, RIGHTUP = 2, RIGHT = 3, RIGHTDOWN = 4, DOWN = 5, LEFTDOWN = 6, LEFT = 7, LEFTUP = 8;
-        protected int spotRadius = 5, spotDist = 300;
         protected Shape enemyShape;
         protected Boolean reeling;
         
@@ -109,12 +108,6 @@ namespace ShapeShift
                 moveUp(gameTime);
             if (player.getPositionY() > position.Y)
                 moveDown(gameTime);
-        }
-
-        public Boolean spot(Entity e)
-        {
-            float distanceFromEntity = Vector2.Distance(e.getPosition(), position);
-            return distanceFromEntity < spotDist;
         }
 
         public void standStill()

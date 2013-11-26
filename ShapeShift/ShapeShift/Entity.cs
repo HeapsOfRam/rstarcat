@@ -32,6 +32,8 @@ namespace ShapeShift
         protected Vector2 topSpawnPosition;
         protected Vector2 bottomSpawnPosition;
 
+        protected int spotRadius = 5, spotDist = 300;        
+
         // spawnPosition = new Vector2(55, 320); //player spawns handled in entity
         // leftSpawnPosition = new Vector2(55, 320);
         // rightSpawnPosition = new Vector2(680, 320);
@@ -128,6 +130,11 @@ namespace ShapeShift
         {
         }
 
+        public Boolean spot(Entity e)
+        {
+            float distanceFromEntity = Vector2.Distance(e.getPosition(), position);
+            return distanceFromEntity < spotDist;
+        }
 
         public bool ExitsLevel
         {
