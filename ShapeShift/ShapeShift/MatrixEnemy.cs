@@ -36,6 +36,7 @@ namespace ShapeShift
             gameTime = new GameTime();
 
             position = new Vector2(START_X, START_Y);
+            moveAnimation.position = position;
 
             eMatrix.setPosition(position);
 

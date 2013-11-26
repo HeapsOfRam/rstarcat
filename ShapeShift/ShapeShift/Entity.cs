@@ -224,15 +224,26 @@ namespace ShapeShift
                     if (col.CollisionMap[i][j] == "x" || col.CollisionMap[i][j] == "*")
                     {
 
-                        //Creates a rectangle that is the current tiles postion and size
                         lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
 
-                        //Calls Collides method in shape class, in which each shape will check collisions uniquely 
-                        if (getShape().collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+
+                        Vector2 xPosition = new Vector2(position.X, moveAnimation.Position.Y);
+                        Vector2 yPosition = new Vector2(moveAnimation.Position.X, position.Y);
+
+
+
+                        if (getShape().collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
-                            position = moveAnimation.Position;
+                            position.Y = moveAnimation.Position.Y;
                             colliding = true;
                         }
+
+                        if (getShape().collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        {
+                            position.X = moveAnimation.Position.X;
+                            colliding = true;
+                        }
+
                     }
                 }
             }
