@@ -47,6 +47,11 @@ namespace ShapeShift
 
         private const int EMPTY = 0;
 
+        private GameTime gameTime;
+        private InputManager input;
+        private Collision col;
+        private Layers layer;
+
         public virtual void LoadContent(ContentManager content, InputManager input)
         {
             this.content = new ContentManager(content.ServiceProvider, "Content");
@@ -151,7 +156,7 @@ namespace ShapeShift
         public Vector2 getPosition()
         { return position; }
 
-        public virtual void Update(GameTime gameTime, InputManager input, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
+        private void detectCollision()
         {
             exitsLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)
@@ -174,11 +179,13 @@ namespace ShapeShift
                         if (getShape().collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
                             position.Y = moveAnimation.Position.Y;
+                            colliding = true;
                         }
 
                         if (getShape().collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
                             position.X = moveAnimation.Position.X;
+                            colliding = true;
                         }
 
 
@@ -189,10 +196,7 @@ namespace ShapeShift
 
                         //Creates a rectangle that is the current tiles postion and size
                         lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
-
-
-
-
+                                                
                         //Calls Collides method in shape class, in which each shape will check collisions uniquely 
                         if (getShape().collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                         {
@@ -207,16 +211,33 @@ namespace ShapeShift
 
                         }
                     }
-
                 }
             }
+        
         }
 
-        public virtual void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
+        public virtual void Update(GameTime gameTime, InputManager input, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
+        {
+            this.gameTime = gameTime;
+            this.input = input;
+            this.col = col;
+            this.layer = layer;
+            detectCollision();
+        }
+
+        public virtual void Update(GameTime gameTime, Collision col, Layers layer, Entity entity)
         {
             previousPosition = position;
             colliding = false;
 
+            this.gameTime = gameTime;
+            this.col = col;
+            this.layer = layer;
+            detectCollision();
+
+            moveAnimation.Position = position;
+            
+            /*
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
                 for (int j = 0; j < col.CollisionMap[i].Count; j++)
@@ -246,10 +267,7 @@ namespace ShapeShift
 
                     }
                 }
-            }
-
-            moveAnimation.Position = position;
-
+            }*/
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
