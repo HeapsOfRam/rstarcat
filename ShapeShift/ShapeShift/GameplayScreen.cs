@@ -21,6 +21,7 @@ namespace ShapeShift
         Rectangle[] healthRectangle;
         Texture2D healthFillTexture, healthUnfillTexture;
         Boolean paused = false;
+        Boolean pauseTimer = false;
         String Level = "";
         String Level1 = "1";
         String Level2 = "2";
@@ -78,123 +79,138 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime)
         {
-            inputManager.Update();
-            player.Update(gameTime, inputManager, map.collision, map.layer);
-            dummyEnemy.Update(gameTime, map.collision, map.layer, player);
-            map.Update(gameTime);
-            LevelCompleted = false;
 
-            player.pSquareResetDirections();
-
-            if (dummyEnemy.getEnemyShape().collides(dummyEnemy.getPosition(), player.getRectangle(), player.getShape().getColorData()))
-            {
-                if (!player.takeDamage())
-                    dummyEnemy.makeReel();
-            }
-
-            if (inputManager.KeyDown(Keys.W))
-                player.moveUp(gameTime);
-            if (inputManager.KeyDown(Keys.S))
-                player.moveDown(gameTime);
-            if (inputManager.KeyDown( Keys.A))
-                player.moveLeft(gameTime);
-            if (inputManager.KeyDown( Keys.D))
-                player.moveRight(gameTime);
-            if (inputManager.KeyDown(Keys.R))
-                player.rAction();
-            if (inputManager.KeyDown(Keys.E))
-                player.eAction();
-
-            if (inputManager.KeyDown(Keys.Up))
-                player.shoot(gameTime,1);
-            if (inputManager.KeyDown(Keys.Down))
-                player.shoot(gameTime,2);
-            if (inputManager.KeyDown(Keys.Left))
-                player.shoot(gameTime,3);
-            if (inputManager.KeyDown(Keys.Right))
-                player.shoot(gameTime,4);
-
-            //for debug, pause
-            if (inputManager.KeyPressed(Keys.P))
-                paused = !paused;
             if (!paused)
-                currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (inputManager.KeyPressed(Keys.L))
-                player.restoreHealth();
-
-            if (paused)
             {
-                int n = 0;
-                if (inputManager.KeyPressed(Keys.D1))
-                    n = 1;
-                if (inputManager.KeyPressed(Keys.D2))
-                    n = 2;
-                if (inputManager.KeyPressed(Keys.D3))
-                    n = 3;
-                if (inputManager.KeyPressed(Keys.D4))
-                    n = 4;
-                if (inputManager.KeyPressed(Keys.D5))
-                    n = 5;
+                if (inputManager.KeyPressed(Keys.P))
+                    paused = true;
 
-                if (n > 0)
-                    player.manualChange(n);
-                n = 0;
-            }
+                inputManager.Update();
+                player.Update(gameTime, inputManager, map.collision, map.layer);
+                dummyEnemy.Update(gameTime, map.collision, map.layer, player);
+                map.Update(gameTime);
+                LevelCompleted = false;
 
+                player.pSquareResetDirections();
 
-            if (currentTime >= countDuration)
-            {
-                counter++;
-                currentTime -= countDuration;
-            }
-            if (counter >= maxCount)
-            {
-                // Console.WriteLine("Calling ShiftShape");
-                player.shiftShape();
-                counter = 0;
-            }
-
-            timeRemaining = maxCount - counter;
-            for (int i = 0; i < player.getMaxHealth(); i++)
-            {
-                healthRectangle[i] = new Rectangle(HEALTHOFFSETX + ((HEALTHSIZEX + DISPLACEHEALTH) * i), HEALTHOFFSETY, HEALTHSIZEX, HEALTHSIZEY);
-            }
-            /* This code was used to create a UI Boundary at the top of the screen
-             * so that the player would not be able to move past it
-            if (player1.getX() <= ABSZERO)
-                player1.setX(ABSZERO);
-            if (player1.getX() >= screenWidth - player1.getWidth())
-                player1.setX(screenWidth - player1.getWidth());
-            */
-
-            //LOADING IN THE NEXT LEVEL
-           
-            if(inputManager.KeyPressed(Keys.Space))
-            {
-                LevelCompleted = true;
-            }
-
-            if (LevelCompleted)
-            {
-                map.LoadContent(content, "CompletedMap" + previousLevel);
-            }
-               
-            
-            if(Level.Equals(previousLevel)) //IF you are already on the next randomly generated level, load again
+                if (dummyEnemy.getEnemyShape().collides(dummyEnemy.getPosition(), player.getRectangle(), player.getShape().getColorData()))
                 {
-                   // previousLevel = Level;                          //Assign the current level to 'previous level'
+                    if (!player.takeDamage())
+                        dummyEnemy.makeReel();
+                }
+
+                if (inputManager.KeyDown(Keys.W))
+                    player.moveUp(gameTime);
+                if (inputManager.KeyDown(Keys.S))
+                    player.moveDown(gameTime);
+                if (inputManager.KeyDown(Keys.A))
+                    player.moveLeft(gameTime);
+                if (inputManager.KeyDown(Keys.D))
+                    player.moveRight(gameTime);
+                if (inputManager.KeyDown(Keys.R))
+                    player.rAction();
+                if (inputManager.KeyDown(Keys.E))
+                    player.eAction();
+
+                if (inputManager.KeyDown(Keys.Up))
+                    player.shoot(gameTime, 1);
+                if (inputManager.KeyDown(Keys.Down))
+                    player.shoot(gameTime, 2);
+                if (inputManager.KeyDown(Keys.Left))
+                    player.shoot(gameTime, 3);
+                if (inputManager.KeyDown(Keys.Right))
+                    player.shoot(gameTime, 4);
+
+                //for debug, pause
+                
+                if (inputManager.KeyPressed(Keys.T))
+                    pauseTimer = !pauseTimer;
+                if (!pauseTimer)
+                    currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (inputManager.KeyPressed(Keys.L))
+                    player.restoreHealth();
+                
+                
+                if (pauseTimer)
+                {
+                    int n = 0;
+                    if (inputManager.KeyPressed(Keys.D1))
+                        n = 1;
+                    if (inputManager.KeyPressed(Keys.D2))
+                        n = 2;
+                    if (inputManager.KeyPressed(Keys.D3))
+                        n = 3;
+                    if (inputManager.KeyPressed(Keys.D4))
+                        n = 4;
+                    if (inputManager.KeyPressed(Keys.D5))
+                        n = 5;
+
+                    if (n > 0)
+                        player.manualChange(n);
+                    n = 0;
+                }
+
+
+                if (currentTime >= countDuration)
+                {
+                    counter++;
+                    currentTime -= countDuration;
+                }
+                if (counter >= maxCount)
+                {
+                    // Console.WriteLine("Calling ShiftShape");
+                    player.shiftShape();
+                    counter = 0;
+                }
+
+                timeRemaining = maxCount - counter;
+                for (int i = 0; i < player.getMaxHealth(); i++)
+                {
+                    healthRectangle[i] = new Rectangle(HEALTHOFFSETX + ((HEALTHSIZEX + DISPLACEHEALTH) * i), HEALTHOFFSETY, HEALTHSIZEX, HEALTHSIZEY);
+                }
+                /* This code was used to create a UI Boundary at the top of the screen
+                 * so that the player would not be able to move past it
+                if (player1.getX() <= ABSZERO)
+                    player1.setX(ABSZERO);
+                if (player1.getX() >= screenWidth - player1.getWidth())
+                    player1.setX(screenWidth - player1.getWidth());
+                */
+
+                //LOADING IN THE NEXT LEVEL
+
+                if (inputManager.KeyPressed(Keys.Space))
+                {
+                    LevelCompleted = true;
+                }
+
+                if (LevelCompleted)
+                {
+                    map.LoadContent(content, "CompletedMap" + previousLevel);
+                }
+
+
+                if (Level.Equals(previousLevel)) //IF you are already on the next randomly generated level, load again
+                {
+                    // previousLevel = Level;                          //Assign the current level to 'previous level'
                     levelNumber = randomLevelGenerator.Next(4) + 1; //randomly generate the next level number
                     Level = levelNumber.ToString();                 //Assign the new level number to 'level'
 
                 }
                 else if (player.ExitsLevel)
                 {
-                        map.LoadContent(content, "InProgressMap" + Level);
-                        previousLevel = Level;
+                    map.LoadContent(content, "InProgressMap" + Level);
+                    previousLevel = Level;
 
                 }
-         
-            
+
+            }//EndNotPause
+            else if (paused)
+            {
+                if (inputManager.KeyPressed(Keys.P))
+                    paused = false;
+                inputManager.Update();
+            }
+
             
 
         }
@@ -206,6 +222,10 @@ namespace ShapeShift
             player.Draw(spriteBatch);
             dummyEnemy.Draw(spriteBatch);
             spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(175, 5), Color.White);
+
+            if(paused)
+            spriteBatch.DrawString(font, "GAME PAUSED", new Vector2(300, 5), Color.White);
+
             for (int i = 0; i < player.getMaxHealth(); i++)
             {
                 fillHealth(i, spriteBatch);
