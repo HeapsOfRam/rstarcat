@@ -60,7 +60,6 @@ namespace ShapeShift
             base.Update(gameTime, col, layer, player);
             eMatrix.setPosition(position);
             eMatrix.Update(gameTime);
-    
         }
 
         public override void Draw(SpriteBatch spriteBatch)
