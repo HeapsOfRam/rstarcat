@@ -98,16 +98,26 @@ namespace ShapeShift
                 moveUp(gameTime);
         }
 
-        public void chase(GameTime gameTime, Entity player)
+        private void chaseX(GameTime gameTime, Entity player)
         {
             if (player.getPositionX() < position.X)
                 moveLeft(gameTime);
             if (player.getPositionX() > position.X)
                 moveRight(gameTime);
+        }
+
+        private void chaseY(GameTime gameTime, Entity player)
+        {
             if (player.getPositionY() < position.Y)
                 moveUp(gameTime);
             if (player.getPositionY() > position.Y)
                 moveDown(gameTime);
+        }
+
+        public void chase(GameTime gameTime, Entity player)
+        {
+            chaseX(gameTime, player);
+            chaseY(gameTime, player);
         }
 
         private void findChase(GameTime gameTime, Entity player)
@@ -122,18 +132,14 @@ namespace ShapeShift
                 findX = true;
                 findY = false;
             }
-            if (player.getPositionX() < position.X && !findX)
-                moveLeft(gameTime);
-            if (player.getPositionX() > position.X && !findX)
-                moveRight(gameTime);
-            if (player.getPositionY() < position.Y && !findY)
-                moveUp(gameTime);
-            if (player.getPositionY() > position.Y && !findY)
-                moveDown(gameTime);
             if (findX)
                 moveRight(gameTime);
+            else
+                chaseX(gameTime, player);
             if (findY)
                 moveDown(gameTime);
+            else
+                chaseY(gameTime, player);
         }
 
         public void standStill()
