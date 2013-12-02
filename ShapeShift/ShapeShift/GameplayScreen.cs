@@ -113,7 +113,7 @@ namespace ShapeShift
                     player.eAction();
 
                 if (inputManager.KeyDown(Keys.F))
-                    dummyEnemy.group(true);
+                    dummyEnemy.group();
 
                 if (inputManager.KeyDown(Keys.Up))
                     player.shoot(gameTime, 1);

@@ -14,6 +14,8 @@ namespace ShapeShift
         private GameTime gameTime;
         private MatrixTileEnemy[,] tiles;
 
+        
+
         private Boolean grouped = false;
 
         private int matrixWidth, matrixHeight;
@@ -23,9 +25,22 @@ namespace ShapeShift
             this.position = position;
         }
 
-        public void group(Boolean grouped)
+        public void group()
         {
-            this.grouped = grouped;
+
+            grouped = !grouped;
+
+            for (int i = 0; i < matrixWidth; i++)
+            {
+                for (int j = 0; j < matrixHeight; j++)
+                {
+                    tiles[i, j].group();
+
+                    if (grouped)
+                        tiles[i, j].setPosition(new Vector2 (tiles[0, 0].getPosition().X + (i * 28),tiles[0, 0].getPosition().Y + (j *28)));
+                }
+            }
+            
         }
 
         public override void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)

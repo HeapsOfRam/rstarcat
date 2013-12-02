@@ -80,5 +80,10 @@ namespace ShapeShift
 
             eMatrixTile.Draw(spriteBatch);
         }
+
+        public void group()
+        {
+            eMatrixTile.group();
+        }
     }
 }

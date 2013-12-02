@@ -26,8 +26,10 @@ namespace ShapeShift
         {
             base.LoadContent(content, matrixWidth, matrixHeight);
             rand = new Random();
-        }
 
+            moveSpeed = 180f;
+        }
+        
 
         public override void UnloadContent()
         {
@@ -40,7 +42,7 @@ namespace ShapeShift
         {
             if (colliding)
                 direction = rand.Next(8) + 1;
-            if (currentTime > WANDERSWITCH)
+            if (currentTime > 2)
             {
                 currentTime = 0;
                 direction = rand.Next(8) + 1;
@@ -100,17 +102,17 @@ namespace ShapeShift
 
         private void chaseX(GameTime gameTime, Entity player)
         {
-            if (player.getPositionX() < position.X)
+            if (player.getPositionX()+46 < position.X)
                 moveLeft(gameTime);
-            if (player.getPositionX() > position.X)
+            if (player.getPositionX()+46 > position.X)
                 moveRight(gameTime);
         }
 
         private void chaseY(GameTime gameTime, Entity player)
         {
-            if (player.getPositionY() < position.Y)
+            if (player.getPositionY() + 46 < position.Y)
                 moveUp(gameTime);
-            if (player.getPositionY() > position.Y)
+            if (player.getPositionY() +46 > position.Y)
                 moveDown(gameTime);
         }
 

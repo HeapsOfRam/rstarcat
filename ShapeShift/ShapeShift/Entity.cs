@@ -47,10 +47,10 @@ namespace ShapeShift
 
         private const int EMPTY = 0;
 
-        private GameTime gameTime;
-        private InputManager input;
-        private Collision col;
-        private Layers layer;
+        protected GameTime gameTime;
+        protected InputManager input;
+        protected Collision col;
+        protected Layers layer;
 
         public virtual void LoadContent(ContentManager content, InputManager input)
         {
@@ -156,7 +156,7 @@ namespace ShapeShift
         public Vector2 getPosition()
         { return position; }
 
-        private void detectCollision()
+        protected virtual void detectCollision()
         {
             exitsLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)

@@ -21,7 +21,7 @@ namespace ShapeShift
         protected SpriteSheetAnimation idleAnimation; // idle animation ( image texture of animation changes as it cycles through colors)
         protected SpriteSheetAnimation hitAnimation;
 
-        protected Boolean collapse = false; // True if the matrix is in collapsed state, flase otherwise
+        protected Boolean grouped = false; // True if the matrix is in collapsed state, flase otherwise
        
         protected float rotateSpeed = 15.0f;
         protected Vector2 TILE_ROTATE_CENTER = new Vector2(11.5f, 11.5f);
@@ -32,7 +32,11 @@ namespace ShapeShift
         protected int matrixHeight;
         protected int positionOffset;
 
+        protected Color[] individualTileData;
+        protected Color[] fullTileData;
+
         protected Point matrixPosition;
+
 
         public MatrixTile(ContentManager content, int matrixWidth, int matrixHeight, int positionOffset, Point matrixPosition)
         {
@@ -47,25 +51,33 @@ namespace ShapeShift
             matrixCenter = new Vector2(matrixWidth * positionOffset / 2, matrixHeight * positionOffset / 2);
 
             #region Create Textures & Animations
-            idleTexture = content.Load<Texture2D>("Matrix/MatrixIdleSpriteSheet");
-            hitTexture = content.Load<Texture2D>("Matrix/MatrixHitSpriteSheet");
+            idleTexture = content.Load<Texture2D>("Matrix/MatrixSpriteSheet0");
+            //hitTexture = content.Load<Texture2D>("Matrix/MatrixHitSpriteSheet");
             shadowTexture = content.Load<Texture2D>("Matrix/MatrixShadow");
 
             idleAnimation = new SpriteSheetAnimation(this, true, WIDTH, TILE_ROTATE_CENTER);
             idleAnimation.LoadContent(content, idleTexture, "", new Vector2(0, 0));
             idleAnimation.IsEnabled = true;
 
-            hitAnimation = new SpriteSheetAnimation(this, false, WIDTH, TILE_ROTATE_CENTER);
+          /*  hitAnimation = new SpriteSheetAnimation(this, false, WIDTH, TILE_ROTATE_CENTER);
             hitAnimation.LoadContent(content, hitTexture, "", new Vector2(0, 0));
-            hitAnimation.IsEnabled = false;
+            hitAnimation.IsEnabled = false;*/
 
             animations.Add(idleAnimation);
-            animations.Add(hitAnimation);
+            //animations.Add(hitAnimation);
 
             #endregion
 
             colorData = new Color[28 * 28];
+            individualTileData = new Color[28 * 28];
             shadowTexture.GetData(colorData);
+            shadowTexture.GetData(individualTileData);
+
+            fullTileData = new Color[matrixWidth * 28 * matrixHeight * 28];
+            for (int i = 0; i < fullTileData.Length; i++)
+            {
+                fullTileData[i] = Color.Black;
+            }
         }
 
         public void attack()
@@ -74,7 +86,7 @@ namespace ShapeShift
 
         public override void hit()
         {
-            hitAnimation.IsEnabled = true;
+            //hitAnimation.IsEnabled = true;
         }
 
         public void PreformRotate(Boolean transformRotate)
@@ -83,12 +95,12 @@ namespace ShapeShift
             {
                 if (transformRotate)
                 {
-                    collapse = !collapse;
+                    grouped = !grouped;
                     idleAnimation.PreformRotate(rotateSpeed, false);
                     idleAnimation.setAnimationCenter(new Vector2(matrixCenter.X - 9.5f * matrixPosition.X, matrixCenter.Y - 9.5f * matrixPosition.Y));
                 }
 
-                if (!transformRotate && !collapse)
+                if (!transformRotate && !grouped)
                 {
                     idleAnimation.PreformRotate(rotateSpeed, true);
                     idleAnimation.setAnimationCenter(TILE_ROTATE_CENTER);
@@ -117,11 +129,20 @@ namespace ShapeShift
 
         public override bool collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
-            
+          
             Color[] dataA = new Color[28 * 28];
             shadowTexture.GetData(dataA);
-
-            Rectangle rectangleA = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
+            Rectangle rectangleA;
+            if (!grouped)
+            {
+                rectangleA = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
+                dataA = individualTileData;
+            }
+            else
+            {
+                rectangleA = new Rectangle((int)position.X, (int)position.Y, matrixWidth * 28, matrixHeight * 28);
+                dataA = fullTileData;
+            }
            
             return (IntersectPixels(rectangleA, dataA, rectangleB, dataB));
         }
@@ -151,6 +172,11 @@ namespace ShapeShift
                 if (s.IsEnabled)
                     s.Update(gameTime);
             }
+        }
+
+        public void group()
+        {
+            grouped = !grouped;
         }
     }
 }
