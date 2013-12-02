@@ -121,15 +121,14 @@ namespace ShapeShift
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (image != null)
-            {
-                
-            spriteBatch.Draw(image, position + origin, sourceRect, Color.White * alpha, rotation, origin, scale, SpriteEffects.None,0.0f);
+            {  
+                spriteBatch.Draw(image, position + origin, sourceRect, Color.White * alpha, rotation, origin, scale, SpriteEffects.None,0.0f);
             }
 
             if (text != String.Empty)
             { 
-            origin = new Vector2(font.MeasureString(text).X / 2, font.MeasureString(text).Y/2);
-            spriteBatch.DrawString(font, text, position + origin, color * alpha, rotation, origin,scale, SpriteEffects.None, 0.0f);
+                origin = new Vector2(font.MeasureString(text).X / 2, font.MeasureString(text).Y/2);
+                spriteBatch.DrawString(font, text, position + origin, color * alpha, rotation, origin,scale, SpriteEffects.None, 0.0f);
             }
 
         }

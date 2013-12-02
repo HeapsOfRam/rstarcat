@@ -30,13 +30,13 @@ namespace ShapeShift
         protected const int HEIGHT = 92;
 
         protected const int PROJECTILE_SPEED = 10;
-        protected const int SWITCH_FRAME = 10;
+        protected const int SWITCH_FRAME = 5;
+        private Texture2D shotShadowTexture;
+
+        private Color[] data;
 
         public Bullet(ContentManager content, float fireAngle, String shape)
         {
-
-            X_OFFSET = 24;
-            Y_OFFSET = 24;
 
             animations = new List<SpriteSheetAnimation>();
             this.fireAngle = fireAngle; 
@@ -82,6 +82,37 @@ namespace ShapeShift
             animations.Add(shotHitAnimation);
 
             rotateTowardsFiringAngle(fireAngle);
+
+           GraphicsDevice myDevice = GameServices.GetService<GraphicsDevice>();
+
+           RenderTarget2D renderTarget = new RenderTarget2D(myDevice, WIDTH, HEIGHT);
+           SpriteBatch spriteBatch = new SpriteBatch(myDevice);
+
+            // Set the render target on the device.
+            myDevice.SetRenderTarget(renderTarget);
+            myDevice.Clear(Color.Transparent);
+
+            //List<SpriteSheetAnimation> animations = getActiveTextures();
+            spriteBatch.Begin();
+            
+            shotAnimation.Draw(spriteBatch);
+            
+            spriteBatch.End();
+
+            // Set the device render target back to the back buffer.
+           // graphics.GraphicsDevice.SetRenderTarget(0, null);
+
+            // Call GetTexture to retrieve the render target data and save it to a texture.
+            myDevice.SetRenderTarget((RenderTarget2D)null);
+            shotShadowTexture = new Texture2D(myDevice, WIDTH, HEIGHT);
+            Color[] con = new Color[WIDTH * HEIGHT];
+            renderTarget.GetData<Color>(con);
+            shotShadowTexture.SetData<Color>(con);
+            //shotShadowTexture = (Texture2D)renderTarget;
+           
+           // myDevice.SetRenderTarget(null);
+            data = new Color[WIDTH * HEIGHT];
+            shotShadowTexture.GetData(data);
         }
 
         public void rotateTowardsFiringAngle(float fireAngle)
@@ -96,7 +127,13 @@ namespace ShapeShift
             }
         }
 
+        public Boolean dispose()
+        {
+            if (!shotHitAnimation.IsEnabled && !shotAnimation.IsEnabled)
+                return true;
 
+            return false;
+        }
 
         public void attack()
         {
@@ -108,8 +145,6 @@ namespace ShapeShift
             shotHitAnimation.position.X = shotAnimation.position.X;
             shotHitAnimation.position.Y = shotAnimation.position.Y;
             shotHitAnimation.IsEnabled = true;
-                   
-
         }
 
         public override Texture2D getTexture()
@@ -122,20 +157,22 @@ namespace ShapeShift
         {
             if (!collision)
             {
+                Rectangle rectangleA = new Rectangle((int)shotAnimation.Position.X, (int)shotAnimation.Position.Y, WIDTH, HEIGHT);
+               
 
-                if (!(shotAnimation.position.X - 40 + rectangle.Width * 2 < rectangle.X ||
-                   shotAnimation.position.X + 40 > rectangle.X + rectangle.Width ||
-                   shotAnimation.position.Y - Y_OFFSET + rectangle.Height * 2 < rectangle.Y ||
-                   shotAnimation.position.Y + Y_OFFSET + 10 > rectangle.Y + rectangle.Height))
+                if (IntersectPixels(rectangleA, data, rectangle, Data))
                 {
                     collision = true;
                     return true;
                 }
-
                 else
+                {
                     return false;
+                }
+
             }
             return false;
+
         }
         
        

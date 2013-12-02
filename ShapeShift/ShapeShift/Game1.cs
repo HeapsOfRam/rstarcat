@@ -18,8 +18,7 @@ namespace ShapeShift
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-
+      
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -36,7 +35,9 @@ namespace ShapeShift
         {
             // TODO: Add your initialization logic here
             ScreenManager.Instance.Initialize();
-
+            GameServices.AddService<GraphicsDevice>(graphics.GraphicsDevice);
+            GameServices.AddService<ContentManager>(Content);
+            
 
             //we can access any of the public methods from the SingletonClass (ScreenManager)
             ScreenManager.Instance.Dimensions = new Vector2(920,690); //640 x 480 in tutorial
@@ -54,6 +55,7 @@ namespace ShapeShift
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            GameServices.AddService<SpriteBatch>(spriteBatch);
 
             // TODO: use this.Content to load your game content here
             ScreenManager.Instance.LoadContent(Content);

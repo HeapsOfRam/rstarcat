@@ -42,7 +42,7 @@ namespace ShapeShift
         {
             if (colliding)
                 direction = rand.Next(8) + 1;
-            if (currentTime > 2)
+            if (currentTime > WANDERSWITCH)
             {
                 currentTime = 0;
                 direction = rand.Next(8) + 1;

@@ -154,7 +154,10 @@ namespace ShapeShift
 
 
             foreach (Bullet b in activeBullets)
-                b.Update(gameTime);
+            {
+                if (!b.dispose())
+                    b.Update(gameTime);
+            }
         }
 
 

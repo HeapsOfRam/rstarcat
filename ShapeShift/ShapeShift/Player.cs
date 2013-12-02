@@ -406,19 +406,19 @@ namespace ShapeShift
                 switch (direction)
                 {
                     case 1:
-                        pCircle.shoot(0);
+                        pCircle.shoot(45);
                         break;
                     case 4:
-                        pCircle.shoot(90);
+                        pCircle.shoot(135);
                         break;
                     case 2:
-                        pCircle.shoot(180);
+                        pCircle.shoot(225);
                         break;
                     case 3:
-                        pCircle.shoot(270);
+                        pCircle.shoot(315);
                         break;
                     default:
-                        pCircle.shoot(0);
+                        pCircle.shoot(45);
                         break;
                 }
             }

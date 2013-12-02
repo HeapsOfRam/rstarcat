@@ -250,9 +250,12 @@ namespace ShapeShift
         {
             frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-                
+
             foreach (Bullet b in activeBullets)
-                b.Update(gameTime);
+            {
+                if (!b.dispose())    
+                    b.Update(gameTime);
+            }
         }
 
         public void setDirectionMap(Boolean[] directions)

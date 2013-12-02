@@ -111,6 +111,7 @@
     <Compile Include="Animation.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="GameServices.cs" />
     <Compile Include="MatrixTile.cs" />
     <Compile Include="MatrixTileEnemy.cs" />
     <Compile Include="OptionsManager.cs" />

@@ -173,7 +173,11 @@ namespace ShapeShift
 
 
             foreach (Bullet b in activeBullets)
-                b.Update(gameTime);
+            {
+                if (!b.dispose())
+                    b.Update(gameTime);
+
+            }
         }
 
         public override bool collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
