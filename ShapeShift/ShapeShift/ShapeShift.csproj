@@ -112,11 +112,11 @@
     <Compile Include="Bullet.cs" />
     <Compile Include="Circle.cs" />
     <Compile Include="MatrixTile.cs" />
+    <Compile Include="MatrixTileEnemy.cs" />
     <Compile Include="OptionsManager.cs" />
     <Compile Include="OptionsScreen.cs" />
     <Compile Include="ScoreScreen.cs" />
     <Compile Include="HighScores.cs" />
-    <Compile Include="Matrix.cs" />
     <Compile Include="Collision.cs" />
     <Compile Include="Diamond.cs" />
     <Compile Include="Enemy.cs" />

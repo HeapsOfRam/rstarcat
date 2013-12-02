@@ -63,7 +63,7 @@ namespace ShapeShift
             pCircle   = new Circle(content);
             pTriangle = new Triangle(content);
             pDiamond  = new Diamond(content);
-            pMatrix   = new Matrix(content, 6, 6);
+            
 
             maxHealth = FULL;
             health    = maxHealth;
@@ -79,7 +79,7 @@ namespace ShapeShift
             
             playerShape.setPosition(position);
             
-            pMatrix.makeMatrix();
+         
            // spawnPosition = new Vector2(55, 320); //player spawns handled in entity
            // leftSpawnPosition = new Vector2(55, 320);
            // rightSpawnPosition = new Vector2(680, 320);
@@ -304,7 +304,7 @@ namespace ShapeShift
                 pdeployShield();
             if (playerShape == pSquare)
                 pDash();
-            if (playerShape == pMatrix || playerShape == pTriangle)
+            if (playerShape == pTriangle)
                 pRotate();
             if (playerShape == pDiamond)
                 pDiamond.deployMine();
@@ -322,8 +322,7 @@ namespace ShapeShift
                 //pDiamond.deployTurret();
                 //pDiamond.hit();
             }
-            if (playerShape == pMatrix)
-                pMRotate();
+           
             if (playerShape == pTriangle)
                 pTriangle.hit();
 
@@ -463,14 +462,10 @@ namespace ShapeShift
         {
             if(playerShape == pTriangle)
                 pTriangle.PreformRotate();
-            if(playerShape == pMatrix)
-                pMatrix.PreformRotate(false);
+           
         }
 
-        private void pMRotate()
-        {
-                pMatrix.PreformRotate(true);
-        }
+        
 
         private void pdeployMine()
         {
@@ -497,8 +492,6 @@ namespace ShapeShift
                 changeToTriangle();
             if (n == 4)
                 changeToDiamond();
-            if (n == 5)
-                changeToMatrix();
         }
 
         private void pClearCircle()
@@ -521,11 +514,6 @@ namespace ShapeShift
             pTriangle = new Triangle(content);
         }
 
-        private void pClearMatrix()
-        {
-            pMatrix.makeMatrix();
-        }
-
         public void pSquareResetDirections()
         {
             for (int i = 0; i < 4; i++)
@@ -538,7 +526,6 @@ namespace ShapeShift
             moveSpeed = 150f;
             pClearCircle();
             pClearDiamond();
-            pClearMatrix();
             pClearSquare();
             pClearTriangle();
         }
@@ -566,10 +553,7 @@ namespace ShapeShift
             playerShape = pTriangle;
         }
 
-        private void changeToMatrix()
-        {
-            playerShape = pMatrix;
-        }
+        
 
         private void updateShield(GameTime gameTime)
         {
@@ -601,19 +585,15 @@ namespace ShapeShift
             List<SpriteSheetAnimation> Animations = playerShape.getActiveTextures();
             foreach (SpriteSheetAnimation animation in Animations)
             {
-                if (playerShape == pMatrix)
-                {
-                    animation.Update(gameTime);
-                }
-                else if (animation.IsEnabled)
+               
+                if (animation.IsEnabled)
                     animation.Update(gameTime);
 
                 if (!(playerShape == pDiamond && pDiamond.mineDropped() && pDiamond.isMineAnimation(animation)))
                     animation.Position = position;
             }
 
-            if(playerShape == pMatrix)
-                pMatrix.Update(gameTime);
+          
 
             // Update the next shape animation in the upper right of the screen
             Animations = nextShape.getActiveTextures();
@@ -623,9 +603,7 @@ namespace ShapeShift
                     animation.Update(gameTime);
             }
 
-            if (playerShape == pMatrix)
-                pMatrix.makeMatrix();
-
+        
             if (playerShape == pSquare)
             {
                 pSquare.setDirectionMap(directions);

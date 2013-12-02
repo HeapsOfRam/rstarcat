@@ -25,6 +25,13 @@ namespace ShapeShift
         {
             return animations;
         }
+
+        public virtual Rectangle getRectangle() {
+
+            Vector2 position = getActiveTextures()[0].Position;
+
+            return new Rectangle ((int)position.X,(int)position.Y,getWidth(),getHeight());
+        }
       
         public virtual void setPosition(Vector2 position)
         {

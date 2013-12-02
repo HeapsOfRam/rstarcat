@@ -14,7 +14,7 @@ namespace ShapeShift
     public class GameplayScreen : GameScreen
     {
         Player player;
-        Enemy dummyEnemy;
+        MatrixEnemy dummyEnemy;
         Layers layer;
         Map map;
         Rectangle rectangle;
@@ -47,7 +47,7 @@ namespace ShapeShift
         {
             base.LoadContent(content, input);
             player = new Player();
-            dummyEnemy = new MatrixEnemy();
+            dummyEnemy = new MatrixEnemy(new Vector2 (500,500));
             layer = new Layers();
             map = new Map();
             rectangle = new Rectangle();
@@ -111,6 +111,9 @@ namespace ShapeShift
                     player.rAction();
                 if (inputManager.KeyDown(Keys.E))
                     player.eAction();
+
+                if (inputManager.KeyDown(Keys.F))
+                    dummyEnemy.group(true);
 
                 if (inputManager.KeyDown(Keys.Up))
                     player.shoot(gameTime, 1);

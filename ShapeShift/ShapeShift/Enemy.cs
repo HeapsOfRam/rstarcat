@@ -39,11 +39,11 @@ namespace ShapeShift
         public void wander(GameTime gameTime)
         {
             if (colliding)
-                direction = rand.Next(UP, LEFTUP);
+                direction = rand.Next(8) + 1;
             if (currentTime > WANDERSWITCH)
             {
                 currentTime = 0;
-                direction = rand.Next(UP, LEFTUP);
+                direction = rand.Next(8) + 1;
             }
 
             switch (direction)

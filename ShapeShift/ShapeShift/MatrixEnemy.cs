@@ -12,11 +12,21 @@ namespace ShapeShift
     {
         private Random rand;
         private GameTime gameTime;
-        private Matrix eMatrix;
+        private MatrixTileEnemy[,] tiles;
 
-        private const int START_X = 500, START_Y = 500;
+        private Boolean grouped = false;
 
         private int matrixWidth, matrixHeight;
+
+        public MatrixEnemy(Vector2 position)
+        {
+            this.position = position;
+        }
+
+        public void group(Boolean grouped)
+        {
+            this.grouped = grouped;
+        }
 
         public override void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
         {
@@ -27,7 +37,16 @@ namespace ShapeShift
             base.LoadContent(content, matrixWidth, matrixHeight);
             rand = new Random();
 
-            eMatrix = new Matrix(content, matrixWidth, matrixHeight);
+            tiles = new MatrixTileEnemy[matrixWidth, matrixHeight];
+
+            for (int i = 0; i < matrixWidth; i++)
+            {
+                for (int j = 0; j < matrixHeight; j++)
+                {
+                    tiles[i,j] = new MatrixTileEnemy(new Point((matrixWidth * 28)/2,(matrixHeight * 28)/2), new Vector2 (position.X + (i * 28), position.Y + (j* 28)));
+                    tiles[i, j].LoadContent(content, matrixWidth, matrixHeight);
+                }
+            }
 
             this.content = content;
             moveSpeed = 150f; 
@@ -35,12 +54,12 @@ namespace ShapeShift
             moveAnimation = new SpriteSheetAnimation();
             gameTime = new GameTime();
 
-            position = new Vector2(START_X, START_Y);
+            
             moveAnimation.position = position;
 
-            eMatrix.setPosition(position);
+          
 
-            enemyShape = eMatrix;
+            enemyShape = tiles[0,0].getShape();
 
         }
 
@@ -57,16 +76,51 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
         {
-            base.Update(gameTime, col, layer, player);
-            eMatrix.setPosition(position);
-            eMatrix.Update(gameTime);
+            
+            position = tiles[0, 0].getPosition();
+
+                for (int i = 0; i < matrixWidth; i++)
+                {
+                    for (int j = 0; j < matrixHeight; j++)
+                    {
+                        tiles[i, j].Update(gameTime, col, layer, player);
+                        
+                        if (grouped)
+                            tiles[i, j].getShape().setPosition(new Vector2(position.X + (i * 28), position.Y + (j * 28)));
+                    }
+                }
+           
+
+
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
 
-            eMatrix.Draw(spriteBatch);
+            for (int i = 0; i < matrixWidth; i++)
+            {
+                for (int j = 0; j < matrixHeight; j++)
+                {
+                    tiles[i, j].Draw(spriteBatch);
+                }
+            }
+        }
+
+        public List<Enemy> getTileEnemies()
+        {
+            List<Enemy> returnList = new List<Enemy>();
+
+
+            for (int i = 0; i < matrixWidth; i++)
+            {
+                for (int j = 0; j < matrixHeight; j++)
+                {
+                    returnList.Add(tiles[i, j]);
+                }
+            }
+
+            return returnList;
         }
     }
 }
