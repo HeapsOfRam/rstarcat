@@ -51,7 +51,7 @@ namespace ShapeShift
             matrixCenter = new Vector2(matrixWidth * positionOffset / 2, matrixHeight * positionOffset / 2);
 
             #region Create Textures & Animations
-            idleTexture = content.Load<Texture2D>("Matrix/MatrixSpriteSheet0");
+            idleTexture = content.Load<Texture2D>("Matrix/MatrixIdleSpriteSheet");
             //hitTexture = content.Load<Texture2D>("Matrix/MatrixHitSpriteSheet");
             shadowTexture = content.Load<Texture2D>("Matrix/MatrixShadow");
 
