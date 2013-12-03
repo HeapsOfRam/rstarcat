@@ -89,6 +89,7 @@ namespace ShapeShift
             // TODO: Add your update logic here
             ScreenManager.Instance.Update(gameTime);
             base.Update(gameTime);
+
         }
 
         /// <summary>

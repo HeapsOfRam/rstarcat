@@ -121,3 +121,5 @@ Content\Fonts\MenuFont.xnb
 Content\Fonts\TitleFont.xnb
 Content\Music\White Denim - D - At The Farm.xnb
 Content\Music\White Denim - D - At The Farm.wma
+Content\Fonts\ScoreFont.xnb
+Content\Fonts\ScoreFont2.xnb
