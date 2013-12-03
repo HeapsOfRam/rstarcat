@@ -296,10 +296,11 @@ namespace ShapeShift
                             // and then closes the file.
                            // System.IO.File.AppendAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\ScoreInfo.txt", lines);
                         }
-                    
+
                     //Loads the TitleScreen -----Later the GameOver Screen First
                     Type newClass = Type.GetType("ShapeShift.ScoreScreen"); //whatever your namespace is
                     ScreenManager.Instance.AddScreen((GameScreen)Activator.CreateInstance(newClass), inputManager);
+
 
                 }
 
@@ -331,7 +332,7 @@ namespace ShapeShift
             spriteBatch.DrawString(font, "GAME PAUSED", new Vector2(525, 5), Color.White);
 
             if(GameOver)
-            spriteBatch.DrawString(font, "<<GAME OVER!>>", new Vector2(500, 5), Color.White);
+            spriteBatch.DrawString(font, "<<GAME OVER!>>", new Vector2(500, 5), Color.Red);
 
             for (int i = 0; i < player.getMaxHealth(); i++)
             {

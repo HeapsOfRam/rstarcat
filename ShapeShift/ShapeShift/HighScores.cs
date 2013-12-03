@@ -290,7 +290,7 @@ namespace ShapeShift
                     itemNumber--;
             }
 
-            if (inputManager.KeyPressed(Keys.Enter, Keys.Z))
+            /*if (inputManager.KeyPressed(Keys.Enter, Keys.Z))
             {
                 if (linkType[itemNumber] == "Screen") //A link to a new screen
                 {
@@ -306,12 +306,18 @@ namespace ShapeShift
 
                    
                 }
-            }
+            }*/
 
             if (inputManager.KeyPressed(Keys.Space))
             {
                 //this is an easy, (C# way) to get the type and cast it as a game screen and create an instance
                 Type newClass = Type.GetType("ShapeShift.TitleScreen"); //whatever your namespace is
+                ScreenManager.Instance.AddScreen((GameScreen)Activator.CreateInstance(newClass), inputManager);
+            }
+            else if (inputManager.KeyPressed(Keys.Enter))
+            {
+                //this is an easy, (C# way) to get the type and cast it as a game screen and create an instance
+                Type newClass = Type.GetType("ShapeShift.GameplayScreen"); //whatever your namespace is
                 ScreenManager.Instance.AddScreen((GameScreen)Activator.CreateInstance(newClass), inputManager);
             }
 
@@ -345,13 +351,14 @@ namespace ShapeShift
                     animation[i][j].Draw(spriteBatch);
                 }
             }
-            spriteBatch.DrawString(font2, "High Scores", new Vector2(150, 50), Color.White);
+            spriteBatch.DrawString(font2, "High Scores", new Vector2(200, 50), Color.Blue);
             spriteBatch.DrawString(font, scores, new Vector2(100, 100), Color.White);
             
             if(newHighScore)
-            spriteBatch.DrawString(font2, "NEW HIGH SCORE!", new Vector2(100, 370), Color.White);
+            spriteBatch.DrawString(font2, "NEW HIGH SCORE!", new Vector2(100, 370), Color.Red);
 
-            spriteBatch.DrawString(font2, "Press 'Space' to return to the Main Menu!", new Vector2(100, 500), Color.White);
+            spriteBatch.DrawString(font2, "Press 'Space' to return to the Main Menu!", new Vector2(100, 500), Color.Orange);
+            spriteBatch.DrawString(font2, "Press 'Enter' to Play!", new Vector2(170, 570), Color.Yellow);
 
         }
 
