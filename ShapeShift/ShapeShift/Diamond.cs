@@ -262,5 +262,10 @@ namespace ShapeShift
 
             idleAnimation.Draw(spriteBatch);
         }
+
+        public void clearBullets()
+        {
+            activeBullets = new List<Bullet>();
+        }
     }
 }

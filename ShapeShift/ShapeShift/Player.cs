@@ -146,7 +146,7 @@ namespace ShapeShift
 
             moveSpeed = 150f;
             pSquare.stopDashing();
-
+            clearBullets();
             if (playerShape == pCircle && pCircle.shielded)
                 pCircle.removeShield();     
             else if (playerShape == pSquare && pSquare.dashing)
@@ -328,7 +328,17 @@ namespace ShapeShift
 
         }
 
-
+        public void clearBullets()
+        {
+           
+                pSquare.clearBullets();
+        
+                pDiamond.clearBullets();
+         
+                pTriangle.clearBullets();
+    
+                pCircle.clearBullets();
+        }
      
 
         public void shoot(GameTime gametime, int direction)
@@ -384,7 +394,7 @@ namespace ShapeShift
                 switch (direction)
                 {
                     case 1:
-                        pTriangle.shoot(0);
+                        pTriangle.shoot(45);
                         break;
                     case 4:
                         pTriangle.shoot(90);
@@ -393,7 +403,7 @@ namespace ShapeShift
                         pTriangle.shoot(180);
                         break;
                     case 3:
-                        pTriangle.shoot(270);
+                        //pTriangle.shoot(270);
                         break;
                     default:
                         pTriangle.shoot(0);

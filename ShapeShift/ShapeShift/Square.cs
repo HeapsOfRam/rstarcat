@@ -172,6 +172,8 @@ namespace ShapeShift
             colorData = new Color[WIDTH * HEIGHT];
             squareShadowTexture.GetData(colorData);
 
+
+            
             
         }
 
@@ -333,6 +335,11 @@ namespace ShapeShift
         {
             base.DrawOnlyIdle(spriteBatch);
             idleAnimation.Draw(spriteBatch);
+        }
+
+        public void clearBullets()
+        {
+            activeBullets = new List<Bullet>();
         }
     }
 }

@@ -20,7 +20,9 @@ namespace ShapeShift
 
         protected SpriteSheetAnimation idleAnimation; // idle animation ( image texture of animation changes as it cycles through colors)
         protected SpriteSheetAnimation hitAnimation;
+        protected int frameCounter;
 
+        protected Boolean dead = true;
         protected Boolean grouped = false; // True if the matrix is in collapsed state, flase otherwise
        
         protected float rotateSpeed = 15.0f;
@@ -58,6 +60,7 @@ namespace ShapeShift
             idleAnimation = new SpriteSheetAnimation(this, true, WIDTH, TILE_ROTATE_CENTER);
             idleAnimation.LoadContent(content, idleTexture, "", new Vector2(0, 0));
             idleAnimation.IsEnabled = true;
+            idleAnimation.origin = TILE_ROTATE_CENTER;
 
           /*  hitAnimation = new SpriteSheetAnimation(this, false, WIDTH, TILE_ROTATE_CENTER);
             hitAnimation.LoadContent(content, hitTexture, "", new Vector2(0, 0));
@@ -79,9 +82,14 @@ namespace ShapeShift
                 fullTileData[i] = Color.Black;
             }
         }
-
+       
         public void attack()
         {
+        }
+
+        public void die()
+        {
+            dead = true;
         }
 
         public override void hit()
@@ -171,6 +179,28 @@ namespace ShapeShift
             {
                 if (s.IsEnabled)
                     s.Update(gameTime);
+            }
+
+
+
+
+            if (dead)
+            {
+                frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+                if (frameCounter >= 30)
+                {
+                    frameCounter = 0;
+             
+                    float newScale = idleAnimation.scale + 0;
+
+                    if (newScale > 0)
+                        newScale = newScale - 0.1f;
+                        
+                    idleAnimation.scale = newScale;
+               
+                    
+                }
             }
         }
 

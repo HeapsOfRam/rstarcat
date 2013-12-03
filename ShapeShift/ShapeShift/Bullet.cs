@@ -92,25 +92,21 @@ namespace ShapeShift
             myDevice.SetRenderTarget(renderTarget);
             myDevice.Clear(Color.Transparent);
 
-            //List<SpriteSheetAnimation> animations = getActiveTextures();
+         
             spriteBatch.Begin();
             
             shotAnimation.Draw(spriteBatch);
             
             spriteBatch.End();
 
-            // Set the device render target back to the back buffer.
-           // graphics.GraphicsDevice.SetRenderTarget(0, null);
-
+           
             // Call GetTexture to retrieve the render target data and save it to a texture.
             myDevice.SetRenderTarget((RenderTarget2D)null);
             shotShadowTexture = new Texture2D(myDevice, WIDTH, HEIGHT);
             Color[] con = new Color[WIDTH * HEIGHT];
             renderTarget.GetData<Color>(con);
             shotShadowTexture.SetData<Color>(con);
-            //shotShadowTexture = (Texture2D)renderTarget;
            
-           // myDevice.SetRenderTarget(null);
             data = new Color[WIDTH * HEIGHT];
             shotShadowTexture.GetData(data);
         }
@@ -125,6 +121,9 @@ namespace ShapeShift
                 s.origin = new Vector2(WIDTH / 2, HEIGHT / 2);
                 s.rotation = rotation;
             }
+
+
+            
         }
 
         public Boolean dispose()

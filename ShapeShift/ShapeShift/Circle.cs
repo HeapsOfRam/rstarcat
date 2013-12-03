@@ -65,10 +65,14 @@ namespace ShapeShift
             idleAnimation = new SpriteSheetAnimation(this, true);
             idleAnimation.LoadContent(content, idleCircleTexture, "", new Vector2(0, 0));
             idleAnimation.IsEnabled = true;
+            
 
             deployAnimation = new SpriteSheetAnimation(this, false);
             deployAnimation.LoadContent(content, shieldDeployCircleTexture, "", new Vector2(0, 0));
             deployAnimation.IsEnabled = false;
+
+            idleAnimation.scale = .5f;
+            idleAnimation.origin = new Vector2(WIDTH / 2, HEIGHT / 2);
 
             shieldIdleAnimation = new SpriteSheetAnimation(this, true);
             shieldIdleAnimation.LoadContent(content, shieldIdleTexture, "", new Vector2(0, 0));
@@ -88,6 +92,13 @@ namespace ShapeShift
             animations.Add(shieldIdleAnimation);
             animations.Add(shieldFadeAnimation);
             animations.Add(circleHitAnimation);
+
+
+            foreach (SpriteSheetAnimation s in animations)
+            {
+                s.scale = 2.0f;
+                s.origin = new Vector2(WIDTH / 2, HEIGHT / 2);
+            }
 
             colorData = new Color[WIDTH * HEIGHT];
             circleShadowTexture.GetData(colorData);
@@ -213,6 +224,11 @@ namespace ShapeShift
             base.DrawOnlyIdle(spriteBatch);
 
             idleAnimation.Draw(spriteBatch);
+        }
+
+        public void clearBullets()
+        {
+            activeBullets = new List<Bullet>();
         }
     }
 }

@@ -229,5 +229,10 @@ namespace ShapeShift
             base.DrawOnlyIdle(spriteBatch);
             triangleIdleAnimation.Draw(spriteBatch);
         }
+
+        public void clearBullets()
+        {
+            activeBullets = new List<Bullet>();
+        }
     }
 }
