@@ -242,14 +242,14 @@ namespace ShapeShift
                 newHighScore = true;
                 string[] scoreLine1 = { highScoreList[3].ToString(), highScoreList[2].ToString(), highScoreList[1].ToString() };
                 scores = highScoreList[3].ToString() + " \n" + highScoreList[2].ToString() + "\n" + highScoreList[1].ToString() + "\n";//Used for the Score Screen, not the file
-                System.IO.File.WriteAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\Scores.txt", scoreLine1);
+                System.IO.File.WriteAllLines(@".\Scores\Scores.txt", scoreLine1);
 
             }
             else //If there is no new high score
             {
                 string[] scoreLine2 = { highScoreList[2].ToString(), highScoreList[1].ToString(), highScoreList[0].ToString() };
 
-                System.IO.File.WriteAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\Scores.txt", scoreLine2);
+                System.IO.File.WriteAllLines(@".\Scores\Scores.txt", scoreLine2);
             }
 
             SetMenuItems();

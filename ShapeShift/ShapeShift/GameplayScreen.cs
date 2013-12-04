@@ -300,7 +300,7 @@ namespace ShapeShift
                 {
                     List<int> listOfScores = new List<int>();
 
-                    string[] highScoresList = System.IO.File.ReadAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\Scores.txt");
+                    string[] highScoresList = System.IO.File.ReadAllLines(@".\Scores\Scores.txt");
                     //Reads in the existing high scores for comparison
 
                     // Display the file contents by using a foreach loop.
@@ -321,7 +321,7 @@ namespace ShapeShift
                     {
 
                         string[] scoreLine = { score.ToString() };
-                        System.IO.File.AppendAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\Scores.txt", scoreLine);
+                        System.IO.File.AppendAllLines(@".\Scores\Scores.txt", scoreLine);
 
                         //WRITES THE SCORE AND SPECIFIES WHAT LEVEL THE SCORE WAS ACHIEVED ON
                         // string[] lines = { "Name: " + playerName + " ", "Score: " + score.ToString() + " ", "Levels Completed: " + numLevelsCompleted.ToString() + " " };
