@@ -60,7 +60,7 @@ namespace ShapeShift
         protected const int HEIGHT = 92;
        
         protected const float DASH_DISTANCE = 30;
-        protected const int SWITCH_FRAME = 200;
+        
 
         protected ContentManager content; 
 
@@ -75,6 +75,11 @@ namespace ShapeShift
             dashAnimations = new List<SpriteSheetAnimation>();
 
             activeBullets = new List<Shape>();
+
+            heartTextures = new Texture2D[2];
+            heartTextures[0] = content.Load<Texture2D>("Square/heart");
+            heartTextures[1] = content.Load<Texture2D>("Square/heartEmpty");
+
 
             #region Load Textures
             squareTexture = content.Load<Texture2D>("Square/SquareIdleSpriteSheet");

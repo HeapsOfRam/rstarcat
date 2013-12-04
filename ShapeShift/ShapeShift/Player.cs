@@ -646,5 +646,10 @@ namespace ShapeShift
         {
             return playerShape.getActiveBullets();
         }
+
+        public Texture2D[] getHearts()
+        {
+            return playerShape.getHearts();
+        }
     }
 }

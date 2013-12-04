@@ -35,7 +35,7 @@ namespace ShapeShift
 
         protected int frameCounter;
 
-        protected const int SWITCH_FRAME = 200;
+       
 
         public Boolean firing = false;
 
@@ -50,6 +50,11 @@ namespace ShapeShift
             this.content = content; 
             animations = new List<SpriteSheetAnimation>();
             activeBullets = new List<Shape>();
+
+            heartTextures = new Texture2D[2];
+            heartTextures[0] = content.Load<Texture2D>("Diamond/heart");
+            heartTextures[1] = content.Load<Texture2D>("Diamond/heartEmpty");
+
 
             #region Load Textures
             diamondTexture = content.Load<Texture2D>("Diamond/DiamondIdleSpriteSheet");

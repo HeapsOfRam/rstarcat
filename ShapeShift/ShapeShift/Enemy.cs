@@ -11,13 +11,13 @@ namespace ShapeShift
 {
     class Enemy : Entity
     {
-        private const int WANDER = 1, CHASE = 2, ATTACK = 3, REELING = 4, FIND = 5;
-        private int state = WANDER;
-        private float currentTime = 0, countDuration = 10f, knockCurr = 0;
-        private const float KNOCKDURATION = .5f;
+        protected const int WANDER = 1, CHASE = 2, ATTACK = 3, REELING = 4, FIND = 5;
+        public int state = WANDER;
+        protected float currentTime = 0, countDuration = 10f, knockCurr = 0;
+        protected const float KNOCKDURATION = .5f;
         protected Random rand;
-        private int direction = 1;
-        private const int WANDERSWITCH = 5, UP = 1, RIGHTUP = 2, RIGHT = 3, RIGHTDOWN = 4, DOWN = 5, LEFTDOWN = 6, LEFT = 7, LEFTUP = 8;
+        protected int direction = 1;
+        protected const int WANDERSWITCH = 5, UP = 1, RIGHTUP = 2, RIGHT = 3, RIGHTDOWN = 4, DOWN = 5, LEFTDOWN = 6, LEFT = 7, LEFTUP = 8;
         protected Shape enemyShape;
         protected Boolean reeling, findX = false, findY = true;
         

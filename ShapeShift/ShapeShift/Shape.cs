@@ -18,8 +18,9 @@ namespace ShapeShift
 
         protected Color[] colorData;
         protected List<Shape> activeBullets;
+        protected Texture2D[] heartTextures = new Texture2D[2];
 
-
+        protected const int SWITCH_FRAME = 300;
         // Constructor 
         public Shape(){}
 
@@ -113,6 +114,11 @@ namespace ShapeShift
 
         public virtual void Update(GameTime gameTime)
         {
+        }
+
+        public Texture2D[] getHearts()
+        {
+            return heartTextures;
         }
     }
 }

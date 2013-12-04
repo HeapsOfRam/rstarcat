@@ -107,8 +107,7 @@ namespace ShapeShift
             player.LoadContent(content, input);
             dummyEnemy.LoadContent(content, 2, 2);
             healthRectangle = new Rectangle[player.getMaxHealth()];
-            healthFillTexture = content.Load<Texture2D>("heart");
-            healthUnfillTexture = content.Load<Texture2D>("lainbackground");
+            
             levelNumber = 1;
             Level = "1";
             previousLevel = Level;
@@ -119,10 +118,14 @@ namespace ShapeShift
             numLevelsCompleted = 0;
             playerName = "Player1";
 
+            healthFillTexture = content.Load<Texture2D>("Circle/heart"); ;
+            healthUnfillTexture = content.Load<Texture2D>("Circle/heartEmpty");
+
 
             dummyEnemy = new MatrixEnemy(new Vector2(500, 500),this);
             dummyEnemy.LoadContent(content, 2, 2);
             enemyList.Add(dummyEnemy);
+
 
            
         }
@@ -149,7 +152,9 @@ namespace ShapeShift
                 player.Update(gameTime, inputManager, map.collision, map.layer);
 
 
-                
+                Texture2D[] hearts = player.getHearts();
+                healthFillTexture = hearts[0];
+                healthUnfillTexture = hearts[1];
                
                 
                 map.Update(gameTime);
@@ -192,8 +197,20 @@ namespace ShapeShift
 
                 if (inputManager.KeyDown(Keys.F))
                 {
-                    dummyEnemy.group();
+                    foreach (MatrixEnemy e in enemyList)
+                    {
+                        e.group();
+                    }
                     
+                }
+
+                if (inputManager.KeyDown(Keys.G))
+                {
+                    foreach (MatrixEnemy e in enemyList)
+                    {
+                        e.ungroup();
+                    }
+
                 }
 
                 
@@ -306,8 +323,7 @@ namespace ShapeShift
                 {
                     // previousLevel = Level;                          //Assign the current level to 'previous level'
                     levelNumber = randomLevelGenerator.Next(4) + 1; //randomly generate the next level number
-                    if (levelNumber == 3)
-                        levelNumber = 2;
+                    
                     Level = levelNumber.ToString();                 //Assign the new level number to 'level'
 
                 }
@@ -389,21 +405,38 @@ namespace ShapeShift
             switch (Level)
             {
 
-                default: 
+                case 1: 
                     
-                    //dummyEnemy = new MatrixEnemy(new Vector2 (700,500));
-                    //dummyEnemy.LoadContent(content, 2, 2);
-                    //enemyList.Add(dummyEnemy);
-                 //   dummyEnemy = new MatrixEnemy(new Vector2 (200,200));
-                 //   dummyEnemy.LoadContent(content, 2, 2);
-                 //   enemyList.Add(dummyEnemy);
-
-                    dummyEnemy = new MatrixEnemy(new Vector2 (200,400),this);
+                    dummyEnemy = new MatrixEnemy(new Vector2 (500,500),this);
                     dummyEnemy.LoadContent(content, 2, 2);
+                    enemyList.Add(dummyEnemy);
+                    break;
+
+                case 2: 
+                    dummyEnemy = new MatrixEnemy(new Vector2 (500,500),this);
+                    dummyEnemy.LoadContent(content, 3, 3);
+                    enemyList.Add(dummyEnemy);
+                    
+
+                    dummyEnemy = new MatrixEnemy(new Vector2 (200,200),this);
+                    dummyEnemy.LoadContent(content, 2, 2);
+                    enemyList.Add(dummyEnemy);
+                    break;
+
+                case 3:
+                    dummyEnemy = new MatrixEnemy(new Vector2(500, 500), this);
+                    dummyEnemy.LoadContent(content, 3, 3);
+                    enemyList.Add(dummyEnemy);
+                    break;
+                case 4:
+                    dummyEnemy = new MatrixEnemy(new Vector2(500, 450), this);
+                    dummyEnemy.LoadContent(content, 5, 1);
                     enemyList.Add(dummyEnemy);
 
 
-                    
+                    dummyEnemy = new MatrixEnemy(new Vector2(200, 200), this);
+                    dummyEnemy.LoadContent(content, 2, 3);
+                    enemyList.Add(dummyEnemy);
                     break;
 
 

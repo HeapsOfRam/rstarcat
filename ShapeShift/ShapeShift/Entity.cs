@@ -24,7 +24,7 @@ namespace ShapeShift
 
         protected List<List<string>> attributes, contents;
 
-        protected Vector2 position;
+        public Vector2 position;
         protected Vector2 previousPosition;
         protected Vector2 spawnPosition = new Vector2(55, 320);
         protected Vector2 leftSpawnPosition = new Vector2(50, 320);
@@ -32,12 +32,7 @@ namespace ShapeShift
         protected Vector2 topSpawnPosition;
         protected Vector2 bottomSpawnPosition;
 
-        protected int spotRadius = 5, spotDist = 300;        
-
-        // spawnPosition = new Vector2(55, 320); //player spawns handled in entity
-        // leftSpawnPosition = new Vector2(55, 320);
-        // rightSpawnPosition = new Vector2(680, 320);
-
+        public int spotRadius = 5, spotDist = 300;        
 
         protected Rectangle lastCheckedRectangle;
 
@@ -163,6 +158,8 @@ namespace ShapeShift
 
         protected virtual void detectCollision()
         {
+
+            Console.WriteLine(this.GetType());
             exitsLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
@@ -171,28 +168,41 @@ namespace ShapeShift
 
                     if (col.CollisionMap[i][j] == "x") //Collision against solid objects (ex: Tiles)
                     {
-
+                        
                         //Creates a rectangle that is the current tiles postion and size
                         lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
 
+                        String type = this.GetType() + "";
+                        int limit;
 
-                        Vector2 xPosition = new Vector2(position.X, moveAnimation.Position.Y);
-                        Vector2 yPosition = new Vector2(moveAnimation.Position.X, position.Y);
+                        if (type.Equals("ShapeShift.MatrixEnemy"))
+                        
+                            limit = 70;
+                        
+                        else
+                            limit = 20000;
 
 
-
-                        if (getShape().collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                        if (Math.Abs(position.X - lastCheckedRectangle.X) < limit || Math.Abs(position.Y - lastCheckedRectangle.Y) < limit)
                         {
-                            position.Y = moveAnimation.Position.Y;
-                            colliding = true;
-                        }
 
-                        if (getShape().collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                        {
-                            position.X = moveAnimation.Position.X;
-                            colliding = true;
-                        }
+                            Vector2 xPosition = new Vector2(position.X, moveAnimation.Position.Y);
+                            Vector2 yPosition = new Vector2(moveAnimation.Position.X, position.Y);
 
+
+
+                            if (getShape().collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                            {
+                                position.Y = moveAnimation.Position.Y;
+                                colliding = true;
+                            }
+
+                            if (getShape().collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                            {
+                                position.X = moveAnimation.Position.X;
+                                colliding = true;
+                            }
+                        }
 
                     }
 
@@ -201,20 +211,23 @@ namespace ShapeShift
 
                         //Creates a rectangle that is the current tiles postion and size
                         lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
-                                                
+
+
+                            if (getShape().collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                            {
+                                exitsLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
+
+                                //Going through Right Door
+                                if (position.X > 500)
+                                    position = leftSpawnPosition;
+                                //Going through Left door
+                                else if (position.X < 500)
+                                    position = rightSpawnPosition;
+
+                            }
+                        
                         //Calls Collides method in shape class, in which each shape will check collisions uniquely 
-                        if (getShape().collides(position, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                        {
-                            exitsLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
-
-                            //Going through Right Door
-                            if (position.X > 500)
-                                position = leftSpawnPosition;
-                            //Going through Left door
-                            else if (position.X < 500)
-                                position = rightSpawnPosition;
-
-                        }
+                        
                     }
                 }
             }

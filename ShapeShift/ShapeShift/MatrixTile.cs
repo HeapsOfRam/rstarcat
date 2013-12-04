@@ -147,16 +147,11 @@ namespace ShapeShift
             Color[] dataA = new Color[28 * 28];
             shadowTexture.GetData(dataA);
             Rectangle rectangleA;
-            if (!grouped)
-            {
+            
                 rectangleA = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
                 dataA = individualTileData;
-            }
-            else
-            {
-                rectangleA = new Rectangle((int)position.X, (int)position.Y, matrixWidth * 28, matrixHeight * 28);
-                dataA = fullTileData;
-            }
+            
+          
            if (rectangleA.Intersects(rectangleB))
                 return (IntersectPixels(rectangleA, dataA, rectangleB, dataB));
             }
@@ -190,7 +185,12 @@ namespace ShapeShift
             }
 
 
+            Random rand = new Random();
 
+            if (rand.Next(100) == 1)
+            {
+                PreformRotate(false);
+            }
 
             if (dead && !gone)
             {
@@ -216,7 +216,12 @@ namespace ShapeShift
 
         public void group()
         {
-            grouped = !grouped;
+            grouped = true;
+        }
+
+        internal void ungroup()
+        {
+            grouped = false;
         }
     }
 }

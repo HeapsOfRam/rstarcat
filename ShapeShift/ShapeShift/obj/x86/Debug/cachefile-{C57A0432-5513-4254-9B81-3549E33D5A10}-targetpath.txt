@@ -87,3 +87,11 @@ Content\Fonts\ScoreFont.xnb
 Content\Fonts\ScoreFont2.xnb
 Content\Music\White Denim - D - At The Farm.xnb
 Content\Music\White Denim - D - At The Farm.wma
+Content\Circle\heart.xnb
+Content\Circle\heartEmpty.xnb
+Content\Diamond\heart.xnb
+Content\Diamond\heartEmpty.xnb
+Content\Square\heart.xnb
+Content\Square\heartEmpty.xnb
+Content\Triangle\heart.xnb
+Content\Triangle\heartEmpty.xnb

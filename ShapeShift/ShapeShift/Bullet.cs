@@ -22,9 +22,11 @@ namespace ShapeShift
 
         protected float fireAngle;
         protected int frameCounter;
-
+        protected int readyCounter;
         protected int X_OFFSET;
         protected int Y_OFFSET;
+
+        protected Boolean isReady = false;
 
 
         protected const int WIDTH = 92;
@@ -37,6 +39,8 @@ namespace ShapeShift
         private Color[] data;
         private bool dead = false;
         private bool gone = false;
+
+        private Vector2 originalPostion; 
 
         public Bullet(ContentManager content, float fireAngle, String shape)
         {
@@ -79,7 +83,7 @@ namespace ShapeShift
             shotHitAnimation.LoadContent(content, shotHitTexture, "", new Vector2(0, 0));
             shotHitAnimation.IsEnabled = false;
             #endregion
-
+            readyCounter = 0;
 
             animations.Add(shotAnimation);
             animations.Add(shotHitAnimation);
@@ -94,6 +98,7 @@ namespace ShapeShift
             // Set the render target on the device.
             myDevice.SetRenderTarget(renderTarget);
             myDevice.Clear(Color.Transparent);
+
 
          
             spriteBatch.Begin();
@@ -170,8 +175,8 @@ namespace ShapeShift
         
         public override bool collides(Vector2 position, Rectangle rectangle, Color[] Data)
         {
-            
-            if (!collision)
+           
+            if (!collision && isReady)
             {
                 Rectangle rectangleA = new Rectangle((int)shotAnimation.Position.X, (int)shotAnimation.Position.Y, WIDTH, HEIGHT);
                
@@ -213,6 +218,12 @@ namespace ShapeShift
                 shotHitAnimation.Update(gameTime);
 
             frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+            readyCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
+
+            if (readyCounter > 10)
+            {
+                isReady = true;
+            }
 
                 if (frameCounter >= SWITCH_FRAME)
                 {

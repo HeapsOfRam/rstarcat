@@ -15,6 +15,7 @@ namespace ShapeShift
         private MatrixTileEnemy[,] tiles;
         private GameplayScreen gameplayScreen;
         
+        
 
         private Boolean grouped = false;
 
@@ -31,7 +32,7 @@ namespace ShapeShift
         public void group()
         {
 
-            grouped = !grouped;
+            grouped = true;
 
             for (int i = 0; i < matrixWidth; i++)
             {
@@ -39,10 +40,9 @@ namespace ShapeShift
                 {
                     tiles[i, j].group();
 
-                    if (grouped)
-                        tiles[i, j].setPosition(new Vector2 (tiles[0, 0].getPosition().X + (i * 28),tiles[0, 0].getPosition().Y + (j *28)));
                 }
             }
+
             
         }
 
@@ -63,6 +63,7 @@ namespace ShapeShift
                 {
                     tiles[i,j] = new MatrixTileEnemy(new Point((matrixWidth * 28)/2,(matrixHeight * 28)/2), new Vector2 (position.X + (i * 28), position.Y + (j* 28)));
                     tiles[i, j].LoadContent(content, matrixWidth, matrixHeight);
+                    
                 }
             }
 
@@ -94,33 +95,48 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)
         {
-            //base.Update(gameTime, col, layer, player, bullets);
-            position = tiles[0, 0].getPosition();
+            base.Update(gameTime, col, layer, player, bullets);
+            //position = tiles[0, 0].getPosition();
+
+            
+                //tiles[0, 0].setPosition(position);
 
                 for (int i = 0; i < matrixWidth; i++)
                 {
                     for (int j = 0; j < matrixHeight; j++)
                     {
-                        tiles[i, j].Update(gameTime, col, layer, player,bullets);
+                        if (!grouped)
+                            tiles[i, j].Update(gameTime, col, layer, player, bullets);
+                        else
+                        {
+                            Enemy b = new Enemy();
+                            b.LoadContent(content, 2, 2);
+                            b.position = new Vector2(moveAnimation.position.X + (i * 28), moveAnimation.position.Y + (j * 28));
+                            tiles[i, j].Update(gameTime, col, layer, b, bullets);
+                            tiles[i, j].state = CHASE;
+
+                          
+                        }
                         
-                        if (grouped)
-                            tiles[i, j].getShape().setPosition(new Vector2(position.X + (i * 28), position.Y + (j * 28)));
 
                         foreach (Shape bullet in bullets)
                         {
                             if (!bullet.isDead()){
-                                if (tiles[i, j].getShape().collides(tiles[i, j].getPosition(), bullet.getRectangle(), bullet.getColorData()))
+                                if (Math.Abs(tiles[i, j].position.X - bullet.getActiveTextures()[0].position.X) < 28 || Math.Abs(tiles[i, j].position.Y - bullet.getActiveTextures()[0].position.Y) < 28)
                                 {
-                                    if (!tiles[i, j].isDead())
+                                    if (tiles[i, j].getShape().collides(tiles[i, j].getPosition(), bullet.getRectangle(), bullet.getColorData()))
                                     {
-                                        gameplayScreen.IncreaseScore(100);
-                                        tiles[i, j].die();
-                                     
-
-                                        if (!bullet.isDead())
+                                        if (!tiles[i, j].isDead())
                                         {
-                                            bullet.hit();
+                                            gameplayScreen.IncreaseScore(100);
+                                            tiles[i, j].die();
 
+
+                                            if (!bullet.isDead())
+                                            {
+                                                bullet.hit();
+
+                                            }
                                         }
                                     }
                                 }
@@ -196,6 +212,20 @@ namespace ShapeShift
             }
 
             return false;
+        }
+
+        public void ungroup()
+        {
+            grouped = false;
+
+            for (int i = 0; i < matrixWidth; i++)
+            {
+                for (int j = 0; j < matrixHeight; j++)
+                {
+                    tiles[i, j].ungroup();
+
+                }
+            }
         }
     }
 }

@@ -34,8 +34,7 @@ namespace ShapeShift
 
         public Boolean firing = false;
         protected int frameCounter;
-      
-        protected const int SWITCH_FRAME = 200;
+     
         private ContentManager content;
 
         public Triangle(ContentManager content)
@@ -46,6 +45,10 @@ namespace ShapeShift
             activeBullets = new List<Shape>();
 
             #region Loading Textures
+
+            heartTextures = new Texture2D[2];
+            heartTextures[0] = content.Load<Texture2D>("Triangle/heart");
+            heartTextures[1] = content.Load<Texture2D>("Triangle/heartEmpty");
 
             triangleTexture = content.Load<Texture2D>("Triangle/TriangleIdleSpriteSheet");
             triangleShadowUpTexture = content.Load<Texture2D>("Triangle/TriangleShadowUp");

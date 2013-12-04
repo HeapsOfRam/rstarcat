@@ -41,7 +41,7 @@ namespace ShapeShift
       
         public int frameCounter;
         public ContentManager content;
-        protected const int SWITCH_FRAME = 200;
+    
 
         public Circle(ContentManager content)
         {
@@ -49,6 +49,11 @@ namespace ShapeShift
             animations = new List<SpriteSheetAnimation>();
 
             activeBullets = new List<Shape>();
+
+            heartTextures = new Texture2D[2];
+            heartTextures[0] = content.Load<Texture2D>("Circle/heart");
+            heartTextures[1] = content.Load<Texture2D>("Circle/heartEmpty");
+
 
             #region Load Textures & Create Animations
             //Load in the specific spritesheets used for animating the Circle
