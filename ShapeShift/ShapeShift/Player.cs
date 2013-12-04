@@ -240,7 +240,7 @@ namespace ShapeShift
 
                         position = new Vector2(xPosition.X, yPosition.Y);
                         playerShape.setPosition( new Vector2 (xPosition.X,yPosition.Y));
-
+                        
 
                     }
                 }

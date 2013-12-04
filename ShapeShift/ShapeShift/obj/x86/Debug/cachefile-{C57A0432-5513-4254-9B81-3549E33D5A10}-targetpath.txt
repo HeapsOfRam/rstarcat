@@ -83,5 +83,7 @@ Content\Matrix\MatrixIdleSpriteSheet.xnb
 Content\Fonts\Font1.xnb
 Content\Fonts\MenuFont.xnb
 Content\Fonts\TitleFont.xnb
+Content\Fonts\ScoreFont.xnb
+Content\Fonts\ScoreFont2.xnb
 Content\Music\White Denim - D - At The Farm.xnb
 Content\Music\White Denim - D - At The Farm.wma

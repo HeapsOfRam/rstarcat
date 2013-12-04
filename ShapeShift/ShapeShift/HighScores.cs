@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
 
 
 namespace ShapeShift
@@ -24,6 +25,11 @@ namespace ShapeShift
         Vector2 position;
         int axis;
         string align;
+        string filename;
+        String scores;
+        List<int> highScoreList;
+        int parsedScore;
+        bool newHighScore;
 
         List<List<string>> attributes, contents;
 
@@ -32,6 +38,8 @@ namespace ShapeShift
         Rectangle source;
 
         SpriteFont font;
+        SpriteFont font2;
+
 
         int itemNumber;
 
@@ -151,8 +159,15 @@ namespace ShapeShift
             linkType = new List<string>();
             linkID = new List<string>();
             itemNumber = 0;
-
+            font = content.Load<SpriteFont>("Fonts/ScoreFont");
+            font2 = content.Load<SpriteFont>("Fonts/ScoreFont2");
+            filename = "Scores/Scores.txt";
+            highScoreList = new List<int>();
+            parsedScore = 0;
+            newHighScore = false;
             position = Vector2.Zero;
+
+            /*
             fileManager = new FileManager();
             fileManager.LoadContent("Load/Scores.starcat", attributes, contents, "Scores");
 
@@ -200,10 +215,49 @@ namespace ShapeShift
 
                 }
             }
+             */
+
+            using (StreamReader reader = new StreamReader(filename))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();//reads a line in the text file
+                    parsedScore = int.Parse(line);
+                    highScoreList.Add(parsedScore);
+
+                }
+
+            }
+
+            //Code to sort the Values in the Text File from Highest to Lowest
+            highScoreList.Sort();
+
+            for (int i = highScoreList.Count - 1; i >= 0; i--) //Sorted list
+            {
+                scores += highScoreList[i].ToString() + " \n";//a space, then a line break
+            }
+
+            if (highScoreList.Count > 3) //IF THE PLAYER ACHIEVES A NEW HIGH SCORE (Hence, higher then 3 scores are in the list)
+            {
+                newHighScore = true;
+                string[] scoreLine1 = { highScoreList[3].ToString(), highScoreList[2].ToString(), highScoreList[1].ToString() };
+                scores = highScoreList[3].ToString() + " \n" + highScoreList[2].ToString() + "\n" + highScoreList[1].ToString() + "\n";//Used for the Score Screen, not the file
+                System.IO.File.WriteAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\Scores.txt", scoreLine1);
+
+            }
+            else //If there is no new high score
+            {
+                string[] scoreLine2 = { highScoreList[2].ToString(), highScoreList[1].ToString(), highScoreList[0].ToString() };
+
+                System.IO.File.WriteAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\Scores.txt", scoreLine2);
+            }
 
             SetMenuItems();
-            SetAnimations();
+            // SetAnimations();
+
+
         }
+         
 
         public void UnloadContent()
         {
@@ -236,14 +290,35 @@ namespace ShapeShift
                     itemNumber--;
             }
 
-            if (inputManager.KeyPressed(Keys.Enter, Keys.Z))
+            /*if (inputManager.KeyPressed(Keys.Enter, Keys.Z))
             {
-                if (linkType[itemNumber] == "Screen")
+                if (linkType[itemNumber] == "Screen") //A link to a new screen
                 {
                     //this is an easy, (C# way) to get the type and cast it as a game screen and create an instance
                     Type newClass = Type.GetType("ShapeShift." + linkID[itemNumber]); //whatever your namespace is
                     ScreenManager.Instance.AddScreen((GameScreen)Activator.CreateInstance(newClass), inputManager);
                 }
+                if (linkType[itemNumber] == "Score") // Display a score
+                {
+                    //this is an easy, (C# way) to get the type and cast it as a game screen and create an instance
+                    Type newClass = Type.GetType("ShapeShift." + linkID[itemNumber]); //whatever your namespace is
+                    ScreenManager.Instance.AddScreen((GameScreen)Activator.CreateInstance(newClass), inputManager);
+
+                   
+                }
+            }*/
+
+            if (inputManager.KeyPressed(Keys.Space))
+            {
+                //this is an easy, (C# way) to get the type and cast it as a game screen and create an instance
+                Type newClass = Type.GetType("ShapeShift.TitleScreen"); //whatever your namespace is
+                ScreenManager.Instance.AddScreen((GameScreen)Activator.CreateInstance(newClass), inputManager);
+            }
+            else if (inputManager.KeyPressed(Keys.Enter))
+            {
+                //this is an easy, (C# way) to get the type and cast it as a game screen and create an instance
+                Type newClass = Type.GetType("ShapeShift.GameplayScreen"); //whatever your namespace is
+                ScreenManager.Instance.AddScreen((GameScreen)Activator.CreateInstance(newClass), inputManager);
             }
 
             if (itemNumber < 0)
@@ -276,6 +351,15 @@ namespace ShapeShift
                     animation[i][j].Draw(spriteBatch);
                 }
             }
+            spriteBatch.DrawString(font2, "High Scores", new Vector2(200, 50), Color.Blue);
+            spriteBatch.DrawString(font, scores, new Vector2(100, 100), Color.White);
+            
+            if(newHighScore)
+            spriteBatch.DrawString(font2, "NEW HIGH SCORE!", new Vector2(100, 370), Color.Red);
+
+            spriteBatch.DrawString(font2, "Press 'Space' to return to the Main Menu!", new Vector2(100, 500), Color.Orange);
+            spriteBatch.DrawString(font2, "Press 'Enter' to Play!", new Vector2(170, 570), Color.Yellow);
+
         }
 
 

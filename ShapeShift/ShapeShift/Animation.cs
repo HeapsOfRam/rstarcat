@@ -104,7 +104,10 @@ namespace ShapeShift
 
         public virtual void UnloadContent()
         {
-            content.Unload();
+           // content.Unload(); 
+            //^^^^Not sure if problematic. Due to a null pointer, I commented this out so that GameOver would load a titleScreen.
+            //I believe it was not unloading because there was nothing left to unload.
+           
             text = String.Empty;
             position = Vector2.Zero;
             sourceRect = Rectangle.Empty;

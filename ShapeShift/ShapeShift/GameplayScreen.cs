@@ -32,14 +32,15 @@ namespace ShapeShift
         String previousLevel = "";
         Random randomLevelGenerator;
         int levelNumber;
+        int numLevelsCompleted;
         FileManager fileManager;
         List<Texture2D> images;
 
         List<Enemy> enemyList = new List<Enemy>();
 
         bool LevelCompleted;
+        bool GameOver;
         int imageNumber;
-
 
         private SpriteFont font;
         int screenWidth, screenHeight, counter, maxCount = 10;
@@ -47,6 +48,45 @@ namespace ShapeShift
         const int HUDHEIGHT = 50, ABSZERO = 0, HEALTHSIZEX = 25, HEALTHSIZEY = 25, HEALTHOFFSETX = 150, HEALTHOFFSETY = 60, DISPLACEHEALTH = 5;
 
         float countDuration = 1f, currentTime = 0f;
+
+        int score;  //The score of the game
+        String playerName = "";
+        int currentHighScore; //Used for comparison
+
+        #region ScoreManagement
+        public int Score //Used to access the score of the game elsewhere
+        {
+            get { return score; }
+        }
+
+        private int IncreaseScore(int pointsAdded)
+        {
+            score += pointsAdded;
+            return score;
+        }
+        
+        private int DecreaseScore(int pointsSubtracted)
+        {
+            score -= pointsSubtracted;
+            return score;
+        }
+
+        public int NumLevelsCompleted //Used to access the number of levels completed by the player elsewhere
+        {
+            get { return numLevelsCompleted; }
+        }
+
+        public String PlayerName
+        {
+            get { return playerName; }
+        }
+
+        public void setPlayerName(String newName)
+        {
+            playerName = newName;
+        }
+
+        #endregion
 
         public override void LoadContent(ContentManager content, InputManager input)
         {
@@ -73,6 +113,10 @@ namespace ShapeShift
             previousLevel = Level;
             randomLevelGenerator = new Random();
             LevelCompleted = false;
+            GameOver = false;
+            score = 0;
+            numLevelsCompleted = 0;
+            playerName = "Player1";
 
 
 
@@ -113,6 +157,10 @@ namespace ShapeShift
                 {
                     if (!player.takeDamage())
                         dummyEnemy.makeReel();
+
+                    if (player.takeDamage())   //As a demonstration of DescreaseScore(), the player loses one point upon colliding with an enemy
+                        DecreaseScore(1);
+               
                 }
 
                 if (inputManager.KeyDown(Keys.W))
@@ -151,7 +199,14 @@ namespace ShapeShift
                 if (inputManager.KeyPressed(Keys.L))
                     player.restoreHealth();
                 
-                
+                //SCORE and GameOver Testing STUFF
+
+                if (inputManager.KeyPressed(Keys.C))  //A demonstration of IncreaseScore(). Increases score by 100 when 'c' is pressed.
+                    IncreaseScore(100);
+
+                if (inputManager.KeyPressed(Keys.Y))
+                    GameOver = true;
+
                 if (pauseTimer)
                 {
                     int n = 0;
@@ -239,9 +294,57 @@ namespace ShapeShift
 
                         }
                     }
-                   
-                
-            }//EndNotPause
+
+                //IF THE GAME SESSION ENDS
+                if (GameOver)
+                {
+                    List<int> listOfScores = new List<int>();
+
+                    string[] highScoresList = System.IO.File.ReadAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\Scores.txt");
+                    //Reads in the existing high scores for comparison
+
+                    // Display the file contents by using a foreach loop.
+
+
+                    foreach (string highScore in highScoresList)
+                    {
+                        // Use a tab to indent each line of the file.
+                        currentHighScore = int.Parse(highScore);
+                        listOfScores.Add(currentHighScore);
+
+                    }
+
+                    //   Console.WriteLine("The Lowest Score: " + listOfScores.Min());
+                    // Console.WriteLine("The Highest Score: " + listOfScores.Max());
+
+                    if (score > listOfScores.Min()) //if the Game Score is higher than the lowest recorded High Score
+                    {
+
+                        string[] scoreLine = { score.ToString() };
+                        System.IO.File.AppendAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\Scores.txt", scoreLine);
+
+                        //WRITES THE SCORE AND SPECIFIES WHAT LEVEL THE SCORE WAS ACHIEVED ON
+                        // string[] lines = { "Name: " + playerName + " ", "Score: " + score.ToString() + " ", "Levels Completed: " + numLevelsCompleted.ToString() + " " };
+                        // WriteAllLines creates a file, writes a collection of strings to the file, 
+                        // and then closes the file.
+                        // System.IO.File.AppendAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\ScoreInfo.txt", lines);
+                    }
+
+                    //Loads the TitleScreen -----Later the GameOver Screen First
+                    Type newClass = Type.GetType("ShapeShift.ScoreScreen"); //whatever your namespace is
+                    ScreenManager.Instance.AddScreen((GameScreen)Activator.CreateInstance(newClass), inputManager);
+
+
+                }
+                 
+
+                }
+
+
+               
+
+
+
             else if (paused)
             {
                 if (inputManager.KeyPressed(Keys.P))
@@ -249,9 +352,9 @@ namespace ShapeShift
                 inputManager.Update();
             }
 
+     }
 
-
-        }
+        
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -260,9 +363,13 @@ namespace ShapeShift
             player.Draw(spriteBatch);
             dummyEnemy.Draw(spriteBatch);
             spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(175, 5), Color.White);
+            spriteBatch.DrawString(font, "score: " + score.ToString(), new Vector2(270, 5), Color.White);
 
             if(paused)
-            spriteBatch.DrawString(font, "GAME PAUSED", new Vector2(300, 5), Color.White);
+            spriteBatch.DrawString(font, "GAME PAUSED", new Vector2(525, 5), Color.White);
+
+            if(GameOver)
+            spriteBatch.DrawString(font, "<<GAME OVER!>>", new Vector2(500, 5), Color.Red);
 
             for (int i = 0; i < player.getMaxHealth(); i++)
             {
