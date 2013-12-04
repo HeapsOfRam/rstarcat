@@ -147,9 +147,9 @@ namespace ShapeShift
         public void standStill()
         { }
 
-        public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
+        public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)
         {
-            base.Update(gameTime, col, layer, player);
+            base.Update(gameTime, col, layer, player,  bullets);
 
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             
@@ -224,5 +224,10 @@ namespace ShapeShift
             base.Draw(spriteBatch);
         }
 
+
+        public virtual bool collides(Vector2 vector2, Rectangle rectangle, Color[] color)
+        {
+            return false;
+        }
     }
 }

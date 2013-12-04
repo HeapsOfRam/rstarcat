@@ -67,9 +67,14 @@ namespace ShapeShift
             return eMatrixTile;
         }
 
-        public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
+        public override void die()
         {
-            base.Update(gameTime, col, layer, player);
+            eMatrixTile.die();
+        }
+
+        public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)
+        {
+            base.Update(gameTime, col, layer, player, bullets);
             eMatrixTile.setPosition(position);
             eMatrixTile.Update(gameTime);
         }

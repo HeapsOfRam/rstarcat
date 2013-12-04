@@ -135,6 +135,11 @@ namespace ShapeShift
         {
         }
 
+        public virtual bool isDead()
+        {
+            return false;
+        }
+
         public Boolean spot(Entity e)
         {
             float distanceFromEntity = Vector2.Distance(e.getPosition(), position);
@@ -225,8 +230,9 @@ namespace ShapeShift
             detectCollision();
         }
 
-        public virtual void Update(GameTime gameTime, Collision col, Layers layer, Entity entity)
+        public virtual void Update(GameTime gameTime, Collision col, Layers layer, Entity entity, List<Shape> bullets)
         {
+
             previousPosition = position;
             colliding = false;
 

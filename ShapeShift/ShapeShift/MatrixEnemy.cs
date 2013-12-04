@@ -89,7 +89,7 @@ namespace ShapeShift
             return enemyShape;
         }
 
-        public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player)
+        public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)
         {
             
             position = tiles[0, 0].getPosition();
@@ -98,15 +98,46 @@ namespace ShapeShift
                 {
                     for (int j = 0; j < matrixHeight; j++)
                     {
-                        tiles[i, j].Update(gameTime, col, layer, player);
+                        tiles[i, j].Update(gameTime, col, layer, player,bullets);
                         
                         if (grouped)
                             tiles[i, j].getShape().setPosition(new Vector2(position.X + (i * 28), position.Y + (j * 28)));
+
+                        foreach (Shape bullet in bullets)
+                        {
+                            if (!bullet.isDead()){
+                                if (tiles[i, j].getShape().collides(tiles[i, j].getPosition(), bullet.getRectangle(), bullet.getColorData()))
+                                {
+                                    if (!tiles[i, j].isDead())
+                                    {
+                                        tiles[i, j].die();
+                                        tiles[i, j].Update(gameTime, input, col, layer);
+
+                                        if (!bullet.isDead())
+                                        {
+                                            bullet.hit();
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
+        }
+
+        public override Boolean isDead()
+        {
            
+            foreach (MatrixTileEnemy tile in tiles)
+            {
+                if (!tile.getShape().isDead())
+                {
+                    return false;
+                }
+            }
 
-
+            return true;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -136,6 +167,16 @@ namespace ShapeShift
             }
 
             return returnList;
+        }
+
+        public override bool collides(Vector2 vector2, Rectangle rectangle, Color[] color)
+        {
+            foreach (MatrixTileEnemy e in tiles){
+                if (e.getEnemyShape().collides(vector2, rectangle, color))
+                    return true;
+            }
+
+            return false;
         }
     }
 }

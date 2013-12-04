@@ -39,7 +39,7 @@ namespace ShapeShift
 
         public Boolean firing = false;
 
-        public List<Bullet> activeBullets;
+
 
         private const int WIDTH  = 92;
         private const int HEIGHT = 92;
@@ -49,7 +49,7 @@ namespace ShapeShift
         {
             this.content = content; 
             animations = new List<SpriteSheetAnimation>();
-            activeBullets = new List<Bullet>();
+            activeBullets = new List<Shape>();
 
             #region Load Textures
             diamondTexture = content.Load<Texture2D>("Diamond/DiamondIdleSpriteSheet");
@@ -265,7 +265,7 @@ namespace ShapeShift
 
         public void clearBullets()
         {
-            activeBullets = new List<Bullet>();
+            activeBullets = new List<Shape>();
         }
     }
 }

@@ -33,8 +33,7 @@ namespace ShapeShift
         private SpriteSheetAnimation shieldFadeAnimation;
         private SpriteSheetAnimation circleHitAnimation;
         #endregion
-        public List<Bullet> activeBullets;
-
+        
         public bool shielded;
 
 
@@ -49,7 +48,7 @@ namespace ShapeShift
             this.content = content;
             animations = new List<SpriteSheetAnimation>();
 
-            activeBullets = new List<Bullet>();
+            activeBullets = new List<Shape>();
 
             #region Load Textures & Create Animations
             //Load in the specific spritesheets used for animating the Circle
@@ -71,8 +70,8 @@ namespace ShapeShift
             deployAnimation.LoadContent(content, shieldDeployCircleTexture, "", new Vector2(0, 0));
             deployAnimation.IsEnabled = false;
 
-            idleAnimation.scale = .5f;
-            idleAnimation.origin = new Vector2(WIDTH / 2, HEIGHT / 2);
+            
+            
 
             shieldIdleAnimation = new SpriteSheetAnimation(this, true);
             shieldIdleAnimation.LoadContent(content, shieldIdleTexture, "", new Vector2(0, 0));
@@ -93,12 +92,12 @@ namespace ShapeShift
             animations.Add(shieldFadeAnimation);
             animations.Add(circleHitAnimation);
 
-
-            foreach (SpriteSheetAnimation s in animations)
+            //FOR FUN USE LATER ON
+           /* foreach (SpriteSheetAnimation s in animations)
             {
                 s.scale = 2.0f;
                 s.origin = new Vector2(WIDTH / 2, HEIGHT / 2);
-            }
+            }*/
 
             colorData = new Color[WIDTH * HEIGHT];
             circleShadowTexture.GetData(colorData);
@@ -228,7 +227,7 @@ namespace ShapeShift
 
         public void clearBullets()
         {
-            activeBullets = new List<Bullet>();
+            activeBullets = new List<Shape>();
         }
     }
 }

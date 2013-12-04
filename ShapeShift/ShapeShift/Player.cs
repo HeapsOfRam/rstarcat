@@ -641,5 +641,10 @@ namespace ShapeShift
             // Draws each of the enabled animations for the current shape in the upper right hand corner. 
             nextShape.DrawOnlyIdle(spriteBatch);
         }
+
+        public List<Shape> getActiveBullets()
+        {
+            return playerShape.getActiveBullets();
+        }
     }
 }

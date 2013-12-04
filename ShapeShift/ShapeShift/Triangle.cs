@@ -34,7 +34,7 @@ namespace ShapeShift
 
         public Boolean firing = false;
         protected int frameCounter;
-        public List<Bullet> activeBullets;
+      
         protected const int SWITCH_FRAME = 200;
         private ContentManager content;
 
@@ -43,7 +43,7 @@ namespace ShapeShift
             this.content = content;
             // Create list that will hold animations
             animations = new List<SpriteSheetAnimation>();
-            activeBullets = new List<Bullet>();
+            activeBullets = new List<Shape>();
 
             #region Loading Textures
 
@@ -232,7 +232,7 @@ namespace ShapeShift
 
         public void clearBullets()
         {
-            activeBullets = new List<Bullet>();
+            activeBullets = new List<Shape>();
         }
     }
 }

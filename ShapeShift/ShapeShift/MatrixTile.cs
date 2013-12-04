@@ -22,7 +22,7 @@ namespace ShapeShift
         protected SpriteSheetAnimation hitAnimation;
         protected int frameCounter;
 
-        protected Boolean dead = true;
+        protected Boolean dead = false;
         protected Boolean grouped = false; // True if the matrix is in collapsed state, flase otherwise
        
         protected float rotateSpeed = 15.0f;
@@ -38,6 +38,7 @@ namespace ShapeShift
         protected Color[] fullTileData;
 
         protected Point matrixPosition;
+        protected Boolean gone = false;
 
 
         public MatrixTile(ContentManager content, int matrixWidth, int matrixHeight, int positionOffset, Point matrixPosition)
@@ -85,6 +86,11 @@ namespace ShapeShift
        
         public void attack()
         {
+        }
+
+        public override bool isDead()
+        {
+            return dead;
         }
 
         public void die()
@@ -137,7 +143,7 @@ namespace ShapeShift
 
         public override bool collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
-          
+          if (!dead){
             Color[] dataA = new Color[28 * 28];
             shadowTexture.GetData(dataA);
             Rectangle rectangleA;
@@ -153,6 +159,8 @@ namespace ShapeShift
             }
            
             return (IntersectPixels(rectangleA, dataA, rectangleB, dataB));
+            }
+          return false;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -184,7 +192,7 @@ namespace ShapeShift
 
 
 
-            if (dead)
+            if (dead && !gone)
             {
                 frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
@@ -196,9 +204,11 @@ namespace ShapeShift
 
                     if (newScale > 0)
                         newScale = newScale - 0.1f;
+                    else
+                        gone = true;
                         
                     idleAnimation.scale = newScale;
-               
+                    
                     
                 }
             }

@@ -34,6 +34,7 @@ namespace ShapeShift
         private Texture2D shotShadowTexture;
 
         private Color[] data;
+        private bool dead = false;
 
         public Bullet(ContentManager content, float fireAngle, String shape)
         {
@@ -109,6 +110,9 @@ namespace ShapeShift
            
             data = new Color[WIDTH * HEIGHT];
             shotShadowTexture.GetData(data);
+
+
+            this.colorData = data;
         }
 
         public void rotateTowardsFiringAngle(float fireAngle)
@@ -126,6 +130,11 @@ namespace ShapeShift
             
         }
 
+        public override bool isDead()
+        {
+            return dead;
+        }
+
         public Boolean dispose()
         {
             if (!shotHitAnimation.IsEnabled && !shotAnimation.IsEnabled)
@@ -140,10 +149,14 @@ namespace ShapeShift
 
         public override void hit()
         {
-            shotAnimation.IsEnabled = false;
-            shotHitAnimation.position.X = shotAnimation.position.X;
-            shotHitAnimation.position.Y = shotAnimation.position.Y;
-            shotHitAnimation.IsEnabled = true;
+            
+                shotAnimation.IsEnabled = false;
+                shotHitAnimation.position.X = shotAnimation.position.X;
+                shotHitAnimation.position.Y = shotAnimation.position.Y;
+                shotHitAnimation.IsEnabled = true;
+                dead = true;
+
+          
         }
 
         public override Texture2D getTexture()
@@ -154,6 +167,7 @@ namespace ShapeShift
         
         public override bool collides(Vector2 position, Rectangle rectangle, Color[] Data)
         {
+            
             if (!collision)
             {
                 Rectangle rectangleA = new Rectangle((int)shotAnimation.Position.X, (int)shotAnimation.Position.Y, WIDTH, HEIGHT);
@@ -173,6 +187,8 @@ namespace ShapeShift
             return false;
 
         }
+
+       
         
        
         public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)
@@ -180,7 +196,7 @@ namespace ShapeShift
             spriteSheetAnimation.IsEnabled = false;
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             shotAnimation.Update(gameTime);
             
@@ -207,17 +223,21 @@ namespace ShapeShift
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
-
-            List<SpriteSheetAnimation> animations = getActiveTextures();
-
-            foreach (SpriteSheetAnimation s in animations)
+            if (!dead)
             {
-                if (s.IsEnabled)
-                    s.Draw(spriteBatch);
+                base.Draw(spriteBatch);
+
+                List<SpriteSheetAnimation> animations = getActiveTextures();
+
+                foreach (SpriteSheetAnimation s in animations)
+                {
+                    if (s.IsEnabled)
+                        s.Draw(spriteBatch);
+                }
             }
 
         }
+
 
 
     }

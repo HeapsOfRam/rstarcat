@@ -22,6 +22,9 @@ namespace ShapeShift
         Texture2D healthFillTexture, healthUnfillTexture;
         Boolean paused = false;
         Boolean pauseTimer = false;
+
+        int count = 0;
+
         String Level = "";
         String Level1 = "1";
         String Level2 = "2";
@@ -31,6 +34,8 @@ namespace ShapeShift
         int levelNumber;
         FileManager fileManager;
         List<Texture2D> images;
+
+        List<Enemy> enemyList = new List<Enemy>();
 
         bool LevelCompleted;
         int imageNumber;
@@ -47,7 +52,11 @@ namespace ShapeShift
         {
             base.LoadContent(content, input);
             player = new Player();
+
+            
             dummyEnemy = new MatrixEnemy(new Vector2 (500,500));
+            enemyList.Add(dummyEnemy);
+
             layer = new Layers();
             map = new Map();
             rectangle = new Rectangle();
@@ -64,6 +73,8 @@ namespace ShapeShift
             previousLevel = Level;
             randomLevelGenerator = new Random();
             LevelCompleted = false;
+
+
 
         }
 
@@ -87,13 +98,18 @@ namespace ShapeShift
 
                 inputManager.Update();
                 player.Update(gameTime, inputManager, map.collision, map.layer);
-                dummyEnemy.Update(gameTime, map.collision, map.layer, player);
+
+
+
+                dummyEnemy.Update(gameTime, map.collision, map.layer, player, player.getActiveBullets());
+
+                
                 map.Update(gameTime);
                 LevelCompleted = false;
 
                 player.pSquareResetDirections();
 
-                if (dummyEnemy.getEnemyShape().collides(dummyEnemy.getPosition(), player.getRectangle(), player.getShape().getColorData()))
+                if (dummyEnemy.collides(dummyEnemy.getPosition(), player.getRectangle(), player.getShape().getColorData()))
                 {
                     if (!player.takeDamage())
                         dummyEnemy.makeReel();
@@ -114,6 +130,8 @@ namespace ShapeShift
 
                 if (inputManager.KeyDown(Keys.F))
                     dummyEnemy.group();
+
+                
 
                 if (inputManager.KeyDown(Keys.Up))
                     player.shoot(gameTime, 1);
@@ -181,31 +199,48 @@ namespace ShapeShift
 
                 //LOADING IN THE NEXT LEVEL
 
-                if (inputManager.KeyPressed(Keys.Space))
+                
+                if (count == 0)
                 {
-                    LevelCompleted = true;
-                }
+                        Console.WriteLine("hello");  
+                Boolean aliveEnemyFound = false;
+                
+                    foreach (Enemy e in enemyList)
+                    {
+                        if (!e.isDead())
+                            aliveEnemyFound = true;
 
-                if (LevelCompleted)
-                {
-                    map.LoadContent(content, "CompletedMap" + previousLevel);
-                }
+                    }
+
+                    if (!aliveEnemyFound)
+                    {
+                        LevelCompleted = true;
+                    }
+
+                   
+                        if (LevelCompleted)
+                        {
+                            map.LoadContent(content, "CompletedMap" + previousLevel);
+                            count++;
+                        }
 
 
-                if (Level.Equals(previousLevel)) //IF you are already on the next randomly generated level, load again
-                {
-                    // previousLevel = Level;                          //Assign the current level to 'previous level'
-                    levelNumber = randomLevelGenerator.Next(4) + 1; //randomly generate the next level number
-                    Level = levelNumber.ToString();                 //Assign the new level number to 'level'
+                        if (Level.Equals(previousLevel)) //IF you are already on the next randomly generated level, load again
+                        {
+                            // previousLevel = Level;                          //Assign the current level to 'previous level'
+                            levelNumber = randomLevelGenerator.Next(4) + 1; //randomly generate the next level number
+                            Level = levelNumber.ToString();                 //Assign the new level number to 'level'
 
-                }
-                else if (player.ExitsLevel)
-                {
-                    map.LoadContent(content, "InProgressMap" + Level);
-                    previousLevel = Level;
+                        }
+                        else if (player.ExitsLevel)
+                        {
+                            map.LoadContent(content, "InProgressMap" + Level);
+                            previousLevel = Level;
 
-                }
-
+                        }
+                    }
+                   
+                
             }//EndNotPause
             else if (paused)
             {
@@ -214,7 +249,7 @@ namespace ShapeShift
                 inputManager.Update();
             }
 
-            
+
 
         }
 

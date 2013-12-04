@@ -47,7 +47,7 @@ namespace ShapeShift
         public Boolean dashing = false;
         public Boolean firing = false;
 
-        public List<Bullet> activeBullets;
+       
 
         protected List<SpriteSheetAnimation> dashAnimations;
 
@@ -74,7 +74,7 @@ namespace ShapeShift
             animations = new List<SpriteSheetAnimation>();
             dashAnimations = new List<SpriteSheetAnimation>();
 
-            activeBullets = new List<Bullet>();
+            activeBullets = new List<Shape>();
 
             #region Load Textures
             squareTexture = content.Load<Texture2D>("Square/SquareIdleSpriteSheet");
@@ -199,11 +199,8 @@ namespace ShapeShift
                     Bullet b = new Bullet(content,direction, "square");
 
                     b.setPosition(idleAnimation.Position);
-                    activeBullets.Add(b);
-                   
-                
-                 }
-             
+                    activeBullets.Add(b);  
+                } 
       
         }
 
@@ -212,7 +209,9 @@ namespace ShapeShift
             foreach (Bullet b in activeBullets)
             {
                 if (b.collides(position, rectangle, Data))
+                {
                     b.hit();
+                }
             }
 
 
@@ -248,14 +247,14 @@ namespace ShapeShift
             spriteSheetAnimation.IsEnabled = false;
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
 
             foreach (Bullet b in activeBullets)
             {
-                if (!b.dispose())    
+               if (!b.dispose())    
                     b.Update(gameTime);
             }
         }
@@ -339,7 +338,7 @@ namespace ShapeShift
 
         public void clearBullets()
         {
-            activeBullets = new List<Bullet>();
+            activeBullets = new List<Shape>();
         }
     }
 }

@@ -17,10 +17,16 @@ namespace ShapeShift
         protected bool collision = false;
 
         protected Color[] colorData;
+        protected List<Shape> activeBullets;
+
 
         // Constructor 
         public Shape(){}
 
+        public virtual bool isDead()
+        {
+            return false;
+        }
         public List<SpriteSheetAnimation> getActiveTextures()
         {
             return animations;
@@ -96,7 +102,17 @@ namespace ShapeShift
             }
         }
 
-       
-        
+
+
+
+        public List<Shape> getActiveBullets()
+        {
+            return activeBullets;
+        }
+
+
+        public virtual void Update(GameTime gameTime)
+        {
+        }
     }
 }
