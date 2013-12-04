@@ -394,7 +394,7 @@ namespace ShapeShift
                 switch (direction)
                 {
                     case 1:
-                        pTriangle.shoot(45);
+                        pTriangle.shoot(0);
                         break;
                     case 4:
                         pTriangle.shoot(90);
@@ -403,7 +403,7 @@ namespace ShapeShift
                         pTriangle.shoot(180);
                         break;
                     case 3:
-                        //pTriangle.shoot(270);
+                        pTriangle.shoot(270);
                         break;
                     default:
                         pTriangle.shoot(0);

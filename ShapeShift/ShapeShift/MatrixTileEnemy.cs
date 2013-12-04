@@ -12,6 +12,7 @@ namespace ShapeShift
     {
         private Random rand;
         private GameTime gameTime;
+        public Boolean collided = false;
         private MatrixTile eMatrixTile;
 
         private const int START_X = 500, START_Y = 500;
@@ -34,6 +35,9 @@ namespace ShapeShift
             this.matrixWidth = matrixWidth;
             this.matrixHeight = matrixHeight;
 
+
+
+
             gameTime = new GameTime();
 
             base.LoadContent(content, matrixWidth, matrixHeight);
@@ -42,7 +46,7 @@ namespace ShapeShift
             eMatrixTile = new MatrixTile(content, matrixWidth, matrixHeight, POSITION_OFFSET, center);
 
             this.content = content;
-            moveSpeed = 150f;
+            moveSpeed = 140f;
 
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;

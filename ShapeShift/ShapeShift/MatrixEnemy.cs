@@ -13,17 +13,20 @@ namespace ShapeShift
         private Random rand;
         private GameTime gameTime;
         private MatrixTileEnemy[,] tiles;
-
+        private GameplayScreen gameplayScreen;
         
 
         private Boolean grouped = false;
 
         private int matrixWidth, matrixHeight;
 
-        public MatrixEnemy(Vector2 position)
+        public MatrixEnemy(Vector2 position, GameplayScreen gameplayScreen)
         {
+            this.gameplayScreen = gameplayScreen;
             this.position = position;
         }
+
+       
 
         public void group()
         {
@@ -91,7 +94,7 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)
         {
-            
+            //base.Update(gameTime, col, layer, player, bullets);
             position = tiles[0, 0].getPosition();
 
                 for (int i = 0; i < matrixWidth; i++)
@@ -110,8 +113,9 @@ namespace ShapeShift
                                 {
                                     if (!tiles[i, j].isDead())
                                     {
+                                        gameplayScreen.IncreaseScore(100);
                                         tiles[i, j].die();
-                                        tiles[i, j].Update(gameTime, input, col, layer);
+                                     
 
                                         if (!bullet.isDead())
                                         {
@@ -124,6 +128,14 @@ namespace ShapeShift
                         }
                     }
                 }
+        }
+        public override void makeReel()
+        {
+            foreach (MatrixTileEnemy e in tiles)
+            {
+                if (e.collided)
+                    e.makeReel();
+            }
         }
 
         public override Boolean isDead()
@@ -175,7 +187,11 @@ namespace ShapeShift
                 if (!e.isDead())
                 {
                     if (e.getEnemyShape().collides(e.getPosition(), rectangle, color))
+                    {
+                        e.collided = true;
                         return true;
+                    }
+                    e.collided = false;
                 }
             }
 

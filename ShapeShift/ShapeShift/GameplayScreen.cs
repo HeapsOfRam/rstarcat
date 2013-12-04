@@ -36,7 +36,7 @@ namespace ShapeShift
         FileManager fileManager;
         List<Texture2D> images;
 
-        List<Enemy> enemyList = new List<Enemy>();
+        List<MatrixEnemy> enemyList = new List<MatrixEnemy>();
 
         bool LevelCompleted;
         bool GameOver;
@@ -52,6 +52,7 @@ namespace ShapeShift
         int score;  //The score of the game
         String playerName = "";
         int currentHighScore; //Used for comparison
+        private bool enemiesLoaded = true;
 
         #region ScoreManagement
         public int Score //Used to access the score of the game elsewhere
@@ -59,7 +60,7 @@ namespace ShapeShift
             get { return score; }
         }
 
-        private int IncreaseScore(int pointsAdded)
+        public int IncreaseScore(int pointsAdded)
         {
             score += pointsAdded;
             return score;
@@ -94,8 +95,8 @@ namespace ShapeShift
             player = new Player();
 
             
-            dummyEnemy = new MatrixEnemy(new Vector2 (500,500));
-            enemyList.Add(dummyEnemy);
+            dummyEnemy = new MatrixEnemy(new Vector2 (500,500),this);
+            //enemyList.Add(dummyEnemy);
 
             layer = new Layers();
             map = new Map();
@@ -119,7 +120,16 @@ namespace ShapeShift
             playerName = "Player1";
 
 
+            dummyEnemy = new MatrixEnemy(new Vector2(500, 500),this);
+            dummyEnemy.LoadContent(content, 2, 2);
+            enemyList.Add(dummyEnemy);
 
+        
+          
+
+         //   dummyEnemy = new MatrixEnemy(new Vector2(600, 200));
+           // dummyEnemy.LoadContent(content, 2, 2);
+           // enemyList.Add(dummyEnemy);
         }
 
 
@@ -144,23 +154,32 @@ namespace ShapeShift
                 player.Update(gameTime, inputManager, map.collision, map.layer);
 
 
-
-                dummyEnemy.Update(gameTime, map.collision, map.layer, player, player.getActiveBullets());
-
+                
+               
                 
                 map.Update(gameTime);
                 LevelCompleted = false;
 
                 player.pSquareResetDirections();
 
-                if (dummyEnemy.collides(dummyEnemy.getPosition(), player.getRectangle(), player.getShape().getColorData()))
+                foreach (MatrixEnemy e in enemyList)
                 {
-                    if (!player.takeDamage())
-                        dummyEnemy.makeReel();
+                    
+                        e.Update(gameTime, map.collision, map.layer, player, player.getActiveBullets());
 
-                    if (player.takeDamage())   //As a demonstration of DescreaseScore(), the player loses one point upon colliding with an enemy
-                        DecreaseScore(1);
-               
+                        if (!e.isDead())
+                        {
+                            if (e.collides(e.getPosition(), player.getRectangle(), player.getShape().getColorData()))
+                            {
+                                if (!player.takeDamage())
+                                    e.makeReel();
+
+                                if (player.takeDamage())   //As a demonstration of DescreaseScore(), the player loses one point upon colliding with an enemy
+                                    DecreaseScore(1);
+
+                            }
+                        }
+                   
                 }
 
                 if (inputManager.KeyDown(Keys.W))
@@ -177,7 +196,10 @@ namespace ShapeShift
                     player.eAction();
 
                 if (inputManager.KeyDown(Keys.F))
+                {
                     dummyEnemy.group();
+                    
+                }
 
                 
 
@@ -255,12 +277,12 @@ namespace ShapeShift
                 //LOADING IN THE NEXT LEVEL
 
                 
-                if (count == 0)
+                if (enemiesLoaded)
                 {
-                        Console.WriteLine("hello");  
+               
                 Boolean aliveEnemyFound = false;
                 
-                    foreach (Enemy e in enemyList)
+                    foreach (MatrixEnemy e in enemyList)
                     {
                         if (!e.isDead())
                             aliveEnemyFound = true;
@@ -269,6 +291,7 @@ namespace ShapeShift
 
                     if (!aliveEnemyFound)
                     {
+                        enemiesLoaded = false;
                         LevelCompleted = true;
                     }
 
@@ -280,20 +303,22 @@ namespace ShapeShift
                         }
 
 
-                        if (Level.Equals(previousLevel)) //IF you are already on the next randomly generated level, load again
-                        {
-                            // previousLevel = Level;                          //Assign the current level to 'previous level'
-                            levelNumber = randomLevelGenerator.Next(4) + 1; //randomly generate the next level number
-                            Level = levelNumber.ToString();                 //Assign the new level number to 'level'
-
-                        }
-                        else if (player.ExitsLevel)
-                        {
-                            map.LoadContent(content, "InProgressMap" + Level);
-                            previousLevel = Level;
-
-                        }
+                        
                     }
+                if (Level.Equals(previousLevel)) //IF you are already on the next randomly generated level, load again
+                {
+                    // previousLevel = Level;                          //Assign the current level to 'previous level'
+                    levelNumber = randomLevelGenerator.Next(4) + 1; //randomly generate the next level number
+                    Level = levelNumber.ToString();                 //Assign the new level number to 'level'
+
+                }
+                else if (player.ExitsLevel)
+                {
+                    map.LoadContent(content, "InProgressMap" + Level);
+                    previousLevel = Level;
+                    loadEnemies(levelNumber);
+                    
+                }
 
                 //IF THE GAME SESSION ENDS
                 if (GameOver)
@@ -354,6 +379,38 @@ namespace ShapeShift
 
      }
 
+        private void loadEnemies(int Level)
+        {
+            enemyList = new List<MatrixEnemy>();
+            Console.WriteLine(Level);
+            enemiesLoaded = true;
+
+            switch (Level)
+            {
+
+                default: 
+                    
+                    //dummyEnemy = new MatrixEnemy(new Vector2 (700,500));
+                    //dummyEnemy.LoadContent(content, 2, 2);
+                    //enemyList.Add(dummyEnemy);
+                 //   dummyEnemy = new MatrixEnemy(new Vector2 (200,200));
+                 //   dummyEnemy.LoadContent(content, 2, 2);
+                 //   enemyList.Add(dummyEnemy);
+
+                    dummyEnemy = new MatrixEnemy(new Vector2 (600,200),this);
+                    dummyEnemy.LoadContent(content, 2, 2);
+                    enemyList.Add(dummyEnemy);
+
+
+                    
+                    break;
+
+
+                   
+            }
+           
+        }
+
         
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -361,7 +418,11 @@ namespace ShapeShift
             base.Draw(spriteBatch);
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
-            dummyEnemy.Draw(spriteBatch);
+
+            foreach (MatrixEnemy e in enemyList)
+                e.Draw(spriteBatch);
+
+
             spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(175, 5), Color.White);
             spriteBatch.DrawString(font, "score: " + score.ToString(), new Vector2(270, 5), Color.White);
 

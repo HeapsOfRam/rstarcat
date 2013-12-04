@@ -26,6 +26,7 @@ namespace ShapeShift
         protected int X_OFFSET;
         protected int Y_OFFSET;
 
+
         protected const int WIDTH = 92;
         protected const int HEIGHT = 92;
 
@@ -35,6 +36,7 @@ namespace ShapeShift
 
         private Color[] data;
         private bool dead = false;
+        private bool gone = false;
 
         public Bullet(ContentManager content, float fireAngle, String shape)
         {
@@ -149,14 +151,15 @@ namespace ShapeShift
 
         public override void hit()
         {
-            
+            if (!dead)
+            {
                 shotAnimation.IsEnabled = false;
                 shotHitAnimation.position.X = shotAnimation.position.X;
                 shotHitAnimation.position.Y = shotAnimation.position.Y;
                 shotHitAnimation.IsEnabled = true;
                 dead = true;
 
-          
+            }
         }
 
         public override Texture2D getTexture()
@@ -194,13 +197,19 @@ namespace ShapeShift
         public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)
         {
             spriteSheetAnimation.IsEnabled = false;
+
+            if (spriteSheetAnimation == shotHitAnimation)
+            {
+                gone = true;
+                
+            }
         }
 
         public override void Update(GameTime gameTime)
         {
             shotAnimation.Update(gameTime);
             
-            if (collision)
+            if (dead)
                 shotHitAnimation.Update(gameTime);
 
             frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -223,7 +232,7 @@ namespace ShapeShift
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (!dead)
+            if (!gone)
             {
                 base.Draw(spriteBatch);
 

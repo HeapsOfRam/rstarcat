@@ -84,7 +84,7 @@ namespace ShapeShift
         public Boolean isReeling()
         { return reeling; }
 
-        public void makeReel()
+        public virtual void makeReel()
         { reeling = true; }
 
         public void knockedAway(GameTime gameTime, Entity player)

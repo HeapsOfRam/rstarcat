@@ -157,8 +157,8 @@ namespace ShapeShift
                 rectangleA = new Rectangle((int)position.X, (int)position.Y, matrixWidth * 28, matrixHeight * 28);
                 dataA = fullTileData;
             }
-           
-            return (IntersectPixels(rectangleA, dataA, rectangleB, dataB));
+           if (rectangleA.Intersects(rectangleB))
+                return (IntersectPixels(rectangleA, dataA, rectangleB, dataB));
             }
           return false;
         }
