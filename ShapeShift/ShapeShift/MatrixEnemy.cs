@@ -172,8 +172,11 @@ namespace ShapeShift
         public override bool collides(Vector2 vector2, Rectangle rectangle, Color[] color)
         {
             foreach (MatrixTileEnemy e in tiles){
-                if (e.getEnemyShape().collides(vector2, rectangle, color))
-                    return true;
+                if (!e.isDead())
+                {
+                    if (e.getEnemyShape().collides(e.getPosition(), rectangle, color))
+                        return true;
+                }
             }
 
             return false;
