@@ -10,7 +10,7 @@ namespace ShapeShift
 {
     class MatrixTileEnemy : Enemy
     {
-        private Random rand;
+        
         private GameTime gameTime;
         public Boolean collided = false;
         private MatrixTile eMatrixTile;
@@ -36,8 +36,7 @@ namespace ShapeShift
             this.matrixHeight = matrixHeight;
 
 
-
-
+            
             gameTime = new GameTime();
 
             base.LoadContent(content, matrixWidth, matrixHeight);
@@ -46,7 +45,7 @@ namespace ShapeShift
             eMatrixTile = new MatrixTile(content, matrixWidth, matrixHeight, POSITION_OFFSET, center);
 
             this.content = content;
-            moveSpeed = 140f;
+            moveSpeed = 120f;
 
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;
@@ -70,6 +69,7 @@ namespace ShapeShift
         {
             return eMatrixTile;
         }
+
 
         public override void die()
         {

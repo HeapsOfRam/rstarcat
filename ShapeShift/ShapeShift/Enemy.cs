@@ -15,7 +15,7 @@ namespace ShapeShift
         private int state = WANDER;
         private float currentTime = 0, countDuration = 10f, knockCurr = 0;
         private const float KNOCKDURATION = .5f;
-        private Random rand;
+        protected Random rand;
         private int direction = 1;
         private const int WANDERSWITCH = 5, UP = 1, RIGHTUP = 2, RIGHT = 3, RIGHTDOWN = 4, DOWN = 5, LEFTDOWN = 6, LEFT = 7, LEFTUP = 8;
         protected Shape enemyShape;
@@ -41,11 +41,11 @@ namespace ShapeShift
         public void wander(GameTime gameTime)
         {
             if (colliding)
-                direction = rand.Next(8) + 1;
-            if (currentTime > WANDERSWITCH)
+                direction = rand.Next(1,8);
+            if (currentTime > rand.Next(4,8))
             {
                 currentTime = 0;
-                direction = rand.Next(8) + 1;
+                direction = rand.Next(1,8);
             }
 
             switch (direction)
@@ -112,7 +112,7 @@ namespace ShapeShift
         {
             if (player.getPositionY() + 46 < position.Y)
                 moveUp(gameTime);
-            if (player.getPositionY() +46 > position.Y)
+            if (player.getPositionY() + 46 > position.Y)
                 moveDown(gameTime);
         }
 
@@ -165,10 +165,13 @@ namespace ShapeShift
                         state = CHASE;
                     break;
                 case CHASE:
-                    spotDist = 800;
+                    spotDist = 450;
                     chase(gameTime, player);
                     if (!spot(player))
+                    {
+                        direction = rand.Next(1, 8);
                         state = WANDER;
+                    }
                     if(enemyShape.collides(position, player.getRectangle(), player.getShape().getColorData()))
                         state = ATTACK;
                     if (colliding)
@@ -190,6 +193,8 @@ namespace ShapeShift
                     }
                     break;
                 case FIND:
+                    if (!spot(player))
+                        state = WANDER;
                     findChase(gameTime, player);
                     if (!colliding)
                         state = CHASE;

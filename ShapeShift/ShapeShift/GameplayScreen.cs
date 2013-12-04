@@ -124,12 +124,7 @@ namespace ShapeShift
             dummyEnemy.LoadContent(content, 2, 2);
             enemyList.Add(dummyEnemy);
 
-        
-          
-
-         //   dummyEnemy = new MatrixEnemy(new Vector2(600, 200));
-           // dummyEnemy.LoadContent(content, 2, 2);
-           // enemyList.Add(dummyEnemy);
+           
         }
 
 
@@ -171,7 +166,7 @@ namespace ShapeShift
                         {
                             if (e.collides(e.getPosition(), player.getRectangle(), player.getShape().getColorData()))
                             {
-                                if (!player.takeDamage())
+                                player.takeDamage();
                                     e.makeReel();
 
                                 if (player.takeDamage())   //As a demonstration of DescreaseScore(), the player loses one point upon colliding with an enemy
@@ -248,7 +243,7 @@ namespace ShapeShift
                     n = 0;
                 }
 
-
+                
                 if (currentTime >= countDuration)
                 {
                     counter++;
@@ -257,6 +252,7 @@ namespace ShapeShift
                 if (counter >= maxCount)
                 {
                     // Console.WriteLine("Calling ShiftShape");
+                    
                     player.shiftShape();
                     counter = 0;
                 }
@@ -291,6 +287,7 @@ namespace ShapeShift
 
                     if (!aliveEnemyFound)
                     {
+                        pauseTimer = true;
                         enemiesLoaded = false;
                         LevelCompleted = true;
                     }
@@ -309,6 +306,8 @@ namespace ShapeShift
                 {
                     // previousLevel = Level;                          //Assign the current level to 'previous level'
                     levelNumber = randomLevelGenerator.Next(4) + 1; //randomly generate the next level number
+                    if (levelNumber == 3)
+                        levelNumber = 2;
                     Level = levelNumber.ToString();                 //Assign the new level number to 'level'
 
                 }
@@ -385,6 +384,8 @@ namespace ShapeShift
             Console.WriteLine(Level);
             enemiesLoaded = true;
 
+            pauseTimer = false;
+
             switch (Level)
             {
 
@@ -397,7 +398,7 @@ namespace ShapeShift
                  //   dummyEnemy.LoadContent(content, 2, 2);
                  //   enemyList.Add(dummyEnemy);
 
-                    dummyEnemy = new MatrixEnemy(new Vector2 (600,200),this);
+                    dummyEnemy = new MatrixEnemy(new Vector2 (200,400),this);
                     dummyEnemy.LoadContent(content, 2, 2);
                     enemyList.Add(dummyEnemy);
 
