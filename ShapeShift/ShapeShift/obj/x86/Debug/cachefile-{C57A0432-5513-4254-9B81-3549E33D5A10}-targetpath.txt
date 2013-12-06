@@ -80,13 +80,6 @@ Content\Square\SquareShadow.xnb
 Content\Circle\CircleShadow.xnb
 Content\Circle\CircleShieldShadow.xnb
 Content\Matrix\MatrixIdleSpriteSheet.xnb
-Content\Fonts\Font1.xnb
-Content\Fonts\MenuFont.xnb
-Content\Fonts\TitleFont.xnb
-Content\Fonts\ScoreFont.xnb
-Content\Fonts\ScoreFont2.xnb
-Content\Music\White Denim - D - At The Farm.xnb
-Content\Music\White Denim - D - At The Farm.wma
 Content\Circle\heart.xnb
 Content\Circle\heartEmpty.xnb
 Content\Diamond\heart.xnb
@@ -95,3 +88,10 @@ Content\Square\heart.xnb
 Content\Square\heartEmpty.xnb
 Content\Triangle\heart.xnb
 Content\Triangle\heartEmpty.xnb
+Content\Fonts\Font1.xnb
+Content\Fonts\MenuFont.xnb
+Content\Fonts\TitleFont.xnb
+Content\Fonts\ScoreFont.xnb
+Content\Fonts\ScoreFont2.xnb
+Content\Music\White Denim - D - At The Farm.xnb
+Content\Music\White Denim - D - At The Farm.wma

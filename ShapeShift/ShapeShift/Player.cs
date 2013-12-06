@@ -307,7 +307,13 @@ namespace ShapeShift
             if (playerShape == pTriangle)
                 pRotate();
             if (playerShape == pDiamond)
-                pDiamond.deployMine();
+            {
+                if (pDiamond.mineDeployed())
+                    pdropMine();
+                else
+                    pdeployMine();
+            }
+            
         }
 
         public void eAction()
@@ -319,6 +325,10 @@ namespace ShapeShift
             }
             if (playerShape == pDiamond)
             {
+                if (pDiamond.turretDeployed())
+                    pdropTurret();
+                else
+                    pdeployTurret();
                 //pDiamond.deployTurret();
                 //pDiamond.hit();
             }
@@ -489,6 +499,10 @@ namespace ShapeShift
         private void pdropMine()
         {
             pDiamond.dropMine();
+        }
+        private void pdropTurret()
+        {
+            pDiamond.dropTurret();
         }
 
         public void manualChange(int n)
