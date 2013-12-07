@@ -136,8 +136,14 @@ namespace ShapeShift
             return false;
         }
 
+        public virtual Boolean isEnemy()
+        { return false;  }
+
         public Boolean spot(Entity e)
         {
+            if (!isEnemy())
+                Console.WriteLine("Is this an Enemy? " + e.isEnemy());
+
             float distanceFromEntity = Vector2.Distance(e.getPosition(), position);
             return distanceFromEntity < spotDist;
         }
@@ -186,12 +192,9 @@ namespace ShapeShift
 
                         if (Math.Abs(position.X - lastCheckedRectangle.X) < limit || Math.Abs(position.Y - lastCheckedRectangle.Y) < limit)
                         {
-
                             Vector2 xPosition = new Vector2(position.X, moveAnimation.Position.Y);
                             Vector2 yPosition = new Vector2(moveAnimation.Position.X, position.Y);
-
-
-
+                            
                             if (getShape().collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                             {
                                 position.Y = moveAnimation.Position.Y;

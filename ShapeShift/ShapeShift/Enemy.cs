@@ -146,6 +146,9 @@ namespace ShapeShift
         public void standStill()
         { }
 
+        public override Boolean isEnemy()
+        { return true; }
+
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)
         {
             base.Update(gameTime, col, layer, player,  bullets);

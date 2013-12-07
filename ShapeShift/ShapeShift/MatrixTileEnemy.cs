@@ -29,6 +29,9 @@ namespace ShapeShift
             this.position = position;
         }
 
+        public override Boolean isEnemy()
+        { return true; }
+
         public override void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
         {
             this.content = content;
@@ -45,7 +48,7 @@ namespace ShapeShift
             eMatrixTile = new MatrixTile(content, matrixWidth, matrixHeight, POSITION_OFFSET, center);
 
             this.content = content;
-            moveSpeed = 100f;
+            moveSpeed = 50f;
 
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;

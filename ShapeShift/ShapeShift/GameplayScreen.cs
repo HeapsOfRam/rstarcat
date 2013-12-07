@@ -142,7 +142,6 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime)
         {
-
             if (!paused)
             {
                 if (inputManager.KeyPressed(Keys.P))
@@ -166,9 +165,14 @@ namespace ShapeShift
                 {
                     
                         e.Update(gameTime, map.collision, map.layer, player, player.getActiveBullets());
+                        e.Update(gameTime, map.collision, map.layer, player, player.getTurretBullets());
 
                         if (!e.isDead())
                         {
+
+                            if (player.isTurretDropped() && player.turretSpot(e))
+                                player.fireTurret(gameTime, e);
+
                             if (e.collides(e.getPosition(), player.getRectangle(), player.getShape().getColorData()))
                             {
                                 player.takeDamage();
@@ -288,6 +292,17 @@ namespace ShapeShift
                     player1.setX(screenWidth - player1.getWidth());
                 */
 
+                /*if (player.isTurretDropped())
+                {
+                    foreach (Enemy e in enemyList)
+                    {
+                        if (player.turretSpot(e))
+                        {
+                            player.fireTurret(gameTime, e);
+                        }
+                    }
+                }*/
+
                 //LOADING IN THE NEXT LEVEL
 
                 
@@ -299,8 +314,10 @@ namespace ShapeShift
                     foreach (MatrixEnemy e in enemyList)
                     {
                         if (!e.isDead())
+                        {
                             aliveEnemyFound = true;
 
+                        }
                     }
 
                     if (!aliveEnemyFound)

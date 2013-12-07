@@ -360,7 +360,20 @@ namespace ShapeShift
     
                 pCircle.clearBullets();
         }
-     
+
+        public override Boolean isEnemy()
+        { return false; }
+
+        public Boolean isTurretDropped()
+        { return turret.isDropped(); }
+
+        public void fireTurret(GameTime gameTime, Entity enemy)
+        {
+            turret.shoot(gameTime, enemy);
+        }
+
+        public Boolean turretSpot(Entity enemy)
+        { return turret.spot(enemy);  }
 
         public void shoot(GameTime gametime, int direction)
         {
@@ -673,6 +686,11 @@ namespace ShapeShift
         public List<Shape> getActiveBullets()
         {
             return entityShape.getActiveBullets();
+        }
+
+        public List<Shape> getTurretBullets()
+        {
+            return turret.getActiveBullets();
         }
 
         public Texture2D[] getHearts()
