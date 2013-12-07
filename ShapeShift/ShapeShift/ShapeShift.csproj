@@ -114,6 +114,7 @@
     <Compile Include="GameServices.cs" />
     <Compile Include="MatrixTile.cs" />
     <Compile Include="MatrixTileEnemy.cs" />
+    <Compile Include="Mine.cs" />
     <Compile Include="OptionsManager.cs" />
     <Compile Include="OptionsScreen.cs" />
     <Compile Include="ScoreScreen.cs" />

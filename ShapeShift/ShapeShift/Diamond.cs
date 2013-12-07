@@ -165,6 +165,18 @@ namespace ShapeShift
         {
         }
 
+        public void mineGetDeployed()
+        {
+        }
+
+        public void mineGetDropped()
+        {
+        }
+
+        public void mineGoBoom()
+        {
+        }
+
         public Boolean mineDropped()
         {
             return droppedMine;

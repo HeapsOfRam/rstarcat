@@ -153,6 +153,16 @@ namespace ShapeShift
             return false;
         }
 
+        public virtual Entity getMine()
+        {
+            return null;
+        }
+
+        public virtual Boolean hasMineDropped()
+        {
+            return false;
+        }
+
         public Boolean spot(Entity e)
         {
             float distanceFromEntity = Vector2.Distance(e.getPosition(), position);

@@ -26,6 +26,7 @@ namespace ShapeShift
         private ContentManager content;
 
         private Turret turret;
+        private Mine mine;
         
         private Random rand;
 
@@ -56,6 +57,7 @@ namespace ShapeShift
             moveSpeed     = 150f; //Set the move speed
 
             turret = new Turret(content, input, this);
+            mine = new Mine(content, input, this);
 
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = new Vector2(START_X, START_Y);
@@ -312,10 +314,17 @@ namespace ShapeShift
                 pRotate();
             if (entityShape == pDiamond)
             {
-                if (pDiamond.mineDeployed())
+                if (mine.isDeployed())
+                {
+                    mine.dropSelf();
                     pdropMine();
+                }
                 else
+                {
+                    mine = new Mine(content, input, this);
+                    mine.deploySelf();
                     pdeployMine();
+                }
             }
             
         }
@@ -607,7 +616,17 @@ namespace ShapeShift
         public void forceTurretExpire()
         {
             turret.die();
-        }        
+        }
+
+        public Entity getMine()
+        {
+            return mine;
+        }
+
+        public override Boolean hasMineDropped()
+        {
+            return mine.isDropped();
+        }
 
         private void updateShield(GameTime gameTime)
         {
@@ -629,6 +648,8 @@ namespace ShapeShift
 
             if (!turret.isExpired())
                 turret.Update(gameTime, input, col, layer);
+            if (!mine.isDetonated())
+                mine.Update(gameTime, input, col, layer);
 
             previousPosition = position;
 
@@ -690,6 +711,9 @@ namespace ShapeShift
 
             if(turret != null && (!turret.isExpired()) && (turret.isDeployed() || turret.isDropped()))
                 turret.Draw(spriteBatch);
+
+            if (!mine.isDetonated() && (mine.isDeployed() || mine.isDropped()))
+                mine.Draw(spriteBatch);
         }
 
         public List<Shape> getActiveBullets()

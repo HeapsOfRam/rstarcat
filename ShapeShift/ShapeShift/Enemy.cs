@@ -11,7 +11,7 @@ namespace ShapeShift
 {
     class Enemy : Entity
     {
-        protected const int WANDER = 1, CHASE = 2, ATTACK = 3, REELING = 4, FIND = 5, CHASE_TURRET = 6;
+        protected const int WANDER = 1, CHASE = 2, ATTACK = 3, REELING = 4, FIND = 5, CHASE_TURRET = 6, CHASE_MINE = 7;
         public int state = WANDER;
         protected float currentTime = 0, countDuration = 10f, knockCurr = 0;
         protected const float KNOCKDURATION = .5f;
