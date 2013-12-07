@@ -78,7 +78,7 @@ namespace ShapeShift
 
           
 
-            enemyShape = tiles[0,0].getShape();
+            entityShape = tiles[0,0].getShape();
 
         }
 
@@ -90,7 +90,7 @@ namespace ShapeShift
 
         public override Shape getShape()
         {
-            return enemyShape;
+            return entityShape;
         }
 
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)

@@ -190,9 +190,10 @@ namespace ShapeShift
                     player.moveLeft(gameTime);
                 if (inputManager.KeyDown(Keys.D))
                     player.moveRight(gameTime);
-                if (inputManager.KeyDown(Keys.R))
+
+                if (inputManager.KeyPressed(Keys.R))
                     player.rAction();
-                if (inputManager.KeyDown(Keys.E))
+                if (inputManager.KeyPressed(Keys.E))
                     player.eAction();
 
                 if (inputManager.KeyDown(Keys.F))

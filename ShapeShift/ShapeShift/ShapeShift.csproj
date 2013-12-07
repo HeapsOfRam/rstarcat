@@ -142,6 +142,7 @@
     <Compile Include="Square.cs" />
     <Compile Include="TitleScreen.cs" />
     <Compile Include="Triangle.cs" />
+    <Compile Include="Turret.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

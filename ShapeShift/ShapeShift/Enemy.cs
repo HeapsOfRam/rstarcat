@@ -18,7 +18,6 @@ namespace ShapeShift
         protected Random rand;
         protected int direction = 1;
         protected const int WANDERSWITCH = 5, UP = 1, RIGHTUP = 2, RIGHT = 3, RIGHTDOWN = 4, DOWN = 5, LEFTDOWN = 6, LEFT = 7, LEFTUP = 8;
-        protected Shape enemyShape;
         protected Boolean reeling, findX = false, findY = true;
         
 
@@ -36,7 +35,7 @@ namespace ShapeShift
             base.UnloadContent();
         }
 
-        public Shape getEnemyShape() { return enemyShape; }
+        public Shape getEnemyShape() { return entityShape; }
 
         public void wander(GameTime gameTime)
         {
@@ -172,14 +171,14 @@ namespace ShapeShift
                         direction = rand.Next(1, 8);
                         state = WANDER;
                     }
-                    if(enemyShape.collides(position, player.getRectangle(), player.getShape().getColorData()))
+                    if(entityShape.collides(position, player.getRectangle(), player.getShape().getColorData()))
                         state = ATTACK;
                     if (colliding)
                         state = FIND;
                     break;
                 case ATTACK:
                     //standStill();
-                    if(!enemyShape.collides(position, player.getRectangle(), player.getShape().getColorData()))
+                    if(!entityShape.collides(position, player.getRectangle(), player.getShape().getColorData()))
                         state = CHASE;
                     break;
                 case REELING:

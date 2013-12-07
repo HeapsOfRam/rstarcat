@@ -155,6 +155,14 @@ namespace ShapeShift
             droppedTurret = true;
         }
 
+        public void turretGetDeployed()
+        {
+        }
+
+        public void turretGetDropped()
+        {
+        }
+
         public Boolean mineDropped()
         {
             return droppedMine;

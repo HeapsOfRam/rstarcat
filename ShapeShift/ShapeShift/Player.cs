@@ -18,12 +18,14 @@ namespace ShapeShift
         private const float SHIELD_TIME = 5f;
         private float shieldDuration = 0;
        // private Rectangle rectangle;
-        private Shape playerShape, nextShape;
+        private Shape nextShape;
         private Square pSquare;
         private Circle pCircle;
         private Triangle pTriangle;
         private Diamond pDiamond;
         private ContentManager content;
+
+        private Turret turret;
         
         private Random rand;
 
@@ -53,6 +55,8 @@ namespace ShapeShift
             this.content  = content;
             moveSpeed     = 150f; //Set the move speed
 
+            turret = new Turret(content, input, this);
+
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = new Vector2(START_X, START_Y);
 
@@ -68,7 +72,7 @@ namespace ShapeShift
             maxHealth = FULL;
             health    = maxHealth;
 
-            playerShape = pSquare;   //********STARTING SHAPE*******         
+            entityShape = pSquare;   //********STARTING SHAPE*******         
 
             //Queue up the next shape
             queueOne();
@@ -77,7 +81,7 @@ namespace ShapeShift
             //each shape should have silhouette shape of its own
             //moveAnimation.LoadContent(content, playerShape.getTexture(), "", position);
             
-            playerShape.setPosition(position);
+            entityShape.setPosition(position);
             
          
            // spawnPosition = new Vector2(55, 320); //player spawns handled in entity
@@ -109,19 +113,19 @@ namespace ShapeShift
                     nextShape = pDiamond;
                 if (r == 4)
                     nextShape = pTriangle;
-            } while (nextShape == playerShape);        
+            } while (nextShape == entityShape);        
   
 
         }
 
         public Boolean rotating()
         {
-            return playerShape == pTriangle && pTriangle.rotating();
+            return entityShape == pTriangle && pTriangle.rotating();
         }
 
         public Boolean shielded()
         {
-            return playerShape == pCircle && pCircle.isShielded();
+            return entityShape == pCircle && pCircle.isShielded();
         }
 
         public override Boolean takeDamage()
@@ -147,21 +151,21 @@ namespace ShapeShift
             moveSpeed = 150f;
             pSquare.stopDashing();
             clearBullets();
-            if (playerShape == pCircle && pCircle.shielded)
+            if (entityShape == pCircle && pCircle.shielded)
                 pCircle.removeShield();     
-            else if (playerShape == pSquare && pSquare.dashing)
+            else if (entityShape == pSquare && pSquare.dashing)
                 pSquare.stopDashing();
-            else if (playerShape == pDiamond)
+            else if (entityShape == pDiamond)
                 pDiamond.clearMines();
 
-            playerShape = nextShape;
+            entityShape = nextShape;
 
-            if (playerShape == pTriangle)
-                playerShape.setOrigin(new Vector2(45.6667f, 53.6667f));
+            if (entityShape == pTriangle)
+                entityShape.setOrigin(new Vector2(45.6667f, 53.6667f));
             else
-                playerShape.setOrigin(new Vector2(46, 46));
+                entityShape.setOrigin(new Vector2(46, 46));
 
-            pushOut (playerShape);
+            pushOut (entityShape);
             
 
             nextShape   = null;
@@ -294,19 +298,19 @@ namespace ShapeShift
             directions[3] = true;
         }*/
 
-        public override Shape getShape() { return playerShape; }
+        public override Shape getShape() { return entityShape; }
 
-        public override Rectangle getRectangle() { return new Rectangle((int) position.X, (int) position.Y, playerShape.getWidth(), playerShape.getHeight()); }
+        public override Rectangle getRectangle() { return new Rectangle((int) position.X, (int) position.Y, entityShape.getWidth(), entityShape.getHeight()); }
 
         public void rAction()
         {
-            if (playerShape == pCircle)
+            if (entityShape == pCircle)
                 pdeployShield();
-            if (playerShape == pSquare)
+            if (entityShape == pSquare)
                 pDash();
-            if (playerShape == pTriangle)
+            if (entityShape == pTriangle)
                 pRotate();
-            if (playerShape == pDiamond)
+            if (entityShape == pDiamond)
             {
                 if (pDiamond.mineDeployed())
                     pdropMine();
@@ -318,22 +322,29 @@ namespace ShapeShift
 
         public void eAction()
         {
-            if (playerShape == pCircle)
+            if (entityShape == pCircle)
             {
                 premoveShield();
                 pCircle.hit();
             }
-            if (playerShape == pDiamond)
+            if (entityShape == pDiamond)
             {
-                if (pDiamond.turretDeployed())
+                if (turret.isDeployed())
+                {
+                    turret.dropSelf();
                     pdropTurret();
+                }
                 else
-                    pdeployTurret();
+                {
+                    turret = new Turret(content, input, this);
+                    turret.deploySelf();
+                    //pdeployTurret();
+                }
                 //pDiamond.deployTurret();
                 //pDiamond.hit();
             }
            
-            if (playerShape == pTriangle)
+            if (entityShape == pTriangle)
                 pTriangle.hit();
 
         }
@@ -354,7 +365,7 @@ namespace ShapeShift
         public void shoot(GameTime gametime, int direction)
         {
 
-            if (playerShape == pSquare)
+            if (entityShape == pSquare)
             {
                 switch (direction)
                 {
@@ -377,7 +388,7 @@ namespace ShapeShift
             }
 
 
-            if (playerShape == pDiamond)
+            if (entityShape == pDiamond)
             {
                 switch (direction)
                 {
@@ -399,7 +410,7 @@ namespace ShapeShift
                 }
             }
 
-            if (playerShape == pTriangle)
+            if (entityShape == pTriangle)
             {
                 switch (direction)
                 {
@@ -421,7 +432,7 @@ namespace ShapeShift
                 }
             }
 
-            if (playerShape == pCircle)
+            if (entityShape == pCircle)
             {
                 switch (direction)
                 {
@@ -480,17 +491,15 @@ namespace ShapeShift
 
         private void pRotate()
         {
-            if(playerShape == pTriangle)
+            if(entityShape == pTriangle)
                 pTriangle.PreformRotate();
-           
-        }
-
-        
+        }        
 
         private void pdeployMine()
         {
             pDiamond.deployMine();
         }
+
         private void pdeployTurret()
         {
             pDiamond.deployTurret();
@@ -557,24 +566,24 @@ namespace ShapeShift
         private void changeToCircle()
         {
             premoveShield();
-            playerShape = pCircle;
+            entityShape = pCircle;
         }
 
         private void changeToSquare()
         {
             pSquare.stopDashing();
-            playerShape = pSquare;
+            entityShape = pSquare;
         }
 
         private void changeToDiamond()
         {
             pDiamond.clearMines();
-            playerShape = pDiamond;
+            entityShape = pDiamond;
         }
 
         private void changeToTriangle()
         {
-            playerShape = pTriangle;
+            entityShape = pTriangle;
         }
 
         
@@ -597,6 +606,8 @@ namespace ShapeShift
             this.layer = layer;
             this.input = input;
 
+            turret.Update(gameTime, input, col, layer);
+
             previousPosition = position;
 
             updateShield(gameTime);
@@ -606,14 +617,14 @@ namespace ShapeShift
             moveAnimation.Position = position;
 
             // Update all of the enabled animations
-            List<SpriteSheetAnimation> Animations = playerShape.getActiveTextures();
+            List<SpriteSheetAnimation> Animations = entityShape.getActiveTextures();
             foreach (SpriteSheetAnimation animation in Animations)
             {
                
                 if (animation.IsEnabled)
                     animation.Update(gameTime);
 
-                if (!(playerShape == pDiamond && pDiamond.mineDropped() && pDiamond.isMineAnimation(animation)))
+                if (!(entityShape == pDiamond && pDiamond.mineDropped() && pDiamond.isMineAnimation(animation)))
                     animation.Position = position;
             }
 
@@ -628,19 +639,19 @@ namespace ShapeShift
             }
 
         
-            if (playerShape == pSquare)
+            if (entityShape == pSquare)
             {
                 pSquare.setDirectionMap(directions);
                 pSquare.Update(gameTime);
             }
 
-            if (playerShape == pDiamond)
+            if (entityShape == pDiamond)
                 pDiamond.Update(gameTime);
 
-            if (playerShape == pTriangle)
+            if (entityShape == pTriangle)
                 pTriangle.Update(gameTime);
 
-            if (playerShape == pCircle)
+            if (entityShape == pCircle)
                 pCircle.Update(gameTime);
 
         }
@@ -650,20 +661,23 @@ namespace ShapeShift
             base.Draw(spriteBatch);
            
             // Draws each of the enabled animations for the current shape
-            playerShape.Draw(spriteBatch);
+            entityShape.Draw(spriteBatch);
 
             // Draws each of the enabled animations for the current shape in the upper right hand corner. 
             nextShape.DrawOnlyIdle(spriteBatch);
+
+            if(turret != null && (!turret.isExpired()) && (turret.isDeployed() || turret.isDropped()))
+                turret.Draw(spriteBatch);
         }
 
         public List<Shape> getActiveBullets()
         {
-            return playerShape.getActiveBullets();
+            return entityShape.getActiveBullets();
         }
 
         public Texture2D[] getHearts()
         {
-            return playerShape.getHearts();
+            return entityShape.getHearts();
         }
     }
 }

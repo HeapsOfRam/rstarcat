@@ -51,7 +51,7 @@ namespace ShapeShift
             moveAnimation.position = position;
             eMatrixTile.setPosition(position);
 
-            enemyShape = eMatrixTile;
+            entityShape = eMatrixTile;
         }
 
         public void setPosition(Vector2 position)

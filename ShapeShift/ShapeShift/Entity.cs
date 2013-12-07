@@ -31,6 +31,7 @@ namespace ShapeShift
         protected Vector2 rightSpawnPosition = new Vector2(750, 320);
         protected Vector2 topSpawnPosition;
         protected Vector2 bottomSpawnPosition;
+        protected Shape entityShape;        
 
         public int spotRadius = 5, spotDist = 300;        
 
