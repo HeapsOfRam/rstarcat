@@ -599,9 +599,14 @@ namespace ShapeShift
             entityShape = pTriangle;
         }
 
+        public override Boolean hasTurretDropped()
+        {
+            return turret.isDropped();
+        }
+
         public void forceTurretExpire()
         {
-            turret.forceExpire();
+            turret.die();
         }        
 
         private void updateShield(GameTime gameTime)
@@ -693,6 +698,26 @@ namespace ShapeShift
             /*if(!turret.isExpired())
                 list.AddRange(getTurretBullets());*/
             return list;
+        }
+
+        public override Entity getTurret()
+        {
+            return turret;
+        }
+
+        public Rectangle getTurretRectangle()
+        {
+            return turret.getRectangle();
+        }
+
+        public Color[] getTurretColor()
+        {
+            return turret.getShape().getColorData();
+        }
+
+        public void turretTakeDamage()
+        {
+            turret.takeDamage();
         }
 
         public List<Shape> getTurretBullets()

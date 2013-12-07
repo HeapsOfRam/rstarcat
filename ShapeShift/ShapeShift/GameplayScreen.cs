@@ -13,6 +13,9 @@ namespace ShapeShift
 {
     public class GameplayScreen : GameScreen
     {
+        private float damageTime = 3;
+        private const float INVULN_TIME = 1f;
+
         Player player;
         MatrixEnemy dummyEnemy;
         Layers layer;
@@ -161,6 +164,8 @@ namespace ShapeShift
 
                 player.pSquareResetDirections();
 
+                damageTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
                 foreach (MatrixEnemy e in enemyList)
                 {
                     
@@ -177,13 +182,20 @@ namespace ShapeShift
 
                             if (e.collides(e.getPosition(), player.getRectangle(), player.getShape().getColorData()))
                             {
-                                player.takeDamage();
-                                    e.makeReel();
-
-                                if (player.takeDamage())   //As a demonstration of DescreaseScore(), the player loses one point upon colliding with an enemy
+                                if (damageTime > INVULN_TIME && player.takeDamage())
+                                {
                                     DecreaseScore(1);
-
+                                    e.makeReel();
+                                    damageTime = 0;
+                                }
                             }
+
+                            //TODO TO MAKE TURRET GET HIT AND DIE
+                            /*if (e.collides(e.getPosition(), player.getTurretRectangle(), player.getTurretColor()))
+                            {
+                                Console.WriteLine("Collision Works");
+                                player.turretTakeDamage();
+                            }*/
                         }
                    
                 }

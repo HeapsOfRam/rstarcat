@@ -16,7 +16,7 @@ namespace ShapeShift
         private Boolean deployed, dropped, expired = true, awaitingReset = false;
         private float currTime;
 
-        private const float EXPIRE_TIME = 10f;
+        private const float EXPIRE_TIME = 6f;
         private const double CONVERSION = Math.PI / 180;
 
         public Turret(ContentManager content, InputManager input, Entity owner)
@@ -33,6 +33,7 @@ namespace ShapeShift
             entityShape = tDiamond;
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;
+            invulnPeriod = .01f;
         }
 
         public void lockToOwner()
@@ -57,9 +58,15 @@ namespace ShapeShift
         public Boolean isExpired()
         { return expired; }
 
-        public void forceExpire()
+        public override void die()
         {
+            Console.WriteLine("KILL ME");
             expired = true;
+        }
+
+        public override Rectangle getRectangle()
+        {
+            return new Rectangle((int)position.X, (int)position.Y, entityShape.getWidth(), entityShape.getHeight());
         }
 
         public override Boolean isEnemy()
@@ -150,7 +157,7 @@ namespace ShapeShift
 
         public List<Shape> getActiveBullets()
         {
-            Console.WriteLine("Bullets = " + entityShape.getActiveBullets().Count);
+            //Console.WriteLine("Bullets = " + entityShape.getActiveBullets().Count);
             return entityShape.getActiveBullets();
         }
 

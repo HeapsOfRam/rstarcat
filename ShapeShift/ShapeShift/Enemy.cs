@@ -11,7 +11,7 @@ namespace ShapeShift
 {
     class Enemy : Entity
     {
-        protected const int WANDER = 1, CHASE = 2, ATTACK = 3, REELING = 4, FIND = 5;
+        protected const int WANDER = 1, CHASE = 2, ATTACK = 3, REELING = 4, FIND = 5, CHASE_TURRET = 6;
         public int state = WANDER;
         protected float currentTime = 0, countDuration = 10f, knockCurr = 0;
         protected const float KNOCKDURATION = .5f;
@@ -163,7 +163,9 @@ namespace ShapeShift
                 case WANDER:
                     spotDist = 300;
                     wander(gameTime);
-                    if (spot(player))
+                    if (player.hasTurretDropped() && spot(player.getTurret()))
+                        state = CHASE_TURRET;
+                    else if (spot(player))
                         state = CHASE;
                     break;
                 case CHASE:
@@ -178,6 +180,8 @@ namespace ShapeShift
                         state = ATTACK;
                     if (colliding)
                         state = FIND;
+                    if(player.hasTurretDropped() && spot(player.getTurret()))
+                        state = CHASE_TURRET;
                     break;
                 case ATTACK:
                     //standStill();
@@ -200,6 +204,11 @@ namespace ShapeShift
                     findChase(gameTime, player);
                     if (!colliding)
                         state = CHASE;
+                    break;
+                case CHASE_TURRET:
+                    if(!spot(player.getTurret()) || !player.hasTurretDropped())
+                        state = WANDER;
+                    chase(gameTime, player.getTurret());
                     break;
                 default:
                     wander(gameTime);

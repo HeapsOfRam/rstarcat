@@ -48,7 +48,7 @@ namespace ShapeShift
             eMatrixTile = new MatrixTile(content, matrixWidth, matrixHeight, POSITION_OFFSET, center);
 
             this.content = content;
-            moveSpeed = 50f;
+            moveSpeed = 100f;
 
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;

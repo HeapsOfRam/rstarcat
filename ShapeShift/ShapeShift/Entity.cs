@@ -33,7 +33,9 @@ namespace ShapeShift
         protected Vector2 bottomSpawnPosition;
         protected Shape entityShape;        
 
-        public int spotRadius = 5, spotDist = 300;        
+        public int spotRadius = 5, spotDist = 300;
+
+        protected float damageTime = 3, invulnPeriod = 1f;
 
         protected Rectangle lastCheckedRectangle;
 
@@ -119,12 +121,15 @@ namespace ShapeShift
 
         public virtual Boolean takeDamage()
         {
+            Console.WriteLine("Health = " + health);
+
+            damageTime = 0;
             getShape().hit();
             health--;
-            if (health == EMPTY)
+            if (health <= EMPTY)
                 die();
 
-            return true;
+            return true;         
         }
 
         public virtual void die()
@@ -139,11 +144,17 @@ namespace ShapeShift
         public virtual Boolean isEnemy()
         { return false;  }
 
+        public virtual Entity getTurret(){
+            return null;
+        }
+
+        public virtual Boolean hasTurretDropped()
+        {
+            return false;
+        }
+
         public Boolean spot(Entity e)
         {
-            if (!isEnemy())
-                Console.WriteLine("Is this an Enemy? " + e.isEnemy());
-
             float distanceFromEntity = Vector2.Distance(e.getPosition(), position);
             return distanceFromEntity < spotDist;
         }
