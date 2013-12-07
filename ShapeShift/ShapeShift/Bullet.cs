@@ -196,7 +196,10 @@ namespace ShapeShift
 
         }
 
-       
+        public Boolean outOfBounds()
+        {
+            return shotAnimation.position.X > 690 || shotAnimation.position.X < 0 || shotAnimation.position.Y > 920 || shotAnimation.position.Y < 92;
+        }
         
        
         public override void disableAnimation(SpriteSheetAnimation spriteSheetAnimation)

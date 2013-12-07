@@ -165,13 +165,15 @@ namespace ShapeShift
                 {
                     
                         e.Update(gameTime, map.collision, map.layer, player, player.getActiveBullets());
-                        e.Update(gameTime, map.collision, map.layer, player, player.getTurretBullets());
 
                         if (!e.isDead())
                         {
 
                             if (player.isTurretDropped() && player.turretSpot(e))
+                            {
                                 player.fireTurret(gameTime, e);
+                                e.Update(gameTime, map.collision, map.layer, player, player.getTurretBullets());
+                            }
 
                             if (e.collides(e.getPosition(), player.getRectangle(), player.getShape().getColorData()))
                             {
@@ -325,6 +327,8 @@ namespace ShapeShift
                         pauseTimer = true;
                         enemiesLoaded = false;
                         LevelCompleted = true;
+                        //player.forceTurretExpire();
+                        //player.shiftShape();
                     }
 
                    
@@ -415,7 +419,7 @@ namespace ShapeShift
         private void loadEnemies(int Level)
         {
             enemyList = new List<MatrixEnemy>();
-            Console.WriteLine(Level);
+            //Console.WriteLine(Level);
             enemiesLoaded = true;
 
             pauseTimer = false;

@@ -599,7 +599,10 @@ namespace ShapeShift
             entityShape = pTriangle;
         }
 
-        
+        public void forceTurretExpire()
+        {
+            turret.forceExpire();
+        }        
 
         private void updateShield(GameTime gameTime)
         {
@@ -619,7 +622,8 @@ namespace ShapeShift
             this.layer = layer;
             this.input = input;
 
-            turret.Update(gameTime, input, col, layer);
+            if (!turret.isExpired())
+                turret.Update(gameTime, input, col, layer);
 
             previousPosition = position;
 
@@ -685,7 +689,10 @@ namespace ShapeShift
 
         public List<Shape> getActiveBullets()
         {
-            return entityShape.getActiveBullets();
+            List<Shape> list = entityShape.getActiveBullets();
+            /*if(!turret.isExpired())
+                list.AddRange(getTurretBullets());*/
+            return list;
         }
 
         public List<Shape> getTurretBullets()

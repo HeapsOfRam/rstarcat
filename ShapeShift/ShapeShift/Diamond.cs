@@ -122,6 +122,8 @@ namespace ShapeShift
                 b.setPosition(idleAnimation.Position);
                 activeBullets.Add(b);
 
+                
+
 
             }
 

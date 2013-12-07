@@ -13,10 +13,10 @@ namespace ShapeShift
         private Diamond tDiamond;
         private Entity owner;
 
-        private Boolean deployed, dropped, expired;
+        private Boolean deployed, dropped, expired = true, awaitingReset = false;
         private float currTime;
 
-        private const float EXPIRE_TIME = 5f;
+        private const float EXPIRE_TIME = 10f;
         private const double CONVERSION = Math.PI / 180;
 
         public Turret(ContentManager content, InputManager input, Entity owner)
@@ -39,6 +39,7 @@ namespace ShapeShift
         {
             position = owner.position;
             entityShape.setPosition(position);
+            moveAnimation.Position = position;
         }
 
         public void setOwner(Entity owner)
@@ -56,15 +57,27 @@ namespace ShapeShift
         public Boolean isExpired()
         { return expired; }
 
+        public void forceExpire()
+        {
+            expired = true;
+        }
+
         public override Boolean isEnemy()
         { return false; }
+
+        public Boolean isAwaitingReset()
+        { return awaitingReset; }
+
+        public void reset()
+        {
+            awaitingReset = false;
+        }
 
         public void shoot(GameTime gameTime, Entity enemy)
         {
             double xComposite = (enemy.getPositionX() - position.X);
             double yComposite = (position.Y - enemy.getPositionY());
             double radians = Math.Atan2(xComposite, yComposite);
-            //double radians = Math.Atan(((Math.Abs(enemy.getPositionX() - position.X)) / (Math.Abs(enemy.getPositionY() - position.Y))));
             double degrees = radians / CONVERSION;
             tDiamond.shoot((int) degrees);
         }
@@ -85,41 +98,59 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
-            base.Update(gameTime, input, col, layer);
+            base.Update(gameTime, col, layer, this, tDiamond.getActiveBullets());
 
-            if (dropped)
-                currTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (currTime > EXPIRE_TIME)
+            if (!expired)
             {
-                currTime = 0;
-                expired = true;
+                
+                tDiamond.Update(gameTime);
+                
+                if (deployed)
+                    lockToOwner();
+                if (dropped)
+                    currTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                if (currTime > EXPIRE_TIME)
+                {
+                    currTime = 0;
+                    expired = true;
+                }
+
+                //tDiamond.collides();
+                //TODO THIS ALL NEEDS TO BE FIXED
+                foreach (Bullet bullet in tDiamond.getActiveBullets())
+                {
+                    if (bullet.outOfBounds())
+                    {
+                        bullet.hit();
+                        tDiamond.clearBullets();
+                    }
+                }
+
+
+                if (expired)
+                {
+                    dropped = false;
+                    tDiamond.clearBullets();
+                    awaitingReset = true;
+                }
+
+                // Update all of the enabled animations
+                List<SpriteSheetAnimation> Animations = entityShape.getActiveTextures();
+                foreach (SpriteSheetAnimation animation in Animations)
+                {
+                    if (animation.IsEnabled)
+                        animation.Update(gameTime);
+                }
+
             }
-            if (deployed)
-                lockToOwner();
-
-            if (expired)
-            {
-                dropped = false;
-            }
-
-            // (just a rectangle corresponding to the image)
-            moveAnimation.Position = position;
-
-            // Update all of the enabled animations
-            List<SpriteSheetAnimation> Animations = entityShape.getActiveTextures();
-            foreach (SpriteSheetAnimation animation in Animations)
-            {               
-                if (animation.IsEnabled)
-                    animation.Update(gameTime);
-            }
-
-            tDiamond.Update(gameTime);
-
+            else
+                tDiamond.clearBullets();
         }
 
         public List<Shape> getActiveBullets()
         {
+            Console.WriteLine("Bullets = " + entityShape.getActiveBullets().Count);
             return entityShape.getActiveBullets();
         }
 

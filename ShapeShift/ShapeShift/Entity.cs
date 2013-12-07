@@ -166,7 +166,7 @@ namespace ShapeShift
         protected virtual void detectCollision()
         {
 
-            Console.WriteLine(this.GetType());
+            //Console.WriteLine(this.GetType());
             exitsLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)
             {
