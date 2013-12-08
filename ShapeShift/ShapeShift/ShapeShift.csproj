@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
+    <Compile Include="Ball.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Circle.cs" />
     <Compile Include="GameServices.cs" />

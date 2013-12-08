@@ -27,6 +27,7 @@ namespace ShapeShift
 
         private Turret turret;
         private Mine mine;
+        private Ball ball;
         
         private Random rand;
 
@@ -58,6 +59,7 @@ namespace ShapeShift
 
             turret = new Turret(content, input, this);
             mine = new Mine(content, input, this);
+            ball = new Ball(content, input, this);
 
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = new Vector2(START_X, START_Y);
@@ -307,7 +309,12 @@ namespace ShapeShift
         public void rAction()
         {
             if (entityShape == pCircle)
-                pdeployShield();
+            {
+                if(!shielded())
+                    pdeployShield();
+                else
+                    premoveShield();
+            }
             if (entityShape == pSquare)
                 pDash();
             if (entityShape == pTriangle)
@@ -333,8 +340,16 @@ namespace ShapeShift
         {
             if (entityShape == pCircle)
             {
-                premoveShield();
-                pCircle.hit();
+                if (ball.isDeployed())
+                {
+                    ball.fireSelf();
+                }
+                else
+                {
+                    ball = new Ball(content, input, this);
+                    ball.deploySelf();
+                }
+
             }
             if (entityShape == pDiamond)
             {
@@ -650,6 +665,8 @@ namespace ShapeShift
                 turret.Update(gameTime, input, col, layer);
             if (!mine.isDetonated())
                 mine.Update(gameTime, input, col, layer);
+            if (!ball.isExpired())
+                ball.Update(gameTime, input, col, layer);
 
             previousPosition = position;
 
@@ -709,11 +726,14 @@ namespace ShapeShift
             // Draws each of the enabled animations for the current shape in the upper right hand corner. 
             nextShape.DrawOnlyIdle(spriteBatch);
 
-            if(turret != null && (!turret.isExpired()) && (turret.isDeployed() || turret.isDropped()))
+            if(!turret.isExpired() && (turret.isDeployed() || turret.isDropped()))
                 turret.Draw(spriteBatch);
 
             if (!mine.isDetonated() && (mine.isDeployed() || mine.isDropped()))
                 mine.Draw(spriteBatch);
+
+            if (!ball.isExpired() && (ball.isDeployed() || ball.isFired()))
+                ball.Draw(spriteBatch);
         }
 
         public List<Shape> getActiveBullets()

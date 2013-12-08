@@ -8,18 +8,19 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ShapeShift
 {
-    class Mine : Entity
+    class Ball : Entity
     {
         
-        private Diamond mDiamond;
+        
+        private Circle bCircle;
         private Entity owner;
 
-        private Boolean deployed, dropped, exploded = true, awaitingReset = false;
+        private Boolean deployed, fired, expired = true, awaitingReset = false;
         private float currTime;
 
-        private const float FUSE_TIME = 6f;
+        private const float BOUNCE_TIME = 6f;
 
-        public Mine(ContentManager content, InputManager input, Entity owner)
+        public Ball(ContentManager content, InputManager input, Entity owner)
         {
             LoadContent(content, input);
             this.owner = owner;
@@ -29,8 +30,8 @@ namespace ShapeShift
         {
             base.LoadContent(content, input);
             currTime = 0;
-            mDiamond = new Diamond(content);
-            entityShape = mDiamond;
+            bCircle = new Circle(content);
+            entityShape = bCircle;
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;
         }
@@ -51,16 +52,16 @@ namespace ShapeShift
         public Boolean isDeployed()
         { return deployed; }
 
-        public Boolean isDropped()
-        { return dropped; }
+        public Boolean isFired()
+        { return fired; }
 
-        public Boolean isDetonated()
-        { return exploded; }
+        public Boolean isExpired()
+        { return expired; }
 
-        public void goBoom()
+        public void expire()
         {
-            exploded = true;
-            mDiamond.mineGoBoom();
+            expired = true;
+            bCircle.ballExpire();
         }
 
         public override Rectangle getRectangle()
@@ -81,41 +82,41 @@ namespace ShapeShift
 
         public void deploySelf()
         {
-            exploded = false;
+            expired = false;
             deployed = true;
-            mDiamond.mineGetDeployed();
+            bCircle.ballDeploy();
         }
 
-        public void dropSelf()
+        public void fireSelf()
         {
-            dropped = true;
+            fired = true;
             deployed = false;
-            mDiamond.mineGetDropped();
+            bCircle.ballFire();
         }
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
             base.Update(gameTime, input, col, layer);
 
-            if (!exploded)
+            if (!expired)
             {
                 
-                mDiamond.Update(gameTime);
+                bCircle.Update(gameTime);
                 
                 if (deployed)
                     lockToOwner();
-                if (dropped)
+                if (fired)
                     currTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                if (currTime > FUSE_TIME)
+                if (currTime > BOUNCE_TIME)
                 {
                     currTime = 0;
-                    exploded = true;
+                    expired = true;
                 }
 
-                if (exploded)
+                if (expired)
                 {
-                    dropped = false;
+                    fired = false;
                     awaitingReset = true;
                 }
 
@@ -134,7 +135,7 @@ namespace ShapeShift
         {
             base.Draw(spriteBatch);
 
-            if(!exploded)
+            if(!expired)
                 entityShape.Draw(spriteBatch);
         }
     }
