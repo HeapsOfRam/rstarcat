@@ -55,6 +55,8 @@ namespace ShapeShift
             eMatrixTile.setPosition(position);
 
             entityShape = eMatrixTile;
+
+            
         }
 
         public void setPosition(Vector2 position)
@@ -68,11 +70,7 @@ namespace ShapeShift
             moveAnimation.UnloadContent();
         }
 
-        public override Shape getShape()
-        {
-            return eMatrixTile;
-        }
-
+     
 
         public override void die()
         {

@@ -341,6 +341,7 @@ namespace ShapeShift
                         pauseTimer = true;
                         enemiesLoaded = false;
                         LevelCompleted = true;
+                        player.forceTurretExpire();
                         //player.forceTurretExpire();
                         //player.shiftShape();
                     }

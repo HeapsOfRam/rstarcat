@@ -109,13 +109,11 @@ namespace ShapeShift
                             tiles[i, j].Update(gameTime, col, layer, player, bullets);
                         else
                         {
-                            Enemy b = new Enemy();
+                            Enemy b = new MatrixTileEnemy(new Point(0,0),tiles[0,0].getPosition());
                             b.LoadContent(content, 2, 2);
                             b.position = new Vector2(moveAnimation.position.X + (i * 28), moveAnimation.position.Y + (j * 28));
                             tiles[i, j].Update(gameTime, col, layer, b, bullets);
-                            tiles[i, j].state = CHASE;
-
-                          
+                            tiles[i, j].state = CHASE; 
                         }
                         
 

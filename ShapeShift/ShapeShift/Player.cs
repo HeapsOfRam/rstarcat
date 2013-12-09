@@ -101,7 +101,7 @@ namespace ShapeShift
             moveAnimation.UnloadContent();
         }
 
-        #region MovementMethods
+       
 
         private void queueOne()
         {
@@ -159,7 +159,11 @@ namespace ShapeShift
             else if (entityShape == pSquare && pSquare.dashing)
                 pSquare.stopDashing();
             else if (entityShape == pDiamond)
-                pDiamond.clearMines();
+            {
+                //pDiamond.clearMines();
+                if (turret.isDeployed())
+                    forceTurretExpire();
+            }
 
             entityShape = nextShape;
 
@@ -255,9 +259,7 @@ namespace ShapeShift
 
         }
 
-        #endregion
-
-        // Checks to see if the next shape is colliding with anything before switching 
+         // Checks to see if the next shape is colliding with anything before switching 
         // If it is...it incremently trys moving the shape backward until it isn't colliding
        /* public void fixCollision(Vector2 position, Rectangle lastCheckedRectangle)
         {
@@ -390,7 +392,7 @@ namespace ShapeShift
         public Boolean isTurretDropped()
         { return turret.isDropped(); }
 
-        public void fireTurret(GameTime gameTime, Enemy enemy)
+        public void fireTurret(GameTime gameTime, MatrixTileEnemy enemy)
         {
             turret.shoot(gameTime, enemy);
         }
@@ -404,7 +406,7 @@ namespace ShapeShift
                 {
                     if (!tile.getShape().isDead())
                     {
-                        if (isTurretDropped() && tile.spot(turret))
+                        if (isTurretDropped() && turret.spot(tile))
                         {
                             fireTurret(gameTime, tile);
                             //e.Update(gameTime, map.collision, map.layer, player, player.getTurretBullets());

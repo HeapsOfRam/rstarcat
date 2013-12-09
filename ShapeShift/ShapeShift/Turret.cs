@@ -35,6 +35,10 @@ namespace ShapeShift
             moveAnimation.position = position;
             invulnPeriod = .01f;
 
+            expired = false;
+            deployed = false;
+            dropped = false;
+
             tDiamond.scaleShape(.75f);
         }
 
@@ -64,6 +68,8 @@ namespace ShapeShift
         {
             Console.WriteLine("KILL ME");
             expired = true;
+           deployed = false;
+            dropped = false;
         }
 
         public override Rectangle getRectangle()
@@ -82,12 +88,12 @@ namespace ShapeShift
             awaitingReset = false;
         }
 
-        public void shoot(GameTime gameTime, Enemy enemy)
+        public void shoot(GameTime gameTime, MatrixTileEnemy enemy)
         {
             if (tDiamond.isReady())
             {
                 double xComposite = (enemy.getPositionX()+12.5 - position.X);
-                double yComposite = (position.Y - enemy.getPositionY() + 12.5);
+                double yComposite = (position.Y - (enemy.getPositionY() + 12.5));
                 double radians = Math.Atan2(xComposite, yComposite);
                 double degrees = radians / CONVERSION;
                 tDiamond.shoot((int)degrees);

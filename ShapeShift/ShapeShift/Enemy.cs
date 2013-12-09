@@ -149,9 +149,9 @@ namespace ShapeShift
         public override Boolean isEnemy()
         { return true; }
 
-        public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)
+        public override void Update(GameTime gameTime, Collision col, Layers layer, Entity entity, List<Shape> bullets)
         {
-            base.Update(gameTime, col, layer, player,  bullets);
+            base.Update(gameTime, col, layer, entity,  bullets);
 
             currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             
@@ -163,34 +163,34 @@ namespace ShapeShift
                 case WANDER:
                     spotDist = 300;
                     wander(gameTime);
-                    if (player.hasTurretDropped() && spot(player.getTurret()))
+                    if (entity.hasTurretDropped() && spot(entity.getTurret()))
                         state = CHASE_TURRET;
-                    else if (spot(player))
+                    else if (spot(entity))
                         state = CHASE;
                     break;
                 case CHASE:
                     spotDist = 450;
-                    chase(gameTime, player);
-                    if (!spot(player))
+                    chase(gameTime, entity);
+                    if (!spot(entity))
                     {
                         direction = rand.Next(1, 8);
                         state = WANDER;
                     }
-                    if(entityShape.collides(position, player.getRectangle(), player.getShape().getColorData()))
+                    if(entityShape.collides(position, entity.getRectangle(), entity.getShape().getColorData()))
                         state = ATTACK;
                     if (colliding)
                         state = FIND;
-                    if(player.hasTurretDropped() && spot(player.getTurret()))
+                    if(entity.hasTurretDropped() && spot(entity.getTurret()))
                         state = CHASE_TURRET;
                     break;
                 case ATTACK:
                     //standStill();
-                    if(!entityShape.collides(position, player.getRectangle(), player.getShape().getColorData()))
+                    if(!entityShape.collides(position, entity.getRectangle(), entity.getShape().getColorData()))
                         state = CHASE;
                     break;
                 case REELING:
                     knockCurr += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    knockedAway(gameTime, player);
+                    knockedAway(gameTime, entity);
                     if (knockCurr > KNOCKDURATION)
                     {
                         state = CHASE;
@@ -199,16 +199,16 @@ namespace ShapeShift
                     }
                     break;
                 case FIND:
-                    if (!spot(player))
+                    if (!spot(entity))
                         state = WANDER;
-                    findChase(gameTime, player);
+                    findChase(gameTime, entity);
                     if (!colliding)
                         state = CHASE;
                     break;
                 case CHASE_TURRET:
-                    if(!spot(player.getTurret()) || !player.hasTurretDropped())
+                    if(!spot(entity.getTurret()) || !entity.hasTurretDropped())
                         state = WANDER;
-                    chase(gameTime, player.getTurret());
+                    chase(gameTime, entity.getTurret());
                     break;
                 default:
                     wander(gameTime);
