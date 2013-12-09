@@ -328,6 +328,7 @@ namespace ShapeShift
 
         public virtual Shape getShape() { return entityShape; }//return new Shape(); }
 
+
         public void setMoveSpeed(float moveSpeed)
         {
             this.moveSpeed = moveSpeed;

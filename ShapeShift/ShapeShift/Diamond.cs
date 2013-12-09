@@ -35,11 +35,9 @@ namespace ShapeShift
 
         protected int frameCounter;
 
-       
+
 
         public Boolean firing = false;
-
-
 
         private const int WIDTH  = 92;
         private const int HEIGHT = 92;
@@ -161,6 +159,8 @@ namespace ShapeShift
         {
         }
 
+       
+
         public void turretGetDropped()
         {
         }
@@ -237,13 +237,22 @@ namespace ShapeShift
             return (IntersectPixels(rectangleA, dataA, rectangleB,dataB));
         }
 
+        public void checkBulletCollision(Vector2 position, Rectangle rectangle, Color[] data)
+        {
+            foreach (Bullet b in activeBullets)
+            {
+                if (b.collides(position, rectangle, data))
+                    b.hit();
+            }
+        }
+
         public bool isMineAnimation(SpriteSheetAnimation animation)
         {
             if (animation == diamondMineIdleAnimation || animation == diamondTurretIdleAnimation)
                 return true;
             return false;
         }
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
@@ -293,6 +302,11 @@ namespace ShapeShift
         public void clearBullets()
         {
             activeBullets = new List<Shape>();
+        }
+
+        internal bool isReady()
+        {
+            return (frameCounter >= SWITCH_FRAME);
         }
     }
 }

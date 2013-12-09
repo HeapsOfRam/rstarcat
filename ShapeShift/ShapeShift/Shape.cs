@@ -120,5 +120,29 @@ namespace ShapeShift
         {
             return heartTextures;
         }
+
+        public virtual void scaleShape(float scale)
+        {
+            List<SpriteSheetAnimation> animation = getActiveTextures();
+
+            foreach (SpriteSheetAnimation s in animation)
+            {
+                s.scale = scale;
+                s.origin = new Vector2(46, 46);
+            }
+
+          /*  if (getActiveBullets() != null)
+            {
+                List<Shape> bullets = getActiveBullets();
+
+                foreach (Shape b in bullets)
+                {
+                    animation = getActiveTextures();
+                    animation[0].scale = scale;
+                }
+            }*/
+
+            
+        }
     }
 }

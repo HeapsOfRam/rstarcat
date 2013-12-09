@@ -10,14 +10,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ShapeShift
 {
-    public class Player : Entity
+    class Player : Entity
     {
         GameTime gameTime;
 
         private const int FULL = 3, MID = 2, LOW = 1, EMPTY = 0, SIZE = 60, MOVE = 5;
         private const float SHIELD_TIME = 5f;
         private float shieldDuration = 0;
-       // private Rectangle rectangle;
         private Shape nextShape;
         private Square pSquare;
         private Circle pCircle;
@@ -391,13 +390,33 @@ namespace ShapeShift
         public Boolean isTurretDropped()
         { return turret.isDropped(); }
 
-        public void fireTurret(GameTime gameTime, Entity enemy)
+        public void fireTurret(GameTime gameTime, Enemy enemy)
         {
             turret.shoot(gameTime, enemy);
         }
 
-        public Boolean turretSpot(Entity enemy)
-        { return turret.spot(enemy);  }
+        public void turretSpot(Entity enemy)
+        {
+            if (enemy.GetType().ToString().Equals("ShapeShift.MatrixEnemy"))
+            {
+                MatrixEnemy e = (MatrixEnemy)enemy;
+                foreach (MatrixTileEnemy tile in e.getTileEnemies())
+                {
+                    if (!tile.getShape().isDead())
+                    {
+                        if (isTurretDropped() && tile.spot(turret))
+                        {
+                            fireTurret(gameTime, tile);
+                            //e.Update(gameTime, map.collision, map.layer, player, player.getTurretBullets());
+                        }
+                    }
+                }
+           
+            }
+                
+       
+        
+        }
 
         public void shoot(GameTime gametime, int direction)
         {
@@ -738,9 +757,12 @@ namespace ShapeShift
 
         public List<Shape> getActiveBullets()
         {
-            List<Shape> list = entityShape.getActiveBullets();
-            /*if(!turret.isExpired())
-                list.AddRange(getTurretBullets());*/
+            List<Shape> list = new List<Shape>();
+            list.AddRange(entityShape.getActiveBullets());
+            if (turret.isDropped() && !turret.isExpired())
+            {
+                list.AddRange(getTurretBullets());
+            }
             return list;
         }
 
@@ -766,7 +788,7 @@ namespace ShapeShift
 
         public List<Shape> getTurretBullets()
         {
-            return turret.getActiveBullets();
+            return turret.getShape().getActiveBullets();
         }
 
         public Texture2D[] getHearts()
