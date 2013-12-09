@@ -667,7 +667,7 @@ namespace ShapeShift
                 mine.Update(gameTime, input, col, layer);
             if (!ball.isExpired())
                 ball.Update(gameTime, input, col, layer);
-
+            
             previousPosition = position;
 
             updateShield(gameTime);

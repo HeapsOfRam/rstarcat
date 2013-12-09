@@ -20,6 +20,10 @@ namespace ShapeShift
 
         private const float BOUNCE_TIME = 6f;
 
+        private Vector2 velocity;
+
+        private Random rand;
+
         public Ball(ContentManager content, InputManager input, Entity owner)
         {
             LoadContent(content, input);
@@ -34,6 +38,9 @@ namespace ShapeShift
             entityShape = bCircle;
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;
+            velocity.X = 3f;
+            velocity.Y = 3f;
+            rand = new Random();
         }
 
         public void lockToOwner()
@@ -94,6 +101,14 @@ namespace ShapeShift
             bCircle.ballFire();
         }
 
+        public int randomVelocity()
+        {
+            int vel = rand.Next(2, 6);
+            if (rand.Next(0, 2) == 1)
+                return vel;
+            return -vel;
+        }
+
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
             base.Update(gameTime, input, col, layer);
@@ -102,11 +117,28 @@ namespace ShapeShift
             {
                 
                 bCircle.Update(gameTime);
-                
+
+                previousPosition = position;
+                moveAnimation.Position = position;
+
                 if (deployed)
                     lockToOwner();
                 if (fired)
+                {
                     currTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    //moveLeft(gameTime);
+                    if (!colliding)
+                    {
+                        position.X += velocity.X;
+                        position.Y += velocity.Y;
+                    }
+                    else
+                    {
+                        velocity.X = randomVelocity();
+                        velocity.Y = randomVelocity();
+                        colliding = false;
+                    }
+                }
 
                 if (currTime > BOUNCE_TIME)
                 {
@@ -126,6 +158,8 @@ namespace ShapeShift
                 {
                     if (animation.IsEnabled)
                         animation.Update(gameTime);
+
+                    animation.position = position;
                 }
 
             }
