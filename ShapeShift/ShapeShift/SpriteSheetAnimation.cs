@@ -160,6 +160,7 @@ namespace ShapeShift
                     {
                         shape.disableAnimation(this);
                         this.Update(gameTime);
+
                     }
                             
                 }

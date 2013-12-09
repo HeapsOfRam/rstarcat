@@ -34,6 +34,8 @@ namespace ShapeShift
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;
             invulnPeriod = .01f;
+
+            tDiamond.scaleShape(.75f);
         }
 
         public void lockToOwner()
@@ -80,13 +82,16 @@ namespace ShapeShift
             awaitingReset = false;
         }
 
-        public void shoot(GameTime gameTime, Entity enemy)
+        public void shoot(GameTime gameTime, Enemy enemy)
         {
-            double xComposite = (enemy.getPositionX() - position.X);
-            double yComposite = (position.Y - enemy.getPositionY());
-            double radians = Math.Atan2(xComposite, yComposite);
-            double degrees = radians / CONVERSION;
-            tDiamond.shoot((int) degrees);
+            if (tDiamond.isReady())
+            {
+                double xComposite = (enemy.getPositionX()+12.5 - position.X);
+                double yComposite = (position.Y - enemy.getPositionY() + 12.5);
+                double radians = Math.Atan2(xComposite, yComposite);
+                double degrees = radians / CONVERSION;
+                tDiamond.shoot((int)degrees);
+            }
         }
 
         public void deploySelf()
@@ -102,16 +107,42 @@ namespace ShapeShift
             deployed = false;
             tDiamond.turretGetDropped();
         }
+        public override Shape getShape()
+        {
+            return tDiamond;
+        }
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
-            base.Update(gameTime, col, layer, this, tDiamond.getActiveBullets());
+
+           // base.Update(gameTime,input, col, layer);
+            this.gameTime = gameTime;
+            this.input = input;
+            this.col = col;
+            this.layer = layer;
+
+
+            for (int i = 0; i < col.CollisionMap.Count; i++)
+            {
+                for (int j = 0; j < col.CollisionMap[i].Count; j++)
+                {
+
+                    if (col.CollisionMap[i][j] == "x") //Collision against solid objects (ex: Tiles)
+                    {
+                        //Creates a rectangle that is the current tiles postion and size
+                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
+
+                        tDiamond.checkBulletCollision(position,lastCheckedRectangle,layer.getColorData(i, j, col.CollisionMap[i].Count));
+
+                    }
+                }
+            }
+                        
+
+            tDiamond.Update(gameTime);
 
             if (!expired)
             {
-                
-                tDiamond.Update(gameTime);
-                
                 if (deployed)
                     lockToOwner();
                 if (dropped)
@@ -125,7 +156,7 @@ namespace ShapeShift
 
                 //tDiamond.collides();
                 //TODO THIS ALL NEEDS TO BE FIXED
-                foreach (Bullet bullet in tDiamond.getActiveBullets())
+               /* foreach (Bullet bullet in tDiamond.getActiveBullets())
                 {
                     if (bullet.outOfBounds())
                     {
@@ -133,7 +164,7 @@ namespace ShapeShift
                         tDiamond.clearBullets();
                     }
                 }
-
+                */
 
                 if (expired)
                 {
@@ -150,16 +181,14 @@ namespace ShapeShift
                         animation.Update(gameTime);
                 }
 
+               
+
             }
             else
                 tDiamond.clearBullets();
         }
 
-        public List<Shape> getActiveBullets()
-        {
-            //Console.WriteLine("Bullets = " + entityShape.getActiveBullets().Count);
-            return entityShape.getActiveBullets();
-        }
+        
 
         public override void Draw(SpriteBatch spriteBatch)
         {

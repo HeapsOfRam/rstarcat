@@ -165,20 +165,21 @@ namespace ShapeShift
                 player.pSquareResetDirections();
 
                 damageTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
+                
+                
+                
                 foreach (MatrixEnemy e in enemyList)
                 {
-                    
-                        e.Update(gameTime, map.collision, map.layer, player, player.getActiveBullets());
+                   
+
+                    e.Update(gameTime, map.collision, map.layer, player, player.getActiveBullets());
+                   
 
                         if (!e.isDead())
                         {
+                            player.turretSpot(e);
 
-                            if (player.isTurretDropped() && player.turretSpot(e))
-                            {
-                                player.fireTurret(gameTime, e);
-                                e.Update(gameTime, map.collision, map.layer, player, player.getTurretBullets());
-                            }
+                            
 
                             if (e.collides(e.getPosition(), player.getRectangle(), player.getShape().getColorData()))
                             {
@@ -197,7 +198,8 @@ namespace ShapeShift
                                 player.turretTakeDamage();
                             }*/
                         }
-                   
+
+                       
                 }
 
                 if (inputManager.KeyDown(Keys.W))

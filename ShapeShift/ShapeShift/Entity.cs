@@ -326,7 +326,7 @@ namespace ShapeShift
 
         public virtual Rectangle getRectangle() { return new Rectangle(); }
 
-        public virtual Shape getShape() { return new Shape(); }
+        public virtual Shape getShape() { return entityShape; }
 
         public void setMoveSpeed(float moveSpeed)
         {
