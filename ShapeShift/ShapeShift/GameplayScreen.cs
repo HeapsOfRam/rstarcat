@@ -179,7 +179,7 @@ namespace ShapeShift
                         {
                             player.turretSpot(e);
 
-                            if (player.isMineDropped())
+                            if (player.hasMineDropped())
                             {
                                 if (e.collides(e.getPosition(), player.getMine().getRectangle(), player.getMine().getShape().getColorData()))
                                     player.getMine().trigger();

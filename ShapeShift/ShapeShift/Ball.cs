@@ -9,9 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ShapeShift
 {
     class Ball : Entity
-    {
-        
-        
+    {   
         private Circle bCircle;
         private Entity owner;
 
@@ -38,14 +36,15 @@ namespace ShapeShift
             entityShape = bCircle;
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;
-            velocity.X = 3f;
-            velocity.Y = 3f;
-            rand = new Random();
+            rand = new Random();           
+            velocity.X = randomVelocity();
+            velocity.Y = randomVelocity();
         }
 
         public void lockToOwner()
         {
-            position = owner.position;
+            position.X = owner.position.X + 0;
+            position.Y = owner.position.Y + 0;
             entityShape.setPosition(position);
             moveAnimation.Position = position;
         }
@@ -103,40 +102,59 @@ namespace ShapeShift
 
         public int randomVelocity()
         {
-            int vel = rand.Next(2, 6);
+            int vel = rand.Next(50, 60);
             if (rand.Next(0, 2) == 1)
                 return vel;
             return -vel;
         }
 
+        public void moveBall()
+        {
+            position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
+        }
+
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
-            base.Update(gameTime, input, col, layer);
+            /*this.gameTime = gameTime;
+            this.input = input;
+            this.col = col;
+            this.layer = layer;
+
+            detectCollision();*/
 
             if (!expired)
             {
+
                 
                 bCircle.Update(gameTime);
 
                 previousPosition = position;
-                moveAnimation.Position = position;
 
                 if (deployed)
                     lockToOwner();
                 if (fired)
                 {
+                    base.Update(gameTime, input, col, layer);
+
                     currTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     //moveLeft(gameTime);
                     if (!colliding)
                     {
-                        position.X += velocity.X;
-                        position.Y += velocity.Y;
+                        moveBall();
                     }
                     else
                     {
                         velocity.X = randomVelocity();
                         velocity.Y = randomVelocity();
+
+                        moveBall();
+                        //position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        //position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
                         colliding = false;
+                        //velocity.X = randomVelocity();
+                        //velocity.Y = randomVelocity();
                     }
                 }
 
@@ -161,6 +179,8 @@ namespace ShapeShift
 
                     animation.position = position;
                 }
+
+                moveAnimation.Position = position;                
 
             }
         }
