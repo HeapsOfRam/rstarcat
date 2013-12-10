@@ -14,10 +14,13 @@ namespace ShapeShift
         private Diamond mDiamond;
         private Entity owner;
 
-        private Boolean deployed, dropped, exploded = true, awaitingReset = false;
+        private Boolean deployed, dropped, exploded = false, awaitingReset = false;
         private float currTime;
 
-        private const float FUSE_TIME = 6f;
+        private const float FUSE_TIME = 2f;
+
+        private Boolean lightFuse = false;
+        private Boolean gone = true;
 
         public Mine(ContentManager content, InputManager input, Entity owner)
         {
@@ -33,6 +36,8 @@ namespace ShapeShift
             entityShape = mDiamond;
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;
+
+            mDiamond.scaleShape(.75f);
         }
 
         public void lockToOwner()
@@ -60,6 +65,7 @@ namespace ShapeShift
         public void goBoom()
         {
             exploded = true;
+            gone = false;
             mDiamond.mineGoBoom();
         }
 
@@ -83,6 +89,7 @@ namespace ShapeShift
         {
             exploded = false;
             deployed = true;
+            gone = false;
             mDiamond.mineGetDeployed();
         }
 
@@ -93,30 +100,46 @@ namespace ShapeShift
             mDiamond.mineGetDropped();
         }
 
+
+
+        public void trigger()
+        {
+            lightFuse = true;
+           
+        }
+
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
-            base.Update(gameTime, input, col, layer);
+           // base.Update(gameTime, input, col, layer);
+
+            this.gameTime = gameTime;
+            this.input    = input;
+            this.col      = col;
+            this.layer    = layer;
 
             if (!exploded)
             {
-                
+
                 mDiamond.Update(gameTime);
-                
+
                 if (deployed)
                     lockToOwner();
-                if (dropped)
+                if (dropped && lightFuse)
                     currTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+
 
                 if (currTime > FUSE_TIME)
                 {
                     currTime = 0;
-                    exploded = true;
+                    goBoom();
                 }
 
                 if (exploded)
                 {
                     dropped = false;
                     awaitingReset = true;
+
                 }
 
                 // Update all of the enabled animations
@@ -128,14 +151,47 @@ namespace ShapeShift
                 }
 
             }
+            else
+            {
+                currTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                SpriteSheetAnimation idleAnimation = mDiamond.getActiveTextures()[0];
+
+                Console.WriteLine(gameTime);
+
+                if (currTime >= 30)
+                {
+                    currTime = 0;
+
+                    
+                    Console.WriteLine(idleAnimation.scale);
+
+                    float newScale = idleAnimation.scale + 0;
+
+
+                    if (newScale < 2.0f)
+                    {
+                        newScale = newScale + 0.1f;
+                    }
+                    else
+                        gone = true;
+
+                    idleAnimation.scale = newScale;
+                    idleAnimation.origin = new Vector2(46, 46);
+                } 
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
 
-            if(!exploded)
+            if(!gone)
                 entityShape.Draw(spriteBatch);
+        }
+
+        public bool isGone()
+        {
+            return gone;
         }
     }
 }

@@ -165,8 +165,10 @@ namespace ShapeShift
                     wander(gameTime);
                     if (entity.hasTurretDropped() && spot(entity.getTurret()))
                         state = CHASE_TURRET;
-                    else if (spot(entity))
-                        state = CHASE;
+                    else if (entity.hasMineDropped() && spot(entity.getMine()))
+                        state = CHASE_MINE;
+                        else if (spot(entity))
+                            state = CHASE;
                     break;
                 case CHASE:
                     spotDist = 450;
@@ -182,6 +184,8 @@ namespace ShapeShift
                         state = FIND;
                     if(entity.hasTurretDropped() && spot(entity.getTurret()))
                         state = CHASE_TURRET;
+                    if (entity.hasMineDropped() && spot(entity.getMine()))
+                        state = CHASE_MINE;
                     break;
                 case ATTACK:
                     //standStill();
@@ -209,6 +213,11 @@ namespace ShapeShift
                     if(!spot(entity.getTurret()) || !entity.hasTurretDropped())
                         state = WANDER;
                     chase(gameTime, entity.getTurret());
+                    break;
+                case CHASE_MINE:
+                    if (!spot(entity.getMine()) || !entity.hasMineDropped())
+                        state = WANDER;
+                    chase(gameTime, entity.getMine());
                     break;
                 default:
                     wander(gameTime);

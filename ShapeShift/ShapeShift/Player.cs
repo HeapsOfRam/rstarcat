@@ -654,7 +654,7 @@ namespace ShapeShift
             turret.die();
         }
 
-        public Entity getMine()
+        public override Mine getMine()
         {
             return mine;
         }
@@ -684,7 +684,7 @@ namespace ShapeShift
 
             if (!turret.isExpired())
                 turret.Update(gameTime, input, col, layer);
-            if (!mine.isDetonated())
+            if (!mine.isGone())
                 mine.Update(gameTime, input, col, layer);
             if (!ball.isExpired())
                 ball.Update(gameTime, input, col, layer);
@@ -750,7 +750,7 @@ namespace ShapeShift
             if(!turret.isExpired() && (turret.isDeployed() || turret.isDropped()))
                 turret.Draw(spriteBatch);
 
-            if (!mine.isDetonated() && (mine.isDeployed() || mine.isDropped()))
+            if (((mine.isDeployed() || mine.isDropped()) || mine.isDetonated()))
                 mine.Draw(spriteBatch);
 
             if (!ball.isExpired() && (ball.isDeployed() || ball.isFired()))
@@ -797,5 +797,8 @@ namespace ShapeShift
         {
             return entityShape.getHearts();
         }
+
+        public bool isMineDropped()
+        { return mine.isDropped(); }
     }
 }

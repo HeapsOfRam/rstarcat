@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace ShapeShift
 {
     //The basis for Players, enemies, beings, etc.
-    public class Entity
+    class Entity
     {
         protected int health, maxHealth;
         protected SpriteSheetAnimation moveAnimation;
@@ -153,7 +153,7 @@ namespace ShapeShift
             return false;
         }
 
-        public virtual Entity getMine()
+        public virtual Mine getMine()
         {
             return null;
         }
@@ -164,7 +164,7 @@ namespace ShapeShift
         }
 
         public Boolean spot(Entity e)
-        {
+        {          
             float distanceFromEntity = Vector2.Distance(e.getPosition(), position);
             return distanceFromEntity < spotDist;
         }
