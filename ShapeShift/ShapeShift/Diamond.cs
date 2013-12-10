@@ -173,8 +173,34 @@ namespace ShapeShift
         {
         }
 
-        public void mineGoBoom()
+        public Boolean mineGoBoom(float boomTime)
         {
+            SpriteSheetAnimation idleAnimation = getActiveTextures()[0];
+
+            if (boomTime >= 30)
+            {
+                boomTime = 0;
+
+
+                Console.WriteLine(idleAnimation.scale);
+
+                float newScale = idleAnimation.scale + 0;
+
+
+                if (newScale < 2.0f)
+                {
+                    newScale = newScale + 0.1f;
+                }
+                else
+                    return true;
+
+                idleAnimation.scale = newScale;
+                idleAnimation.origin = new Vector2(46, 46);
+
+            }
+
+            return false;
+
         }
 
         public Boolean mineDropped()

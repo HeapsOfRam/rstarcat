@@ -15,7 +15,7 @@ namespace ShapeShift
         private Entity owner;
 
         private Boolean deployed, dropped, exploded = false, awaitingReset = false;
-        private float currTime;
+        private float currTime, boomTime = 0;
 
         private const float FUSE_TIME = 2f;
 
@@ -66,7 +66,7 @@ namespace ShapeShift
         {
             exploded = true;
             gone = false;
-            mDiamond.mineGoBoom();
+            //mDiamond.mineGoBoom();
         }
 
         public override Rectangle getRectangle()
@@ -153,31 +153,9 @@ namespace ShapeShift
             }
             else
             {
-                currTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-                SpriteSheetAnimation idleAnimation = mDiamond.getActiveTextures()[0];
+                boomTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-                Console.WriteLine(gameTime);
-
-                if (currTime >= 30)
-                {
-                    currTime = 0;
-
-                    
-                    Console.WriteLine(idleAnimation.scale);
-
-                    float newScale = idleAnimation.scale + 0;
-
-
-                    if (newScale < 2.0f)
-                    {
-                        newScale = newScale + 0.1f;
-                    }
-                    else
-                        gone = true;
-
-                    idleAnimation.scale = newScale;
-                    idleAnimation.origin = new Vector2(46, 46);
-                } 
+                gone = mDiamond.mineGoBoom(boomTime);                    
             }
         }
 
