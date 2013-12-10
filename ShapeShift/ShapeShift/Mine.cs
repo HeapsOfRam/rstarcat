@@ -14,6 +14,8 @@ namespace ShapeShift
         private Diamond mDiamond;
         private Entity owner;
 
+        private Effect effect;
+
         private Boolean deployed, dropped, exploded = false, awaitingReset = false;
         private float currTime, boomTime = 0;
 
@@ -37,6 +39,7 @@ namespace ShapeShift
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;
 
+            effect = content.Load<Effect>("ColorChange");
             mDiamond.scaleShape(.75f);
         }
 
@@ -161,10 +164,15 @@ namespace ShapeShift
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            effect.CurrentTechnique.Passes[0].Apply();
 
-            if(!gone)
+           if (!gone)
                 entityShape.Draw(spriteBatch);
+
+            spriteBatch.End();
+
+            spriteBatch.Begin();
+            base.Draw(spriteBatch);
         }
 
         public bool isGone()

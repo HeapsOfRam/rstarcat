@@ -331,7 +331,7 @@ namespace ShapeShift
                 {
                     mine = new Mine(content, input, this);
                     mine.deploySelf();
-                    pdeployMine();
+                    //pdeployMine();
                 }
             }
             

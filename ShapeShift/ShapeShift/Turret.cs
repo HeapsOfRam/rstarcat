@@ -13,6 +13,8 @@ namespace ShapeShift
         private Diamond tDiamond;
         private Entity owner;
 
+        private Effect effect;
+
         private Boolean deployed, dropped, expired = true, awaitingReset = false;
         private float currTime;
 
@@ -35,6 +37,8 @@ namespace ShapeShift
             moveAnimation.position = position;
             invulnPeriod = .01f;
 
+
+            effect = content.Load<Effect>("desaturate");
             expired = false;
             deployed = false;
             dropped = false;
@@ -92,8 +96,8 @@ namespace ShapeShift
         {
             if (tDiamond.isReady())
             {
-                double xComposite = (enemy.getPositionX()+12.5 - position.X);
-                double yComposite = (position.Y - (enemy.getPositionY() + 12.5));
+                double xComposite = (enemy.getPositionX()-12.5 - position.X);
+                double yComposite = (position.Y - enemy.getPositionY() + 12.5);
                 double radians = Math.Atan2(xComposite, yComposite);
                 double degrees = radians / CONVERSION;
                 tDiamond.shoot((int)degrees);
@@ -198,10 +202,17 @@ namespace ShapeShift
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            
+            effect.CurrentTechnique.Passes[0].Apply();
 
-            if(!expired)
+            if (!expired)
                 entityShape.Draw(spriteBatch);
+
+            spriteBatch.End();
+
+            spriteBatch.Begin();
+            base.Draw(spriteBatch);
+     
         }
     }
 }
