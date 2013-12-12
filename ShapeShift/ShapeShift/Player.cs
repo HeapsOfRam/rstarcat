@@ -16,6 +16,7 @@ namespace ShapeShift
 
         private const int FULL = 3, MID = 2, LOW = 1, EMPTY = 0, SIZE = 60, MOVE = 5;
         private const float SHIELD_TIME = 5f;
+        private const float baseMoveSpeed = 150f;
         private float shieldDuration = 0;
         private Shape nextShape;
         private Square pSquare;
@@ -27,6 +28,8 @@ namespace ShapeShift
         private Turret turret;
         private Mine mine;
         private Ball ball;
+        private float abilityTimer;
+        private bool startAbilityTimer;
         
         private Random rand;
 
@@ -39,6 +42,7 @@ namespace ShapeShift
         private  Collision col;
         private  Layers layer;
         private InputManager input;
+        private SpriteFont font;
 
         /* Player Spawns are currently handled in entity
         private Vector2 leftSpawnPosition;
@@ -54,7 +58,7 @@ namespace ShapeShift
             rand = new Random();
 
             this.content  = content;
-            moveSpeed     = 150f; //Set the move speed
+            moveSpeed     = baseMoveSpeed; //Set the move speed equal to the baseMoveSpeed(baseMoveSpeed is constant)
 
             turret = new Turret(content, input, this);
             mine = new Mine(content, input, this);
@@ -70,8 +74,8 @@ namespace ShapeShift
             pCircle   = new Circle(content);
             pTriangle = new Triangle(content);
             pDiamond  = new Diamond(content);
-            
 
+            font = content.Load<SpriteFont>("Fonts/Font1");
             maxHealth = FULL;
             health    = maxHealth;
 
@@ -85,7 +89,8 @@ namespace ShapeShift
             //moveAnimation.LoadContent(content, playerShape.getTexture(), "", position);
             
             entityShape.setPosition(position);
-            
+            abilityTimer = 0;
+            startAbilityTimer = false;
          
            // spawnPosition = new Vector2(55, 320); //player spawns handled in entity
            // leftSpawnPosition = new Vector2(55, 320);
@@ -151,13 +156,13 @@ namespace ShapeShift
         public void shiftShape()
         {
 
-            moveSpeed = 150f;
-            pSquare.stopDashing();
+            moveSpeed = baseMoveSpeed;
+            pSquare.stopDashing(this);
             clearBullets();
             if (entityShape == pCircle && pCircle.shielded)
                 pCircle.removeShield();     
             else if (entityShape == pSquare && pSquare.dashing)
-                pSquare.stopDashing();
+                pSquare.stopDashing(this);
             else if (entityShape == pDiamond)
             {
                 //pDiamond.clearMines();
@@ -317,7 +322,11 @@ namespace ShapeShift
                     premoveShield();
             }
             if (entityShape == pSquare)
+            {
                 pDash();
+               // entityShape.Update(gameTime);
+                
+            }
             if (entityShape == pTriangle)
                 pRotate();
             if (entityShape == pDiamond)
@@ -532,6 +541,11 @@ namespace ShapeShift
             pSquare.dash(this);
         }
 
+        private void pStopDash()
+        {
+            pSquare.stopDashing(this);
+        }
+
         private void pSquareShoot(int angle)
         {
             pSquare.shoot(angle);
@@ -614,7 +628,7 @@ namespace ShapeShift
 
         private void pClearAll()
         {
-            moveSpeed = 150f;
+            moveSpeed = baseMoveSpeed;
             pClearCircle();
             pClearDiamond();
             pClearSquare();
@@ -629,7 +643,7 @@ namespace ShapeShift
 
         private void changeToSquare()
         {
-            pSquare.stopDashing();
+            pSquare.stopDashing(this);
             entityShape = pSquare;
         }
 
@@ -724,6 +738,14 @@ namespace ShapeShift
             {
                 pSquare.setDirectionMap(directions);
                 pSquare.Update(gameTime);
+
+                
+                if (pSquare.dashExpired)
+                {
+                    pSquare.stopDashing(this);
+                }
+
+
             }
 
             if (entityShape == pDiamond)
@@ -740,7 +762,21 @@ namespace ShapeShift
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-           
+
+            if (entityShape == pSquare && pSquare.dashReady)
+            {
+                spriteBatch.DrawString(font, "dash is Ready!!!: ", new Vector2(475, 5), Color.White);
+            }
+            else if (entityShape == pSquare && pSquare.dashing) 
+            {
+                spriteBatch.DrawString(font, "dashing!!: ", new Vector2(475, 5), Color.White);
+            }
+            else if (entityShape == pSquare && !pSquare.dashReady)
+            {
+                spriteBatch.DrawString(font, "dash cooldown: " + (pSquare.getCoolDown() - pSquare.getCoolDownTimer()), new Vector2(475, 5), Color.White);
+            }
+
+
             // Draws each of the enabled animations for the current shape
             entityShape.Draw(spriteBatch);
 
@@ -791,6 +827,11 @@ namespace ShapeShift
         public List<Shape> getTurretBullets()
         {
             return turret.getShape().getActiveBullets();
+        }
+
+        public void resetMoveSpeed()
+        {
+            moveSpeed = baseMoveSpeed;
         }
 
         public Texture2D[] getHearts()

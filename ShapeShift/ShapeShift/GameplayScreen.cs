@@ -46,7 +46,7 @@ namespace ShapeShift
         int imageNumber;
 
         private SpriteFont font;
-        int screenWidth, screenHeight, counter, maxCount = 10;
+        int screenWidth, screenHeight, counter, maxCount = 30; //maxCount sets the duration between shapeShifts
         int timeRemaining;
         const int HUDHEIGHT = 50, ABSZERO = 0, HEALTHSIZEX = 25, HEALTHSIZEY = 25, HEALTHOFFSETX = 150, HEALTHOFFSETY = 60, DISPLACEHEALTH = 5;
 
