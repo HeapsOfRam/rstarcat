@@ -98,3 +98,4 @@ Content\Music\White Denim - D - At The Farm.wma
 Content\ColorChange.xnb
 Content\desaturate.xnb
 Content\normalmap.xnb
+Content\Fonts\AbilityStatusFont.xnb

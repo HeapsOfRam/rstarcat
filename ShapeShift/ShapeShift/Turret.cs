@@ -68,9 +68,14 @@ namespace ShapeShift
         public Boolean isExpired()
         { return expired; }
 
+        public void setExpired(Boolean newExpirationStatus)
+        {
+            expired = newExpirationStatus;
+        }
+
         public override void die()
         {
-            Console.WriteLine("KILL ME");
+            //Console.WriteLine("KILL ME");
             expired = true;
            deployed = false;
             dropped = false;

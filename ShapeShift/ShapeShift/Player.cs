@@ -15,9 +15,7 @@ namespace ShapeShift
         GameTime gameTime;
 
         private const int FULL = 3, MID = 2, LOW = 1, EMPTY = 0, SIZE = 60, MOVE = 5;
-        private const float SHIELD_TIME = 5f;
-        private const float baseMoveSpeed = 150f;
-        private float shieldDuration = 0;
+        private const float BASEMOVESPEED = 150f;
         private Shape nextShape;
         private Square pSquare;
         private Circle pCircle;
@@ -29,7 +27,31 @@ namespace ShapeShift
         private Mine mine;
         private Ball ball;
         private float abilityTimer;
+        private float cooldownTimer;
+        private float cooldownTimer2;
         private bool startAbilityTimer;
+
+        //Square: Ability Durations and Cooldowns
+        private int squareDashDuration;
+        private int squareDashCooldown;
+        private bool squareDashCooldownStarted;
+
+        //Circle: Ability Durations and Cooldowns
+        private const float SHIELD_TIME = 5f;
+        private float shieldDuration = 0;
+        private int circleShieldCooldown;
+        private bool circleShieldCooldownStarted;
+        private bool shieldReady;
+        private bool shieldExpired;
+        private bool turretReadyToDeploy;
+        private int turretDeploymentCooldown;
+        private bool turretDeploymentCooldownStarted;
+        private bool turretExpired;
+
+        private bool mineReadyToDeploy;
+        private int mineDeploymentCooldown;
+        private bool mineDeploymentCooldownStarted;
+        private bool mineExpired;
         
         private Random rand;
 
@@ -58,7 +80,7 @@ namespace ShapeShift
             rand = new Random();
 
             this.content  = content;
-            moveSpeed     = baseMoveSpeed; //Set the move speed equal to the baseMoveSpeed(baseMoveSpeed is constant)
+            moveSpeed     = BASEMOVESPEED; //Set the move speed equal to the baseMoveSpeed(baseMoveSpeed is constant)
 
             turret = new Turret(content, input, this);
             mine = new Mine(content, input, this);
@@ -75,11 +97,11 @@ namespace ShapeShift
             pTriangle = new Triangle(content);
             pDiamond  = new Diamond(content);
 
-            font = content.Load<SpriteFont>("Fonts/Font1");
+            font = content.Load<SpriteFont>("Fonts/AbilityStatusFont");
             maxHealth = FULL;
             health    = maxHealth;
 
-            entityShape = pSquare;   //********STARTING SHAPE*******         
+            entityShape = pDiamond;   //********STARTING SHAPE*******         
 
             //Queue up the next shape
             queueOne();
@@ -90,9 +112,41 @@ namespace ShapeShift
             
             entityShape.setPosition(position);
             abilityTimer = 0;
+            cooldownTimer = 0;
+            cooldownTimer2 = 0;
             startAbilityTimer = false;
-         
-           // spawnPosition = new Vector2(55, 320); //player spawns handled in entity
+
+            #region Cooldown Management
+            //**Cooldown Management**
+            //SQUARE
+            squareDashDuration = 4;
+            squareDashCooldown = 2;
+            squareDashCooldownStarted = false;
+
+            //CIRCLE
+            circleShieldCooldown = 8;
+            circleShieldCooldownStarted = false;
+            shieldReady = true;
+            shieldExpired = false;
+
+            //DIAMOND
+            //diamond turret
+            turretDeploymentCooldown = 5;
+            turretDeploymentCooldownStarted = false;
+            turretReadyToDeploy = true;
+            turretExpired = false;
+
+           //diamond mine
+            mineDeploymentCooldown = 5;
+            mineDeploymentCooldownStarted = false;
+            mineReadyToDeploy = true;
+            mineExpired = false;
+            
+            #endregion
+
+
+
+            // spawnPosition = new Vector2(55, 320); //player spawns handled in entity
            // leftSpawnPosition = new Vector2(55, 320);
            // rightSpawnPosition = new Vector2(680, 320);
 
@@ -156,7 +210,7 @@ namespace ShapeShift
         public void shiftShape()
         {
 
-            moveSpeed = baseMoveSpeed;
+            moveSpeed = BASEMOVESPEED;
             pSquare.stopDashing(this);
             clearBullets();
             if (entityShape == pCircle && pCircle.shielded)
@@ -316,10 +370,10 @@ namespace ShapeShift
         {
             if (entityShape == pCircle)
             {
-                if(!shielded())
+                if(!shielded() && shieldReady)
                     pdeployShield();
-                else
-                    premoveShield();
+                //else
+                  //  premoveShield();
             }
             if (entityShape == pSquare)
             {
@@ -338,9 +392,14 @@ namespace ShapeShift
                 }
                 else
                 {
-                    mine = new Mine(content, input, this);
-                    mine.deploySelf();
-                    //pdeployMine();
+                    if (mineReadyToDeploy)
+                    {
+                        mine = new Mine(content, input, this);
+                        mine.deploySelf();
+                        mineReadyToDeploy = false;
+                        mineDeploymentCooldownStarted = true;
+                        //pdeployMine();
+                    }
                 }
             }
             
@@ -370,8 +429,12 @@ namespace ShapeShift
                 }
                 else
                 {
+                    if (turretReadyToDeploy)
+                    {
                     turret = new Turret(content, input, this);
                     turret.deploySelf();
+                    turretReadyToDeploy = false;
+                    }
                     //pdeployTurret();
                 }
                 //pDiamond.deployTurret();
@@ -574,7 +637,9 @@ namespace ShapeShift
 
         private void pdeployTurret()
         {
-            pDiamond.deployTurret();
+            if (turretReadyToDeploy)
+                pDiamond.deployTurret();
+
         }
 
         private void pdropMine()
@@ -628,7 +693,7 @@ namespace ShapeShift
 
         private void pClearAll()
         {
-            moveSpeed = baseMoveSpeed;
+            moveSpeed = BASEMOVESPEED;
             pClearCircle();
             pClearDiamond();
             pClearSquare();
@@ -682,9 +747,15 @@ namespace ShapeShift
         {
             if (shielded())
             {
+                Console.WriteLine("shieldDuration: " + shieldDuration);
                 shieldDuration += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (shieldDuration > SHIELD_TIME)
+                {
                     premoveShield();
+                    shieldExpired = true;
+                    circleShieldCooldownStarted = true;
+
+                }
             }
         }
 
@@ -734,12 +805,39 @@ namespace ShapeShift
             }
 
         
-            if (entityShape == pSquare)
+            if (entityShape == pSquare)  //<<<<<SQUARE>>>>>
             {
                 pSquare.setDirectionMap(directions);
                 pSquare.Update(gameTime);
 
-                
+
+                 if (pSquare.dashing)
+                    {
+                        pSquare.dashReady = false;
+                        abilityTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    }
+
+                 if (abilityTimer > squareDashDuration)
+                 {
+                     pSquare.dashExpired = true;
+                     squareDashCooldownStarted = true;
+                     abilityTimer = 0;
+                 }
+
+                 if (squareDashCooldownStarted)
+                 {
+                     cooldownTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                     //Console.WriteLine("The value of coolDownTimer is: " + coolDownTimer + "Seconds");
+                 }
+
+                 if (cooldownTimer > squareDashCooldown)
+                 {
+                     squareDashCooldownStarted = false;
+                     cooldownTimer = 0;
+                     pSquare.dashExpired = false;
+                     pSquare.dashReady = true;
+                 }
+
                 if (pSquare.dashExpired)
                 {
                     pSquare.stopDashing(this);
@@ -748,15 +846,78 @@ namespace ShapeShift
 
             }
 
-            if (entityShape == pDiamond)
+            if (entityShape == pDiamond) //<<<<<DIAMOND>>>>>
+            {
                 pDiamond.Update(gameTime);
 
-            if (entityShape == pTriangle)
+                //if (pDiamond.turretDeployed())
+                //{
+                  //  turretReadyToDeploy = false;
+                    //abilityTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                //}
+
+                if (turret.isExpired())
+                {
+                    turretDeploymentCooldownStarted = true;
+                    //abilityTimer = 0;
+                }
+
+                if (turretDeploymentCooldownStarted)
+                {
+                    cooldownTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    //Console.WriteLine("The value of coolDownTimer is: " + coolDownTimer + "Seconds");
+                }
+
+                if (mineDeploymentCooldownStarted)
+                {
+                    cooldownTimer2 += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                }
+
+
+                if (cooldownTimer > turretDeploymentCooldown)
+                {
+                    turretDeploymentCooldownStarted = false;
+                    cooldownTimer = 0;
+                    turret.setExpired(false);
+                    turretReadyToDeploy = true;
+                }
+
+                if (cooldownTimer2 > mineDeploymentCooldown)
+                {
+                    mineDeploymentCooldownStarted = false;
+                    cooldownTimer2 = 0;
+                    mineReadyToDeploy = true;
+                }
+
+
+            }
+            if (entityShape == pTriangle)//<<<<<TRIANGLE>>>>>
                 pTriangle.Update(gameTime);
 
-            if (entityShape == pCircle)
+            if (entityShape == pCircle) //<<<<<CIRCLE>>>>>
+            {
                 pCircle.Update(gameTime);
 
+                if (pCircle.isShielded())
+                {
+                    shieldReady = false;
+                }
+
+                if (circleShieldCooldownStarted)
+                {
+                    cooldownTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    
+                }
+
+                if (cooldownTimer > circleShieldCooldown)
+                {
+                    circleShieldCooldownStarted = false;
+                    cooldownTimer = 0;
+                    shieldExpired = false;
+                    shieldReady = true;
+                }
+
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -773,7 +934,21 @@ namespace ShapeShift
             }
             else if (entityShape == pSquare && !pSquare.dashReady)
             {
-                spriteBatch.DrawString(font, "dash cooldown: " + (pSquare.getCoolDown() - pSquare.getCoolDownTimer()), new Vector2(475, 5), Color.White);
+                spriteBatch.DrawString(font, "dash cooldown: " + (squareDashCooldown - cooldownTimer), new Vector2(475, 5), Color.White);
+            }
+
+            if (entityShape == pCircle && shieldReady)
+            {
+                spriteBatch.DrawString(font, "Shield is Ready!!!: ", new Vector2(475, 5), Color.White);
+            }
+
+            if (entityShape == pDiamond && turretReadyToDeploy)
+            {
+                spriteBatch.DrawString(font, "Turret Ready!", new Vector2(440, 5), Color.White);
+            }
+            if (entityShape == pDiamond && mineReadyToDeploy)
+            {
+                spriteBatch.DrawString(font, "Mine Ready! ", new Vector2(720, 5), Color.White);
             }
 
 
@@ -831,7 +1006,7 @@ namespace ShapeShift
 
         public void resetMoveSpeed()
         {
-            moveSpeed = baseMoveSpeed;
+            moveSpeed = BASEMOVESPEED;
         }
 
         public Texture2D[] getHearts()

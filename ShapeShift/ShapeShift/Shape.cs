@@ -19,12 +19,7 @@ namespace ShapeShift
         protected Color[] colorData;
         protected List<Shape> activeBullets;
         protected Texture2D[] heartTextures = new Texture2D[2];
-        protected int coolDown;
-        protected float coolDownTimer;
-        protected int abilityDuration;
-        protected float abilityTimer;
-        protected bool coolDownStarted;
-
+       
 
         protected const int SWITCH_FRAME = 300;
         // Constructor 
@@ -97,11 +92,6 @@ namespace ShapeShift
 
         public virtual int getWidth() { return DEFAULT_WIDTH; }
 
-        public virtual int getCoolDown() { return coolDown; }
-
-        public virtual float getCoolDownTimer() { return coolDownTimer; }
-
-        public virtual int getAbilityDuration() { return abilityDuration; }
 
 
         public void setOrigin(Vector2 origin)

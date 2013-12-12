@@ -893,6 +893,15 @@
       <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\normalmap.xnb</Output>
       <Time>2013-12-11T18:39:30.2539273-05:00</Time>
     </Item>
+    <Item>
+      <Source>Fonts\AbilityStatusFont.spritefont</Source>
+      <Name>Fonts\AbilityStatusFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fonts\AbilityStatusFont.xnb</Output>
+      <Time>2013-12-12T09:00:06.5396584-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

@@ -82,12 +82,6 @@ namespace ShapeShift
             heartTextures[0] = content.Load<Texture2D>("Square/heart");
             heartTextures[1] = content.Load<Texture2D>("Square/heartEmpty");
 
-            coolDown = 2; //Sets Square Cooldown
-            coolDownTimer = 0;
-            abilityDuration = 4;
-            abilityTimer = 0;
-            coolDownStarted = false;
-
 
             #region Load Textures
             squareTexture = content.Load<Texture2D>("Square/SquareIdleSpriteSheet");
@@ -264,41 +258,18 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime)
         {
+
+
             frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-            if (dashing)
-            {
-                dashReady = false;
-                abilityTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
 
-            if (abilityTimer > abilityDuration)
-            {
-                dashExpired = true;
-                coolDownStarted = true;
-                abilityTimer = 0;
-            }
-
-            if (coolDownStarted)
-            {
-                coolDownTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                //Console.WriteLine("The value of coolDownTimer is: " + coolDownTimer + "Seconds");
-            }
-
-            if (coolDownTimer > coolDown)
-            {
-                coolDownStarted = false;
-                coolDownTimer = 0;
-                dashExpired = false;
-                dashReady = true;
-            }
 
             foreach (Bullet b in activeBullets)
             {
                if (!b.dispose())    
                     b.Update(gameTime);
             }
-            Console.WriteLine("abilityTimer: " +abilityTimer);
+
         }
 
         public void setDirectionMap(Boolean[] directions)

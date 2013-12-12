@@ -46,7 +46,7 @@ namespace ShapeShift
         int imageNumber;
 
         private SpriteFont font;
-        int screenWidth, screenHeight, counter, maxCount = 30; //maxCount sets the duration between shapeShifts
+        int screenWidth, screenHeight, counter, maxCount = 35; //maxCount sets the duration between shapeShifts
         int timeRemaining;
         const int HUDHEIGHT = 50, ABSZERO = 0, HEALTHSIZEX = 25, HEALTHSIZEY = 25, HEALTHOFFSETX = 150, HEALTHOFFSETY = 60, DISPLACEHEALTH = 5;
 
@@ -187,10 +187,11 @@ namespace ShapeShift
 
                             if (e.collides(e.getPosition(), player.getRectangle(), player.getShape().getColorData()))
                             {
+                                e.makeReel();
+
                                 if (damageTime > INVULN_TIME && player.takeDamage())
                                 {
                                     DecreaseScore(1);
-                                    e.makeReel();
                                     damageTime = 0;
                                 }
                             }
