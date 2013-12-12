@@ -101,7 +101,7 @@ namespace ShapeShift
             maxHealth = FULL;
             health    = maxHealth;
 
-            entityShape = pDiamond;   //********STARTING SHAPE*******         
+            entityShape = pSquare;   //********STARTING SHAPE*******         
 
             //Queue up the next shape
             queueOne();
@@ -124,7 +124,7 @@ namespace ShapeShift
             squareDashCooldownStarted = false;
 
             //CIRCLE
-            circleShieldCooldown = 8;
+            circleShieldCooldown = 6;
             circleShieldCooldownStarted = false;
             shieldReady = true;
             shieldExpired = false;
@@ -209,19 +209,27 @@ namespace ShapeShift
 
         public void shiftShape()
         {
-
+            //NOTE: make sure to set the ready booleans to true for cooldowns
+            //that way the ability is available when you shift to the new shape
             moveSpeed = BASEMOVESPEED;
             pSquare.stopDashing(this);
             clearBullets();
             if (entityShape == pCircle && pCircle.shielded)
-                pCircle.removeShield();     
+            {
+                pCircle.removeShield();
+                shieldReady = true;
+            }
             else if (entityShape == pSquare && pSquare.dashing)
                 pSquare.stopDashing(this);
+            else if (entityShape == pSquare)
+                pSquare.dashReady = true;
             else if (entityShape == pDiamond)
             {
                 //pDiamond.clearMines();
                 if (turret.isDeployed())
                     forceTurretExpire();
+                turretReadyToDeploy = true;
+                mineReadyToDeploy = true;
             }
 
             entityShape = nextShape;
@@ -924,6 +932,7 @@ namespace ShapeShift
         {
             base.Draw(spriteBatch);
 
+            //Square Dash - Status
             if (entityShape == pSquare && pSquare.dashReady)
             {
                 spriteBatch.DrawString(font, "dash is Ready!!!: ", new Vector2(475, 5), Color.White);
@@ -937,19 +946,49 @@ namespace ShapeShift
                 spriteBatch.DrawString(font, "dash cooldown: " + (squareDashCooldown - cooldownTimer), new Vector2(475, 5), Color.White);
             }
 
+            //Circle Shield - Status
             if (entityShape == pCircle && shieldReady)
             {
                 spriteBatch.DrawString(font, "Shield is Ready!!!: ", new Vector2(475, 5), Color.White);
             }
+            else if (entityShape == pCircle && pCircle.isShielded())
+            {
+                spriteBatch.DrawString(font, "Shielded!", new Vector2(475, 5), Color.White);
+            }
+            else if (entityShape == pCircle && !shieldReady)
+            {
+                spriteBatch.DrawString(font, "shield cooldown: " + (circleShieldCooldown - cooldownTimer), new Vector2(475, 5), Color.White);
+            }
 
+            //Diamond Turret - Status
             if (entityShape == pDiamond && turretReadyToDeploy)
             {
                 spriteBatch.DrawString(font, "Turret Ready!", new Vector2(440, 5), Color.White);
             }
+            else if (entityShape == pDiamond && !turretReadyToDeploy && !turret.isExpired())
+            {
+                spriteBatch.DrawString(font, "TurretDeployed!", new Vector2(475, 5), Color.White);
+            }
+            else if (entityShape == pDiamond && !turretReadyToDeploy)
+            {
+                spriteBatch.DrawString(font, "turret cooldown: " + (turretDeploymentCooldown - cooldownTimer), new Vector2(475, 5), Color.White);
+            }
+
+            //Diamond Mine - Status
             if (entityShape == pDiamond && mineReadyToDeploy)
             {
                 spriteBatch.DrawString(font, "Mine Ready! ", new Vector2(720, 5), Color.White);
             }
+            else if (entityShape == pDiamond && !mineReadyToDeploy && !mine.isGone())
+            {
+                spriteBatch.DrawString(font, "MineDeployed!", new Vector2(475, 5), Color.White);
+            }
+            else if (entityShape == pDiamond && !mineReadyToDeploy)
+            {
+                spriteBatch.DrawString(font, "Mine cooldown: " + (mineDeploymentCooldown - cooldownTimer2), new Vector2(475, 5), Color.White);
+                //uses cooldownTimer2, as coolDownTimer  is used for the turret
+            }
+
 
 
             // Draws each of the enabled animations for the current shape
