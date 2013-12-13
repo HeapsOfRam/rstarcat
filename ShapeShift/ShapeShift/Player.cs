@@ -290,7 +290,7 @@ namespace ShapeShift
                 mineReadyToDeploy = true;
             }
 
-            //pushOut (entityShape);
+        
             
 
             nextShape   = null;
@@ -306,78 +306,31 @@ namespace ShapeShift
             }
 
             Update(gameTime,input,col,layer);
+            pushOut ();
+
 
             resetFillTimers();
 
         }
 
-        private void pushOut(Shape playerShape)
+        private void pushOut()
         {
 
-             for (int i = 0; i < col.CollisionMap.Count; i++)
+            if (xCollide)
             {
-                for (int j = 0; j < col.CollisionMap[i].Count; j++)
-                {                   
+                if (previousPosition.X - position.X > 0)
+                    position.X -= 10;
+                else
+                   position.X += 10;
+            }
 
-                    if (col.CollisionMap[i][j] == "x") //Collision against solid objects (ex: Tiles)
-                    {
-                                
-                        //Creates a rectangle that is the current tiles postion and size
-                        lastCheckedRectangle = new Rectangle((int)(j * layer.TileDimensions.X), (int)(i * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
-
-
-                        Vector2 xPosition = new Vector2(position.X, position.Y);
-                        Vector2 yPosition = new Vector2(position.X, position.Y);      
-
-                        int count = 0;
-
-                        while (playerShape.collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                        {
-
-                            xPosition.X += count;
-
-                            if (!playerShape.collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                                break;
-
-                            xPosition.X -= count*2;
-
-                            if (!playerShape.collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                                break;
-
-                            xPosition.X += count;
-
-                            count ++;
-
-                        }
-                        count = 0;
-
-                        while (playerShape.collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                        {
-
-                            yPosition.Y += count;
-
-                            if (!playerShape.collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                                break;
-
-                            yPosition.Y -= count*2;
-
-                            if (!playerShape.collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
-                                break;
-
-                            yPosition.Y += count;
-
-                            count ++;
-
-                        }
-
-                        position = new Vector2(xPosition.X, yPosition.Y);
-                        playerShape.setPosition( new Vector2 (xPosition.X,yPosition.Y));
-                        
-
-                    }
-                }
-             }
-
+            if (yCollide)
+            {
+                if (previousPosition.Y - position.Y > 0)
+                    position.Y -= 10;
+                else
+                    position.Y += 10;
+            }
         }
 
          // Checks to see if the next shape is colliding with anything before switching 
@@ -435,7 +388,8 @@ namespace ShapeShift
                 if (!shielded() && shieldReady)
                 {
                     pdeployShield();
-
+                    detectCollision();
+                    pushOut();
 
                 }
                 //else
@@ -455,6 +409,8 @@ namespace ShapeShift
             if (entityShape == pTriangle)
             {
                 pRotate();
+                detectCollision();
+                pushOut();
                 currentCooldownR = 0;
             }
             if (entityShape == pDiamond)
