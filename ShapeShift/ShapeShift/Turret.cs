@@ -35,7 +35,7 @@ namespace ShapeShift
             entityShape = tDiamond;
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;
-            invulnPeriod = .01f;
+            invulnPeriod = 10f;
 
 
             effect = content.Load<Effect>("desaturate");
