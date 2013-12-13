@@ -18,7 +18,10 @@ namespace ShapeShift
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        int currentSong = 0;
       
+        List<Song> bgMusicList;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -46,6 +49,27 @@ namespace ShapeShift
             graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.Dimensions.Y;
             graphics.ApplyChanges();
             base.Initialize();
+
+           // Song song = Content.Load<Song>("Music/White Denim - D - At The Farm");  // Put the name of your song in instead of "song_title"
+            //MediaPlayer.Play(song);
+            MediaPlayer.Volume = .5f;
+
+            bgMusicList = new List<Song>();
+
+            Song song = Content.Load<Song>("Music/GrooveBox");
+            bgMusicList.Add(song);
+
+            song = Content.Load<Song>("Music/Waking Up");
+            bgMusicList.Add(song);
+
+            song = Content.Load<Song>("Music/Star Death");
+            bgMusicList.Add(song);
+
+            song = Content.Load<Song>("Music/Feed The Moon");
+            bgMusicList.Add(song);
+
+            song = Content.Load<Song>("Music/Curse The Galaxey");
+            bgMusicList.Add(song);
         }
 
         /// <summary>
@@ -88,6 +112,27 @@ namespace ShapeShift
             // Allows the game to exit
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
+
+            
+// have a global boolean;   
+ 
+// in the initialize function;  
+bool doonce = true;  
+//  
+ 
+if (MediaPlayer.State != MediaState.Playing) {  
+    if(doonce) {  
+        doonce = false;  
+        currentSong++;  
+        if(currentSong > bgMusicList.Count - 1)  
+            currentSong = 0;  
+        }  
+        MediaPlayer.Play(bgMusicList[currentSong]);  
+    }  
+
+    if(MediaPlayer.State == MediaState.Playing) {  
+        doonce = true;  
+    } 
 
             // TODO: Add your update logic here
             ScreenManager.Instance.Update(gameTime);

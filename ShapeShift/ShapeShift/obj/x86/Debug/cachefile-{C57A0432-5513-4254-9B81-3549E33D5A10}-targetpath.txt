@@ -125,9 +125,17 @@ Content\Fonts\TitleFont.xnb
 Content\Fonts\ScoreFont.xnb
 Content\Fonts\ScoreFont2.xnb
 Content\Fonts\AbilityStatusFont.xnb
-Content\Music\White Denim - D - At The Farm.xnb
-Content\Music\White Denim - D - At The Farm.wma
 Content\ColorChange.xnb
 Content\desaturate.xnb
 Content\normalmap.xnb
 Content\Copy of ColorChange.xnb
+Content\Music\Curse The Galaxey.xnb
+Content\Music\Curse The Galaxey.wma
+Content\Music\Feed The Moon.xnb
+Content\Music\Feed The Moon.wma
+Content\Music\GrooveBox.xnb
+Content\Music\GrooveBox.wma
+Content\Music\Star Death.xnb
+Content\Music\Star Death.wma
+Content\Music\Waking Up.xnb
+Content\Music\Waking Up.wma
