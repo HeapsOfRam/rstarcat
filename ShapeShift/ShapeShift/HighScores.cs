@@ -18,6 +18,8 @@ namespace ShapeShift
         List<string> animationTypes, linkType, linkID;
         List<Texture2D> menuImages;
         List<List<Animation>> animation;
+        List<string> initialsList;
+
 
         ContentManager content;
         FileManager fileManager;
@@ -27,11 +29,22 @@ namespace ShapeShift
         string align;
         string filename;
         String scores;
-        List<int> highScoreList;
+        String names;
+        List<string[]> highScoreList;
+        List<string> highScoreNamesList;
         int parsedScore;
         bool newHighScore;
+        String playerName = "player1";
+        String currentKeyPressed = "";
+        String nameInProgress = "";
+        bool nameEntered = false;
+        bool newHighScoringPlayerEntered = false;
+        String aNullString = "";
+
+        int highScore;
 
         List<List<string>> attributes, contents;
+      
 
         List<Animation> tempAnimation;
 
@@ -39,6 +52,7 @@ namespace ShapeShift
 
         SpriteFont font;
         SpriteFont font2;
+        InputManager input;
 
 
         int itemNumber;
@@ -162,10 +176,12 @@ namespace ShapeShift
             font = content.Load<SpriteFont>("Fonts/ScoreFont");
             font2 = content.Load<SpriteFont>("Fonts/ScoreFont2");
             filename = "Scores/Scores.txt";
-            highScoreList = new List<int>();
+            highScoreList = new List<string[]>();
+            highScoreNamesList = new List<string>();
             parsedScore = 0;
             newHighScore = false;
             position = Vector2.Zero;
+            initialsList = new List<string>();
 
             /*
             fileManager = new FileManager();
@@ -222,32 +238,37 @@ namespace ShapeShift
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine();//reads a line in the text file
-                    parsedScore = int.Parse(line);
-                    highScoreList.Add(parsedScore);
+                    string[] items = line.Split(',');
+                    highScoreList.Add(items);
+                    
 
                 }
 
             }
 
+            sort(highScoreList);
+           
+
             //Code to sort the Values in the Text File from Highest to Lowest
-            highScoreList.Sort();
+            //highScoreList.Sort();
 
             for (int i = highScoreList.Count - 1; i >= 0; i--) //Sorted list
             {
-                scores += highScoreList[i].ToString() + " \n";//a space, then a line break
+                scores += highScoreList[i][0] + "\n";
+                names += highScoreList[i][1] + "\n";//a space, then a line break
+                Console.WriteLine(scores);
             }
 
-            if (highScoreList.Count > 3) //IF THE PLAYER ACHIEVES A NEW HIGH SCORE (Hence, higher then 3 scores are in the list)
+            highScore = GameServices.GetService<int>();
+
+            if (highScore != 0) //IF THE PLAYER ACHIEVES A NEW HIGH SCORE (Hence, higher then 3 scores are in the list)
             {
                 newHighScore = true;
-                string[] scoreLine1 = { highScoreList[3].ToString(), highScoreList[2].ToString(), highScoreList[1].ToString() };
-                scores = highScoreList[3].ToString() + " \n" + highScoreList[2].ToString() + "\n" + highScoreList[1].ToString() + "\n";//Used for the Score Screen, not the file
-                System.IO.File.WriteAllLines(@".\Scores\Scores.txt", scoreLine1);
 
             }
             else //If there is no new high score
             {
-                string[] scoreLine2 = { highScoreList[2].ToString(), highScoreList[1].ToString(), highScoreList[0].ToString() };
+                string[] scoreLine2 = { highScoreList[2][0] + "," + highScoreList[2][1], highScoreList[1][0] + "," + highScoreList[1][1], highScoreList[0][0] + "," + highScoreList[0][1]};
 
                 System.IO.File.WriteAllLines(@".\Scores\Scores.txt", scoreLine2);
             }
@@ -273,6 +294,7 @@ namespace ShapeShift
 
         public void Update(GameTime gameTime, InputManager inputManager)
         {
+            input = inputManager;
             //MENU NAVIGATION - remember axis 1 is for horiz, axis 2 is for vertical
             if (axis == 1) //Horizontal
             {
@@ -308,13 +330,15 @@ namespace ShapeShift
                 }
             }*/
 
-            if (inputManager.KeyPressed(Keys.Space))
+            currentKeyPressed = inputManager.getKeyPress();
+
+            if (inputManager.KeyPressed(Keys.Space) && !newHighScore)
             {
                 //this is an easy, (C# way) to get the type and cast it as a game screen and create an instance
                 Type newClass = Type.GetType("ShapeShift.TitleScreen"); //whatever your namespace is
                 ScreenManager.Instance.AddScreen((GameScreen)Activator.CreateInstance(newClass), inputManager);
             }
-            else if (inputManager.KeyPressed(Keys.Enter))
+            else if (inputManager.KeyPressed(Keys.Enter) && !newHighScore)
             {
                 //this is an easy, (C# way) to get the type and cast it as a game screen and create an instance
                 Type newClass = Type.GetType("ShapeShift.GameplayScreen"); //whatever your namespace is
@@ -340,6 +364,69 @@ namespace ShapeShift
                     animation[i][j].Update(gameTime);
                 }
             }
+
+            if(!currentKeyPressed.Equals(aNullString) && newHighScore)
+            {
+                if(initialsList.Count < 3)
+                initialsList.Add(currentKeyPressed);
+                currentKeyPressed = aNullString;
+              
+            }
+
+            if (inputManager.KeyPressed(Keys.Back) && initialsList.Count >= 1)
+                initialsList.RemoveAt(initialsList.Count - 1);
+
+            if (initialsList.Count == 3 && inputManager.KeyPressed(Keys.Enter))
+            {              
+                nameEntered = true;
+            }
+
+            if (nameEntered)
+            {
+                playerName = initialsList[0] + initialsList[1] + initialsList[2];
+                Console.WriteLine("New High-Scoring Player: "+ playerName);
+                newHighScore = false;
+                nameEntered = false;
+                newHighScoringPlayerEntered = true;
+                initialsList.Clear();
+
+                String[] score = new String[2];
+                score[0] = highScore + "";
+                score[1] = playerName;
+
+                highScoreList.Add(score);
+
+                sort(highScoreList);
+               
+
+                string[] scoreLine1 = { highScoreList[3][0] + "," + highScoreList[3][1], highScoreList[2][0] + "," + highScoreList[2][1], highScoreList[1][0] + "," + highScoreList[1][1] };
+                scores = highScoreList[3][0] + " \n" + highScoreList[2][0] + "\n" + highScoreList[1][0] + "\n";//Used for the Score Screen, not the file
+                names = highScoreList[3][1] + " \n" + highScoreList[2][1] + "\n" + highScoreList[1][1] + "\n";//Used for the Score Screen, not the file
+                System.IO.File.WriteAllLines(@".\Scores\Scores.txt", scoreLine1);
+            }
+
+        }
+
+        private void sort(List<string[]> highScoreList)
+        {
+            for (int s = 0; s <= highScoreList.Count - 1; s++)
+            {
+                for (int k = 0; k <= highScoreList.Count - 2; k++)
+                {
+                    if (int.Parse(highScoreList[k][0]) > int.Parse(highScoreList[k + 1][0]))
+                    {   //comparing array values
+
+                        String[] temp;
+                        temp = highScoreList[k];     //storing value of array in temp variable 
+
+                        highScoreList[k] = highScoreList[k + 1];    //swaping values
+                        highScoreList[k + 1] = temp;    //now storing temp value in array
+
+
+                    }    //end if block             
+                }  // end inner loop    
+            }
+            //end outer loop
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -352,16 +439,42 @@ namespace ShapeShift
                 }
             }
             spriteBatch.DrawString(font2, "High Scores", new Vector2(200, 50), Color.Blue);
-            spriteBatch.DrawString(font, scores, new Vector2(100, 100), Color.White);
-            
-            if(newHighScore)
-            spriteBatch.DrawString(font2, "NEW HIGH SCORE!", new Vector2(100, 370), Color.Red);
+            spriteBatch.DrawString(font, scores, new Vector2(200, 100), Color.White);
+            spriteBatch.DrawString(font, names, new Vector2(100, 100), Color.White);
 
-            spriteBatch.DrawString(font2, "Press 'Space' to return to the Main Menu!", new Vector2(100, 500), Color.Orange);
-            spriteBatch.DrawString(font2, "Press 'Enter' to Play!", new Vector2(170, 570), Color.Yellow);
+            if (newHighScore)
+            {
+                spriteBatch.DrawString(font2, "NEW HIGH SCORE!", new Vector2(100, 370), Color.Red);
+                spriteBatch.DrawString(font2, "Please enter your name: ", new Vector2(120, 440), Color.Red);
 
+                //For printing the letters that you typed
+                if(initialsList.Count == 1)
+                    spriteBatch.DrawString(font2, initialsList[0], new Vector2(530, 440), Color.Red);
+                if (initialsList.Count == 2)
+                {
+                    spriteBatch.DrawString(font2, initialsList[0], new Vector2(530, 440), Color.Red);
+                    spriteBatch.DrawString(font2, initialsList[1], new Vector2(560, 440), Color.Red);
+                }
+                if (initialsList.Count == 3)
+                {
+                    spriteBatch.DrawString(font2, initialsList[0], new Vector2(530, 440), Color.Red);
+                    spriteBatch.DrawString(font2, initialsList[1], new Vector2(560, 440), Color.Red);
+                    spriteBatch.DrawString(font2, initialsList[2], new Vector2(590, 440), Color.Red);
+                }
+
+                
+            }
+            if(newHighScoringPlayerEntered)
+            spriteBatch.DrawString(font2, "Congratulations " + playerName + "!", new Vector2(120, 440), Color.Red);
+
+
+            if (!newHighScore)
+            {
+                spriteBatch.DrawString(font2, "Press 'Space' to return to the Main Menu!", new Vector2(100, 500), Color.Orange);
+
+                spriteBatch.DrawString(font2, "Press 'Enter' to play a New Game!", new Vector2(170, 570), Color.Yellow);
+            }
         }
-
 
     }
 }
