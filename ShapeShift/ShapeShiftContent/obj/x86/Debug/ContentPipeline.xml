@@ -911,6 +911,15 @@
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleBallShadow.xnb</Output>
       <Time>2013-12-12T22:24:50.4351427-05:00</Time>
     </Item>
+    <Item>
+      <Source>Copy of ColorChange.fx</Source>
+      <Name>Copy of ColorChange</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Copy of ColorChange.xnb</Output>
+      <Time>2013-12-12T23:45:38.8084538-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

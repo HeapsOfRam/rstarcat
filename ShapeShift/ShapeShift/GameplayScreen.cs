@@ -354,7 +354,7 @@ namespace ShapeShift
                         pauseTimer = true;
                         enemiesLoaded = false;
                         LevelCompleted = true;
-                        player.forceTurretExpire();
+                        
                         //player.forceTurretExpire();
                         //player.shiftShape();
                     }
@@ -382,6 +382,10 @@ namespace ShapeShift
                     map.LoadContent(content, "InProgressMap" + Level);
                     previousLevel = Level;
                     loadEnemies(levelNumber);
+
+                    player.forceTurretExpire();
+                    player.forceMineExpire();
+                    player.forceBallExpire();
                     
                 }
 

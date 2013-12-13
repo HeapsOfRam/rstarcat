@@ -97,6 +97,13 @@ namespace ShapeShift
             awaitingReset = false;
         }
 
+        public override void die()
+        {
+            expired = true;
+            deployed = false;
+            fired = false;
+        }
+
         public void deploySelf()
         {
             expired = false;

@@ -228,8 +228,17 @@ namespace ShapeShift
                 //pDiamond.clearMines();
                 if (turret.isDeployed())
                     forceTurretExpire();
+
+                if (mine.isDeployed())
+                    forceMineExpire();
+
                 turretReadyToDeploy = true;
                 mineReadyToDeploy = true;
+            }
+
+            if (entityShape == pCircle && !ball.isFired())
+            {
+                ball.die();
             }
 
             entityShape = nextShape;
@@ -238,6 +247,13 @@ namespace ShapeShift
                 entityShape.setOrigin(new Vector2(45.6667f, 53.6667f));
             else
                 entityShape.setOrigin(new Vector2(46, 46));
+
+
+            if (entityShape == pDiamond)
+            {
+                turretReadyToDeploy = true;
+                mineReadyToDeploy = true;
+            }
 
             pushOut (entityShape);
             
@@ -400,7 +416,7 @@ namespace ShapeShift
                 }
                 else
                 {
-                    if (mineReadyToDeploy)
+                    if (mineReadyToDeploy && !turret.isDeployed() && !turret.isDropped())
                     {
                         mine = new Mine(content, input, this);
                         mine.deploySelf();
@@ -435,14 +451,15 @@ namespace ShapeShift
                 {
                     turret.dropSelf();
                     pdropTurret();
+                    turretReadyToDeploy = false;
                 }
                 else
                 {
-                    if (turretReadyToDeploy)
+                    if (turretReadyToDeploy && !mine.isDeployed() && !mine.isDropped())
                     {
-                    turret = new Turret(content, input, this);
-                    turret.deploySelf();
-                    turretReadyToDeploy = false;
+                        turret = new Turret(content, input, this);
+                        turret.deploySelf();
+                        turretReadyToDeploy = false;
                     }
                     //pdeployTurret();
                 }
@@ -742,6 +759,11 @@ namespace ShapeShift
             turret.die();
         }
 
+        public void forceMineExpire()
+        {
+            mine.die();
+        }
+
         public override Mine getMine()
         {
             return mine;
@@ -898,7 +920,8 @@ namespace ShapeShift
                     turretDeploymentCooldownStarted = false;
                     cooldownTimer = 0;
                     turret.setExpired(false);
-                    turretReadyToDeploy = true;
+
+                    //turretReadyToDeploy = true;
                 }
 
                 if (cooldownTimer2 > mineDeploymentCooldown)
@@ -1070,5 +1093,10 @@ namespace ShapeShift
 
         public bool isMineDropped()
         { return mine.isDropped(); }
+
+        public void forceBallExpire()
+        {
+            ball.die();
+        }
     }
 }

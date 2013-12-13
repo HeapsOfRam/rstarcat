@@ -96,6 +96,13 @@ namespace ShapeShift
             mDiamond.mineGetDeployed();
         }
 
+        public override void die()
+        {
+            //Console.WriteLine("KILL ME");
+            gone = true;
+            deployed = false;
+            dropped = false;
+        }
         public void dropSelf()
         {
             dropped = true;
@@ -164,6 +171,7 @@ namespace ShapeShift
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            
             effect.CurrentTechnique.Passes[0].Apply();
 
            if (!gone)

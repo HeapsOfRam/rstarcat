@@ -100,3 +100,4 @@ Content\ColorChange.xnb
 Content\desaturate.xnb
 Content\normalmap.xnb
 Content\Circle\CircleBallShadow.xnb
+Content\Copy of ColorChange.xnb
