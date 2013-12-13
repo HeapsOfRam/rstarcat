@@ -566,21 +566,44 @@ namespace ShapeShift
                 }
             }
 
-            if (entityShape == pTriangle)
+            if (entityShape == pTriangle && !rotating())
             {
+                int facing = pTriangle.rotationIteration(); 
                 switch (direction)
                 {
                     case 1:
-                        pTriangle.shoot(0);
+                        if (facing == 1)
+                            pTriangle.shoot(25);
+                        if (facing == 2)
+                            pTriangle.shoot(0);
+                        if (facing == 3)
+                            pTriangle.shoot(335);
                         break;
                     case 4:
-                        pTriangle.shoot(90);
+                        if (facing == 0)
+                            pTriangle.shoot(65);
+                        if (facing == 2)
+                            pTriangle.shoot(115);
+                        if (facing == 3)
+                            pTriangle.shoot(90);
                         break;
                     case 2:
-                        pTriangle.shoot(180);
+                        //if(facing != 2)
+                        if (facing == 0)
+                            pTriangle.shoot(180);
+                        if (facing == 1)
+                            pTriangle.shoot(155);
+                        if (facing == 3)
+                            pTriangle.shoot(205);
                         break;
                     case 3:
-                        pTriangle.shoot(270);
+                        //if(facing != 3)
+                        if (facing == 0)
+                            pTriangle.shoot(300);
+                        if (facing == 1)
+                            pTriangle.shoot(270);
+                        if (facing == 2)
+                            pTriangle.shoot(245);
                         break;
                     default:
                         pTriangle.shoot(0);

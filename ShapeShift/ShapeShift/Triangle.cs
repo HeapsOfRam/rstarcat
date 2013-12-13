@@ -170,6 +170,9 @@ namespace ShapeShift
             }
         }
 
+        public int rotationIteration()
+        { return shadowCount; }
+
         public void Update(GameTime gameTime)
         {
             frameCounter += (int)gameTime.ElapsedGameTime.TotalMilliseconds;
