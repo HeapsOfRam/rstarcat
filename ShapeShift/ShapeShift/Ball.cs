@@ -224,6 +224,7 @@ namespace ShapeShift
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            base.Draw(spriteBatch);
             effect.CurrentTechnique.Passes[0].Apply();
 
             if (!expired)
@@ -232,7 +233,7 @@ namespace ShapeShift
             spriteBatch.End();
 
             spriteBatch.Begin();
-            base.Draw(spriteBatch);
+            
         }
     }
 }

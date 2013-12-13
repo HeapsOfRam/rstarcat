@@ -59,7 +59,7 @@ namespace ShapeShift
             Song song = Content.Load<Song>("Music/GrooveBox");
             bgMusicList.Add(song);
 
-            MediaPlayer.Play(song);
+            
 
             song = Content.Load<Song>("Music/Waking Up");
             bgMusicList.Add(song);
@@ -72,6 +72,11 @@ namespace ShapeShift
 
             song = Content.Load<Song>("Music/Curse The Galaxey");
             bgMusicList.Add(song);
+
+            Random rand = new Random();
+            MediaPlayer.Play(bgMusicList[rand.Next(5)]);
+
+
         }
 
         /// <summary>

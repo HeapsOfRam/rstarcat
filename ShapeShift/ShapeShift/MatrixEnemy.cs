@@ -96,7 +96,7 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)
         {
-            base.Update(gameTime, col, layer, player, bullets);
+            //base.Update(gameTime, col, layer, player, bullets);
             //position = tiles[0, 0].getPosition();
 
             

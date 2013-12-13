@@ -2,6 +2,6 @@ C:\Users\wildcat\Desktop\rstarcat-master\ShapeShift\ShapeShiftContent\obj\x86\De
 C:\Users\wildcat\Desktop\rstarcat\rstarcat\ShapeShift\ShapeShiftContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Stephen\Documents\GitHub\rstarcat\ShapeShift\ShapeShiftContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Harrison\Documents\GitHub\rstarcat\ShapeShift\ShapeShiftContent\obj\x86\Debug\ShapeShiftContent.contentprojResolveAssemblyReference.cache
-C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShiftContent\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShiftContent\obj\x86\Debug\ShapeShiftContent.contentprojResolveAssemblyReference.cache
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShiftContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShiftContent\obj\x86\Debug\ResolveAssemblyReference.cache

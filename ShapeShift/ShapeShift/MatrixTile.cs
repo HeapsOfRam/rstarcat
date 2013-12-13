@@ -143,17 +143,21 @@ namespace ShapeShift
 
         public override bool collides(Vector2 position, Rectangle rectangleB, Color[] dataB)
         {
-          if (!dead){
-            Color[] dataA = new Color[28 * 28];
-            shadowTexture.GetData(dataA);
-            Rectangle rectangleA;
-            
-                rectangleA = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
-                dataA = individualTileData;
-            
-          
-           if (rectangleA.Intersects(rectangleB))
-                return (IntersectPixels(rectangleA, dataA, rectangleB, dataB));
+            if (Math.Abs(position.X - rectangleB.X) < 70 || Math.Abs(position.Y - rectangleB.Y) < 70)
+            {
+                if (!dead)
+                {
+                    Color[] dataA = new Color[28 * 28];
+                    shadowTexture.GetData(dataA);
+                    Rectangle rectangleA;
+
+                    rectangleA = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
+                    dataA = individualTileData;
+
+
+                    if (rectangleA.Intersects(rectangleB))
+                        return (IntersectPixels(rectangleA, dataA, rectangleB, dataB));
+                }
             }
           return false;
         }

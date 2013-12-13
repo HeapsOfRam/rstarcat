@@ -18,7 +18,7 @@ namespace ShapeShift
         private FillTimer eActionFillTimer;
 
 
-
+        private List<Vector2> previousPositions = new List<Vector2>();
         private const int FULL = 3, MID = 2, LOW = 1, EMPTY = 0, SIZE = 60, MOVE = 5;
         private const float BASEMOVESPEED = 150f;
         private Shape nextShape;
@@ -250,6 +250,7 @@ namespace ShapeShift
                 pCircle.removeShield();
                 shieldReady = true;
                 ballReady = true;
+                ball.die();
             }
             else if (entityShape == pSquare && pSquare.dashing)
                 pSquare.stopDashing(this);
@@ -315,22 +316,22 @@ namespace ShapeShift
 
         private void pushOut()
         {
-
-            if (xCollide)
+            int count;
+            if (previousPositions.Count == 0)
             {
-                if (previousPosition.X - position.X > 0)
-                    position.X -= 10;
-                else
-                   position.X += 10;
+                count = 0;
             }
+            else
+                count = previousPositions.Count - 1;
 
-            if (yCollide)
+            while (detectCollision())
             {
-                if (previousPosition.Y - position.Y > 0)
-                    position.Y -= 10;
-                else
-                    position.Y += 10;
+                this.position = previousPositions[count];
+                this.moveAnimation.position = previousPositions[count];
+                
+                count--;
             }
+            
         }
 
          // Checks to see if the next shape is colliding with anything before switching 
@@ -390,7 +391,7 @@ namespace ShapeShift
                     
                     pdeployShield();
 
-                    detectCollision();
+                    //detectCollision();
                     pushOut();
                     
 
@@ -412,7 +413,7 @@ namespace ShapeShift
             if (entityShape == pTriangle)
             {
                 pRotate();
-                detectCollision();
+                //detectCollision();
                 pushOut();
                 currentCooldownR = 0;
             }
@@ -869,6 +870,18 @@ namespace ShapeShift
             this.col = col;
             this.layer = layer;
             this.input = input;
+
+            if (!colliding)
+            {
+                Vector2 newPos = new Vector2(position.X, position.Y);
+
+                   if (!previousPositions.Contains(newPos))
+                        previousPositions.Add(newPos);
+                
+
+
+
+            }
 
             if (!turret.isExpired())
                 turret.Update(gameTime, input, col, layer);
