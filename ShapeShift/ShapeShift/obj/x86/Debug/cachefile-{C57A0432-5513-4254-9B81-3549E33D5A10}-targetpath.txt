@@ -88,6 +88,7 @@ Content\Square\heart.xnb
 Content\Square\heartEmpty.xnb
 Content\Triangle\heart.xnb
 Content\Triangle\heartEmpty.xnb
+Content\Circle\CircleBallShadow.xnb
 Content\Fonts\Font1.xnb
 Content\Fonts\MenuFont.xnb
 Content\Fonts\TitleFont.xnb
@@ -99,5 +100,4 @@ Content\Music\White Denim - D - At The Farm.wma
 Content\ColorChange.xnb
 Content\desaturate.xnb
 Content\normalmap.xnb
-Content\Circle\CircleBallShadow.xnb
 Content\Copy of ColorChange.xnb

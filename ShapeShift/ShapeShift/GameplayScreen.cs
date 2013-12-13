@@ -238,6 +238,7 @@ namespace ShapeShift
                     
                 }
 
+
                 if (inputManager.KeyDown(Keys.G))
                 {
                     foreach (MatrixEnemy e in enemyList)
@@ -403,7 +404,10 @@ namespace ShapeShift
                     foreach (string highScore in highScoresList)
                     {
                         // Use a tab to indent each line of the file.
-                        currentHighScore = int.Parse(highScore);
+
+                        String[] temp = highScore.Split(',');
+
+                        currentHighScore = int.Parse(temp[0]);
                         listOfScores.Add(currentHighScore);
 
                     }
@@ -414,14 +418,21 @@ namespace ShapeShift
                     if (score > listOfScores.Min()) //if the Game Score is higher than the lowest recorded High Score
                     {
 
-                        string[] scoreLine = { score.ToString() };
-                        System.IO.File.AppendAllLines(@".\Scores\Scores.txt", scoreLine);
+
+                        //System.IO.File.AppendAllLines(@".\Scores\Scores.txt", scoreLine);
+                        GameServices.RemoveService<int>();
+                        GameServices.AddService<int>(score);
 
                         //WRITES THE SCORE AND SPECIFIES WHAT LEVEL THE SCORE WAS ACHIEVED ON
                         // string[] lines = { "Name: " + playerName + " ", "Score: " + score.ToString() + " ", "Levels Completed: " + numLevelsCompleted.ToString() + " " };
                         // WriteAllLines creates a file, writes a collection of strings to the file, 
                         // and then closes the file.
                         // System.IO.File.AppendAllLines(@"C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Scores\ScoreInfo.txt", lines);
+                    }
+                    else
+                    {
+                        GameServices.RemoveService<int>();
+                        GameServices.AddService<int>(0);
                     }
 
                     //Loads the TitleScreen -----Later the GameOver Screen First

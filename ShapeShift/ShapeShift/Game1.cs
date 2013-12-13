@@ -37,6 +37,7 @@ namespace ShapeShift
             ScreenManager.Instance.Initialize();
             GameServices.AddService<GraphicsDevice>(graphics.GraphicsDevice);
             GameServices.AddService<ContentManager>(Content);
+            GameServices.AddService<int>(0);
             
 
             //we can access any of the public methods from the SingletonClass (ScreenManager)
