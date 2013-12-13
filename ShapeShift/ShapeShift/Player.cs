@@ -52,6 +52,7 @@ namespace ShapeShift
         private int mineDeploymentCooldown;
         private bool mineDeploymentCooldownStarted;
         private bool mineExpired;
+       
         
         private Random rand;
 
@@ -65,6 +66,8 @@ namespace ShapeShift
         private  Layers layer;
         private InputManager input;
         private SpriteFont font;
+        private Boolean gameEnd;
+        private bool dead;
 
         /* Player Spawns are currently handled in entity
         private Vector2 leftSpawnPosition;
@@ -100,6 +103,7 @@ namespace ShapeShift
             font = content.Load<SpriteFont>("Fonts/AbilityStatusFont");
             maxHealth = FULL;
             health    = maxHealth;
+            dead = false;
 
             entityShape = pSquare;   //********STARTING SHAPE*******         
 
@@ -205,6 +209,7 @@ namespace ShapeShift
 
         public override void die()
         {
+            gameEnd = true;
         }
 
         public void shiftShape()
@@ -486,6 +491,12 @@ namespace ShapeShift
 
         public override Boolean isEnemy()
         { return false; }
+
+        
+        public override bool isDead()
+        {
+            return dead;
+        }
 
         public Boolean isTurretDropped()
         { return turret.isDropped(); }

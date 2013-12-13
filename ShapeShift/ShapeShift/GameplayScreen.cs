@@ -56,6 +56,7 @@ namespace ShapeShift
         String playerName = "";
         int currentHighScore; //Used for comparison
         private bool enemiesLoaded = true;
+        GamePadState CurrentGamePadState;
 
         #region ScoreManagement
         public int Score //Used to access the score of the game elsewhere
@@ -96,7 +97,7 @@ namespace ShapeShift
         {
             base.LoadContent(content, input);
             player = new Player();
-
+            //CurrentGamePadState = GamePad.GetState(PlayerIndex.One);
             
             dummyEnemy = new MatrixEnemy(new Vector2 (500,500),this);
             //enemyList.Add(dummyEnemy);
@@ -145,6 +146,7 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime)
         {
+            
             if (!paused)
             {
                 if (inputManager.KeyPressed(Keys.P))
@@ -332,9 +334,13 @@ namespace ShapeShift
                         }
                     }
                 }*/
-
                 //LOADING IN THE NEXT LEVEL
 
+                //DID YOU DIE????
+               /*
+                if (player.getHealth() == 0)
+                    GameOver = true;
+                */
                 
                 if (enemiesLoaded)
                 {
@@ -373,7 +379,7 @@ namespace ShapeShift
                 if (Level.Equals(previousLevel)) //IF you are already on the next randomly generated level, load again
                 {
                     // previousLevel = Level;                          //Assign the current level to 'previous level'
-                    levelNumber = randomLevelGenerator.Next(4) + 1; //randomly generate the next level number
+                    levelNumber = randomLevelGenerator.Next(7) + 1; //randomly generate the next level number
                     
                     Level = levelNumber.ToString();                 //Assign the new level number to 'level'
 
@@ -452,7 +458,7 @@ namespace ShapeShift
 
             else if (paused)
             {
-                if (inputManager.KeyPressed(Keys.P))
+                if (inputManager.KeyPressed(Keys.P)) //CurrentGamePadState.IsButtonDown(Buttons.A)
                     paused = false;
                 inputManager.Update();
             }
@@ -503,9 +509,37 @@ namespace ShapeShift
                     dummyEnemy.LoadContent(content, 2, 3);
                     enemyList.Add(dummyEnemy);
                     break;
+                case 5:
+                    dummyEnemy = new MatrixEnemy(new Vector2(620, 200), this);
+                    dummyEnemy.LoadContent(content, 3, 3);
+                    enemyList.Add(dummyEnemy);
+                    
+                    dummyEnemy = new MatrixEnemy(new Vector2 (200,200),this);
+                    dummyEnemy.LoadContent(content, 2, 2);
+                    enemyList.Add(dummyEnemy);
+                    break;
 
+                case 6:
+                    dummyEnemy = new MatrixEnemy(new Vector2 (500,500),this);
+                    dummyEnemy.LoadContent(content, 3, 3);
+                    enemyList.Add(dummyEnemy);
 
-                   
+                    dummyEnemy = new MatrixEnemy(new Vector2 (400,200),this);
+                    dummyEnemy.LoadContent(content, 2, 2);
+                    enemyList.Add(dummyEnemy);
+                    break;
+                case 7:
+                    dummyEnemy = new MatrixEnemy(new Vector2 (500,200),this);
+                    dummyEnemy.LoadContent(content, 3, 2);
+                    enemyList.Add(dummyEnemy);
+
+                    dummyEnemy = new MatrixEnemy(new Vector2(700, 360), this);
+                    dummyEnemy.LoadContent(content, 2, 2);
+                    enemyList.Add(dummyEnemy);
+                    break;
+
+                    
+
             }
            
         }

@@ -53,6 +53,7 @@ namespace ShapeShift
         protected InputManager input;
         protected Collision col;
         protected Layers layer;
+        protected bool dead = false;
 
         public virtual void LoadContent(ContentManager content, InputManager input)
         {
@@ -138,11 +139,12 @@ namespace ShapeShift
 
         public virtual void die()
         {
+            dead = true;
         }
 
         public virtual bool isDead()
         {
-            return false;
+            return dead;
         }
 
         public virtual Boolean isEnemy()
