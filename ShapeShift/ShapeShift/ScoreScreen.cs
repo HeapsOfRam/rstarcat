@@ -27,9 +27,6 @@ namespace ShapeShift
             scoreScreen = new HighScores();
             scoreScreen.LoadContent(content, "Scores");
 
-            Song song = Content.Load<Song>("Music/White Denim - D - At The Farm");  // Put the name of your song in instead of "song_title"
-            //MediaPlayer.Play(song);
-            MediaPlayer.Volume = .5f;
         }
 
         public override void UnloadContent()
@@ -44,6 +41,8 @@ namespace ShapeShift
             inputManager.Update();
             //menu.Update(gameTime, inputManager);
             scoreScreen.Update(gameTime, inputManager);
+
+
 
         }
 

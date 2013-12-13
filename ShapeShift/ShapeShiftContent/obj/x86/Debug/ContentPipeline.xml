@@ -1145,16 +1145,6 @@
       <Time>2013-12-12T21:19:21.3014091-05:00</Time>
     </Item>
     <Item>
-      <Source>Music\White Denim - D - At The Farm.mp3</Source>
-      <Name>Music\White Denim - D - At The Farm</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\White Denim - D - At The Farm.xnb</Output>
-      <Extra>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\White Denim - D - At The Farm.wma</Extra>
-      <Time>2013-11-11T14:23:41.6509847-05:00</Time>
-    </Item>
-    <Item>
       <Source>ColorChange.fx</Source>
       <Name>ColorChange</Name>
       <Importer>EffectImporter</Importer>
@@ -1189,6 +1179,56 @@
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Copy of ColorChange.xnb</Output>
       <Time>2013-12-12T23:45:38.8084538-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Music\Curse The Galaxey.mp3</Source>
+      <Name>Music\Curse The Galaxey</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Curse The Galaxey.xnb</Output>
+      <Extra>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Curse The Galaxey.wma</Extra>
+      <Time>2013-12-13T07:42:53.6465897-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Music\Feed The Moon.mp3</Source>
+      <Name>Music\Feed The Moon</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Feed The Moon.xnb</Output>
+      <Extra>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Feed The Moon.wma</Extra>
+      <Time>2013-12-13T07:42:53.6535901-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Music\GrooveBox.mp3</Source>
+      <Name>Music\GrooveBox</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\GrooveBox.xnb</Output>
+      <Extra>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\GrooveBox.wma</Extra>
+      <Time>2013-12-13T07:42:53.6645907-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Music\Star Death.mp3</Source>
+      <Name>Music\Star Death</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Star Death.xnb</Output>
+      <Extra>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Star Death.wma</Extra>
+      <Time>2013-12-13T07:42:53.6145879-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Music\Waking Up.mp3</Source>
+      <Name>Music\Waking Up</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Waking Up.xnb</Output>
+      <Extra>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Waking Up.wma</Extra>
+      <Time>2013-12-13T07:42:53.6245884-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
