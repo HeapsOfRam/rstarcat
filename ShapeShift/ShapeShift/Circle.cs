@@ -202,7 +202,7 @@ namespace ShapeShift
                     b.hit();
             }
 
-            if (Math.Abs(vect.X - rectangle.X) < 30 || Math.Abs(vect.Y - rectangle.Y) < 30)
+            if (Math.Abs(vect.X - rectangle.X) < 70 || Math.Abs(vect.Y - rectangle.Y) < 70)
             {
 
                 Rectangle rectangleA = new Rectangle((int)vect.X, (int)vect.Y, WIDTH, HEIGHT);

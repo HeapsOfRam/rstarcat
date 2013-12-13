@@ -121,7 +121,7 @@ namespace ShapeShift
                         foreach (Shape bullet in bullets)
                         {
                             if (!bullet.isDead()){
-                                if (Math.Abs(tiles[i, j].position.X - bullet.getActiveTextures()[0].position.X) < 28 || Math.Abs(tiles[i, j].position.Y - bullet.getActiveTextures()[0].position.Y) < 28)
+                                if (Math.Abs(tiles[i, j].position.X - bullet.getActiveTextures()[0].position.X) < 70 || Math.Abs(tiles[i, j].position.Y - bullet.getActiveTextures()[0].position.Y) < 70)
                                 {
                                     if (tiles[i, j].getShape().collides(tiles[i, j].getPosition(), bullet.getRectangle(), bullet.getColorData()))
                                     {
@@ -139,6 +139,7 @@ namespace ShapeShift
                                         }
                                     }
                                 }
+                                
                             }
                         }
                     }

@@ -178,7 +178,7 @@ namespace ShapeShift
                         direction = rand.Next(1, 8);
                         state = WANDER;
                     }
-                    if (Math.Abs(position.X - entity.position.X) < 30 || Math.Abs(position.Y - lastCheckedRectangle.Y) < 30)
+                    if (Math.Abs(position.X - entity.position.X) < 70 || Math.Abs(position.Y - lastCheckedRectangle.Y) < 70)
                     {
                         if (entityShape.collides(position, entity.getRectangle(), entity.getShape().getColorData()))
                             state = ATTACK;
@@ -192,7 +192,7 @@ namespace ShapeShift
                     break;
                 case ATTACK:
                     //standStill();
-                    if (Math.Abs(position.X - entity.position.X) < 30 || Math.Abs(position.Y - lastCheckedRectangle.Y) < 30)
+                    if (Math.Abs(position.X - entity.position.X) < 70 || Math.Abs(position.Y - lastCheckedRectangle.Y) < 70)
                     {
                         if (!entityShape.collides(position, entity.getRectangle(), entity.getShape().getColorData()))
                             state = CHASE;

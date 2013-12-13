@@ -298,10 +298,12 @@ namespace ShapeShift
                         String type = this.GetType() + "";
                         int limit;
 
-                        if (type.Equals("ShapeShift.Ball") || type.Equals("ShapeShift.MatrixTileEnemy") || type.Equals("ShapeShift.MatrixEnemy"))
-                        
+                        if (type.Equals("ShapeShift.Ball") || type.Equals("ShapeShift.MatrixEnemy"))
+
                             limit = 70;
-                        
+
+                        else if (type.Equals("ShapeShift.MatrixTileEnemy"))
+                            limit = 46;
                         else
                             limit = 20000;
 
