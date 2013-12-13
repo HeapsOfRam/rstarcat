@@ -458,8 +458,6 @@ C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\Shape
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fonts\Font1.xnb
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fonts\MenuFont.xnb
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fonts\TitleFont.xnb
-C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\White Denim - D - At The Farm.xnb
-C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\White Denim - D - At The Farm.wma
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\ShapeShift.exe
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\ShapeShift.pdb
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Square\SquareShotShadowDown.xnb
@@ -634,3 +632,13 @@ C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\C
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\GrooveBox.wma
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Star Death.wma
 C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Waking Up.wma
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Curse The Galaxey.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Feed The Moon.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\GrooveBox.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Star Death.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Waking Up.xnb
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Curse The Galaxey.wma
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Feed The Moon.wma
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\GrooveBox.wma
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Star Death.wma
+C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Music\Waking Up.wma

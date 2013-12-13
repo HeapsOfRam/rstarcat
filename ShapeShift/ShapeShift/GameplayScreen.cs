@@ -243,7 +243,7 @@ namespace ShapeShift
                 if (inputManager.KeyPressed(Keys.E))
                     player.eAction();
 
-                if (inputManager.KeyDown(Keys.F))
+               /* if (inputManager.KeyDown(Keys.F))
                 {
                     foreach (MatrixEnemy e in enemyList)
                     {
@@ -260,7 +260,7 @@ namespace ShapeShift
                         e.ungroup();
                     }
 
-                }
+                }*/
 
                 
 
@@ -275,7 +275,7 @@ namespace ShapeShift
 
                 //for debug, pause
                 
-                if (inputManager.KeyPressed(Keys.T))
+                /*if (inputManager.KeyPressed(Keys.T))
                     pauseTimer = !pauseTimer;
                 if (!pauseTimer)
                     currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -289,6 +289,7 @@ namespace ShapeShift
 
                 if (inputManager.KeyPressed(Keys.Y))
                     GameOver = true;
+                 */
 
                 if (pauseTimer)
                 {
@@ -348,11 +349,11 @@ namespace ShapeShift
                 }*/
                 //LOADING IN THE NEXT LEVEL
 
-                //DID YOU DIE????
-               /*
+                //*****************************DID YOU DIE????
+               
                 if (player.getHealth() == 0)
                     GameOver = true;
-                */
+                
                 
                 if (enemiesLoaded)
                 {
