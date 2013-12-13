@@ -16,6 +16,8 @@ namespace ShapeShift
         private float damageTime = 3;
         private const float INVULN_TIME = 1f;
 
+        
+
         Player player;
         MatrixEnemy dummyEnemy;
         Layers layer;
@@ -98,6 +100,8 @@ namespace ShapeShift
             player = new Player();
 
             
+
+
             dummyEnemy = new MatrixEnemy(new Vector2 (500,500),this);
             //enemyList.Add(dummyEnemy);
 
@@ -462,7 +466,6 @@ namespace ShapeShift
         private void loadEnemies(int Level)
         {
             enemyList = new List<MatrixEnemy>();
-            //Console.WriteLine(Level);
             enemiesLoaded = true;
 
             pauseTimer = false;
@@ -517,13 +520,13 @@ namespace ShapeShift
             base.Draw(spriteBatch);
             map.Draw(spriteBatch);
             player.Draw(spriteBatch);
-
+            
             foreach (MatrixEnemy e in enemyList)
                 e.Draw(spriteBatch);
 
 
             spriteBatch.DrawString(font, timeRemaining.ToString(), new Vector2(175, 5), Color.White);
-            spriteBatch.DrawString(font, "score: " + score.ToString(), new Vector2(270, 5), Color.White);
+            spriteBatch.DrawString(font, "score: " + score.ToString(), new Vector2(320, 5), Color.White);
 
             if(paused)
             spriteBatch.DrawString(font, "GAME PAUSED", new Vector2(525, 5), Color.White);
