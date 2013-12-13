@@ -59,6 +59,8 @@ namespace ShapeShift
             Song song = Content.Load<Song>("Music/GrooveBox");
             bgMusicList.Add(song);
 
+            MediaPlayer.Play(song);
+
             song = Content.Load<Song>("Music/Waking Up");
             bgMusicList.Add(song);
 
