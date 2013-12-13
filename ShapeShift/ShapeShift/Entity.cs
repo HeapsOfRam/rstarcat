@@ -41,7 +41,7 @@ namespace ShapeShift
 
         protected Rectangle lastCheckedRectangle;
 
-        protected Boolean xCollide = false, yCollide = false;
+        protected Boolean xCollide = false, yCollide = false, stuck = false;
 
         protected Boolean collision = false;
         protected Boolean[] directions = new Boolean[4];
@@ -188,7 +188,7 @@ namespace ShapeShift
         public Vector2 getPosition()
         { return position; }
 
-        protected virtual void detectCollision()
+        protected virtual Boolean detectCollision()
         {
             /*int yIndex = (int) position.Y / 46;
             int xIndex = (int) position.X / 46;
@@ -280,6 +280,8 @@ namespace ShapeShift
 
             xCollide = false;
             yCollide = false;
+            stuck = false;
+            colliding = false;
             //Console.WriteLine(this.GetType());
             exitsLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)
@@ -308,22 +310,35 @@ namespace ShapeShift
                         {
                             Vector2 xPosition = new Vector2(position.X, moveAnimation.Position.Y);
                             Vector2 yPosition = new Vector2(moveAnimation.Position.X, position.Y);
-                            
+
+                            Vector2 yPrevious = new Vector2(position.X, previousPosition.Y);
+                            Vector2 xPrevious = new Vector2(previousPosition.X, position.Y);
+
                             if (getShape().collides(yPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                             {
                                 position.Y = moveAnimation.Position.Y;
                                 colliding = true;
                                 yCollide = true;
+
                                 //Console.WriteLine("Y" + position.Y);
+                                /*if (getShape().collides(previousPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                                    stuck = true;*/
                             }
+                            else
+                                previousPosition.Y = position.Y + 0;
 
                             if (getShape().collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                             {
                                 position.X = moveAnimation.Position.X;
                                 colliding = true;
                                 xCollide = true;
+
+                                if (getShape().collides(previousPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
+                                    stuck = true;
                                 //Console.WriteLine("X" + position.X);
                             }
+                            else
+                                previousPosition.X = position.X + 0;
 
                         }
 
@@ -354,13 +369,15 @@ namespace ShapeShift
                     }
                 }
             }
+
+            return colliding;
         
         }
 
         public virtual void Update(GameTime gameTime, InputManager input, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
         {
             updateCount++;
-            previousPosition = position;
+            //previousPosition = position;
             colliding = false;
 
             this.gameTime = gameTime;
@@ -376,8 +393,8 @@ namespace ShapeShift
         {
             updateCount++;
 
-            previousPosition = position;
-            colliding = false;
+            //previousPosition = position;
+            //colliding = false;
 
             this.gameTime = gameTime;
             this.col = col;

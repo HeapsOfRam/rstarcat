@@ -18,12 +18,12 @@ float4 main(float4 color : COLOR0, float2 texCoord : TEXCOORD0) : COLOR0
     float lightAmount = max(dot(normal, LightDirection), 0);
     
  
-    //color.rgb *= 1.25;
+    color.rgb *= 1.50;
 	
 	color.b = 0;
 	//color.r = (color.r -60) /2;
 	
-color.g = color.g - 40;
+color.g = color.g - 30;
 //color.b = color.b * .15;
 
 	

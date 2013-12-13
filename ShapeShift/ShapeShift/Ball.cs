@@ -121,13 +121,18 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
+            this.gameTime = gameTime;
+            this.input = input;
+            this.col = col;
+            this.layer = layer;
+
             if (!expired)
             {
-                base.Update(gameTime, input, col, layer);                
+                //base.Update(gameTime, input, col, layer);                
 
                 bCircle.Update(gameTime);
 
-                previousPosition = position;
+                //previousPosition = position;
 
                 if (deployed)
                     lockToOwner();
@@ -146,21 +151,25 @@ namespace ShapeShift
                     }
                     else
                     {*/
-                        if (yCollide && previousPosition.Y != position.Y)
+                        /*if (yCollide)// && previousPosition.X == position.X)
                         {
                             velocity.Y = -velocity.Y;
-                            position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
                         }
-                        else if (xCollide && previousPosition.X != position.X)
+                        if(xCollide)
+                        {
+                            velocity.X = -velocity.X;
+                        }*/
+                        
+                        position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        if (detectCollision())
                         {
                             velocity.X = -velocity.X;
                             position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
                         }
-                        else
-                        {
-                            position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                            position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                        }
+                        position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        if (detectCollision())
+                            velocity.Y = -velocity.Y;
+
 
                         //position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
                         //position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;

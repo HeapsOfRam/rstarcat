@@ -793,7 +793,7 @@ namespace ShapeShift
             if (!ball.isExpired())
                 ball.Update(gameTime, input, col, layer);
             
-            previousPosition = position;
+            //previousPosition = position;
 
             updateShield(gameTime);
 
