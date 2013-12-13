@@ -566,3 +566,33 @@ C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\Shape
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Copy of ColorChange.xnb
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleBallShadow.xnb
 C:\Users\wildcat\Documents\Visual Studio 2010\Projects\ShapeShift\ShapeShift\ShapeShift\bin\x86\Debug\Content\Copy of ColorChange.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\1.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\2.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\3.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\4.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\5.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\6.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\7.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\8.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\9.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\10.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\11.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\12.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\13.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\14.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_R\15.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\1.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\2.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\3.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\4.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\5.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\6.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\7.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\8.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\9.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\10.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\11.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\12.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\13.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\14.xnb
+C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Fill_E\15.xnb

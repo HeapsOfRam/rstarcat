@@ -112,6 +112,7 @@
     <Compile Include="Ball.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="FillTimer.cs" />
     <Compile Include="GameServices.cs" />
     <Compile Include="MatrixTile.cs" />
     <Compile Include="MatrixTileEnemy.cs" />
@@ -147,6 +148,21 @@
     <Compile Include="Turret.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fill2\1.png" />
+    <Content Include="fill2\2.png" />
+    <Content Include="fill2\3.png" />
+    <Content Include="fill2\4.png" />
+    <Content Include="fill2\5.png" />
+    <Content Include="fill2\6.png" />
+    <Content Include="fill2\7.png" />
+    <Content Include="fill2\8.png" />
+    <Content Include="fill2\9.png" />
+    <Content Include="fill2\a.png" />
+    <Content Include="fill2\b.png" />
+    <Content Include="fill2\c.png" />
+    <Content Include="fill2\d.png" />
+    <Content Include="fill2\e.png" />
+    <Content Include="fill2\g.png" />
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
