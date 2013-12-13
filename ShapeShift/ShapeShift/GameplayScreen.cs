@@ -274,11 +274,11 @@ namespace ShapeShift
                     player.shoot(gameTime, 4);
 
                 //for debug, pause
-                
-                /*if (inputManager.KeyPressed(Keys.T))
-                    pauseTimer = !pauseTimer;
                 if (!pauseTimer)
                     currentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                /*if (inputManager.KeyPressed(Keys.T))
+                    pauseTimer = !pauseTimer;
+               
                 if (inputManager.KeyPressed(Keys.L))
                     player.restoreHealth();
                 

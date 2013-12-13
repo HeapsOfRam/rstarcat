@@ -387,9 +387,12 @@ namespace ShapeShift
             {
                 if (!shielded() && shieldReady)
                 {
+                    
                     pdeployShield();
+
                     detectCollision();
                     pushOut();
+                    
 
                 }
                 //else
