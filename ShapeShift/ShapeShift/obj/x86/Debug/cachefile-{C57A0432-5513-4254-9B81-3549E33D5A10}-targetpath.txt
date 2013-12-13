@@ -93,9 +93,9 @@ Content\Fonts\MenuFont.xnb
 Content\Fonts\TitleFont.xnb
 Content\Fonts\ScoreFont.xnb
 Content\Fonts\ScoreFont2.xnb
+Content\Fonts\AbilityStatusFont.xnb
 Content\Music\White Denim - D - At The Farm.xnb
 Content\Music\White Denim - D - At The Farm.wma
 Content\ColorChange.xnb
 Content\desaturate.xnb
 Content\normalmap.xnb
-Content\Fonts\AbilityStatusFont.xnb

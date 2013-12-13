@@ -97,7 +97,7 @@ namespace ShapeShift
             eMatrixTile.group();
         }
 
-        protected override void detectCollision()
+        /*protected override void detectCollision()
         {
             exitsLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)
@@ -161,7 +161,7 @@ namespace ShapeShift
                 }
             }
 
-        }
+        }*/
 
         public void ungroup()
         {

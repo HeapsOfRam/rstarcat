@@ -424,6 +424,7 @@ namespace ShapeShift
                 else
                 {
                     ball = new Ball(content, input, this);
+                    updateCount = 0;
                     ball.deploySelf();
                 }
 
@@ -751,11 +752,21 @@ namespace ShapeShift
             return mine.isDropped();
         }
 
+        public Ball getBall()
+        {
+            return ball;
+        }
+
+        public Boolean hasBallThrown()
+        {
+            return ball.isFired();
+        }
+
         private void updateShield(GameTime gameTime)
         {
             if (shielded())
             {
-                Console.WriteLine("shieldDuration: " + shieldDuration);
+                //Console.WriteLine("shieldDuration: " + shieldDuration);
                 shieldDuration += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (shieldDuration > SHIELD_TIME)
                 {
@@ -926,6 +937,8 @@ namespace ShapeShift
                 }
 
             }
+
+            //Console.WriteLine("Player" + updateCount);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -1015,6 +1028,8 @@ namespace ShapeShift
             {
                 list.AddRange(getTurretBullets());
             }
+            if (ball.isFired() && !ball.isExpired())
+                list.Add(ball.getShape());
             return list;
         }
 

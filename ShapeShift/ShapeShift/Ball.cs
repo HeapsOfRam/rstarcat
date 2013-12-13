@@ -18,6 +18,8 @@ namespace ShapeShift
 
         private const float BOUNCE_TIME = 6f;
 
+        private Effect effect;
+
         private Vector2 velocity;
 
         private Random rand;
@@ -33,18 +35,21 @@ namespace ShapeShift
             base.LoadContent(content, input);
             currTime = 0;
             bCircle = new Circle(content);
+            bCircle.scaleShape(.75f);
+            bCircle.setOrigin(new Vector2(46 / 2, 46 / 2));
             entityShape = bCircle;
             moveAnimation = new SpriteSheetAnimation();
             moveAnimation.position = position;
             rand = new Random();           
             velocity.X = randomVelocity();
             velocity.Y = randomVelocity();
+            effect = content.Load<Effect>("normalmap");
         }
 
         public void lockToOwner()
         {
-            position.X = owner.position.X + 0;
-            position.Y = owner.position.Y + 0;
+            position.X = owner.position.X + 6;
+            position.Y = owner.position.Y + 6;
             entityShape.setPosition(position);
             moveAnimation.Position = position;
         }
@@ -116,17 +121,10 @@ namespace ShapeShift
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
-            /*this.gameTime = gameTime;
-            this.input = input;
-            this.col = col;
-            this.layer = layer;
-
-            detectCollision();*/
-
             if (!expired)
             {
+                base.Update(gameTime, input, col, layer);                
 
-                
                 bCircle.Update(gameTime);
 
                 previousPosition = position;
@@ -135,27 +133,43 @@ namespace ShapeShift
                     lockToOwner();
                 if (fired)
                 {
-                    base.Update(gameTime, input, col, layer);
+                    //base.Update(gameTime, input, col, layer);
 
                     currTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     //moveLeft(gameTime);
-                    if (!colliding)
+                    /*if (xCollide && yCollide)
                     {
-                        moveBall();
+                        velocity.X = -velocity.X;
+                        velocity.Y = -velocity.Y;
+                        position.X += velocity.X;
+                        position.Y += velocity.Y;
                     }
                     else
-                    {
-                        velocity.X = randomVelocity();
-                        velocity.Y = randomVelocity();
+                    {*/
+                        if (yCollide && previousPosition.Y != position.Y)
+                        {
+                            velocity.Y = -velocity.Y;
+                            position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        }
+                        else if (xCollide && previousPosition.X != position.X)
+                        {
+                            velocity.X = -velocity.X;
+                            position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        }
+                        else
+                        {
+                            position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                            position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        }
 
-                        moveBall();
                         //position.X += velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds;
                         //position.Y += velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                        colliding = false;
                         //velocity.X = randomVelocity();
                         //velocity.Y = randomVelocity();
-                    }
+                    //}
+
+                    //moveBall();
                 }
 
                 if (currTime > BOUNCE_TIME)
@@ -180,17 +194,23 @@ namespace ShapeShift
                     animation.position = position;
                 }
 
-                moveAnimation.Position = position;                
-
+                moveAnimation.Position = position;
             }
+
+            //Console.WriteLine("Ball" + updateCount);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            effect.CurrentTechnique.Passes[0].Apply();
 
-            if(!expired)
+            if (!expired)
                 entityShape.Draw(spriteBatch);
+
+            spriteBatch.End();
+
+            spriteBatch.Begin();
+            base.Draw(spriteBatch);
         }
     }
 }

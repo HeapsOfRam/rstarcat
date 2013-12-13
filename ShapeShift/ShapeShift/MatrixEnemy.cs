@@ -90,7 +90,8 @@ namespace ShapeShift
 
         public override Shape getShape()
         {
-            return entityShape;
+            return new Shape();
+            //return entityShape;
         }
 
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)

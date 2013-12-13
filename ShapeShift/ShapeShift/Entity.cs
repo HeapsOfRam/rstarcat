@@ -20,6 +20,8 @@ namespace ShapeShift
         protected ContentManager content;
         protected FileManager fileManager;
 
+        protected int updateCount = 0;
+
        // protected Texture2D image;
 
         protected List<List<string>> attributes, contents;
@@ -38,6 +40,8 @@ namespace ShapeShift
         protected float damageTime = 3, invulnPeriod = 1f;
 
         protected Rectangle lastCheckedRectangle;
+
+        protected Boolean xCollide = false, yCollide = false;
 
         protected Boolean collision = false;
         protected Boolean[] directions = new Boolean[4];
@@ -121,7 +125,7 @@ namespace ShapeShift
 
         public virtual Boolean takeDamage()
         {
-            Console.WriteLine("Health = " + health);
+            //Console.WriteLine("Health = " + health);
 
             damageTime = 0;
             getShape().hit();
@@ -186,7 +190,96 @@ namespace ShapeShift
 
         protected virtual void detectCollision()
         {
+            /*int yIndex = (int) position.Y / 46;
+            int xIndex = (int) position.X / 46;
 
+            Point[] surroundingTiles = new Point[9];
+
+            surroundingTiles[0] = new Point(xIndex, yIndex);
+            surroundingTiles[1] = new Point(xIndex - 1, yIndex - 1);
+            surroundingTiles[2] = new Point(xIndex, yIndex - 1);
+            surroundingTiles[3] = new Point(xIndex + 1, yIndex - 1);
+            surroundingTiles[4] = new Point(xIndex + 1, yIndex);
+            surroundingTiles[5] = new Point(xIndex + 1, yIndex + 1);
+            surroundingTiles[6] = new Point(xIndex, yIndex + 1);
+            surroundingTiles[7] = new Point(xIndex - 1, yIndex + 1);
+            surroundingTiles[8] = new Point(xIndex - 1, yIndex);
+
+            //if (!isEnemy())
+            //{
+                foreach (Point p in surroundingTiles)
+                {
+                    //Console.WriteLine(p);
+                    if (p.X >= 0 && p.Y >= 0 && p.X < 15 && p.Y < 20)
+                    {
+                        if (col.CollisionMap[p.X][p.Y] == "x") //Collision against solid objects (ex: Tiles)
+                        {
+
+                            //Creates a rectangle that is the current tiles postion and size
+                            lastCheckedRectangle = new Rectangle((int)(p.Y * layer.TileDimensions.X), (int)(p.X * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
+
+                            /*String type = this.GetType() + "";
+                            int limit;
+
+                            if (type.Equals("ShapeShift.MatrixEnemy"))
+                        
+                                limit = 70;
+                        
+                            else
+                                limit = 20000;
+
+
+                            //if (Math.Abs(position.X - lastCheckedRectangle.X) < limit || Math.Abs(position.Y - lastCheckedRectangle.Y) < limit)
+                            //{
+                            Vector2 xPosition = new Vector2(position.X, moveAnimation.Position.Y);
+                            Vector2 yPosition = new Vector2(moveAnimation.Position.X, position.Y);
+
+                            if (getShape().collides(yPosition, lastCheckedRectangle, layer.getColorData(p.X, p.Y, col.CollisionMap[p.X].Count)))
+                            {
+                                position.Y = moveAnimation.Position.Y;
+                                colliding = true;
+                                yCollide = true;
+                                Console.WriteLine("Y" + position.Y);
+                            }
+
+                            if (getShape().collides(xPosition, lastCheckedRectangle, layer.getColorData(p.X, p.Y, col.CollisionMap[p.X].Count)))
+                            {
+                                position.X = moveAnimation.Position.X;
+                                colliding = true;
+                                xCollide = true;
+                                Console.WriteLine("X" + position.X);
+                            }
+
+                            //}
+
+                        }
+
+                        if (col.CollisionMap[p.X][p.Y] == "*") //Marks a level transition (ex: Tiles)
+                        {
+
+                            //Creates a rectangle that is the current tiles postion and size
+                            lastCheckedRectangle = new Rectangle((int)(p.Y * layer.TileDimensions.X), (int)(p.X * layer.TileDimensions.Y), (int)(layer.TileDimensions.X), (int)(layer.TileDimensions.Y));
+
+
+                            if (getShape().collides(position, lastCheckedRectangle, layer.getColorData(p.X, p.Y, col.CollisionMap[p.X].Count)))
+                            {
+                                exitsLevel = true; //Boolean sent to GamePlayScreen. Update method will detect this, and then call map.loadContent
+
+                                //Going through Right Door
+                                if (position.X > 500)
+                                    position = leftSpawnPosition;
+                                //Going through Left door
+                                else if (position.X < 500)
+                                    position = rightSpawnPosition;
+
+                            }
+                        }
+                    //}
+                }
+            }*/
+
+            xCollide = false;
+            yCollide = false;
             //Console.WriteLine(this.GetType());
             exitsLevel = false;   //resets the signal to switch levels to false
             for (int i = 0; i < col.CollisionMap.Count; i++)
@@ -203,7 +296,7 @@ namespace ShapeShift
                         String type = this.GetType() + "";
                         int limit;
 
-                        if (type.Equals("ShapeShift.MatrixEnemy"))
+                        if (type.Equals("ShapeShift.Ball") || type.Equals("ShapeShift.MatrixTileEnemy") || type.Equals("ShapeShift.MatrixEnemy"))
                         
                             limit = 70;
                         
@@ -220,13 +313,18 @@ namespace ShapeShift
                             {
                                 position.Y = moveAnimation.Position.Y;
                                 colliding = true;
+                                yCollide = true;
+                                //Console.WriteLine("Y" + position.Y);
                             }
 
                             if (getShape().collides(xPosition, lastCheckedRectangle, layer.getColorData(i, j, col.CollisionMap[i].Count)))
                             {
                                 position.X = moveAnimation.Position.X;
                                 colliding = true;
+                                xCollide = true;
+                                //Console.WriteLine("X" + position.X);
                             }
+
                         }
 
                     }
@@ -261,15 +359,22 @@ namespace ShapeShift
 
         public virtual void Update(GameTime gameTime, InputManager input, Collision col, Layers layer) //May need to be adjusted, as enemies don't need input
         {
+            updateCount++;
+            previousPosition = position;
+            colliding = false;
+
             this.gameTime = gameTime;
             this.input = input;
             this.col = col;
             this.layer = layer;
             detectCollision();
+
+            moveAnimation.Position = position;
         }
 
         public virtual void Update(GameTime gameTime, Collision col, Layers layer, Entity entity, List<Shape> bullets)
         {
+            updateCount++;
 
             previousPosition = position;
             colliding = false;

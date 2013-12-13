@@ -185,6 +185,12 @@ namespace ShapeShift
                                     player.getMine().trigger();
                             }
 
+                            /*if (player.hasBallThrown())
+                            {
+                                if (e.collides(e.getPosition(), player.getBall().getRectangle(), player.getBall().getShape().getColorData()))
+                                    e.die();
+                            }*/
+
                             if (e.collides(e.getPosition(), player.getRectangle(), player.getShape().getColorData()))
                             {
                                 e.makeReel();
@@ -194,7 +200,7 @@ namespace ShapeShift
                                     DecreaseScore(1);
                                     damageTime = 0;
                                 }
-                            }
+                            } 
 
                             //TODO TO MAKE TURRET GET HIT AND DIE
                             /*if (e.collides(e.getPosition(), player.getTurretRectangle(), player.getTurretColor()))
