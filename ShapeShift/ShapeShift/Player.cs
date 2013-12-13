@@ -1053,6 +1053,8 @@ namespace ShapeShift
             }
             if (ball.isFired() && !ball.isExpired())
                 list.Add(ball.getShape());
+            if (mine.isCollidable())
+                list.Add(mine.getShape());
             return list;
         }
 

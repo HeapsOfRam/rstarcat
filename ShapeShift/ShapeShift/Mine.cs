@@ -16,7 +16,7 @@ namespace ShapeShift
 
         private Effect effect;
 
-        private Boolean deployed, dropped, exploded = false, awaitingReset = false;
+        private Boolean deployed, dropped, exploded = false, awaitingReset = false, collidable = false;
         private float currTime, boomTime = 0;
 
         private const float FUSE_TIME = 2f;
@@ -65,10 +65,15 @@ namespace ShapeShift
         public Boolean isDetonated()
         { return exploded; }
 
+        public Boolean isCollidable()
+        { return collidable; }
+
         public void goBoom()
         {
             exploded = true;
             gone = false;
+            mDiamond.switchShadowTexture();
+            collidable = true;
             //mDiamond.mineGoBoom();
         }
 
@@ -165,7 +170,10 @@ namespace ShapeShift
             {
                 boomTime += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
-                gone = mDiamond.mineGoBoom(boomTime);                    
+                gone = mDiamond.mineGoBoom(boomTime);
+                
+                if (gone)
+                    collidable = false;
             }
         }
 
@@ -174,7 +182,7 @@ namespace ShapeShift
             
             effect.CurrentTechnique.Passes[0].Apply();
 
-           if (!gone)
+            if (!gone)
                 entityShape.Draw(spriteBatch);
 
             spriteBatch.End();

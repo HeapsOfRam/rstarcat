@@ -75,6 +75,7 @@ namespace ShapeShift
         public override void die()
         {
             eMatrixTile.die();
+            state = WRITHE;
         }
 
         public override void Update(GameTime gameTime, Collision col, Layers layer, Entity player, List<Shape> bullets)

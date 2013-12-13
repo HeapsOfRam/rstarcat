@@ -18,6 +18,7 @@ namespace ShapeShift
         private Texture2D diamondDeployTurretTexture;
         private Texture2D diamondTurretIdleTexture;
         private Texture2D diamondHitTexture;
+        private Texture2D diamondMineShadowTexture;
         #endregion
 
         #region Animations
@@ -28,6 +29,7 @@ namespace ShapeShift
         private SpriteSheetAnimation diamondTurretAnimation;
         private SpriteSheetAnimation diamondTurretIdleAnimation;
         private SpriteSheetAnimation diamondHitAnimation;
+        private SpriteSheetAnimation diamondMineShadowAnimation;
         #endregion
 
         private Boolean droppedMine   = false;
@@ -69,6 +71,10 @@ namespace ShapeShift
             idleAnimation.LoadContent(content, diamondTexture, "", new Vector2(0, 0));
             idleAnimation.IsEnabled = true;
 
+            diamondMineShadowAnimation = new SpriteSheetAnimation(this, false);
+            diamondMineShadowAnimation.LoadContent(content, diamondShadowTexture, "", new Vector2(0, 0));
+            diamondMineShadowAnimation.IsEnabled = true;
+
             deployMineAnimation = new SpriteSheetAnimation(this, false);
             deployMineAnimation.LoadContent(content, diamondDeployMineTexture, "", new Vector2(0, 0));
             deployMineAnimation.IsEnabled = false;
@@ -104,6 +110,32 @@ namespace ShapeShift
 
             colorData = new Color[WIDTH * HEIGHT];
             diamondShadowTexture.GetData(colorData);
+
+            GraphicsDevice myDevice = GameServices.GetService<GraphicsDevice>();
+
+            RenderTarget2D renderTarget = new RenderTarget2D(myDevice, WIDTH, HEIGHT);
+            SpriteBatch spriteBatch = new SpriteBatch(myDevice);
+
+            // Set the render target on the device.
+            myDevice.SetRenderTarget(renderTarget);
+            myDevice.Clear(Color.Transparent);
+
+            diamondMineShadowAnimation.scale = 2.0f;
+            diamondMineShadowAnimation.origin = new Vector2(WIDTH / 2, HEIGHT / 2);
+
+            spriteBatch.Begin();
+
+            diamondMineShadowAnimation.Draw(spriteBatch);
+
+            spriteBatch.End();
+
+
+            // Call GetTexture to retrieve the render target data and save it to a texture.
+            myDevice.SetRenderTarget((RenderTarget2D)null);
+            diamondMineShadowTexture = new Texture2D(myDevice, WIDTH, HEIGHT);
+            Color[] con = new Color[WIDTH * HEIGHT];
+            renderTarget.GetData<Color>(con);
+            diamondMineShadowTexture.SetData<Color>(con);
         }
 
         public void attack()
@@ -201,6 +233,11 @@ namespace ShapeShift
 
             return false;
 
+        }
+
+        public void switchShadowTexture()
+        {
+            diamondShadowTexture = diamondMineShadowTexture;
         }
 
         public Boolean mineDropped()
