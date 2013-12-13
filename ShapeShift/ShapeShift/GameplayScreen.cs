@@ -13,7 +13,7 @@ namespace ShapeShift
 {
     public class GameplayScreen : GameScreen
     {
-        private float damageTime = 3;
+        private float damageTime = 3, turretDamageTime = 3;
         private const float INVULN_TIME = 1f;
 
         
@@ -171,8 +171,7 @@ namespace ShapeShift
                 player.pSquareResetDirections();
 
                 damageTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                
-                
+                turretDamageTime += (float)gameTime.ElapsedGameTime.TotalSeconds;                
                 
                 foreach (MatrixEnemy e in enemyList)
                 {
@@ -189,6 +188,18 @@ namespace ShapeShift
                             {
                                 if (e.collides(e.getPosition(), player.getMine().getRectangle(), player.getMine().getShape().getColorData()))
                                     player.getMine().trigger();
+                            }
+
+                            if (player.hasTurretDropped())
+                            {
+                                if (e.collides(e.getPosition(), player.getTurret().getRectangle(), player.getTurret().getShape().getColorData()))
+                                {
+                                    if (turretDamageTime > INVULN_TIME)
+                                    {
+                                        player.getTurret().takeDamage();
+                                        turretDamageTime = 0;
+                                    }
+                                }
                             }
 
                             /*if (player.hasBallThrown())
