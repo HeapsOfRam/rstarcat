@@ -24,6 +24,8 @@ namespace ShapeShift
 
         private Random rand;
 
+        private Texture2D ballShadowTexture;
+
         public Ball(ContentManager content, InputManager input, Entity owner)
         {
             LoadContent(content, input);
@@ -44,6 +46,10 @@ namespace ShapeShift
             velocity.X = randomVelocity();
             velocity.Y = randomVelocity();
             effect = content.Load<Effect>("normalmap");
+
+            ballShadowTexture = content.Load<Texture2D>("Circle/CircleBallShadow");
+
+            bCircle.setShadowTexture(ballShadowTexture);
         }
 
         public void lockToOwner()

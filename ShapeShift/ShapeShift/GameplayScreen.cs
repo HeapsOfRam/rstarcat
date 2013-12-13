@@ -190,17 +190,19 @@ namespace ShapeShift
                                 if (e.collides(e.getPosition(), player.getBall().getRectangle(), player.getBall().getShape().getColorData()))
                                     e.die();
                             }*/
-
-                            if (e.collides(e.getPosition(), player.getRectangle(), player.getShape().getColorData()))
+                            if (Math.Abs(e.position.X - player.position.X) < 70 || Math.Abs(e.position.Y - player.position.Y) < 70)
                             {
-                                e.makeReel();
-
-                                if (damageTime > INVULN_TIME && player.takeDamage())
+                                if (e.collides(e.getPosition(), player.getRectangle(), player.getShape().getColorData()))
                                 {
-                                    DecreaseScore(1);
-                                    damageTime = 0;
+                                    e.makeReel();
+
+                                    if (damageTime > INVULN_TIME && player.takeDamage())
+                                    {
+                                        DecreaseScore(1);
+                                        damageTime = 0;
+                                    }
                                 }
-                            } 
+                            }
 
                             //TODO TO MAKE TURRET GET HIT AND DIE
                             /*if (e.collides(e.getPosition(), player.getTurretRectangle(), player.getTurretColor()))

@@ -719,7 +719,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleShadow.xnb</Output>
-      <Time>2013-11-23T01:29:13.114993-05:00</Time>
+      <Time>2013-12-12T22:22:57.7736988-05:00</Time>
     </Item>
     <Item>
       <Source>Circle\CircleShieldShadow.png</Source>
@@ -900,7 +900,16 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\normalmap.xnb</Output>
-      <Time>2013-12-12T21:21:42.3684777-05:00</Time>
+      <Time>2013-12-12T22:06:18.5775481-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Circle\CircleBallShadow.png</Source>
+      <Name>Circle\CircleBallShadow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\wildcat\Documents\GitHub\rstarcat\ShapeShift\ShapeShift\bin\x86\Debug\Content\Circle\CircleBallShadow.xnb</Output>
+      <Time>2013-12-12T22:24:50.4351427-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

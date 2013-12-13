@@ -178,8 +178,11 @@ namespace ShapeShift
                         direction = rand.Next(1, 8);
                         state = WANDER;
                     }
-                    if(entityShape.collides(position, entity.getRectangle(), entity.getShape().getColorData()))
-                        state = ATTACK;
+                    if (Math.Abs(position.X - entity.position.X) < 30 || Math.Abs(position.Y - lastCheckedRectangle.Y) < 30)
+                    {
+                        if (entityShape.collides(position, entity.getRectangle(), entity.getShape().getColorData()))
+                            state = ATTACK;
+                    }
                     if (colliding)
                         state = FIND;
                     if(entity.hasTurretDropped() && spot(entity.getTurret()))
@@ -189,7 +192,12 @@ namespace ShapeShift
                     break;
                 case ATTACK:
                     //standStill();
-                    if(!entityShape.collides(position, entity.getRectangle(), entity.getShape().getColorData()))
+                    if (Math.Abs(position.X - entity.position.X) < 30 || Math.Abs(position.Y - lastCheckedRectangle.Y) < 30)
+                    {
+                        if (!entityShape.collides(position, entity.getRectangle(), entity.getShape().getColorData()))
+                            state = CHASE;
+                    }
+                    else
                         state = CHASE;
                     break;
                 case REELING:

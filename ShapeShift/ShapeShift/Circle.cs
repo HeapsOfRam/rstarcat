@@ -202,15 +202,20 @@ namespace ShapeShift
                     b.hit();
             }
 
-            Rectangle rectangleA = new Rectangle((int)vect.X, (int)vect.Y, WIDTH, HEIGHT);
-            Color[] dataA = new Color[WIDTH * HEIGHT];
+            if (Math.Abs(vect.X - rectangle.X) < 30 || Math.Abs(vect.Y - rectangle.Y) < 30)
+            {
 
-            if (!shielded)
-                circleShadowTexture.GetData(dataA);
-            else
-                circleShieldedShadowTexture.GetData(dataA);
+                Rectangle rectangleA = new Rectangle((int)vect.X, (int)vect.Y, WIDTH, HEIGHT);
+                Color[] dataA = new Color[WIDTH * HEIGHT];
 
-            return (IntersectPixels(rectangleA, dataA, rectangle, Data));
+                if (!shielded)
+                    circleShadowTexture.GetData(dataA);
+                else
+                    circleShieldedShadowTexture.GetData(dataA);
+
+                return (IntersectPixels(rectangleA, dataA, rectangle, Data));
+            }
+            return false;
 
         }
 
@@ -245,6 +250,18 @@ namespace ShapeShift
         public void clearBullets()
         {
             activeBullets = new List<Shape>();
+        }
+
+        public void setShadowTexture(Texture2D shadowTexture)
+        {
+            circleShadowTexture = shadowTexture;
+
+            Color[] newData = new Color[circleShadowTexture.Width * circleShadowTexture.Height];
+
+            circleShadowTexture.GetData(newData);
+
+            colorData = newData;
+
         }
     }
 }

@@ -175,22 +175,24 @@ namespace ShapeShift
         
         public override bool collides(Vector2 position, Rectangle rectangle, Color[] Data)
         {
-           
-            if (!collision && isReady)
+            if (Math.Abs(position.X - rectangle.X) < 70 || Math.Abs(position.Y - rectangle.Y) < 70)
             {
-                Rectangle rectangleA = new Rectangle((int)shotAnimation.Position.X, (int)shotAnimation.Position.Y, WIDTH, HEIGHT);
-               
-
-                if (IntersectPixels(rectangleA, data, rectangle, Data))
+                if (!collision && isReady)
                 {
-                    collision = true;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                    Rectangle rectangleA = new Rectangle((int)shotAnimation.Position.X, (int)shotAnimation.Position.Y, WIDTH, HEIGHT);
 
+
+                    if (IntersectPixels(rectangleA, data, rectangle, Data))
+                    {
+                        collision = true;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
             }
             return false;
 
