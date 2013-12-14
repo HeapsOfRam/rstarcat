@@ -19,6 +19,8 @@ namespace ShapeShift
         protected int direction = 1;
         protected const int WANDERSWITCH = 5, UP = 1, RIGHTUP = 2, RIGHT = 3, RIGHTDOWN = 4, DOWN = 5, LEFTDOWN = 6, LEFT = 7, LEFTUP = 8;
         protected Boolean reeling, findX = false, findY = true;
+
+        protected const int TO_CENTER = 23;
         
 
         public override void LoadContent(ContentManager content, int matrixWidth, int matrixHeight)
@@ -101,17 +103,17 @@ namespace ShapeShift
 
         private void chaseX(GameTime gameTime, Entity player)
         {
-            if (player.getPositionX()+46 < position.X)
+            if (player.getPositionX() + TO_CENTER < position.X)
                 moveLeft(gameTime);
-            if (player.getPositionX()+46 > position.X)
+            if (player.getPositionX() + TO_CENTER> position.X)
                 moveRight(gameTime);
         }
 
         private void chaseY(GameTime gameTime, Entity player)
         {
-            if (player.getPositionY() + 46 < position.Y)
+            if (player.getPositionY() + TO_CENTER< position.Y)
                 moveUp(gameTime);
-            if (player.getPositionY() + 46 > position.Y)
+            if (player.getPositionY() + TO_CENTER > position.Y)
                 moveDown(gameTime);
         }
 
@@ -123,24 +125,50 @@ namespace ShapeShift
 
         private void findChase(GameTime gameTime, Entity player)
         {
-            if (player.getPositionY() != position.Y)
+            if (xCollide)
             {
-                findY = true;
-                findX = false;
+                moveUp(gameTime);
+                /*if (checkUp(gameTime, player))
+                    moveUp(gameTime);
+                if (checkDown(gameTime, player))
+                    moveDown(gameTime);
+                 */
             }
-            if (player.getPositionX() != position.X)
+            else
+                chaseY(gameTime, player);
+                //chaseX(gameTime, player);
+            if (yCollide)
+            {
+                moveRight(gameTime);
+                /*
+                if (checkRight(gameTime, player))
+                    moveRight(gameTime);
+                if (checkLeft(gameTime, player))
+                    moveLeft(gameTime);
+                 * */
+            }
+            else
+                chaseX(gameTime, player);
+                //chaseY(gameTime, player);
+
+            /*if (xCollide)//player.getPositionY() != position.Y)
             {
                 findX = true;
                 findY = false;
+            }
+            if (yCollide)//player.getPositionX() != position.X)
+            {
+                findY = true;
+                findX = false;
             }
             if (findX)
                 moveRight(gameTime);
             else
                 chaseX(gameTime, player);
             if (findY)
-                moveDown(gameTime);
+                moveUp(gameTime);
             else
-                chaseY(gameTime, player);
+                chaseY(gameTime, player);*/
         }
 
         public void standStill()

@@ -124,6 +124,34 @@ namespace ShapeShift
             moveDown(gameTime);
         }
 
+        public Boolean checkLeft(GameTime gameTime, Entity entity)
+        {
+            Vector2 checkPosition = new Vector2(position.X + 0, position.Y + 0);
+            checkPosition.X -= 10;
+            return Vector2.Distance(checkPosition, entity.position) < Vector2.Distance(position, entity.position);
+        }
+
+        public Boolean checkRight(GameTime gameTime, Entity entity)
+        {
+            Vector2 checkPosition = new Vector2(position.X + 0, position.Y + 0);
+            checkPosition.X += 10;
+            return Vector2.Distance(checkPosition, entity.position) < Vector2.Distance(position, entity.position);
+        }
+
+        public Boolean checkDown(GameTime gameTime, Entity entity)
+        {
+            Vector2 checkPosition = new Vector2(position.X + 0, position.Y + 0);
+            checkPosition.Y += 10;
+            return Vector2.Distance(checkPosition, entity.position) < Vector2.Distance(position, entity.position);
+        }
+
+        public Boolean checkUp(GameTime gameTime, Entity entity)
+        {
+            Vector2 checkPosition = new Vector2(position.X + 0, position.Y + 0);
+            checkPosition.X -= 10;
+            return Vector2.Distance(checkPosition, entity.position) < Vector2.Distance(position, entity.position);
+        }
+
         public virtual Boolean takeDamage()
         {
             //Console.WriteLine("Health = " + health);
