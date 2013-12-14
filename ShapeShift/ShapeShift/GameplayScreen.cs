@@ -545,7 +545,7 @@ namespace ShapeShift
                     dummyEnemy.LoadContent(content, 3, 2);
                     enemyList.Add(dummyEnemy);
 
-                    dummyEnemy = new MatrixEnemy(new Vector2(700, 360), this);
+                    dummyEnemy = new MatrixEnemy(new Vector2(400, 580), this);
                     dummyEnemy.LoadContent(content, 2, 2);
                     enemyList.Add(dummyEnemy);
                     break;
