@@ -26,6 +26,8 @@ namespace ShapeShift
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            this.IsFixedTimeStep = false;
         }
 
         /// <summary>

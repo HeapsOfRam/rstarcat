@@ -32,8 +32,8 @@ namespace ShapeShift
         protected const int WIDTH = 92;
         protected const int HEIGHT = 92;
 
-        protected const int PROJECTILE_SPEED = 10;
-        protected const int SWITCH_FRAME = 5;
+        protected const int PROJECTILE_SPEED = 300;
+        protected const int SWITCH_FRAME = 10;
         private Texture2D shotShadowTexture;
 
         private Color[] data;
@@ -235,8 +235,9 @@ namespace ShapeShift
 
                     if (!shotHitAnimation.IsEnabled)
                     {
-                        float newX = (float)(shotAnimation.position.X + PROJECTILE_SPEED * (Math.Cos(MathHelper.ToRadians(fireAngle-90))));
-                        float newY = (float)(shotAnimation.position.Y + PROJECTILE_SPEED * (Math.Sin(MathHelper.ToRadians(fireAngle-90))));
+                        float newX = (float)(shotAnimation.position.X + (float)gameTime.ElapsedGameTime.TotalSeconds * PROJECTILE_SPEED * (Math.Cos(MathHelper.ToRadians(fireAngle - 90))));
+                       
+                        float newY = (float)(shotAnimation.position.Y + (float)gameTime.ElapsedGameTime.TotalSeconds * PROJECTILE_SPEED * (Math.Sin(MathHelper.ToRadians(fireAngle - 90))));
 
                         shotAnimation.position.X = newX;
                         shotAnimation.position.Y = newY;
